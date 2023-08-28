@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+  
+<tiles-definitions>
+	
+	<definition name="intro" template="/WEB-INF/views/template/mainLayout.jsp">
+	<put-attribute name="title" value="Disney 동산"/>
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	
+	<definition name="content" template="/WEB-INF/views/template/contentLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+	</definition>
+	
+	<!--  jsp를 각각 불러오지 않고 한번에 불러오기 위한 문법-->
+	<!-- <definition name="client/board/*" extends="content">
+		<put-attribute name="title" value="게시판"/>
+		<put-attribute name="body" value="/WEB-INF/views/client/board/{1}.jsp"></put-attribute>
+	</definition> -->
+	
+</tiles-definitions>
