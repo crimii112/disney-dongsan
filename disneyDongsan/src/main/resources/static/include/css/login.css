@@ -1,0 +1,48 @@
+#container{
+	width:400px;
+	margin:200px auto;
+}
+
+#signupContainer{
+	width:400px;
+	margin:50px auto;
+}
+
+#memberListContainer{
+	width:800px;
+	margin:50px auto;
+}
+
+h3{
+	margin-bottom: 30px;
+}
+
+/*.form-control{
+      margin:10px;
+}*/
+
+.form-group input{
+      border-radius: 30px;
+      height: 50px;
+      font-size: 14px;
+}
+
+.button{
+	  border-radius: 30px;
+      border: 1px solid #e9e9e9;
+      background-color: #e9e9e9;
+}
+
+button{
+	background-color: white;
+}
+
+.label{
+	color: black;
+	font-size: 14px;
+}
+
+#infoArea{
+	color: darkgrey;
+	font-size: 12px;
+}

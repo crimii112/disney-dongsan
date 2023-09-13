@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <div>
 	<div class="right">
 		<div class="login_div">
-			<a href="#" class="login_div_a" id="login">로그인</a> 
-			<a href="#" class="login_div_a" id="signup" title="아이디가 없으시면 회원가입을 해주세요">회원가입</a>
+			<c:if test="${empty Member}">
+				<a href="/member/loginForm" class="login_div_a" id="login">로그인</a>
+				<a href="/member/signupTos" class="login_div_a" id="signup">회원가입</a> 
+			</c:if>
+			<c:if test="${not empty Member}">
+				<a href="/member/logout" class="login_div_a" id="logout">로그아웃</a> 
+			</c:if>
+			
 			<a href="#" class="login_div_a" id="mypage">마이페이지</a>
 			<a href="#" class="login_div_a" id="basket">장바구니</a>
 		</div>
 	</div>
 	<div class="logo_background">
 		<div class="logo">
-			<a href="#" title="홈으로"><img id="logoImg"
+			<a href="/" title="홈으로"><img id="logoImg"
 				src="/resources/include/img/disney_dongsan.png" /></a>
 		</div>
 	</div>

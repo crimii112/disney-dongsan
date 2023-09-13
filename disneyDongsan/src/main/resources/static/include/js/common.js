@@ -21,3 +21,47 @@ function formCheck(item, msgArea, msg){
 		return true;
 	}
 };
+
+function idValidation(item){
+	if($(item).val().length < 5 || $(item).val().length > 12){
+		alert("아이디는 5자 이상 12자 이하로 작성해주세요");
+		$(item).val('');
+		$(item).focus();
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function pwdValidation(item){
+	let reg = /^(?=.*[a-zA-Z])((?=.*\d)(?=.*\W)).{8,16}$/;
+	if(!reg.test($(item).val())){
+		alert("비밀번호는 영문/숫자/특수문자(!@#$%^&*)를 포함하여 8~16자로 입력해야합니다.");
+		$(item).select();
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function emailValidation(item){
+	let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/;
+	if(!reg.test($(item).val())){
+		alert("정확한 이메일 주소를 입력해주세요");
+		$(item).select();
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function phoneValidation(item){
+	let reg = /^(?:(010\d{4})|(01[1|6|7|8|9]\d{3,4}))(\d{4})$/;
+	if(!reg.test($(item).val())){
+		alert("정확한 전화번호를 입력해주세요");
+		$(item).select();
+		return false;
+	} else {
+		return true;
+	}
+}
