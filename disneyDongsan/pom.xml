@@ -77,6 +77,12 @@
 			<artifactId>tiles-jsp</artifactId>
 			<version>3.0.7</version>
 		</dependency>
+	
+		<!-- mail 관련 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

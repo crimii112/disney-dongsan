@@ -9,8 +9,7 @@
 <title><tiles:getAsString name="title" /></title>
 <link rel="stylesheet" href="/resources/include/css/main.css" />
 <link href="${path}/resources/include/css/styles.css" rel="stylesheet" />
-<link rel="stylesheet"
-	href="${path}/resources/include/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${path}/resources/include/dist/css/bootstrap.min.css" />
 <script type="text/javascript">
 	// Add your JavaScript logic here if needed
 </script>

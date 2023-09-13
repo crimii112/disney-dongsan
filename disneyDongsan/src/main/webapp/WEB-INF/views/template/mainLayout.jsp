@@ -9,8 +9,15 @@
     <link rel="stylesheet"  href="${path}/resources/include/css/main.css" />
     <link href="${path}/resources/include/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet"  href="${path}/resources/include/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
     <script type="text/javascript">
-        // Add your JavaScript logic here if needed
+        $(function(){
+        	let infoMsg = "${infoMsg}";
+        	if(infoMsg != ''){
+        		alert(infoMsg);
+        		infoMsg = '';
+        	};
+        });
     </script>
      <script src="${path}/resources/include/dist/js/bootstrap.bundle.min.js"></script>
 </head>
