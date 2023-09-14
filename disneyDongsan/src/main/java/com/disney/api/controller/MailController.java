@@ -21,7 +21,7 @@ public class MailController {
 	@PostMapping("/mail/process")
     @ResponseBody
     public String sendRandomString(@RequestParam String memberEmail) {
-        String randomString = mailService.generateRandomString(memberEmail);
+        String randomString = mailService.generateRandomString(memberEmail, "");
         return randomString;
     }
 

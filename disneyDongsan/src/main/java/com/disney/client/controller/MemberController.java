@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.disney.api.service.MailService;
 import com.disney.client.service.MemberService;
 import com.disney.vo.MemberVO;
 
@@ -26,6 +27,9 @@ public class MemberController {
 	
 	@Setter(onMethod_ = @Autowired)
 	private MemberService memberService;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MailService mailService;
 	
 	/* 로그인 폼 화면 */
 	@GetMapping("/loginForm")
@@ -42,8 +46,13 @@ public class MemberController {
 		memberVO = memberService.login(mvo);
 		
 		if(memberVO != null) {
-			model.addAttribute("Member", memberVO);
-			url = "";
+			if(memberVO.getMemberState().equals("NE")) {
+				ras.addFlashAttribute("errorMsg", "탈퇴한 회원 정보로 로그인할 수 없습니다.");
+				url = "member/loginForm";
+			} else {
+				model.addAttribute("Member", memberVO);
+				url = "";
+			}
 		} else {
 			ras.addFlashAttribute("errorMsg", "로그인 실패");
 			url = "member/loginForm";
@@ -69,6 +78,15 @@ public class MemberController {
 		return "client/member/login/findIdForm";
 	}
 	
+	/* 아이디 찾기 전 회원 존재 여부 확인 */
+	@ResponseBody
+	@PostMapping("/findIdMemberExists")
+	public String findIdMemberExists(MemberVO mvo) {
+		int result = memberService.findIdMemberExists(mvo);
+		
+		return (result == 1) ? "success" : "failure";
+	}
+	
 	/* 아이디 찾기 처리 */
 	@PostMapping("/findId")
 	public String findId(MemberVO mvo, Model model) {
@@ -88,6 +106,42 @@ public class MemberController {
 	@GetMapping("/findPwdForm")
 	public String findPwdForm() {
 		return "client/member/login/findPwdForm";
+	}
+	
+	/* 비밀번호 찾기 전 회원 존재 여부 확인 */
+	@ResponseBody
+	@PostMapping("/findPwdMemberExists")
+	public String findPwdMemberExists(MemberVO mvo) {
+		int result = memberService.findPwdMemberExists(mvo);
+		
+		return (result == 1) ? "success" : "failure";
+	}
+	
+	/* 임시 비밀번호 전송 */
+	@PostMapping("/sendTempPwd")
+	@ResponseBody
+	public String sendTempPwd(MemberVO mvo) {
+		String result = mailService.generateRandomString(mvo.getMemberEmail(), "tempPwd");
+		
+		return result;
+	}
+	
+	/* 비밀번호 재설정 */
+	@PostMapping("/updatePwd")
+	public String updatePwd(MemberVO mvo, RedirectAttributes ras) {
+		String url = "";
+		
+		int result = memberService.updatePwd(mvo);
+		log.info("result : " + result);
+		
+		if(result == 1) {
+			url = "client/member/login/findPwdSuccess";
+		} else {
+			ras.addFlashAttribute("errorMsg", "시스템 오류입니다. 이메일 인증을 다시 진행해주세요.");
+			url = "redirect:/member/findPwdForm";
+		}
+		
+		return url;
 	}
 	
 	/* 회원가입 약관 동의 화면 */
@@ -150,5 +204,10 @@ public class MemberController {
 		}
 		
 		return url;
+	}
+	
+	@GetMapping("/updateInfoForm")
+	public String updateInfoForm() {
+		return "client/member/updateInfo/updateInfoForm";
 	}
 }

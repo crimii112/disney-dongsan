@@ -12,6 +12,8 @@
 	let randomString = ''; 
 	// 비밀번호 확인 여부
 	let pwdCheckStatus = false;
+	// 전화번호 인증 여부 확인
+	let phoneCheckStatus = false;
 	
 	$(function(){
 		let errorMsg = "${errorMsg}";
@@ -67,6 +69,7 @@
 			else if(idCheckStatus == 0) {alert("아이디 중복확인을 해주세요."); return;}
 			else if(idCheckStatus == 2) {alert("이미 존재하는 아이디입니다."); return;}
 			else if(pwdCheckStatus == false) {alert("비밀번호 확인을 진행해주세요"); $("#memberPwdCheck").focus(); return;}
+			else if(phoneCheckStatus == false){alert("전화번호 인증을 해주세요"); return;}
 			else if(emailCheckStatus == false){alert("이메일 인증을 해주세요"); return;}
 			else {
 				$("#signupForm").attr({
@@ -109,6 +112,42 @@
 		$("#findAddrBtn").click(function(){
 			findAddr();
 		});
+		
+		/* 전화번호 인증번호 보내기 버튼 클릭 시 이벤트 */
+		$("#sendMsgBtn").click(function(){
+			let phone = $("#memberPhone").val();
+			$("#to").val(phone);
+			
+			$("#veriNum").focus();
+			$("#veriNum").val('');
+			
+				$.ajax({
+					url:"/sms/send",
+					type:"post",
+					data:$("#sendSmsForm").serialize(),
+					success: function(data){
+						phoneCheckStatus = false;
+						console.log(data.statusName);
+						if(data.statusName == "success"){
+							/* 인증번호 확인 버튼 클릭 시 이벤트 */
+							alert("인증번호를 발송했습니다.");
+							$("#phoneCheckBtn").unbind("click").bind("click", function(){
+								let veriNum = $("#veriNum").val();
+								if(data.createSmsKey == veriNum){
+									phoneVeriStatus = true;
+									alert("전화번호 인증 성공");
+								} else {
+									alert("인증번호를 틀렸습니다. 인증번호 보내기 버튼을 다시 눌러주세요.");
+								}
+							});
+						}
+					},
+					error: (xhr, textStatus, errorThrown) => {
+						phoneCheckStatus = false;
+			        	alert(textStatus + " (HTTP-" + xhr.status + " / " + errorThrown + ")");
+			        }
+				});
+			});
 	});
 	
 	/* 아이디 중복 확인 함수 */
@@ -193,7 +232,7 @@
 </head>
 <body>
 	<div id="signupContainer">
-		<form id="phoneForm">
+		<form id="sendSmsForm">
 			<input type="hidden" id="to" name="to" value="">
 		</form>
 		<h3 class="text-center">Create Your Account</h3>
