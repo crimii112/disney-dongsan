@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/css/login.css">
-
+<link rel="stylesheet" type="text/css" href="/resources/include/css/login.css">
+<script>
+	$(function(){
+		$("#loginFormBtn").click(function(){
+			location.href = "/member/loginForm";
+		});
+	});
+</script>
 </head>
 <body>
 	<div>

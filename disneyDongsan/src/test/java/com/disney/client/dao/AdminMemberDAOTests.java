@@ -1,0 +1,32 @@
+package com.disney.client.dao;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.disney.admin.dao.AdminMemberDAO;
+import com.disney.vo.MemberVO;
+
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+@SpringBootTest
+@Slf4j
+public class AdminMemberDAOTests {
+	
+	@Setter(onMethod_ = @Autowired)
+	private AdminMemberDAO adminMemberDAO;
+	
+	@Test
+	public void memberListTest() {
+		log.info("memberListTest 결과");
+		
+		List<MemberVO> memberList = adminMemberDAO.memberList();
+		
+		for(MemberVO mvo : memberList) {
+			log.info(mvo.toString());
+		}
+	}
+}

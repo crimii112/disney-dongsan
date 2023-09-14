@@ -22,6 +22,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int findIdMemberExists(MemberVO mvo) {
+		int result = memberDAO.findIdMemberExists(mvo);
+		return result;
+	}
+	
+	@Override
 	public MemberVO findId(MemberVO mvo) {
 		MemberVO memberVO = null;
 		memberVO = memberDAO.findId(mvo);
@@ -31,6 +37,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int idCheck(MemberVO mvo) {
 		int result = memberDAO.idCheck(mvo);
+		return result;
+	}
+
+	@Override
+	public int findPwdMemberExists(MemberVO mvo) {
+		int result = memberDAO.findPwdMemberExists(mvo);
+		return result;
+	}
+	
+	@Override
+	public int updatePwd(MemberVO mvo) {
+		int result = memberDAO.updatePwd(mvo);
 		return result;
 	}
 
@@ -45,5 +63,7 @@ public class MemberServiceImpl implements MemberService {
 		int result = memberDAO.withdrawal(mvo);
 		return result;
 	}
+
+
 
 }
