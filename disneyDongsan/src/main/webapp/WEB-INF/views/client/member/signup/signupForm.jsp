@@ -134,7 +134,7 @@
 							$("#phoneCheckBtn").unbind("click").bind("click", function(){
 								let veriNum = $("#veriNum").val();
 								if(data.createSmsKey == veriNum){
-									phoneVeriStatus = true;
+									phoneCheckStatus = true;
 									alert("전화번호 인증 성공");
 								} else {
 									alert("인증번호를 틀렸습니다. 인증번호 보내기 버튼을 다시 눌러주세요.");

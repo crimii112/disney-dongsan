@@ -23,7 +23,8 @@ public class AdminMemberDAOTests {
 	public void memberListTest() {
 		log.info("memberListTest 결과");
 		
-		List<MemberVO> memberList = adminMemberDAO.memberList();
+		MemberVO vo = new MemberVO();
+		List<MemberVO> memberList = adminMemberDAO.memberList(vo);
 		
 		for(MemberVO mvo : memberList) {
 			log.info(mvo.toString());
