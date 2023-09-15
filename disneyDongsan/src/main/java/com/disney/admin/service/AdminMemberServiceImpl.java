@@ -17,9 +17,15 @@ public class AdminMemberServiceImpl implements AdminMemberService{
 	private AdminMemberDAO adminMemberDAO;
 
 	@Override
-	public List<MemberVO> memberList() {
-		List<MemberVO> memberList = adminMemberDAO.memberList();
+	public List<MemberVO> memberList(MemberVO mvo) {
+		List<MemberVO> memberList = adminMemberDAO.memberList(mvo);
 		return memberList;
+	}
+
+	@Override
+	public int memberListCnt() {
+		int result = adminMemberDAO.memberListCnt();
+		return result;
 	}
 	
 	

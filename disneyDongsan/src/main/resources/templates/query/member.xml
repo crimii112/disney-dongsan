@@ -4,7 +4,7 @@
 	
 	<!-- 로그인 처리 -->
 	<select id="login" parameterType="member" resultType="member">
-		SELECT member_id memberId, member_passwd memberPasswd, member_name memberName, member_phone memberPhone, member_email memberEmail, member_addr1 memberAddr1, member_addr2 memberAddr2, member_addr3 memberAddr3, member_regdate memberRegdate, member_state memberState
+		SELECT member_no memberNo, member_id memberId, member_passwd memberPasswd, member_name memberName, member_phone memberPhone, member_email memberEmail, member_addr1 memberAddr1, member_addr2 memberAddr2, member_addr3 memberAddr3, member_regdate memberRegdate, member_state memberState
 		FROM member
 		WHERE member_id = #{memberId} AND member_passwd = #{memberPasswd}
 	</select>
@@ -43,8 +43,8 @@
 	
 	<!-- 회원가입 -->
 	<insert id="signup" parameterType="member">
-		INSERT INTO member(member_id, member_passwd, member_name, member_phone, member_email, member_addr1, member_addr2, member_addr3, member_regdate)
-		VALUES(#{memberId}, #{memberPasswd}, #{memberName}, #{memberPhone}, #{memberEmail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, SYSDATE)
+		INSERT INTO member(member_no, member_id, member_passwd, member_name, member_phone, member_email, member_addr1, member_addr2, member_addr3, member_regdate, member_state)
+		VALUES(member_seq.nextval, #{memberId}, #{memberPasswd}, #{memberName}, #{memberPhone}, #{memberEmail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3}, SYSDATE, 'E')
 	</insert>
 	
 	<!-- 탈퇴 회원 상태 변경 -->

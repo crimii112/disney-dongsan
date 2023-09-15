@@ -8,6 +8,6 @@ import com.disney.vo.MemberVO;
 
 @Mapper
 public interface AdminMemberDAO {
-	public List<MemberVO> memberList();
-
+	public List<MemberVO> memberList(MemberVO mvo);
+	public int memberListCnt();
 }
