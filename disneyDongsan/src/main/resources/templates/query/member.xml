@@ -53,4 +53,32 @@
 		SET member_state = 'NE'
 		WHERE member_id = #{memberId}
 	</update>
+	
+	<!-- 마이페이지 : 전화번호 수정 -->
+	<update id="updateInfoPhone" parameterType="member">
+		UPDATE member
+		SET member_phone = #{memberPhone}
+		WHERE member_id = #{memberId}
+	</update>
+	
+	<!-- 마이페이지 : 이메일 수정 -->
+	<update id="updateInfoEmail" parameterType="member">
+		UPDATE member
+		SET member_email = #{memberEmail}
+		WHERE member_id = #{memberId}
+	</update>
+	
+	<!-- 마이페이지 : 주소 수정 -->
+	<update id="updateInfoAddr" parameterType="member">
+		UPDATE member
+		SET member_addr1 = #{memberAddr1}, member_addr2 = #{memberAddr2}, member_addr3 = #{memberAddr3}
+		WHERE member_id = #{memberId}
+	</update>
+	
+	<!-- 회원 정보 조회 -->
+	<select id="memberDetail" parameterType="member" resultType="member">
+		SELECT member_no memberNo, member_id memberId, member_passwd memberPasswd, member_name memberName, member_phone memberPhone, member_email memberEmail, member_addr1 memberAddr1, member_addr2 memberAddr2, member_addr3 memberAddr3, member_regdate memberRegdate, member_state memberState
+		FROM member
+		WHERE member_id = #{memberId}
+	</select>
 </mapper>

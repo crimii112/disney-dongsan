@@ -1,9 +1,13 @@
 package com.disney.client.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -206,8 +210,61 @@ public class MemberController {
 		return url;
 	}
 	
-	@GetMapping("/updateInfoForm")
-	public String updateInfoForm() {
-		return "client/member/updateInfo/updateInfoForm";
+	@GetMapping("/member/updateMemberInfoForm")
+	public String updateInfoForm(@SessionAttribute(name = "Member", required = false) MemberVO Member) {
+		String url = "";
+		
+		if(Member != null) {
+			url = "client/member/updateInfo/updateInfoForm";
+		} else {
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
+	}
+	
+	@PostMapping("/member/updateInfoPhone")
+	public String updateInfoPhone(MemberVO mvo, Model model, RedirectAttributes ras) {
+		
+		int result = memberService.updateInfoPhone(mvo);
+		
+		if(result == 1) {
+			MemberVO memberVO = memberService.memberDetail(mvo);
+			model.addAttribute("Member", memberVO);
+		} else {
+			ras.addFlashAttribute("errorMsg", "시스템 오류입니다. 잠시 후에 다시 시도해주세요.");
+		}
+	
+		return "redirect:/member/updateMemberInfoForm";
+	}
+	
+	@PostMapping("/member/updateInfoEmail")
+	public String updateInfoEmail(MemberVO mvo, Model model, RedirectAttributes ras) {
+		
+		int result = memberService.updateInfoEmail(mvo);
+		
+		if(result == 1) {
+			MemberVO memberVO = memberService.memberDetail(mvo);
+			model.addAttribute("Member", memberVO);
+		} else {
+			ras.addFlashAttribute("errorMsg", "시스템 오류입니다. 잠시 후에 다시 시도해주세요.");
+		}
+		
+		return "redirect:/member/updateMemberInfoForm";
+	}
+	
+	@PostMapping("/member/updateInfoAddr")
+	public String updateInfoAddr(MemberVO mvo, Model model, RedirectAttributes ras) {
+		
+		int result = memberService.updateInfoAddr(mvo);
+		
+		if(result == 1) {
+			MemberVO memberVO = memberService.memberDetail(mvo);
+			model.addAttribute("Member", memberVO);
+		} else {
+			ras.addFlashAttribute("errorMsg", "시스템 오류입니다. 잠시 후에 다시 시도해주세요.");
+		}
+		
+		return "redirect:/member/updateMemberInfoForm";
 	}
 }
