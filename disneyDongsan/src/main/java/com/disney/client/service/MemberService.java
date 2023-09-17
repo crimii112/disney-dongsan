@@ -11,4 +11,8 @@ public interface MemberService {
 	public int idCheck(MemberVO mvo);
 	public int signup(MemberVO mvo);
 	public int withdrawal(MemberVO mvo);
+	public int updateInfoPhone(MemberVO mvo);
+	public MemberVO memberDetail(MemberVO mvo);
+	public int updateInfoEmail(MemberVO mvo);
+	public int updateInfoAddr(MemberVO mvo);
 }

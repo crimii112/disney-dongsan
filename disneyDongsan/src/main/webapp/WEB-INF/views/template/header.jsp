@@ -13,7 +13,7 @@
 				<a href="/member/logout" class="login_div_a" id="logout">로그아웃</a> 
 			</c:if>
 			
-			<a href="#" class="login_div_a" id="mypage">마이페이지</a>
+			<a href="/member/updateMemberInfoForm" class="login_div_a" id="mypage">마이페이지</a>
 			<a href="#" class="login_div_a" id="basket">장바구니</a>
 		</div>
 	</div>

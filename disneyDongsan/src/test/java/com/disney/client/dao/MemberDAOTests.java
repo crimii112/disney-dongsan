@@ -79,15 +79,41 @@ public class MemberDAOTests {
 //		log.info("result : " + result);
 //	}
 	
+//	@Test
+//	public void updatePwd() {
+//		MemberVO mvo = new MemberVO();
+//		
+//		mvo.setMemberId("ycl623");
+//		mvo.setMemberPasswd("cofla990510*");
+//		
+//		int result = memberDAO.updatePwd(mvo);
+//		log.info("updatePwd 결과");
+//		log.info("result : " + result);
+//	}
+	
+//	@Test
+//	public void updatePhone() {
+//		MemberVO mvo = new MemberVO();
+//		
+//		mvo.setMemberId("user01");
+//		mvo.setMemberPhone("01011111111");
+//		
+//		int result = memberDAO.updateInfoPhone(mvo);
+//		
+//		log.info("updatePhone 결과 : " + result);
+//	}
+	
 	@Test
-	public void updatePwd() {
+	public void updateAddr() {
 		MemberVO mvo = new MemberVO();
 		
-		mvo.setMemberId("ycl623");
-		mvo.setMemberPasswd("cofla990510*");
+		mvo.setMemberId("user01");
+		mvo.setMemberAddr1("16040");
+		mvo.setMemberAddr2("경기도 의왕시");
+		mvo.setMemberAddr3("108-803");
 		
-		int result = memberDAO.updatePwd(mvo);
-		log.info("updatePwd 결과");
-		log.info("result : " + result);
+		int result = memberDAO.updateInfoAddr(mvo);
+		
+		log.info("updateAddr 결과 : " + result);
 	}
 }

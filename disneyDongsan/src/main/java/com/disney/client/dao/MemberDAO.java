@@ -29,4 +29,16 @@ public interface MemberDAO {
 	
 	/* 탈퇴 */
 	public int withdrawal(MemberVO mvo);
+
+	/* 마이페이지 - 전화번호 수정 */
+	public int updateInfoPhone(MemberVO mvo);
+
+	/* 회원 정보 조회 */
+	public MemberVO memberDetail(MemberVO mvo);
+
+	/* 마이페이지 - 이메일 수정 */
+	public int updateInfoEmail(MemberVO mvo);
+
+	/* 마이페이지 - 주소 수정 */
+	public int updateInfoAddr(MemberVO mvo);
 }

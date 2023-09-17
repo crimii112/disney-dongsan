@@ -64,6 +64,30 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int updateInfoPhone(MemberVO mvo) {
+		int result = memberDAO.updateInfoPhone(mvo);
+		return result;
+	}
+
+	@Override
+	public MemberVO memberDetail(MemberVO mvo) {
+		MemberVO memberVO = memberDAO.memberDetail(mvo);
+		return memberVO;
+	}
+
+	@Override
+	public int updateInfoEmail(MemberVO mvo) {
+		int result = memberDAO.updateInfoEmail(mvo);
+		return result;
+	}
+
+	@Override
+	public int updateInfoAddr(MemberVO mvo) {
+		int result = memberDAO.updateInfoAddr(mvo);
+		return result;
+	}
+
 
 
 }
