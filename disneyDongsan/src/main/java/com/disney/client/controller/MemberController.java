@@ -49,6 +49,8 @@ public class MemberController {
 		MemberVO memberVO = null;
 		memberVO = memberService.login(mvo);
 		
+		
+		
 		if(memberVO != null) {
 			if(memberVO.getMemberState().equals("NE")) {
 				ras.addFlashAttribute("errorMsg", "탈퇴한 회원 정보로 로그인할 수 없습니다.");

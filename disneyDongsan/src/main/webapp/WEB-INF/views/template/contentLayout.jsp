@@ -8,12 +8,12 @@
 <head>
 <title><tiles:getAsString name="title" /></title>
 <link rel="stylesheet" href="/resources/include/css/main.css" />
-<link href="${path}/resources/include/css/styles.css" rel="stylesheet" />
-<link rel="stylesheet" href="${path}/resources/include/dist/css/bootstrap.min.css" />
+<link href="/resources/include/css/styles.css" rel="stylesheet" />
+<link rel="stylesheet" href="/resources/include/dist/css/bootstrap.min.css" />
 <script type="text/javascript">
 	// Add your JavaScript logic here if needed
 </script>
-<script src="${path}/resources/include/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/include/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
