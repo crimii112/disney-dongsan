@@ -14,8 +14,12 @@ public class CommonVO {
 	private int amount = 0;		//페이지에 보여줄 데이터 수
 	
 	// 조건검색시 사용할 필드(검색대상, 검색단어)
-//	private String search = "";
-//	private String keyword = "";
+	private String search = "";
+	private String keyword = "";
+	private String visitDate = "";
+	private String visitDateEnd = "";
+	private String ticketSearch = "";
+	private String cancelSearch = "";
 	
 	public CommonVO() {
 		this(1, 10);
