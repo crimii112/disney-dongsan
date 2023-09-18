@@ -28,10 +28,10 @@
 
 			<div class="dropdowun_main">
 				<ul class="list">
-					<li class="item"><a href="#" class="link">예매</a>
+					<li class="item"><a href="/ticket/allDayTicketView" class="link">예매</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">예매하기</a></li>
+								<li><a href="/ticket/allDayTicketView">예매하기</a></li>
 								<li><a href="#">제휴카드</a></li>
 							</ul>
 						</div></li>

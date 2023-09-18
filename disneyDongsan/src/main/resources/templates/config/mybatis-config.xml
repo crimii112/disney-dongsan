@@ -4,6 +4,8 @@
 	<typeAliases>
 		<typeAlias type="com.disney.vo.MemberVO" alias="member"/>
 		<typeAlias type="com.disney.vo.AdminVO" alias="admin"/>
+		<typeAlias type="com.disney.vo.TicketVO" alias="ticket"/>
+		<typeAlias type="com.disney.vo.CardVO" alias="card"/>
 	</typeAliases>
 	
 </configuration>
