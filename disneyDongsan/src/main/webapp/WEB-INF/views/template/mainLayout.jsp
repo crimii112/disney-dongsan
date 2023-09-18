@@ -6,9 +6,9 @@
 <html>
 <head>
     <title><tiles:getAsString name="title" /></title>
-    <link rel="stylesheet"  href="${path}/resources/include/css/main.css" />
-    <link href="${path}/resources/include/css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet"  href="${path}/resources/include/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"  href="/resources/include/css/main.css" />
+    <link href="/resources/include/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet"  href="/resources/include/dist/css/bootstrap.min.css" />
     <script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
     <script type="text/javascript">
         $(function(){
@@ -19,7 +19,7 @@
         	};
         });
     </script>
-     <script src="${path}/resources/include/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="/resources/include/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img  src="${path}/resources/include/img/disneyShow.jpg" width="100%" height="100%"/>
+        <img  src="/resources/include/img/disneyShow.jpg" width="100%" height="100%"/>
         <div class="container">
           <div class="carousel-caption text-start">
            

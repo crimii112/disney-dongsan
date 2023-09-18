@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.disney.admin.dao.AdminLoginDAO;
 import com.disney.admin.dao.AdminMemberDAO;
+import com.disney.vo.AdminVO;
 import com.disney.vo.MemberVO;
 
 import lombok.Setter;
@@ -19,15 +21,30 @@ public class AdminMemberDAOTests {
 	@Setter(onMethod_ = @Autowired)
 	private AdminMemberDAO adminMemberDAO;
 	
+	@Setter(onMethod_ = @Autowired)
+	private AdminLoginDAO adminLoginDAO;
+	
+//	@Test
+//	public void memberListTest() {
+//		log.info("memberListTest 결과");
+//		
+//		MemberVO vo = new MemberVO();
+//		List<MemberVO> memberList = adminMemberDAO.memberList(vo);
+//		
+//		for(MemberVO mvo : memberList) {
+//			log.info(mvo.toString());
+//		}
+//	}
+	
 	@Test
-	public void memberListTest() {
-		log.info("memberListTest 결과");
+	public void adminLoginTest() {
+		log.info("adminLogin 결과");
 		
-		MemberVO vo = new MemberVO();
-		List<MemberVO> memberList = adminMemberDAO.memberList(vo);
+		AdminVO adminVO = new AdminVO();
+		adminVO.setAdminId("admin");
+		adminVO.setAdminPwd("admin1234");
 		
-		for(MemberVO mvo : memberList) {
-			log.info(mvo.toString());
-		}
+		AdminVO result = adminLoginDAO.adminLogin(adminVO);
+		log.info(result.toString());
 	}
 }

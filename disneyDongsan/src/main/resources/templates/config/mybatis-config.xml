@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.disney.vo.MemberVO" alias="member"/>
+		<typeAlias type="com.disney.vo.AdminVO" alias="admin"/>
 	</typeAliases>
 	
 </configuration>

@@ -23,7 +23,7 @@ public class AdminMemberController {
 	@Setter(onMethod_ = @Autowired)
 	private AdminMemberService adminMemberService;
 	
-	@GetMapping("memberList")
+	@GetMapping("/memberList")
 	public String memberList(MemberVO mvo, Model model) {
 		List<MemberVO> memberList = adminMemberService.memberList(mvo);
 		model.addAttribute("memberList", memberList);
