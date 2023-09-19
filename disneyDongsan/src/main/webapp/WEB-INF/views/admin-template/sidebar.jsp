@@ -11,18 +11,16 @@
 		</a></li>
 		<!-- End Dashboard Nav -->
 
-		<li class="nav-item">
-			<a class="nav-link collapsed" data-bs-target="#memberList" data-bs-toggle="collapse" href="#">
-				<i class="bi bi-menu-button-wide"></i><span>회원 관리</span>
-				<i class="bi bi-chevron-down ms-auto"></i>
-			</a>
-			<ul id="memberList" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-				<li>
-					<a href="/admin/member/memberList"><i class="bi bi-circle"></i>
-					<span>회원 정보 리스트</span></a>
-				</li>
-			</ul>
-		</li>
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#memberList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>회원 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="memberList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/member/memberList"><i
+						class="bi bi-circle"></i> <span>회원 정보 리스트</span></a></li>
+			</ul></li>
 
 		<li class="nav-item"><a class="nav-link collapsed"
 			data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -75,6 +73,28 @@
 			</ul></li>
 		<!-- End Components Nav -->
 
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#goodsList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>굿즈 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="goodsList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/goodsList"><i
+						class="bi bi-circle"></i> <span>굿즈 리스트</span></a></li>
+			</ul>
+			<ul id="goodsList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/deliveryList"><i
+						class="bi bi-circle"></i> <span>배송 관리</span></a></li>
+			</ul>
+		</li>
+		
+			
+			
+			
+			
+			
 		<li class="nav-item"><a class="nav-link collapsed"
 			data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i
 				class="bi bi-journal-text"></i><span>Forms</span><i
