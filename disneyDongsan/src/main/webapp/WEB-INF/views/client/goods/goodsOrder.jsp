@@ -312,7 +312,7 @@
 										<tr>
 											<td>
 												<c:if test="${not empty ol.g_image}">
-													<img src="/images/goods/${ol.g_image}" class="file"/>
+													<img src="/dongsanStorage/goods/${ol.g_image}" class="file"/>
 												</c:if>
 												<c:if test="${empty ol.g_image}">
 													<img src="/resources/images/noimage.png" class="file"/>

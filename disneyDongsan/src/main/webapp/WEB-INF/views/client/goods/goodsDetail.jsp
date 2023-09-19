@@ -40,6 +40,8 @@
 							alert("장바구니에 추가되었습니다.");
 						} else if(result == '2'){
 							alert("장바구니에 이미 추가되어져 있습니다.");
+						} else if(result == '5'){
+							location.href = "/member/loginForm";
 						}
 					}
 				    
@@ -63,7 +65,7 @@
 				<div class="ct_left_area">
 					<div class="form_section_content">
 						<c:if test="${not empty detail.g_image}">
-							<img class="d_image" src="/images/goods/${detail.g_image}" />
+							<img class="d_image" src="/dongsanStorage/goods/${detail.g_image}" />
 						</c:if>
                     </div>									
 				</div>
@@ -134,7 +136,7 @@
 			<div class="content_middle">
 				<div class="form_section_content">
 					<c:if test="${not empty detail.g_image_detail}">
-						<img src="/images/goods/${detail.g_image_detail}" />
+						<img src="/dongsanStorage/goods/${detail.g_image_detail}" />
 					</c:if>
                 </div>
 			</div>

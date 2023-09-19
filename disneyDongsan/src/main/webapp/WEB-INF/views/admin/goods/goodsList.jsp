@@ -127,7 +127,7 @@
 														<td>${goods.g_id}</td>
 														<td class="goDetail">
 															<c:if test="${not empty goods.g_image}">
-																<img src="/images/goods/${goods.g_image}" class="file"/>
+																<img src="/dongsanStorage/goods/${goods.g_image}" class="file"/>
 															</c:if>
 															<c:if test="${empty goods.g_image}">
 																<img src="/resources/images/noimage.png" />

@@ -194,7 +194,7 @@
 	                                    <td>
 	                                    	<div class="item-img">
 												<c:if test="${not empty basket.g_image}">
-													<img class="g_image" src="/images/goods/${basket.g_image}" />
+													<img class="g_image" src="/dongsanStorage/goods/${basket.g_image}" />
 												</c:if>
 												<c:if test="${empty basket.g_image}">
 													<img src="/resources/images/noimage.png" class="g_image"/>

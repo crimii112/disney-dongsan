@@ -86,7 +86,7 @@
 							 <li>
 							 <div class="g_image">
 							   <c:if test="${not empty orderView.g_image}">
-									<img src="/images/goods/${orderView.g_image}" class="file"/>
+									<img src="/dongsanStorage/goods/${orderView.g_image}" class="file"/>
 								</c:if>
 								<c:if test="${empty orderView.g_image}">
 									<img src="/resources/images/noimage.png" />
