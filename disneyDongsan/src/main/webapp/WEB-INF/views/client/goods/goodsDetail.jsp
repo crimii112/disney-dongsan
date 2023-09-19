@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/common/common.jspf"%>	
+
+	<link rel="stylesheet" href="../resources/include/css/goods/client/goodsDetail.css">
 		
 		<script type="text/javascript">
 		    $(document).ready(function() {

@@ -39,7 +39,8 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<form id="deliveryStatusForm">
+							<div class="container_box">
+								<form id="deliveryStatusForm">
                                     <label for="deliveryStatus">배송 상태로 필터링:</label>
                                     <select id="deliveryStatus" name="deliveryStatus">
                                         <option value="">전체</option>
@@ -63,6 +64,7 @@
                                         </li>
                                     </c:forEach>
                                 </ul>
+                        	</div>
 						</div>
 					</div>
 				</div>

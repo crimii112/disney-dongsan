@@ -3,6 +3,8 @@
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
+<link rel="stylesheet" href="../resources/include/css/goods/admin/deliveryDetail.css">
+
 <script type="text/javascript">
 	$(function(){
 		

@@ -13,7 +13,7 @@
 		<!--[if It IE 9]>
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" type="text/css" href="/resources/css/pay.css" />
+		<link rel="stylesheet" href="../resources/include/css/goods/client/pay.css">
 		<link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
 		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css" />
 				
