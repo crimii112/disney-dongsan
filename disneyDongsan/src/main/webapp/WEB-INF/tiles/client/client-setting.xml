@@ -26,4 +26,9 @@
 		<put-attribute name="title" value="disney동산"/>
 		<put-attribute name="body" value="/WEB-INF/views/client/ticket/{1}.jsp"></put-attribute>
 	</definition>
+	
+	<definition name="client/goods/*" extends="content">
+		<put-attribute name="title" value="disney동산"/>
+		<put-attribute name="body" value="/WEB-INF/views/client/goods/{1}.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

@@ -6,6 +6,12 @@
 		<typeAlias type="com.disney.vo.AdminVO" alias="admin"/>
 		<typeAlias type="com.disney.vo.TicketVO" alias="ticket"/>
 		<typeAlias type="com.disney.vo.CardVO" alias="card"/>
+		<typeAlias type="com.disney.vo.GoodsVO" alias="goods"/>
+		<typeAlias type="com.disney.vo.BasketVO" alias="basket"/>
+		<typeAlias type="com.disney.vo.OrderVO" alias="order"/>
+		<typeAlias type="com.disney.vo.OrderPayVO" alias="orderPay"/>
+		<typeAlias type="com.disney.vo.OrderDetailVO" alias="orderDetail"/>
+		<typeAlias type="com.disney.vo.OrderDetailPayVO" alias="orderDetailPay"/>
 	</typeAliases>
 	
 </configuration>
