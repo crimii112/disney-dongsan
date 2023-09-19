@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.disney.client.service.BasketService;
 import com.disney.client.service.GoodsService;
@@ -79,22 +80,36 @@ public class GoodsController {
 	//장바구니 추가
 	@PostMapping("/basketInsert")
 	@ResponseBody
-	public String addBasketPOST(BasketVO bvo) {
+	public String addBasketPOST(BasketVO bvo, @SessionAttribute(name = "Member", required = false) MemberVO Member) {
 		log.info("basketInsert 호출성공");
-		int result = basketService.addBasket(bvo);
+		int result = 0;
 		
-		log.info("result = " + result);
+		if(Member != null) {
+			result = basketService.addBasket(bvo);
+			log.info("result = " + result);
+		} else {
+			result = 5;
+		}
+		
 		return result + "";
 		
 	}
 	
 	//장바구니 리스트
 	@GetMapping("/basketList")
-	public String basketPageGET(@SessionAttribute(name="Member") MemberVO Member, Model model) {
+	public String basketPageGET(@SessionAttribute(name = "Member", required = false) MemberVO Member, Model model, RedirectAttributes ras) {
 		log.info("BasketList 호출성공");
-		model.addAttribute("basketInfo", basketService.getBasketList(Member.getMemberId()));
+		String url = "";
 		
-		return "client/goods/basketList";
+		if(Member != null) {
+			model.addAttribute("basketInfo", basketService.getBasketList(Member.getMemberId()));
+			url = "client/goods/basketList";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 먼저 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
 	}
 	
 	//장바구니 수량 수정
@@ -135,15 +150,21 @@ public class GoodsController {
 	
 	//여기부터 굿즈 주문@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	@GetMapping("/goodsOrder")
-	public String goodsOrderPage(OrderVO ovo, Model model, @SessionAttribute(name="Member") MemberVO Member) {
+	public String goodsOrderPage(OrderVO ovo, Model model, @SessionAttribute(name="Member", required = false) MemberVO Member, RedirectAttributes ras) {
 		log.info("goodsOrder 호출 성공");
-		
-		model.addAttribute("orderList", orderService.getGoodsInfo(ovo.getOrders()));
-		model.addAttribute("memberInfo", Member);
-		
 		System.out.println(ovo);
+		String url = "";
 		
-		return "client/goods/goodsOrder";
+		if(Member != null) {
+			model.addAttribute("orderList", orderService.getGoodsInfo(ovo.getOrders()));
+			model.addAttribute("memberInfo", Member);
+			url = "client/goods/goodsOrder";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 먼저 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
 	}
 	
 	

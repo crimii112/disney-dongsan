@@ -6,9 +6,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-	private String connectPath = "/images/**";
+	private String connectPath = "/dongsanStorage/**";
 	
-	private String resourcePath = "file:///C:\\Users\\user1\\git\\disneyDongsan\\disneyDongsan\\src\\main\\resources\\static\\images\\";
+	private String resourcePath = "file:///C:\\dongsanStorage\\";
 	
 	@Override
 	public void addResourceHandlers (ResourceHandlerRegistry registry) {

@@ -116,7 +116,7 @@
                     			</div>
                     			<div class="form_section_content">
 									<c:if test="${not empty detail.g_image}">
-										<img src="/images/goods/${detail.g_image}" />
+										<img src="/dongsanStorage/goods/${detail.g_image}" />
 									</c:if>
                     			</div>
                     		</div> 
@@ -126,7 +126,7 @@
                     			</div>
                     			<div class="form_section_content">
 									<c:if test="${not empty detail.g_image_detail}">
-										<img src="/images/goods/${detail.g_image_detail}" />
+										<img src="/dongsanStorage/goods/${detail.g_image_detail}" />
 									</c:if>
                     			</div>
                     		</div>           		

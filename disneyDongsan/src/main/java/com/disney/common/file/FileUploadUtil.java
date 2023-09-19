@@ -33,7 +33,7 @@ public class FileUploadUtil {
 		if(org_name != null && (!org_name.equals(""))) {
 			real_name = fileName +"_"+ System.currentTimeMillis() +"_"+ org_name; // 저장할 파일 이름
 			
-			String docRoot = "C://Users//user1//git//disneyDongsan//disneyDongsan//src//main//resources//static//images//"+fileName;
+			String docRoot = "C://dongsanStorage//"+fileName;
 			makeDir(docRoot);
 			
 			File fileAdd = new File(docRoot+"/"+real_name);
@@ -49,7 +49,7 @@ public class FileUploadUtil {
 		log.info("fileDelete 호출 성공 ");
 		boolean result = false;
 		String dirName = fileName.substring(0, fileName.indexOf("_"));
-		String docRoot = "C:/Users/user1/git/disneyDongsan/disneyDongsan/src/main/resources/static/images/"+dirName;
+		String docRoot = "C:/dongsanStorage/"+dirName;
 		File fileDelete = new File(docRoot+"/"+fileName);
 		
 		if(fileDelete.exists() && fileDelete.isFile()) {

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+
+<link rel="stylesheet" href="../resources/include/css/goods/admin/deliveryList.css">
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         $("#deliveryStatus").on("change", function() {
@@ -54,7 +58,7 @@
                                                 <p><span>주문자</span>${orderList.member_id}</p>
                                                 <p><span>수령인</span>${orderList.member_name}</p>
                                                 <p><span>주소</span>(${orderList.member_addr1}) ${orderList.member_addr2} ${orderList.member_addr3}</p>
-                                                <p class="delivery_state"><span>배송상태</span>${orderList.g_order_state}</p>
+                                                <p class="delivery_state">${orderList.g_order_state}</p>
                                             </div>
                                         </li>
                                     </c:forEach>
