@@ -89,8 +89,47 @@
 						class="bi bi-circle"></i> <span>배송 관리</span></a></li>
 			</ul>
 		</li>
+
+
+
+		<!-- 이용 정보 관리(운영시간, 오시는길) -->
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#facilityList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>이용 정보 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="facilityList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/operatingHours"><i
+						class="bi bi-circle"></i> <span>운영시간</span></a></li>
+			</ul>
+		</li>
 		
 			
+
+		<!-- 즐길거리 관리(추천동선, 어트랙션, 레스토랑) -->
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#joyList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>즐길거리 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="joyList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/routeList"><i
+						class="bi bi-circle"></i> <span>추천동선 관리</span></a></li>
+			</ul>
+			<ul id="joyList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/rideList"><i
+						class="bi bi-circle"></i> <span>어트랙션 관리</span></a></li>
+			</ul>
+			<ul id="joyList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/restaurantList"><i
+						class="bi bi-circle"></i> <span>레스토랑 관리</span></a></li>
+			</ul>
+		</li>
+		
 			
 			
 			

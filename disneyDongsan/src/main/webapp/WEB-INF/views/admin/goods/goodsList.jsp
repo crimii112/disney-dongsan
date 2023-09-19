@@ -224,5 +224,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="/resources/include/assets/js/main.js"></script>
+
 </body>
 </html>
