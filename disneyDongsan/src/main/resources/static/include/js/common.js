@@ -11,7 +11,7 @@ function chkData(item, msg) {
 	}
 };
 
-function formCheck(item, msgArea, msg){
+function checkForm(item, msgArea, msg){
 	if ($(item).val().replace(/\s/g, "") == "") {
 		$(msgArea).text(msg + " 입력해주세요.").css("color","red");
 		$(item).val("");

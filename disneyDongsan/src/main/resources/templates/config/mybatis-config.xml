@@ -12,6 +12,11 @@
 		<typeAlias type="com.disney.vo.OrderPayVO" alias="orderPay"/>
 		<typeAlias type="com.disney.vo.OrderDetailVO" alias="orderDetail"/>
 		<typeAlias type="com.disney.vo.OrderDetailPayVO" alias="orderDetailPay"/>
+		<typeAlias type="com.disney.vo.RideVO" alias="ride"/>
+		<typeAlias type="com.disney.vo.RestaurantVO" alias="restaurant"/>
+		<typeAlias type="com.disney.vo.OperatingHoursVO" alias="hours"/>
+		<typeAlias type="com.disney.vo.RouteVO" alias="route"/>
+		<typeAlias type="com.disney.vo.RouteReplyVO" alias="routeReply"/>
 	</typeAliases>
 	
 </configuration>
