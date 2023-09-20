@@ -4,4 +4,7 @@
 	<select id="getCardDiscount" parameterType="card" resultType="int">
 		select card_discount from card where card_company=#{card_company}
 	</select>
+	<select id="cardInfo" parameterType="card" resultType="card">
+		select card_company, card_name, card_image, card_discount from card
+	</select>
 </mapper>

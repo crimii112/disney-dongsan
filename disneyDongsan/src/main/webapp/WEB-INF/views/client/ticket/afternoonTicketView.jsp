@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/dist/css/bootstrap-theme.min.css">
 
+<link rel="stylesheet" type="text/css" href="/resources/include/css/ticket/ticket.css" />
+
 <script type="text/javascript"
 	src="/resources/include/js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript"
@@ -93,6 +95,35 @@
 			$("#total_price").val($("#totalPrice").text());
 		});
 		
+		$(function(){
+
+			//동의 모두선택 / 해제
+			const agreeChkAll = document.querySelector('input[name=agree_all]');
+			    agreeChkAll.addEventListener('change', (e) => {
+			    let agreeChk = document.querySelectorAll('input[name=agree]');
+			    for(let i = 0; i < agreeChk.length; i++){
+			      agreeChk[i].checked = e.target.checked;
+			    }
+			});	
+		
+			// 약관 모두선택
+			$("input[name=agree]").click(function(){
+			    let total = $("input[name=agree]").length;
+			    let checked = $("input[name=agree]:checked").length;
+			         
+			    if(total != checked)
+			        $("#agree_all").prop("checked", false);
+			    else 
+			        $("#agree_all").prop("checked", true);
+			});
+			
+			// 취소 클릭 시 입력값 초기화
+			$(document).on("click", ".modal_close", function(){
+				$(".check").prop("checked", false);
+			})
+			
+		});
+		
 	});
 
 </script>
@@ -104,7 +135,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<input type="image" src="/resources/images/after.jpg" alt="놀이공원종일권"
+					<input type="image" src="/resources/images/after.jpg" alt="놀이공원오후권"
 					style="width: 553px;" />
 					<h2>오후권(3시입장)</h2>
 					<h5>오후 3시부터 입장~ 마감시간까지 자유롭게!</h5>
@@ -171,7 +202,8 @@
 							</tr>
 							<tr>
 								<jsp:include page="../../modal/modal.jsp" />
-								<td><a href="#" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td>
+								<!-- <td><a href="#" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td> -->
+								<td><button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button></td>
 							</tr>
 						</table>
 						</div>

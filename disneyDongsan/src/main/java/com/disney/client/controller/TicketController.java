@@ -1,5 +1,7 @@
 package com.disney.client.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,11 +43,6 @@ public class TicketController {
 		return "client/ticket/allDayTicketView";
 	}
 	
-	//오후권
-//	@GetMapping("/afternoonTicketView")
-//	public String afternoonTicketView(@PathVariable("PAYMENT_ID") String PAYMENT_ID, TicketVO tvo, Model model) {
-//		return "client/ticket/afternoonTicketView";
-//	}
 	
 	//오후권
 	@GetMapping("/afternoonTicketView")
@@ -76,10 +73,10 @@ public class TicketController {
 //	}
 	
 	/* 약관동의 모달 */
-	@GetMapping("/agreeModal")
-	public void agreeModalGET() throws Exception{
-		log.info("authorModalGet....");
-	}
+//	@GetMapping("/agreeModal")
+//	public void agreeModalGET() throws Exception{
+//		log.info("authorModalGet....");
+//	}
 	
 //	@GetMapping("/agreeModal2")
 //	public String agreeModal2() {
@@ -117,7 +114,15 @@ public class TicketController {
 	
 	// 제휴카드
 	@GetMapping("/cardInfo")
-	public String cardInfo() {
+	public String cardInfo(@ModelAttribute CardVO cvo, Model model) {
+		List<CardVO> cardInfo = cardService.cardInfo(cvo);
+		model.addAttribute("cardInfo", cardInfo);
 		return "client/ticket/cardInfo";
+	}
+	
+	//예매 이동 페이지
+	@GetMapping("/reserveTicket")
+	public String reserveTicket() {
+		return "client/ticket/reserveTicket";
 	}
 }
