@@ -22,11 +22,11 @@ public class GoodsVO extends CommonVO {
 	private String g_delivery ="";
 	private Date g_date;
 	
-	
-	
 	private MultipartFile file;
 	private String g_image ="";
 	
 	private MultipartFile file_detail;
 	private String g_image_detail ="";
+	
+	private String[] goodsArr;
 }

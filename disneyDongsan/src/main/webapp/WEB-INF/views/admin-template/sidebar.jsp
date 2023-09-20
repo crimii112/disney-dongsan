@@ -133,7 +133,31 @@
 		</li>
 		
 			
+		<!-- 1:1문의 관리 -->
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#qnaList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>1:1 문의 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="qnaList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/answerList"><i
+						class="bi bi-circle"></i> <span>문의 목록</span></a></li>
+			</ul>
+		</li>
 			
+		<!-- 메인화면 관리 -->
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#mainList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>메인페이지 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="mainList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/mainList"><i
+						class="bi bi-circle"></i> <span>배너 관리</span></a></li>
+			</ul>
+		</li>
 			
 			
 		<li class="nav-item"><a class="nav-link collapsed"

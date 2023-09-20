@@ -13,7 +13,7 @@
 				<a href="/member/logout" class="login_div_a" id="logout">로그아웃</a> 
 			</c:if>
 			
-			<a href="/member/updateMemberInfoForm" class="login_div_a" id="mypage">마이페이지</a>
+			<a href="/mypage/mypage" class="login_div_a" id="mypage">마이페이지</a>
 			<a href="/goods/basketList" class="login_div_a" id="basket">장바구니</a>
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 					<li class="item"><a href="#" class="link">고객센터</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">1:1문의</a></li>
+								<li><a href="/mypage/userQAList">1:1문의</a></li>
 								<li><a href="#">FAQ</a></li>
 							</ul>
 						</div></li>
