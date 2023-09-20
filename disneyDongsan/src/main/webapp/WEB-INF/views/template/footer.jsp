@@ -12,8 +12,6 @@
 <span class="mb-3 mb-md-0 text-body-secondary">© Disney. All
 	rights reserved.</span>
 <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-	<li class="ms-3"><a class="text-body-secondary" href="#"><img
-			src="/resources/img/facebookLogo.png" /></a></li>
-	<li class="ms-3"><a class="text-body-secondary" href="#"><img
-			src="/resources/img/instaLogo.png" /></a></li>
+	<li class="ms-3"><a class="text-body-secondary" href="#"><img src="/resources/include/img/facebookLogo.png" /></a></li>
+	<li class="ms-3"><a class="text-body-secondary" href="#"><img src="/resources/include/img/instaLogo.png" /></a></li>
 </ul>

@@ -13,8 +13,8 @@
 				<a href="/member/logout" class="login_div_a" id="logout">로그아웃</a> 
 			</c:if>
 			
-			<a href="/member/updateMemberInfoForm" class="login_div_a" id="mypage">마이페이지</a>
-			<a href="#" class="login_div_a" id="basket">장바구니</a>
+			<a href="/mypage/mypage" class="login_div_a" id="mypage">마이페이지</a>
+			<a href="/goods/basketList" class="login_div_a" id="basket">장바구니</a>
 		</div>
 	</div>
 	<div class="logo_background">
@@ -38,34 +38,35 @@
 					<li class="item"><a href="#" class="link">즐길거리</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">추천동선</a></li>
-								<li><a href="#">시설안내</a></li>
+								<li><a href="/route/routeList">추천동선</a></li>
+								<li><a href="/facilityInfo/rideList">어트랙션</a></li>
+								<li><a href="/facilityInfo/restaurantList">레스토랑</a></li>
 							</ul>
 						</div></li>
 					<li class="item"><a href="#" class="link">굿즈몰</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">굿즈판매</a></li>
+								<li><a href="/goods/goodsList">굿즈판매</a></li>
 							</ul>
 						</div></li>
 					<li class="item"><a href="#" class="link">이벤트</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">이벤트</a></li>
+								<li><a href="/event/eventView">이벤트</a></li>
 							</ul>
 						</div></li>
 					<li class="item"><a href="#" class="link">이용정보</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">오시는 길</a></li>
-								<li><a href="#">이용시간</a></li>
+								<li><a href="/facilityInfo/waytocome">오시는 길</a></li>
+								<li><a href="/facilityInfo/operatingHours">이용시간</a></li>
 							</ul>
 						</div></li>
 					<li class="item"><a href="#" class="link">고객센터</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">1:1문의</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a href="/mypage/userQAList">1:1문의</a></li>
+								<li><a href="/notice/noticeView">공지사항</a></li>
 							</ul>
 						</div></li>
 				</ul>

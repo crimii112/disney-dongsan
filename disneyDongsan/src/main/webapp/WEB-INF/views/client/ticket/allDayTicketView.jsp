@@ -1,26 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ page trimDirectiveWhitespaces="true"%>
-
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
 
-<title>종일권 예매하기</title>
-
-<link rel="shortcut icon" href="/resources/images/icon.png" />
-<link rel="apple-touch-icon" href="/resources/images/icon.png" />
-
-<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css">
-
-<link rel="stylesheet" type="text/css" href="/resources/include/css/ticket/ticket.css" />
-
-<script type="text/javascript"
-	src="/resources/include/js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript"
-	src="/resources/include/dist/js/bootstrap.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 	crossorigin="anonymous"></script>
 	

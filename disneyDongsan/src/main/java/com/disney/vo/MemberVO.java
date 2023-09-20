@@ -19,4 +19,6 @@ public class MemberVO extends CommonVO{
 	private String memberAddr3 = "";
 	private String memberRegdate = "";
 	private String memberState = "";
+	
+	private String new_password = "";
 }
