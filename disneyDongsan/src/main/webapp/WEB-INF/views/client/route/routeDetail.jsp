@@ -166,15 +166,15 @@
 		               <tr>
 		                  <td class="col-md-2">이미지</td>
 		                  <td colspan="4" class="col-md-8 text-left">
-		                  	<img alt="이미지 파일" src="/uploadStorage/route/${detail.routeImage}" />
+		                  	<img alt="이미지 파일" src="/dongsanStorage/route/${detail.routeImage}" />
 		                  </td>
 		               </tr>
 	               </c:if>
 	            </tbody>
 	         </table>
 	      </div>
-	    <div class="good" onclick='divBtn()'>
-      		<img alt="/" src="/resources/image/good.PNG" /><span id="goodBtn"  style="font-size: 20px">${detail.routeGood}</span>
+	    <div class="good">
+      		<img onclick='divBtn()' alt="/" src="/resources/images/route/good.PNG" /><span id="goodBtn"  style="font-size: 20px">${detail.routeGood}</span>
       	</div>
       	<%--===================상세 정보 보여주기 종료 ==================== --%>
       	<jsp:include page="routeReply.jsp" />

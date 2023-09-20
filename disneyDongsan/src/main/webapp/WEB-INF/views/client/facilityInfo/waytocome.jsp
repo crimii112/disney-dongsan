@@ -6,31 +6,26 @@
 		  width: 1000px;
 		  margin: auto;
 		}
-		.main1{
-		  text-align: center;
-		  display: block;
-		
-		}
+		.container #title {
+			text-align:center;
+			font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+			padding: 50px;
+			}
 		.dir{ 
 		  display: flex;
 		  justify-content: center;
 		  margin: auto;
+		  padding-bottom:30px;
 		}
 		.dir img{
 		  margin: auto;
 		  width: 1000px;
 		}
-		ul {
-		  list-style-type: none;
-		}
-		li{
-		  padding: 10px;
-		}
-		.dir_span{
-		  display: inline-block;
-		}
+		.dir_span ul {list-style-type: none;}
+		.dir_span ul li{padding: 10px;}
+		.dir_span{ display: inline-block;}
 		
-		.dir_span span {
+		.textColer1 {
 		  padding: 3px;
 		  font-size: 20px;
 		  font-weight: 600;
@@ -39,39 +34,52 @@
 		  background-color: #B4E5FF;
 		  border-radius: 20px;
 		} 
+		.textColer2 {
+
+		  font-size: 20px;
+		  font-weight: 600;
+		  color: #4B73E1;
+		} 
 		</style>
 	</head>
 	<body>
-		<div class="App">
+		<div class="container">
 			<div class="div1">
-				<div class='main1'>
-					<h1>오시는 길</h1>
-				</div>
+					<h1 id="title">오시는 길</h1>
 				<div class='dir'>
-					<img src="/resources/images/map10.PNG" alt="BigCo Inc. logo" />
+					<img src="/resources/images/facilityInfo/map10.PNG" alt="이미지 파일" />
 				</div>
-				<div class='dir_span'>
+<!-- 				<div class='dir_span'>
 					<h3>디즈니 동산(경기도 안산시 상록구 충장로 98)</h3>
 					<h4>지하철 이용시</h4>
 					<ul>
-						<li><span>수인분당선</span> 사리역 1번 출구</li>
+						<li><span class="textColer1">수인분당선</span> 사리역 1번 출구</li>
 					</ul>
 					<h4>버스 이용시</h4>
 					<ul>
-						<li><span>지선</span>101번, 52번, 61번, 21번</li>
-						<li><span>광역</span>1007번, 1100번, 1700번</li>
+						<li><span class="textColer1">지선</span>101번, 52번, 61번, 21번</li>
+						<li><span class="textColer1">광역</span>1007번, 1100번, 1700번</li>
 					</ul>
 				</div>
 				<div class='dir'>
-					<img src="/resources/images/map10.PNG" alt="BigCo Inc. logo" />
-				</div>
+					<img src="/resources/images/facilityInfo/map10.PNG" alt="이미지 파일" />
+				</div> -->
 				<div class='dir_span'>
 					<h3>디즈니 동산(경기도 안산시 상록구 충장로 98)</h3>
-					<h5>지하철 이용시<span>수인분당선</span>사리역 1번 출구</h5>
-					<h4>버스 이용시</h4>
+					<h4>
+						<img alt="이미지 파일" src="/resources/images/facilityInfo/subway.PNG">
+						지하철 이용시
+					</h4>
 					<ul>
-						<li><span>지선</span>101번, 52번, 61번, 21번</li>
-						<li><span>광역</span>1007번, 1100번, 1700번</li>
+						<li><span class="textColer2"> 수인분당선 </span>사리역 1번 출구</li>
+					</ul>
+					<h4>
+						<img alt="이미지 파일" src="/resources/images/facilityInfo/bus.PNG">
+						버스 이용시
+					</h4>
+					<ul>
+						<li><span class="textColer2"> 지선 </span>101번, 52번, 61번, 21번</li>
+						<li><span class="textColer2"> 광역 </span>1007번, 1100번, 1700번</li>
 					</ul>
 				</div>
 			</div>

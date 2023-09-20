@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+		<style type="text/css">
+			.restTitlePadding{padding:20px;}
+		</style>
 		<script type="text/javascript">
 			$(function(){
 				
@@ -58,13 +61,9 @@
 				<form id="f_updateForm" name="f_updateForm">
 					<input type="hidden" id="restNo" name="restNo" value="${updateData.restNo}" />
 					<input type="hidden" id="restImage" name="restImage" value="${updateData.restImage}" />
-					
+					<h2 class="restTitlePadding">${updateData.restTitle}</h2>
 					<table class="table table-bordered">
 						<tbody>
-							<tr>
-								<td class="col-md-3">글번호</td>
-								<td class="text-left col-md-3">${updateData.restNo}</td>
-							</tr>
 							<tr>
 								<td>레스토랑 이름</td>
 								<td colspan="3" class="text-left">${updateData.restTitle}</td>

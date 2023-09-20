@@ -15,17 +15,14 @@
 			}
 					
 			
-			.container .title {
-				height: 50px;
-				line-height: 37px;
-				font-weight: 600;
-				font-size: 20px;
+			.container #title {
 				font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
+				padding: 50px;
 				
 			}
 			
 			
-			table {
+			#t_body {
 				border-collapse: separate;
 				/* border-spacing: 0; */
 				font-size: 30px;
@@ -36,7 +33,7 @@
 
 			}
 			
-			table thead tr:first-child {
+			#t_body thead tr:first-child {
 				background: #A4C3FF;
 				
 
@@ -48,7 +45,7 @@
 				color: white;		
 			}
 			
-			table tr td{
+			#t_body tr td{
 				background: #EBF5FF;
 				border-radius: 10px;
 				font-weight: 400;
@@ -57,11 +54,11 @@
 
 			}
 					
-			table td:nth-child(7n+1) {
+			#t_body td:nth-child(7n+1) {
 				color: red;
 			}
 			
-			table td:nth-child(7n) {
+			#t_body td:nth-child(7n) {
 				color: blue;
 			}
 			
@@ -73,7 +70,7 @@
 			
 
 			
-			div span{
+			.date_text span{
 				font-size: 30px;
 			}
 			.date_text span{
@@ -87,14 +84,14 @@
 	  <div class="container">
 	  	<div>
 			<div class='hours'>
-				<h1>디즈니 동산 운영 시간</h1>
+				<h1 id="title">디즈니 동산 운영 시간</h1>
  
 				<h1 class="selectDate" id="date_text">2023.08.23</h1>
 				<div class="h_time">
 					<h1>
-						<img src="/resources/image/open.PNG" alt="/" />
+						<img src="/resources/images/facilityInfo/open.PNG" alt="/" />
 						<span id="hoursTime">10:00~20:00</span>
-						<img src="/resources/image/close.PNG" alt="/" />
+						<img src="/resources/images/facilityInfo/close.PNG" alt="/" />
 					</h1>
 				</div>
 			</div>
@@ -111,7 +108,7 @@
 		        	<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
 		        </div>
 		      </div>
-		      <table id="a">
+		      <table id="t_body">
 		        <thead>
 		          <tr>
 		            <th>일</th>

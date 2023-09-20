@@ -194,14 +194,12 @@
 									<tr class="text-center" data-num="${rest.restNo}">
 										<td>${rest.restNo}</td>
 										<td class="goUpdate">${rest.restTitle}</td>
-										<td class="restImage"><c:if
-												test="${not empty rest.restImage}">
-												<img src="/uploadStorage/facilityInfo/${rest.restImage}"
+										<td class="restImage"><c:if test="${not empty rest.restImage}">
+												<img src="/dongsanStorage/facilityInfo/${rest.restImage}"
 													alt="/" />
 												<input type="hidden" id="imgV" value="${rest.restImage}" />
-											</c:if> <c:if test="${empty rest.restImage}">
-												<img src="/uploadStorage/facilityInfo/close.png" />
-											</c:if></td>
+											</c:if>
+										</td>
 										<td class="text-center">${rest.restSubTitle}</td>
 										<td class="text-left">${rest.restContent}</td>
 										<td class="text-center"><input type="button"

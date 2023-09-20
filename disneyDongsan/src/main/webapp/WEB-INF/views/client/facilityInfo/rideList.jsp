@@ -191,7 +191,7 @@
 												<div class='screen'>
 													<div class='screen_top'>${ride.rideSubTitle}</div>
 													<div class='screen_bottom'>${ride.rideContent}</div>
-													<img src="/uploadStorage/facilityInfo/${ride.rideImage}" alt="/" />
+													<img src="/dongsanStorage/facilityInfo/${ride.rideImage}" alt="/" />
 												</div>
 												<div class="ride_title">
 													<h3 class="goUpdate">${ride.rideTitle}</h3>
