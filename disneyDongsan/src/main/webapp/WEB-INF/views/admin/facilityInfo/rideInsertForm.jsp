@@ -64,7 +64,7 @@
 								<td>기구 이름</td>
 								<td class="text-left"><input type="text"
 									class="form-control" id="rideTitle" name="rideTitle"
-									placeholder="기구 이름 입력" maxlength="33" /></td>
+									placeholder="기구 이름 입력" maxlength="15" /></td>
 							</tr>
 							<tr>
 								<td>서브 제목</td>

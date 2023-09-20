@@ -10,12 +10,15 @@
 			}
 			
 			.restImage img{
-			  width: 100px;
-			  height: 100px;
+			  width: 170px;
+			  height: 120px;
 			  
 			}
 			.required{color:red;}
 			textarea{resize:none;}
+			.text-center{text-align: center;}
+			.text-left{text-align: left;}
+			.text-right{text-align: right;}
 			
 			
 		</style>
@@ -192,7 +195,8 @@
 							<c:when test="${not empty restaurantList}">
 								<c:forEach var="rest" items="${restaurantList}" varStatus="status">
 									<tr class="text-center" data-num="${rest.restNo}">
-										<td>${rest.restNo}</td>
+										<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
+										<%-- <td>${rest.restNo}</td> --%>
 										<td class="goUpdate">${rest.restTitle}</td>
 										<td class="restImage"><c:if test="${not empty rest.restImage}">
 												<img src="/dongsanStorage/facilityInfo/${rest.restImage}"

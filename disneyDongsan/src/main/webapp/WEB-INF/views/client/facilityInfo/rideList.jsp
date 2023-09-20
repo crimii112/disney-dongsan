@@ -8,17 +8,17 @@
 			.ride{
 			  text-align: center;
 			  margin: auto;
-			  width: 1000px;
+			  width: 1320px;
 			}
 			
 			.screen img{
-			  width: 300px;
-			  height: 300px;
+			  width: 400px;
+			  height: 250px;
 			}
 			
 			.ride_img_padding{
-			  width: 300px;
-			  height: 400px;
+			  width: 400px;
+			  height: 310px;
 			  margin: auto;
 			  border: 1px solid #748e97;
 			  font-size: 25px;
@@ -65,8 +65,8 @@
 			  right: 10px;
 			  z-index: 2;
 			  color: black;
-			  font-size: 22px;
-			  font-weight: 900;
+			  font-size: 20px;
+			  font-weight: 700;
 			  transition: all .35s;
 			}
 			.screen_bottom{
@@ -83,10 +83,11 @@
 			  font-size: 20px;
 			  text-align: center;
 			  color: black;
-			  width: 260px;
-			  height: 50px;
+			  width: 400px;
+/* 			  height: 30px; */
 			  margin: auto;
 			}
+			.goUpdate{padding:13px;}
 		</style>
 		<script type="text/javascript">
 			$(function(){
@@ -194,7 +195,7 @@
 													<img src="/dongsanStorage/facilityInfo/${ride.rideImage}" alt="/" />
 												</div>
 												<div class="ride_title">
-													<h3 class="goUpdate">${ride.rideTitle}</h3>
+													<h4 class="goUpdate">${ride.rideTitle}</h4>
 												</div>
 											</div>
 										</td>

@@ -64,7 +64,7 @@
 								<td>레스토랑 이름</td>
 								<td class="text-left"><input type="text"
 									class="form-control" id="restTitle" name="restTitle"
-									placeholder="레스토랑 이름 입력" maxlength="33" /></td>
+									placeholder="레스토랑 이름 입력" maxlength="15" /></td>
 							</tr>
 							<tr>
 								<td>서브 제목</td>

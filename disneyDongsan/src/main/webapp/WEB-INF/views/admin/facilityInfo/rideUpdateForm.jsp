@@ -66,7 +66,7 @@
 										<tbody>
 											<tr>
 												<td>기구이름</td>
-												<td colspan="3" class="text-left">${updateData.rideTitle}</td>
+												<td colspan="3" class="text-left" >${updateData.rideTitle}</td>
 											</tr>
 											<tr>
 												<td>서브제목</td>

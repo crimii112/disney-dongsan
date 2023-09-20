@@ -11,14 +11,15 @@
 			}
 			
 			.rideListImg img{
-			  width: 100px;
-			  height: 100px;
+			  width: 170px;
+			  height: 120px;
 			  
 			}
 			.required{color:red;}
 			textarea{resize:none;}
-			
-			
+			.text-center{text-align: center;}
+			.text-left{text-align: left;}
+			.text-right{text-align: right;}
 		</style>
 		<script type="text/javascript">
 			$(function(){
@@ -89,7 +90,7 @@
 					goUpdatePage();
 				});
 				
-				$(".paginate_button a").click(function(e){
+				$(".page-item a").click(function(e){
 					e.preventDefault();
 					$("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
 					goPage();
@@ -196,7 +197,8 @@
 							<c:when test="${not empty rideList}">
 								<c:forEach var="ride" items="${rideList}" varStatus="status">
 									<tr class="text-center" data-num="${ride.rideNo}">
-										<td>${ride.rideNo}</td>
+										<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
+										<%-- <td>${ride.rideNo}</td> --%>
 										<td class="goUpdate">${ride.rideTitle}</td>
 										<td class="rideListImg">
 											<c:if test="${not empty ride.rideImage}">
@@ -205,7 +207,7 @@
 												<input type="hidden" id="imgV" value="${ride.rideImage}" />
 											</c:if>
 										</td>
-										<td class="text-center">${ride.rideSubTitle}</td>
+										<td class="text-left">${ride.rideSubTitle}</td>
 										<td class="text-left">${ride.rideContent}</td>
 										<td class="text-center"><input type="button"
 											class="rideDeleteBtn" value="X" /></td>
@@ -228,23 +230,24 @@
 				<ul class="pagination">
 					<!-- 이전 바로가기 10개 존재 여부를 prew 팔드의 값으로 확인 -->
 					<c:if test="${pageMaker.prev}">
-						<li class="paginate_button previous"><a
-							href="${pageMaker.startPage -1}">Previous</a></li>
+						<li class="page-item previous">
+							<a class="page-link" href="${pageMaker.startPage -1}">Previous</a>
+						</li>
 					</c:if>
 	
 					<!-- 바로가기 번호 출력 -->
 					<c:forEach var="num" begin="${pageMaker.startPage}"
 						end="${pageMaker.endPage}">
-						<li
-							class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-							<a href="${num}">${num}</a>
+						<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+							<a class="page-link" href="${num}">${num}</a>
 						</li>
 					</c:forEach>
 	
 					<!-- 다음 바로가기 10개 존재 여부를 next 필드의 값으로 확인. -->
 					<c:if test="${pageMaker.next}">
-						<li class="paginate_button next"><a
-							href="${pageMaker.endPage +1}">Next</a></li>
+						<li class="page-item next">
+							<a class="page-link" href="${pageMaker.endPage +1}">Next</a>
+						</li>
 					</c:if>
 				</ul>
 			</div>
