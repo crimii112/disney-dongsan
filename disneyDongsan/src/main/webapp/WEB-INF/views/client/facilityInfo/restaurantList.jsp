@@ -193,10 +193,10 @@
 												<div class='screen'>
 													<div class='screen_top'>${re.restSubTitle}</div>
 													<div class='screen_bottom'>${re.restContent}</div>
-													<img src="/uploadStorage/facilityInfo/${re.restImage}" alt="/" />
+													<img src="/dongsanStorage/facilityInfo/${re.restImage}" alt="/" />
 												</div>
 												<div class="restaurant_title">
-													<h3 class="goUpdate">${re.restTitle}<%= i %></h3> 
+													<h3 class="goUpdate">${re.restTitle}</h3> 
 													<p>
 												</div>
 											</div>

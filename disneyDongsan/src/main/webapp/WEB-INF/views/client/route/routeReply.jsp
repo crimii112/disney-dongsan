@@ -228,7 +228,7 @@
 					<tbody>
 						<tr>
 							<td class="col-md-1">작성자</td>
-							<td class="col-md-8 text-left" id="replyMemberId" name="replyMemberId">${routeReplyVO.replyMemberId}</td>
+							<td class="col-md-8 text-left" id="replyMemberId" name="replyMemberId">${Member.memberId}</td>
 							<!--<td class="col-md-2 text-left">
 								<input type="text" id="replyMemberId" name="replyMemberId" maxlength="10" class="form-control" />
 							</td>
@@ -256,8 +256,8 @@
 				<div class="panel-div1">
 					<h3 class="panel-div2">
 						<button type="button" id="btn1" data-btn="delBtn" class="btn ">삭제</button>
-						<span class="name"></span>
-						<span class="panel-body"></span>
+						<span class="name"></span><br />
+						<span class="panel-body"></span><br />
 						<span class="date"></span><hr />
 					</h3>
 				</div>

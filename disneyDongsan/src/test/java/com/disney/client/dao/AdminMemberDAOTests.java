@@ -1,7 +1,5 @@
 package com.disney.client.dao;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.disney.admin.dao.AdminLoginDAO;
 import com.disney.admin.dao.AdminMemberDAO;
 import com.disney.vo.AdminVO;
-import com.disney.vo.MemberVO;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

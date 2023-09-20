@@ -23,6 +23,7 @@
 		td img{
 			width: 150px;
 		}
+		.title{padding:30px;}
    
 	</style>
 	<script type="text/javascript">
@@ -123,12 +124,12 @@
 				<div id="b_header">
 					<div class="text-center">
 					<!-- <button id="btn1">div1로 이동</button> -->
-						<h1>추천 코스</h1>
+						<h1 class="title">추천 코스</h1>
 						<h5>어트랙션 즐기기 추천코스 기상 상황 및 시즌에 따라 어트랙션 및 공연 관람이 변동될 수 있습니다.</h5>
 					</div>
 					<div id="movementImg">
-						<img alt="/" src="/resources/image/movement1.PNG">
-						<img alt="/" src="/resources/image/movement2.PNG">
+						<img alt="/" src="/resources/images/route/movement1.PNG">
+						<img alt="/" src="/resources/images/route/movement2.PNG">
 					</div>
 					<hr />
 				</div>

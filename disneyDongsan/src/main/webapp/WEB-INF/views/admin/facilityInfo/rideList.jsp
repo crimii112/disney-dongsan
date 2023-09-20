@@ -198,14 +198,13 @@
 									<tr class="text-center" data-num="${ride.rideNo}">
 										<td>${ride.rideNo}</td>
 										<td class="goUpdate">${ride.rideTitle}</td>
-										<td class="rideListImg"><c:if
-												test="${not empty ride.rideImage}">
-												<img src="/uploadStorage/facilityInfo/${ride.rideImage}"
-													alt="/" />
+										<td class="rideListImg">
+											<c:if test="${not empty ride.rideImage}">
+												<img src="/dongsanStorage/facilityInfo/${ride.rideImage}"
+														alt="/" />
 												<input type="hidden" id="imgV" value="${ride.rideImage}" />
-											</c:if> <c:if test="${empty ride.rideImage}">
-												<img src="/uploadStorage/facilityInfo/close.png" />
-											</c:if></td>
+											</c:if>
+										</td>
 										<td class="text-center">${ride.rideSubTitle}</td>
 										<td class="text-left">${ride.rideContent}</td>
 										<td class="text-center"><input type="button"
