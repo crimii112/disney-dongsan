@@ -8,19 +8,19 @@
 			.restaurant{
 			  text-align: center;
 			  margin: auto;
-			  width: 1000px;
+			  width: 1320px;
 			}
 			
 			.screen img{
-			  width: 300px;
-			  height: 300px;
+			  width: 450px;
+			  height: 250px;
 			}
 			
 			.restaurant_img_padding{
-			  width: 300px;
-			  height: 400px;
+			  width: 400px;
+			  height: 310px;
 			  margin: auto;
-			  border: 1px solid #748e97;
+			  /* border: 1px solid #748e97; */
 			  font-size: 25px;
 			  font-weight: 800;
 			}
@@ -83,10 +83,11 @@
 			  font-size: 20px;
 			  text-align: center;
 			  color: black;
-			  width: 260px;
+			  width: 400px;
 			  height: 50px;
 			  margin: auto;
 			}
+			.goUpdate{padding:13px;}
 		</style>
 		<script type="text/javascript">
 			$(function(){
@@ -196,7 +197,7 @@
 													<img src="/dongsanStorage/facilityInfo/${re.restImage}" alt="/" />
 												</div>
 												<div class="restaurant_title">
-													<h3 class="goUpdate">${re.restTitle}</h3> 
+													<h4 class="goUpdate">${re.restTitle}</h4> 
 													<p>
 												</div>
 											</div>
