@@ -136,7 +136,7 @@
                    		</form>
                    			<div class="btn_section">
 	                    		<button type="button" id="goodsUpdateBtn" class="btn insert_btn">수정</button>
-								<button type="button" id="goodsDeleteBtn" class="btn delete_btn">삭제</button>
+								<!-- <button type="button" id="goodsDeleteBtn" class="btn delete_btn">삭제</button> -->
 								<button type="button" id="goodsListBtn" class="btn btn-success">목록</button>
 	                    	</div> 
 						</div>

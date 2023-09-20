@@ -70,5 +70,14 @@ public class MypageGoodsReviewServiceImpl implements MypageGoodsReviewService {
 		result = mypageGoodsReviewDao.userReviewDelete(gvo);
 		return result;
 	}
+	
+	
+	//박기수꺼
+	@Override
+	public List<GoodsReviewVO> goodsReviewList(GoodsReviewVO gvo){
+		List<GoodsReviewVO> list = null;
+		list = mypageGoodsReviewDao.goodsReviewList(gvo);
+		return list;
+	}
 
 }
