@@ -1,5 +1,7 @@
 package com.disney.client.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,13 @@ public class CardServiceImpl implements CardService {
 		int discountRate = 0;
 		discountRate = cardDAO.getCardDiscount(cvo);
 		return discountRate;
+	}
+	
+	@Override
+	public List<CardVO> cardInfo(CardVO cvo) {
+		List<CardVO> list = null;
+		list = cardDAO.cardInfo(cvo);
+		return list;
 	}
 
 }

@@ -55,7 +55,7 @@
 	</select> -->
 	<select id="ticketOrderList" parameterType="ticket" resultType="ticket">
 		<![CDATA[
-		SELECT rnum, PAYMENT_ID, visit_date, t_category, t_adult, t_student, t_child, t_multi, t_afternoon, card_company, allday_price, total_price, pay_date, t_member_id, t_state
+		SELECT rnum, PAYMENT_ID, TO_CHAR(visit_date, 'YYYY-MM-DD') visit_date, t_category, t_adult, t_student, t_child, t_multi, t_afternoon, card_company, allday_price, total_price,  TO_CHAR(pay_date, 'YYYY-MM-DD') pay_date, t_member_id, t_state
 		FROM (SELECT rownum as rnum, PAYMENT_ID, visit_date, t_category, t_adult, t_student, t_child, t_multi, t_afternoon, card_company, allday_price, total_price, pay_date, t_member_id, t_state
 			FROM PAYMENT
 			WHERE ]]>
@@ -69,10 +69,11 @@
 		         <include refid="cancelSearch"></include>
 		     </trim>
 		<![CDATA[rownum <= #{pageNum} * #{amount}
+		ORDER BY PAYMENT_ID ASC
 	         ) boardlist
 	     where rnum > (#{pageNum} - 1) * #{amount}
       ]]>
-      ORDER BY PAYMENT_ID
+      
 	</select>
 
 	

@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/dist/css/bootstrap-theme.min.css">
 
+<link rel="stylesheet" type="text/css" href="/resources/include/css/ticket/ticket.css" />
+
 <script type="text/javascript"
 	src="/resources/include/js/jquery-3.7.0.min.js"></script>
 <script type="text/javascript"
@@ -182,7 +184,8 @@
 			</tr>
 			<tr>
 				<jsp:include page="../../modal/modal.jsp" />
-				<td><a href="#myModal" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td>
+				<!-- <td><a href="#myModal" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td> -->
+				<td><button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button></td>
 			</tr>
 		</table>
 		</div>

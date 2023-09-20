@@ -10,10 +10,10 @@
 <link rel="shortcut icon" href="/resources/images/icon.png" />
 <link rel="apple-touch-icon" href="/resources/images/icon.png" />
 
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" type="text/css" href="/resources/include/css/ticket/ticket.css" />
 
 <script type="text/javascript"
 	src="/resources/include/js/jquery-3.7.0.min.js"></script>
@@ -25,18 +25,6 @@
 	crossorigin="anonymous"></script>
 	
 <style type="text/css">
-	div.left {
-		float: left;
-		margin-right: 10px;
-	}
-	
-	div.right {
-		/* float: left; */
-	}
-	
-	/* .table {
-		width: 100px;
-	} */
 	/* 초기에는 테이블 숨기기 */
     #cardTable {
         display: none;
@@ -184,8 +172,8 @@
             })
         });
         
-	    $(function(){
-
+        /* 모달 */
+	    /* $(function(){
 			//동의 모두선택 / 해제
 			const agreeChkAll = document.querySelector('input[name=agree_all]');
 			    agreeChkAll.addEventListener('change', (e) => {
@@ -210,8 +198,8 @@
 			$(document).on("click", ".modal_close", function(){
 				$(".check").prop("checked", false);
 			})
-			
-		});
+		}); */
+        
 	});
 	
 </script>
@@ -223,8 +211,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<input type="image" src="/resources/images/day.jpg" alt="놀이공원종일권"
-					style="width: 553px;" />
+				<input type="image" id="dongsanimg" src="/resources/images/day.jpg" alt="놀이공원종일권" />
 				<h3>하루종일 놀 수 있는 종일권!</h3>
 				<table class="pricetable table table-bordered">
 					<tr>
@@ -262,7 +249,7 @@
 						readonly="readonly">월
 					<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
 				</div>
-				<table class="table table-bordered">
+				<table class="table table-bordered" id="calendar">
 					<thead>
 						<tr>
 							<th>일</th>
@@ -297,11 +284,11 @@
 					</tr>
 					<tr>
 						<td>방문예정일</td>
-						<td id="input_date"></td>
+						<td id="input_date" class="td_right"></td>
 					</tr>
 					<tr>
 						<td>상품선택</td>
-						<td>
+						<td class="td_right">
 						<table>
 					        <tr>
 					            <td>대인</td>
@@ -332,13 +319,13 @@
 					</tr>
 					<tr>
 						<td>제휴카드 선택</td>
-						<td>
+						<td class="td_right">
 			                <input type="checkbox" id="showCardTable" />
 			            </td>
 			        </tr>
 			        <tr>
 			        	<td></td>
-						<td>
+						<td class="td_right">
 						    <div id="cardTable">
 						        <table class="cardTable table table-bordered">
 						            <tr>
@@ -363,16 +350,16 @@
 					</tr>
 					<tr>
 						<td>할인전가격</td>
-						<td><span id="alldayPrice">0</span>원</td>
+						<td class="td_right"><span id="alldayPrice">0</span>원</td>
 					</tr>
 					<tr>
 						<td>총가격</td>
-						<td><span id="totalPrice">0</span>원</td>
+						<td class="td_right"><span id="totalPrice">0</span>원</td>
 					</tr>
 					<tr>
-						<%-- <jsp:include page="../../modal/modal.jsp" /> --%>
+						<jsp:include page="../../modal/modal.jsp" />
 						<!-- <td><a href="#" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td> -->
-						<td><button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button></td>
+						<td class="td_right"><button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button></td>
 					</tr>
 				</table>
 				</div>
@@ -380,82 +367,7 @@
 		</div>
 	</div>
 	
-	<!-- ---------------모달------------------ -->
-	<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-			<h4 class="modal-title">약관동의</h4>
-			<h6>아래 사항을 꼭 읽어보신 후 동의해 주세요!</h6>
-	      </div>
-	      <div class="modal-body">
-	        <label for="agree_all"> <input type="checkbox"
-						name="agree_all" id="agree_all" class="check"> <span>모두
-							동의합니다</span>
-					</label>
-					<hr />
-					<label for="agree"> <input type="checkbox" name="agree"
-						value="1" id="check_1" class="check"> <span>이용약관 동의<strong>(필수)</strong></span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="2" id="check_2" class="check"> <span>개인정보
-							수집, 이용 동의<strong>(필수)</strong>
-					</span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="3" id="check_3" class="check"> <span>개인정보
-							이용 동의<strong>(필수)</strong>
-					</span>
-					</label>
-	      </div>
-	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			<input type="button" value="예약하기" id="ticketInsertBtn" class="btn btn-success" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	<!-- <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-xl modal-dialog-centered">
-			<div class="modal-content">
-	
-				Modal Header
-				<div class="modal-header">
-					<h4 class="modal-title">약관동의</h4>
-					<h7>아래 사항을 꼭 읽어보신 후 동의해 주세요!</h7>
-				</div>
-	
-				Modal body
-				<div class="modal-body">
-					<label for="agree_all"> <input type="checkbox"
-						name="agree_all" id="agree_all" class="check"> <span>모두
-							동의합니다</span>
-					</label>
-					<hr />
-					<label for="agree"> <input type="checkbox" name="agree"
-						value="1" id="check_1" class="check"> <span>이용약관 동의<strong>(필수)</strong></span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="2" id="check_2" class="check"> <span>개인정보
-							수집, 이용 동의<strong>(필수)</strong>
-					</span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="3" id="check_3" class="check"> <span>개인정보
-							이용 동의<strong>(필수)</strong>
-					</span>
-					</label>
-				</div>
-	
-				Modal footer
-				<div class="modal-footer">
-					<button type="button" class="modal_close btn btn-secondary"
-						data-dismiss="modal">취소</button>
-					<input type="button" value="예약하기" id="ticketInsertBtn"
-						class="btn btn-success" />
-				</div>
-	
-			</div>
-		</div>
-	</div> -->
-	<!-- ---------------모달------------------ -->
+
 		
 
 	<script>
