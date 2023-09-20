@@ -28,7 +28,7 @@
 
 			<div class="dropdowun_main">
 				<ul class="list">
-					<li class="item"><a href="/ticket/allDayTicketView" class="link">예매</a>
+					<li class="item"><a href="#" class="link">예매</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
 								<li><a href="/ticket/allDayTicketView">예매하기</a></li>
@@ -45,7 +45,7 @@
 					<li class="item"><a href="#" class="link">굿즈몰</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">굿즈판매</a></li>
+								<li><a href="/goods/goodsList/">굿즈판매</a></li>
 							</ul>
 						</div></li>
 					<li class="item"><a href="#" class="link">이벤트</a>

@@ -239,7 +239,7 @@
 			        <c:when test="${tvo.allday_price != 0}">
 			            <tr>
 			                <td>티켓 금액</td>
-			                <td>${tvo.allday_price}명</td>
+			                <td>${tvo.allday_price}원</td>
 			            </tr>
 			        </c:when>
 			    </c:choose>
