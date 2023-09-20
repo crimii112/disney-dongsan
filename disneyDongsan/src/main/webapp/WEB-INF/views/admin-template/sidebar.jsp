@@ -159,6 +159,32 @@
 			</ul>
 		</li>
 			
+		<!-- 이벤트 관리 -->
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#eventList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>이벤트 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="eventList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/event/eventList"><i
+						class="bi bi-circle"></i> <span>이벤트 목록</span></a></li>
+			</ul>
+		</li>
+			
+		<!-- 공지사항 관리 -->
+		<li class="nav-item"><a class="nav-link collapsed"
+			data-bs-target="#noticeList" data-bs-toggle="collapse" href="#">
+				<i class="bi bi-menu-button-wide"></i><span>공지사항 관리</span> <i
+				class="bi bi-chevron-down ms-auto"></i>
+		</a>
+			<ul id="noticeList" class="nav-content collapse "
+				data-bs-parent="#sidebar-nav">
+				<li><a href="/admin/notice/noticeList"><i
+						class="bi bi-circle"></i> <span>공지사항 목록</span></a></li>
+			</ul>
+		</li>
+			
 			
 		<li class="nav-item"><a class="nav-link collapsed"
 			data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i

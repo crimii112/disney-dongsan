@@ -46,4 +46,14 @@
 		<put-attribute name="title" value="disney동산"/>
 		<put-attribute name="body" value="/WEB-INF/views/client/mypage/qa/{1}.jsp"></put-attribute>
 	</definition>
+
+	<definition name="client/notice/*" extends="content">
+		<put-attribute name="title" value="disney동산"/>
+		<put-attribute name="body" value="/WEB-INF/views/client/notice/{1}.jsp"></put-attribute>
+	</definition>
+
+	<definition name="client/event/*" extends="content">
+		<put-attribute name="title" value="disney동산"/>
+		<put-attribute name="body" value="/WEB-INF/views/client/event/{1}.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

@@ -52,7 +52,7 @@
 					<li class="item"><a href="#" class="link">이벤트</a>
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
-								<li><a href="#">이벤트</a></li>
+								<li><a href="/event/eventView">이벤트</a></li>
 							</ul>
 						</div></li>
 					<li class="item"><a href="#" class="link">이용정보</a>
@@ -66,7 +66,7 @@
 						<div class="dropdown_div">
 							<ul class="dropdown-content">
 								<li><a href="/mypage/userQAList">1:1문의</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a href="/notice/noticeView">공지사항</a></li>
 							</ul>
 						</div></li>
 				</ul>

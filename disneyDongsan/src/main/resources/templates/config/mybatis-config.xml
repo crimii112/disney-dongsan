@@ -25,6 +25,9 @@
 		<typeAlias type="com.disney.vo.GoodsReviewVO" alias="goodsReview"/>
 		<typeAlias type="com.disney.vo.MainVO" alias="main"/>
 		<typeAlias type="com.disney.vo.MainBenerVO" alias="bener"/>
+		
+		<typeAlias type="com.disney.vo.NoticeVO" alias="notice"/>
+		<typeAlias type="com.disney.vo.EventVO" alias="event"/>
 	</typeAliases>
 	
 </configuration>
