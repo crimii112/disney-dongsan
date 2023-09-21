@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
-
-<link rel="stylesheet" href="../resources/include/css/goods/admin/goodsInsert.css">
-
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 <script type="text/javascript">
 	$(function(){
 		
@@ -13,6 +11,7 @@
 			if (!chkData("#g_name","상품명을")) return;
 			else if (!chkData("#g_detail","상품설명을")) return;
 			else if (!chkData("#g_price","가격을")) return;
+			else if (!checkPrice("#g_price","숫자로")) return;
 			else if (!chkData("#g_origin","원산지를")) return;
 			else if (!chkData("#g_company","제조사를")) return;
 			else if (!chkData("#g_delivery","배송업체를")) return;
@@ -55,83 +54,53 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<form id="f_writeForm" name="f_writeForm">
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 이름</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="g_name" id="g_name">
-                    			</div>
-                    		</div>
-                    		
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 상세 정보</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<textarea rows="8" cols="105" name="g_detail" id="g_detail"></textarea>
-                    			</div>
-                    		</div>
-                           
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 가격</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="g_price" value="0" id="g_price">
-                    			</div>
-                    		</div>               
-                    		
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>원산지</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="g_origin" id="g_origin">
-                    			</div>
-                    		</div>
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>제조사</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="g_company" id="g_company">
-                    			</div>
-                    		</div>
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>배송업체</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<input name="g_delivery" id="g_delivery">
-                    			</div>
-                    		</div>
-                    		
-
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 이미지</label>
-                    			</div>
-                    			<div class="form_section_content">
-									<input type="file" id ="file" name='file' style="height: 30px;">
-                    			</div>
-                    		</div> 
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 상세 이미지</label>
-                    			</div>
-                    			<div class="form_section_content">
-									<input type="file" id ="file_detail" name='file_detail' style="height: 30px;">
-                    			</div>
-                    		</div>           		
-                   		</form>
-                   			<div class="btn_section">
-                   				<button id="goodsCancelBtn" class="btn">취 소</button>
-	                    		<button id="goodsInsertBtn" class="btn insert_btn">등 록</button>
-	                    		<button id="goodsListBtn" class="btn">목록</button>
-	                    	</div> 
-							
+							<div class="contentTB">
+								<div class="contentBtn text-right">
+	                   				<button id="goodsCancelBtn" class="btn sty_btn">취 소</button>
+		                    		<button id="goodsInsertBtn" class="btn insert_btn sty_btn">등 록</button>
+		                    		<button id="goodsListBtn" class="btn sty_btn">목록</button>
+		                    	</div>
+								<form id="f_writeForm" name="f_writeForm">
+									<table class="table table-bordered">
+										<colgroup>
+											<col width="20%" />
+											<col width="80%" />
+										</colgroup>
+										<tr>
+											<td class="text-center">상품 이름</td>
+											<td><input name="g_name" id="g_name" class="form-control" placeholder="상품 이름 입력"></td>
+										</tr>
+										<tr>
+											<td class="text-center">상품 상세 정보</td>
+											<td><textarea rows="8" cols="105" name="g_detail" id="g_detail" class="form-control" placeholder="상품 상세 정보 입력"></textarea></td>
+										</tr>
+										<tr>
+											<td class="text-center">상품 가격</td>
+											<td><input name="g_price" value="0" id="g_price" class="form-control" ></td>
+										</tr>
+										<tr>
+											<td class="text-center">원산지</td>
+											<td><input name="g_origin" id="g_origin" class="form-control" placeholder="원산지 입력"></td>
+										</tr>
+										<tr>
+											<td class="text-center">제조사</td>
+											<td><input name="g_company" id="g_company" class="form-control" placeholder="제조사 입력"></td>
+										</tr>
+										<tr>
+											<td class="text-center">배송업체</td>
+											<td><input name="g_delivery" id="g_delivery" class="form-control" placeholder="배송업체 입력"></td>
+										</tr>
+										<tr>
+											<td class="text-center">상품 이미지</td>
+											<td><input type="file" id ="file" name='file' style="height: 30px;"></td>
+										</tr>
+										<tr>
+											<td class="text-center">상품 상세 이미지</td>
+											<td><input type="file" id ="file_detail" name='file_detail' style="height: 30px;"></td>
+										</tr>
+									</table>        		
+	                   		</form>	
+	                   		</div> 
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 		<script type="text/javascript">
 			$(function(){
 				/*목록 클릭 처리 이벤트*/
@@ -49,40 +50,41 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="contentTB text-center">
-				<form id="event_updateForm" name="event_updateForm">
-					<input type="hidden" id="main_event_no" name="main_event_no" value="${mainData.main_event_no}" />
-					<input type="hidden" id="main_event_image" name="main_event_image" value="${mainData.main_event_image}" />
-					
-					<table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td class="col-md-3">No</td>
-								<td class="text-left col-md-3">${mainData.main_event_no}</td>
-							</tr>
-							<tr>
-								<td>title 제목</td>
-								<td colspan="3" class="text-left">
-									<input type="text" name="main_event_title" id="main_event_title" value="${mainData.main_event_title}" class="form-control" maxlength="66" />
-								</td>
-							</tr>
-							<tr>
-								<td>이벤트 이미지</td>
-								<td class="text-left">
-									<input type="file" name="file" id="file" />
-								</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</form>		
-			</div>
-			
-			<div class="contectBtn text-right">
-				<button type="button" id="mainUpdateBtn" class="btn btn-success">수정</button>
-				<button type="button" id="mainCancelBtn" class="btn btn-success">수정전으로</button>
-				<button type="button" id="mainEventListBtn" class="btn btn-success">목록</button>
-			</div>
-						
+								<div class="contentBtn text-right">
+									<button type="button" id="mainUpdateBtn" class="btn sty_btn">수정</button>
+									<button type="button" id="mainCancelBtn" class="btn sty_btn">취소</button>
+									<button type="button" id="mainEventListBtn" class="btn sty_btn">목록</button>
+								</div>
+								<form id="event_updateForm" name="event_updateForm">
+									<input type="hidden" id="main_event_no" name="main_event_no" value="${mainData.main_event_no}" />
+									<input type="hidden" id="main_event_image" name="main_event_image" value="${mainData.main_event_image}" />
+									
+									<table class="table table-bordered">
+										<colgroup>
+											<col width="20%" />
+											<col width="80%" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="col-md-3">No</td>
+												<td class="text-left col-md-3">${mainData.main_event_no}</td>
+											</tr>
+											<tr>
+												<td>title 제목</td>
+												<td colspan="3" class="text-left">
+													<input type="text" name="main_event_title" id="main_event_title" value="${mainData.main_event_title}" class="form-control" maxlength="66" />
+												</td>
+											</tr>
+											<tr>
+												<td>이벤트 이미지</td>
+												<td class="text-left">
+													<input type="file" name="file" id="file" />
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</form>		
+							</div>
 						</div>
 					</div>
 				</div>

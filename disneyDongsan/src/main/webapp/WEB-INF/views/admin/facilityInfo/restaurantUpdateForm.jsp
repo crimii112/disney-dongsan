@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
-		<style type="text/css">
-			.restTitlePadding{padding:20px;}
-		</style>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 		<script type="text/javascript">
 			$(function(){
 				
@@ -58,46 +56,47 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="contentTB text-center">
-				<form id="f_updateForm" name="f_updateForm">
-					<input type="hidden" id="restNo" name="restNo" value="${updateData.restNo}" />
-					<input type="hidden" id="restImage" name="restImage" value="${updateData.restImage}" />
-					<h2 class="restTitlePadding">${updateData.restTitle}</h2>
-					<table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td>레스토랑 이름</td>
-								<td colspan="3" class="text-left">${updateData.restTitle}</td>
-							</tr>
-							<tr>
-								<td>서브제목</td>
-								<td colspan="3" class="text-left">
-									<input type="text" name="restSubTitle" id="restSubTitle" value="${updateData.restSubTitle}" class="form-control" maxlength="66" />
-								</td>
-							</tr>
-							<tr class="table-tr-height">
-								<td>내용</td>
-								<td colspan="3" class="text-left">
-									<textarea name="restContent" id="restContent" class="form-control" rows="8" maxlength="333">${updateData.restContent}</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td>이미지 파일 첨부</td>
-								<td class="text-left">
-									<input type="file" name="file" id="file" />
-									<span id="fileNeme">${updateData.restImage}</span>
-								</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</form>		
-			</div>
-			
-			<div class="contectBtn text-right">
-				<button type="button" id="UpdateBtn" class="btn btn-success">수정</button>
-				<button type="button" id="CancelBtn" class="btn btn-success">취소</button>
-				<button type="button" id="ListBtn" class="btn btn-success">목록</button>
-			</div>
+								<div class="contentBtn text-right">
+									<button type="button" id="UpdateBtn" class="btn sty_btn">수정</button>
+									<button type="button" id="CancelBtn" class="btn sty_btn">취소</button>
+									<button type="button" id="ListBtn" class="btn sty_btn">목록</button>
+								</div>
+								<form id="f_updateForm" name="f_updateForm">
+									<input type="hidden" id="restNo" name="restNo" value="${updateData.restNo}" />
+									<input type="hidden" id="restImage" name="restImage" value="${updateData.restImage}" />
+									<table class="table table-bordered">
+										<colgroup>
+											<col width="20%" />
+											<col width="80%" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<td>레스토랑 이름</td>
+												<td colspan="3" class="text-left">${updateData.restTitle}</td>
+											</tr>
+											<tr>
+												<td>서브제목</td>
+												<td colspan="3" class="text-left">
+													<input type="text" name="restSubTitle" id="restSubTitle" value="${updateData.restSubTitle}" class="form-control" maxlength="66" />
+												</td>
+											</tr>
+											<tr class="table-tr-height">
+												<td>내용</td>
+												<td colspan="3" class="text-left">
+													<textarea name="restContent" id="restContent" class="form-control" rows="8" maxlength="333">${updateData.restContent}</textarea>
+												</td>
+											</tr>
+											<tr>
+												<td>이미지 파일 첨부</td>
+												<td class="text-left">
+													<input type="file" name="file" id="file" /><br />
+													<span id="fileNeme">${updateData.restImage}</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</form>		
+							</div>
 						</div>
 					</div>
 				</div>
