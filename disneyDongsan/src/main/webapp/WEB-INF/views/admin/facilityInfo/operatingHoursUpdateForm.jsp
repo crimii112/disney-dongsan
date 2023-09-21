@@ -11,8 +11,8 @@
 		td input{ border:none; text-align: center;}
 		
 
-		#listBtn{position: absolute; margin-left:210px;}
-		#updateBtn{position: absolute; margin-left:255px;}	
+		#listBtn{float: right;}
+		#updateBtn{float: right;}	
 		#month{left:500px;}	
 
 	</style>
@@ -186,8 +186,8 @@
 				            	<input type="hidden" id="lastMonthBtn" name="lastMonthBtn" value="" />
 				            	<span id="month"></span>
 				            	<input type="button" id="nextMonthBtn" name="nextMonthBtn" value="" />
-				            	<input type="button" id="listBtn" name="listBtn" value="목록" />
 				            	<input type="button" id="updateBtn" name="updateBtn" value="수정 확인" />
+				            	<input type="button" id="listBtn" name="listBtn" value="목록" />
 			            	</div>
 			            	<form id='f_hours'>
 				               <table summary="운영시간 관리" id="hoursTable">

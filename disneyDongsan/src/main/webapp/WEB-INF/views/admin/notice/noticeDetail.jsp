@@ -14,6 +14,7 @@
       
       <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css"/>
       <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css"/>
+      <link rel="stylesheet" href="/resources/include/css/commonList.css">
       
       <script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
       <script type="text/javascript" src="/resources/include/js/common.js"></script>
@@ -24,6 +25,9 @@
       <!--[if lt IE 9]>
       <script src="../js/html5shiv.js"></script>
       <![endif]-->
+      
+      <link rel="stylesheet" href="/resources/include/css/commonDetail.css"/>
+      	
       
       <script type="text/javascript">
       	$(function(){
@@ -81,25 +85,31 @@
 	        	<input type="hidden" id="n_num" name="n_num" value="${detail.n_num}" />
 	        </form>	
    			<div class="contentTB text-center">
-	         <table class="table table-bordered">
+   			
+	         <table class="table table-bordered detailTable">
+	         	<colgroup>
+                   <col width="20%" />
+                   <col width="80%" />
+                </colgroup>
 	            <tbody>
 	               <tr>
-	                  <td class="col-md-4">제목</td>
-	                  <td colspan="3" class="col-md-8 text-left">${detail.n_title}</td>
+	                  <td>제목</td>
+	                  <td colspan="3" class="text-left">${detail.n_title}</td>
 	               </tr>
 	               <tr>
-	                  <td class="col-md-4">작성일</td>
-	                  <td colspan="3" class="col-md-8 text-left">${detail.n_date}</td>
+	                  <td>작성일</td>
+	                  <td colspan="3" class="text-left">${detail.n_date}</td>
 	               </tr>
 	               <tr class="table-tr-height">
-	                  <td class="col-md-4">내용</td>
-	                  <td colspan="3" class="col-md-8 text-left">${detail.n_content}</td>
+	                  <td>내용</td>
+	                  <td colspan="3" class="text-left">${detail.n_content}</td>
 	               </tr>
 	            </tbody>
 	         </table>
+	          
 	          <div class="text-right">
-	            	<input type="button" value="글수정" id="updateFormBtn" class="btn " />
-	            	<input type="button" value="글삭제" id="noticeDeleteBtn" class="btn " />
+	            	<input type="button" value="수정" id="updateFormBtn" class="btn sty_btn" />
+	            	<input type="button" value="삭제" id="noticeDeleteBtn" class="btn sty_btn" />
 	          </div>
           </div>
    		</div>

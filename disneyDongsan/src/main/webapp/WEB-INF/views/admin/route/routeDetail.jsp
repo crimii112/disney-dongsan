@@ -14,6 +14,29 @@
 		td img{
 			width: 400px;
 		}
+		
+		.contentTB{margin: auto; padding:50px 30px 30px 30px;}
+		
+		.text-left{text-align: left;}
+      	.text-right{text-align: right;}
+      	.text-center{text-align: center;}
+      	
+      	#deleteBtn, #listBtn{
+            display: inline-block;
+            height: 32px;
+            width: 70px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 20px;
+            margin-left: 10px;
+            background-color: #c3daf7;  
+         }
+         
+         #deleteBtn:hover, #listBtn:hover{
+           border: 2px solid #c3daf7;
+           background-color: white;
+         }
+         
 	</style>
 
    
@@ -88,10 +111,12 @@
    <body>
     <%@ include file="/WEB-INF/views/admin-template/header.jsp"%>
 	<%@ include file="/WEB-INF/views/admin-template/sidebar.jsp"%>
+            					
 	
 	<main id="main" class="main">
+	
 		<div class="pagetitle">
-			<h1>어트랙션 수정</h1>
+			<h1>어트랙션</h1> 
 		</div>
 		<section class="section dashboard">
 			<div class="row">
@@ -99,60 +124,61 @@
 					<div class="card">
 						<div class="card-body">  
       						<form name="f_data" id="f_data" method="get">
-         <input type="hidden" name="routeNo" value="${detail.routeNo}" />
-         <input type="hidden" name="routeImage" id="routeImage" value="${detail.routeImage}" />
-      </form>
-	      <%-- =============== 삭제 버튼 추가 시작 =============== --%>
-	      <div id="boardPwdBut" class="row test-center">
-	         <div class="btnArea col-md-12 text-right">
-	         	<input type="hidden" name="routeNo" id="routeNo" value="${detail.routeNo}" />
-	            <input type="button" value="글삭제" id="deleteBtn" class="btn btn-success" />
-	            <input type="button" value="목록" id="listBtn" class="btn btn-success" />
-	         </div>
-	      </div>
-	      <%-- =============== 삭제 버튼 및 버튼 추가 종료 =============== --%>
-	      
-	      <%-- =============== 상세 정보 보여주기 시작 =============== --%>
-	      <div class="contentTB text-center">
-	         <table class="table table-bordered">
-	            <tbody>
-	               <tr>
-	                  <td class="col-md-2">작성자</td>
-	                  <td class="col-md-2 text-left" id="id">${detail.memberId}</td>
-	                  <td class="col-md-2">작성일</td>
-	                  <td class="col-md-2 text-left">${detail.routeDate}</td>
-	                  <td>(조회수: ${detail.routeHits})</td>
-	               </tr>
-	               <tr>
-	                  <td class="col-md-2">글제목</td>
-	                  <td colspan="4" class="col-md-8 text-left">${detail.routeTitle}</td>
-	               </tr>
-	               <tr class="table-tr-height">
-	                  <td class="col-md-2">글내용</td>
-	                  <td colspan="4" class="col-md-8 text-left">${detail.routeContent}</td>
-	               </tr>
-	               <c:if test="${not empty detail.routeImage}">
-		               <tr>
-		                  <td class="col-md-2">이미지</td>
-		                  <td colspan="4" class="col-md-8 text-left">
-		                  	<img src="/dongsanStorage/route/${detail.routeImage}" />
-		                  </td>
-		               </tr>
-	               </c:if>
-	            </tbody>
-	         </table>
-	      </div>
-	    <div class="good">
-      		<img alt="/" src="/resources/images/route/good.PNG" /><span id="goodBtn"  style="font-size: 20px">${detail.routeGood}</span>
-      	</div>
-      	<%--===================상세 정보 보여주기 종료 ==================== --%>
-      	<jsp:include page="routeReply.jsp" />
-      						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+						         <input type="hidden" name="routeNo" value="${detail.routeNo}" />
+						         <input type="hidden" name="routeImage" id="routeImage" value="${detail.routeImage}" />
+					      </form>
+					      
+					      <%-- =============== 삭제 버튼 추가 시작 =============== --%>
+					      <div >
+					         <div class="col-md-12 text-right">
+					         	<input type="hidden" name="routeNo" id="routeNo" value="${detail.routeNo}" />
+					            <input type="button" value="삭제" id="deleteBtn" class="btn sty_btn" />
+					            <input type="button" value="목록" id="listBtn" class="btn sty_btn" />
+					         </div>
+					      </div>
+					      <%-- =============== 삭제 버튼 및 버튼 추가 종료 =============== --%>
+      
+					      <%-- =============== 상세 정보 보여주기 시작 =============== --%>
+					      <div class="contentTB text-center">
+					         <table class="table table-bordered">
+					            <tbody>
+					               <tr>
+					                  <td class="col-md-2">작성자</td>
+					                  <td class="col-md-2 text-left" id="id">${detail.memberId}</td>
+					                  <td class="col-md-2">작성일</td>
+					                  <td class="col-md-2 text-left">${detail.routeDate}</td>
+					                  <td>(조회수: ${detail.routeHits})</td>
+					               </tr>
+					               <tr>
+					                  <td class="col-md-2">글제목</td>
+					                  <td colspan="4" class="col-md-8 text-left">${detail.routeTitle}</td>
+					               </tr>
+					               <tr class="table-tr-height">
+					                  <td class="col-md-2">글내용</td>
+					                  <td colspan="4" class="col-md-8 text-left">${detail.routeContent}</td>
+					               </tr>
+					               <c:if test="${not empty detail.routeImage}">
+						               <tr>
+						                  <td class="col-md-2">이미지</td>
+						                  <td colspan="4" class="col-md-8 text-left">
+						                  	<img src="/dongsanStorage/route/${detail.routeImage}" />
+						                  </td>
+						               </tr>
+					               </c:if>
+					            </tbody>
+					         </table>
+					      </div>
+					    <div class="good">
+				      		<img alt="/" src="/resources/images/route/good.PNG" /><span id="goodBtn"  style="font-size: 20px">${detail.routeGood}</span>
+				      	</div>
+				      	<%--===================상세 정보 보여주기 종료 ==================== --%>
+				      	<jsp:include page="routeReply.jsp" />
+				      						</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</main>
 	
 	
 <%@ include file="/WEB-INF/views/admin-template/footer.jsp"%>

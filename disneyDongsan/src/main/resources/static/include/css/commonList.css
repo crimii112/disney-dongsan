@@ -1,22 +1,24 @@
 @charset "UTF-8";
-
-
-
 /* 상품 목록 영역 */
 
-.goods_table{
+.admin_table{
 	width: 100%;
     border: 1px solid #d3d8e1;
     text-align: center;
     border-collapse: collapse;
+    margin-top: 10px;
 }
-.goods_table td{
+.admin_table td{
 	padding: 10px 5px;
 	border : 1px solid #e9ebf0;
+	text-align: center;
+	vertical-align : middle;
 }
-.goods_table thead{
+.admin_table thead{
 	background-color: #f8f9fd;	
 	font-weight: 600;
+	text-align: center;
+	vertical-align : middle;
 }
 
 .th_column_1{
@@ -59,6 +61,7 @@
     position: relative;
     text-align:center;	
     float: right;
+    height: 32px;
 }
 .search_input input[name='keyword']{
 	display: inline-block;
@@ -97,6 +100,17 @@
      margin-left: 10px;
      background-color: #c3daf7;
 }
+
+.delete_btn{
+	display: inline-block;
+     height: 32px;
+     width: 70px;
+     font-weight: 600;
+     font-size: 15px;
+     line-height: 20px;
+     margin-left: 10px;
+     background-color: #c3daf7;
+}
   .search_btn:hover{
      border: 2px solid #c3daf7;
      background-color: white;
@@ -105,11 +119,15 @@
      border: 2px solid #c3daf7;
      background-color: white;
    }
+   .delete_btn:hover{
+     border: 2px solid #c3daf7;
+     background-color: white;
+   }
 
 
 	/* 페이지 버튼 인터페이스 */
 .page-item.active .page-link {
- z-index: 1;
+ z-index: 4;
  color: #555;
  font-weight:bold;
  background-color: #c3daf7;

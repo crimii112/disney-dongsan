@@ -197,10 +197,10 @@ public class AdminEventController {
        
         // 게시물 삭제 처리
         int result = eventService.adminAllEventDelete(vo);
-        if(result == 0) {
-     	    value="실패";
+        if(result >= 1) {
+     	    value="성공";
         } else {
-      	    value= "성공";
+      	    value= "실패";
         }
 
         log.info("value=" + value);

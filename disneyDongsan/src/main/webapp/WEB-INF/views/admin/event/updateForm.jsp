@@ -93,6 +93,7 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
+
 							<div class="contentTB">
 								<div class="contentBtn text-right">
 			                        <button type="button" id="cancelBtn" class="btn sty_btn">취소</button>
@@ -151,6 +152,7 @@
 				                    </table>
 				                </form>
 			                </div>
+
 						</div>
 					</div>
 				</div>

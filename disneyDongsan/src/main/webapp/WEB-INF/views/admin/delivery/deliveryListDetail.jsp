@@ -4,6 +4,7 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <link rel="stylesheet" href="../resources/include/css/goods/admin/deliveryDetail.css">
+<link rel="stylesheet" href="/resources/include/css/commonDetail.css"/>
 
 <script type="text/javascript">
 	$(function(){
@@ -70,9 +71,9 @@
 											  <input type="hidden" name="g_order_id" value="${orderView.g_order_id}" />
 											  <input type="hidden" name="g_order_state" class="g_order_state" value="" />
 											  
-											  <button type="button" class="delivery1_btn">배송 중</button>
-											  <button type="button" class="delivery2_btn">배송 완료</button>
-											  <button type="button" class="delivery3_btn">배송 취소</button>
+											  <button type="button" class="delivery1_btn sty_btn">배송 중</button>
+											  <button type="button" class="delivery2_btn sty_btn">배송 완료</button>
+											  <button type="button" class="delivery3_btn sty_btn">배송 취소</button>
 											  
 											  
 											 </form>
