@@ -2,6 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
+<style type="text/css">
+
+	.choiceDeleteBtn{
+		display: inline-block;
+     height: 32px;
+     width: 170px;
+     font-weight: 600;
+     font-size: 15px;
+     line-height: 20px;
+     margin-left: 10px;
+     background-color: #c3daf7;
+     float: right;
+	}
+	
+	.choiceDeleteBtn:hover{
+     border: 2px solid #c3daf7;
+     background-color: white;
+   }
+
+</style>
+
 <script type="text/javascript">
 	$(function() {
 
@@ -70,7 +93,7 @@
 			cancel();
 		});
 
-		$(".paginate_button a").click(
+		$(".page-item a").click(
 				function(e) {
 					e.preventDefault();
 					$("#f_search").find("input[name='pageNum']").val(
@@ -180,21 +203,22 @@
 										<input type="date" name="visitDate" id="visitDate" />~ 
 										<input type="date" name="visitDateEnd" id="visitDateEnd" />
 											
-										<button type="button" id="searchData" class="btn btn-success">검색</button>
+										<button type="button" id="searchData" class="btn search_btn">검색</button>
 									</div>
 									
 								</form>
 
-								<input type="button" id="cancelFormBtn" class="btn btn-success" value="선택한 티켓 예매 취소" />
+								
 							</div>
 
 							<div class="text-left">
 								<%-- <label>게시물 수 :</label><input type="text" id="countTicket" name="countTicket" value="${ticketListCnt}" readonly="readonly" /> --%>
 								티켓 수 : ${ticketListCnt}
+								<input type="button" id="cancelFormBtn" class="btn choiceDeleteBtn" value="선택한 티켓 예매 취소" />
 							</div>
 
 							<div id="ticketOrderList" class="table-height">
-								<table summary="결제 리스트" class="table table-striped">
+								<table summary="결제 리스트" class="table table-hover admin_table">
 									<thead>
 										<tr>
 											<th class="order text-center col-md-1">번호</th>
@@ -270,24 +294,24 @@
 							</div>
 							<%-- =============== 페이징 출력 시작 ============== --%>
 							<div class="text-center">
-								<ul class="pagination">
+								<ul class="pagination justify-content-center">
 									<!-- 이전 바로가기 10개 존재 여부를 prev 필드의 값으로 확인 -->
 									<c:if test="${pageMaker.prev}">
-										<li class="paginate_button previous"><a
+										<li class="page-item previous"><a class="page-link" 
 											href="${pageMaker.startPage - 1}">Previous</a></li>
 									</c:if>
 
 									<!-- 바로가기 번호 출력 -->
 									<c:forEach var="num" begin="${pageMaker.startPage}"
 										end="${pageMaker.endPage}">
-										<li class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-											<a href="${num}">${num}</a>
+										<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+											<a class="page-link" href="${num}">${num}</a>
 										</li>
 									</c:forEach>
 
 									<!-- 다음 바로가기 10개 존재 여부를 next 필드의 값으로 확인 -->
 									<c:if test="${pageMaker.next}">
-										<li class="paginate_button next"><a
+										<li class="page-item next"><a class="page-link" 
 											href="${pageMaker.endPage + 1}">Next</a></li>
 									</c:if>
 								</ul>
