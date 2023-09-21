@@ -113,63 +113,62 @@
 					<div class="card">
 						<div class="card-body">
 							<form id="f_updateForm" name="f_updateForm" class="form-horizontal">
-                    
-		    		<input type="hidden" id="e_no" name="e_no" value="${updateData.e_no}" />
-		    		<input type="hidden" id="e_thum" name="e_thum" value="${updateData.e_thum}" />
-		    		<input type="hidden" id="e_img1" name="e_img1" value="${updateData.e_img1}" />
-		    		<input type="hidden" id="e_img2" name="e_img2" value="${updateData.e_img2}" />
-		
-                    
-                    <table class="table table-bordered">
-                        <colgroup>
-                            <col width="20%"/>
-                            <col width="80%"/>
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td>이벤트 제목</td>
-                                <td class="text-left"><input type="text" id="e_title" name="e_title" class="form-control" value="${updateData.e_title }"/></td>
-                            </tr>
-                            <tr>
-                                <td>이벤트 일정</td>
-                                <td class="text-left">
-                                	<input type="date" style="width:300px;" id="e_start" name="e_start" value="${updateData.e_start }"/> - 
-                   		 			<input type="date" style="width:300px;" id="e_end" name="e_end" class="form" value="${updateData.e_end }"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>이벤트 시간</td>
-                                <td class="text-left">
-                                	<input type="time" style="width:300px;" id="e_time" name="e_time" value="${updateData.e_time }"/> 
-                                	<input type="checkbox" name="e_time" id="allDay"> 상시
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>이벤트 내용</td>
-                                <td class="text-left"><textarea rows="10" cols="22" id="e_content" name="e_content" class="form-control" >${updateData.e_content }</textarea></td>
-                            </tr>
-                            
-                             <!-- 이미지 업로드 필드 -->
-					        <tr>
-					            <td>섬네일 이미지:</td>
-					            <td><input type="file" name="fileT" id="fileT"></td>
-					        </tr>
-					        <tr>
-					            <td>상세 이미지 1:</td>
-					            <td><input type="file" name="file1" id="file1"></td>
-					        </tr>
-					        <tr>
-					            <td>상세 이미지 2:</td>
-					            <td><input type="file" name="file2" id="file2"></td>
-					        </tr>
-                        </tbody>
-                    </table>
-                    <div class="text-right">
-                        <button type="button" id="cancelBtn" class="btn blue rounded">취소</button>
-                        <button type="button" id="updateBtn" class="btn blue rounded">확인</button>
-                        <button type="button" id="listBtn" class="btn blue rounded">목록</button>
-                    </div>
-                </form>
+					    		<input type="hidden" id="e_no" name="e_no" value="${updateData.e_no}" />
+					    		<input type="hidden" id="e_thum" name="e_thum" value="${updateData.e_thum}" />
+					    		<input type="hidden" id="e_img1" name="e_img1" value="${updateData.e_img1}" />
+					    		<input type="hidden" id="e_img2" name="e_img2" value="${updateData.e_img2}" />
+			                    
+			                    <table class="table table-bordered">
+			                        <colgroup>
+			                            <col width="20%"/>
+			                            <col width="80%"/>
+			                        </colgroup>
+			                        <tbody>
+			                            <tr>
+			                                <td>이벤트 제목</td>
+			                                <td class="text-left"><input type="text" id="e_title" name="e_title" class="form-control" value="${updateData.e_title }"/></td>
+			                            </tr>
+			                            <tr>
+			                                <td>이벤트 일정</td>
+			                                <td class="text-left">
+			                                	<input type="date" style="width:300px;" id="e_start" name="e_start" value="${updateData.e_start }"/> - 
+			                   		 			<input type="date" style="width:300px;" id="e_end" name="e_end" class="form" value="${updateData.e_end }"/>
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                                <td>이벤트 시간</td>
+			                                <td class="text-left">
+			                                	<input type="time" style="width:300px;" id="e_time" name="e_time" value="${updateData.e_time }"/> 
+			                                
+			                                	<input type="checkbox" name="e_time" id="allDay"> 상시
+			                                </td>
+			                            </tr>
+			                            <tr>
+			                                <td>이벤트 내용</td>
+			                                <td class="text-left"><textarea rows="10" cols="22" id="e_content" name="e_content" class="form-control" >${updateData.e_content }</textarea></td>
+			                            </tr>
+			                            
+			                             <!-- 이미지 업로드 필드 -->
+								        <tr>
+								            <td>섬네일 이미지:</td>
+								            <td><input type="file" name="fileT" id="fileT"></td>
+								        </tr>
+								        <tr>
+								            <td>상세 이미지 1:</td>
+								            <td><input type="file" name="file1" id="file1"></td>
+								        </tr>
+								        <tr>
+								            <td>상세 이미지 2:</td>
+								            <td><input type="file" name="file2" id="file2"></td>
+								        </tr>
+			                        </tbody>
+			                    </table>
+			                    <div class="text-right">
+			                        <button type="button" id="cancelBtn" class="btn blue rounded">취소</button>
+			                        <button type="button" id="updateBtn" class="btn blue rounded">확인</button>
+			                        <button type="button" id="listBtn" class="btn blue rounded">목록</button>
+			                    </div>
+			                </form>
 						</div>
 					</div>
 				</div>
