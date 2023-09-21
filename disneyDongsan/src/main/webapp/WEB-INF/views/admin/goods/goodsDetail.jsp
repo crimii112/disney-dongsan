@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 
-<link rel="stylesheet" href="../resources/include/css/goods/admin/goodsDetail.css">
+<!-- <link rel="stylesheet" href="../resources/include/css/goods/admin/goodsDetail.css"> -->
+<link rel="stylesheet" href="/resources/include/css/commonDetail.css"/>
+
 
 <script type="text/javascript">
 	$(function(){
@@ -60,85 +62,50 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<form action="/admin/goodsDetail" id="goodsDetail">
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 이름</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<h3>${detail.g_name}</h3>
-                    			</div>
-                    		</div>
-                    		
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 상세 정보</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<h3>${detail.g_detail}</h3>
-                    			</div>
-                    		</div>
-                           
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 가격</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<h3>${detail.g_price}</h3>
-                    			</div>
-                    		</div>               
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>원산지</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<h3>${detail.g_origin}</h3>
-                    			</div>
-                    		</div>
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>제조사</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<h3>${detail.g_company}</h3>
-                    			</div>
-                    		</div>
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>배송업체</label>
-                    			</div>
-                    			<div class="form_section_content">
-                    				<h3>${detail.g_delivery}</h3>
-                    			</div>
-                    		</div>
-                    		
-
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 이미지</label>
-                    			</div>
-                    			<div class="form_section_content">
-									<c:if test="${not empty detail.g_image}">
-										<img src="/dongsanStorage/goods/${detail.g_image}" />
-									</c:if>
-                    			</div>
-                    		</div> 
-                    		<div class="form_section">
-                    			<div class="form_section_title">
-                    				<label>상품 상세 이미지</label>
-                    			</div>
-                    			<div class="form_section_content">
-									<c:if test="${not empty detail.g_image_detail}">
-										<img src="/dongsanStorage/goods/${detail.g_image_detail}" />
-									</c:if>
-                    			</div>
-                    		</div>           		
-                   		</form>
-                   			<div class="btn_section">
-	                    		<button type="button" id="goodsUpdateBtn" class="btn insert_btn">수정</button>
-								<!-- <button type="button" id="goodsDeleteBtn" class="btn delete_btn">삭제</button> -->
-								<button type="button" id="goodsListBtn" class="btn btn-success">목록</button>
-	                    	</div> 
+							 
+	                    	<div class="contentTB">
+	                    		<div class="btn_section text-right contentBtn">
+		                    		<button type="button" id="goodsUpdateBtn" class="btn sty_btn">수정</button>
+									<!-- <button type="button" id="goodsDeleteBtn" class="btn delete_btn">삭제</button> -->
+									<button type="button" id="goodsListBtn" class="btn sty_btn">목록</button>
+	                    		</div>
+								<form action="/admin/goodsDetail" id="goodsDetail">
+		                    		 <table class="table table-bordered">
+		                              <tr>
+		                                 <td>상품 이름</td>
+		                                 <td>${detail.g_name}</td>
+		                              </tr>
+		                              <tr>
+		                                 <td>상품 상세 정보</td>
+		                                 <td>${detail.g_detail}</td>
+		                              </tr>
+		                              <tr>
+		                                 <td>상품 가격</td>
+		                                 <td>${detail.g_price}</td>
+		                              </tr>
+		                              <tr>
+		                                 <td>원산지</td>
+		                                 <td>${detail.g_origin}</td>
+		                              </tr>
+		                              <tr>
+		                                 <td>제조사</td>
+		                                 <td>${detail.g_company}</td>
+		                              </tr>
+		                              <tr>
+		                                 <td>배송업체</td>
+		                                 <td>${detail.g_delivery}</td>
+		                              </tr>
+		                              <tr>
+		                                 <td>상품 이미지</td>
+		                                 <td><img src="/dongsanStorage/goods/${detail.g_image}" /></td>
+		                              </tr>
+		                              <tr>
+		                                 <td>상품 상세 이미지</td>
+		                                 <td><img src="/dongsanStorage/goods/${detail.g_image_detail}" /></td>
+		                              </tr>
+		                           </table>          		
+	                   			</form>
+                   			</div>
 						</div>
 					</div>
 				</div>

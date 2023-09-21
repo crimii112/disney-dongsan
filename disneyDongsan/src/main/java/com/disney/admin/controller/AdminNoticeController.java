@@ -130,7 +130,7 @@ public class AdminNoticeController {
 	        // CKEditor에 반환할 JSON 응답 생성
 	        resultMap.put("uploaded", 1);
 	        resultMap.put("fileName", tempFileName);
-	        resultMap.put("url", "/uploadStorage/temp/" + tempFileName);
+	        resultMap.put("url", "/dongsanStorage/temp/" + tempFileName);
 	    } catch (Exception e) {
 	        resultMap.put("uploaded", 0);
 	        resultMap.put("error", e.getMessage());
@@ -190,14 +190,15 @@ public class AdminNoticeController {
         log.info("qvo:" + vo.toString());
 
         String value = "실패";
+        
        
        
         // 게시물 삭제 처리
         int result = noticeService.adminAllNoticeDelete(vo);
-        if(result == 0) {
-     	   value="실패";
+        if(result >= 1) {
+     	   value="성공";
         } else {
-     	   value= "성공";
+     	   value= "실패";
         }
  
         log.info("value=" + value);
