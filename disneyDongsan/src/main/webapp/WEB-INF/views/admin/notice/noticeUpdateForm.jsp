@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 
 	    <!-- CKEditor 스크립트 URL 수정 -->
 	    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
@@ -62,41 +63,42 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<form id="f_updateForm" name="f_updateForm" class="form-horizontal">
-                <input type="hidden" id="n_num" name="n_num" value="${updateData.n_num}" />    
-                    <table class="table table-bordered">
-                        <colgroup>
-                            <col width="20%"/>
-                            <col width="80%"/>
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td>공지 제목</td>
-                                <td class="text-left"><input type="text" id="n_title" name="n_title" class="form-control" value="${updateData.n_title }" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                공지 내용
-								    <textarea name="n_content" id="n_content" >${updateData.n_content }</textarea>
-								    <script>
-								        CKEDITOR.replace("n_content", {
-								            resize_enabled: false,
-								            enterMode: CKEDITOR.ENTER_BR,
-								            shiftEnterMode: CKEDITOR.ENTER_P,
-								            filebrowserUploadUrl: "/admin/notice/ckeditorUpload"
-								        });
-								    </script>
-								 </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                    <div class="text-right">
-                        <button type="button" id="cancelBtn" class="btn blue rounded">취소</button>
-                        <button type="button" id="insertBtn" class="btn blue rounded">확인</button>
-                        <button type="button" id="listBtn" class="btn blue rounded">목록</button>
-                    </div>
-                </form>
+							<div class="contentTB">
+								<div class="contentBtn text-right">
+				                    <button type="button" id="cancelBtn" class="btn sty_btn">취소</button>
+				                    <button type="button" id="insertBtn" class="btn sty_btn">확인</button>
+				                	<button type="button" id="listBtn" class="btn sty_btn">목록</button>
+				                </div>
+								<form id="f_updateForm" name="f_updateForm" class="form-horizontal">
+					                <input type="hidden" id="n_num" name="n_num" value="${updateData.n_num}" />    
+					                <table class="table table-bordered">
+					                    <colgroup>
+					                        <col width="20%"/>
+					                        <col width="80%"/>
+					                    </colgroup>
+				                        <tbody>
+							                 <tr>
+						                     	<td class="text-center">공지 제목</td>
+						                        <td class="text-left"><input type="text" id="n_title" name="n_title" class="form-control" value="${updateData.n_title }" /></td>
+						                     </tr>
+						                     <tr>
+						                     	<td class="text-center">공지 내용</td>
+						                     	<td>
+													<textarea name="n_content" id="n_content" >${updateData.n_content }</textarea>
+													<script>
+													    CKEDITOR.replace("n_content", {
+													        resize_enabled: false,
+												            enterMode: CKEDITOR.ENTER_BR,
+												            shiftEnterMode: CKEDITOR.ENTER_P,
+												            filebrowserUploadUrl: "/admin/notice/ckeditorUpload"
+												        });
+													</script>
+												</td>
+						                     </tr>
+						                 </tbody>
+					              	</table> 
+					        	</form>
+				        	</div>
 						</div>
 					</div>
 				</div>

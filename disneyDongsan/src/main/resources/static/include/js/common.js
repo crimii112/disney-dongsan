@@ -22,6 +22,18 @@ function checkForm(item, msgArea, msg){
 	}
 };
 
+function checkPrice(item, msg) {
+	let reg = /^[0-9]+$/;;
+	if (!reg.test($(item).val())) {
+		alert(msg + " 입력해주세요.");
+		$(item).val("");
+		$(item).focus();
+		return false;
+	} else {
+		return true;
+	}
+};
+
 function idValidation(item){
 	if($(item).val().length < 5 || $(item).val().length > 12){
 		alert("아이디는 5자 이상 12자 이하로 작성해주세요");
