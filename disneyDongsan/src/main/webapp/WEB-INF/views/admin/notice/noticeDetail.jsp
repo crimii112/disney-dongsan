@@ -14,6 +14,7 @@
       
       <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css"/>
       <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css"/>
+      <link rel="stylesheet" href="/resources/include/css/commonList.css">
       
       <script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
       <script type="text/javascript" src="/resources/include/js/common.js"></script>

@@ -1,6 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
+<style type="text/css">
+
+	.choiceDelete_btn{
+		 display: inline-block;
+	     height: 32px;
+	     width: 100px;
+	     font-weight: 600;
+	     font-size: 15px;
+	     line-height: 20px;
+	     margin-left: 10px;
+	     background-color: #c3daf7;
+	     float: right;
+	     margin : 10px
+	}
+	.choiceDelete_btn:hover{
+     border: 2px solid #c3daf7;
+     background-color: white;
+   }
+
+</style>
+
 <script type="text/javascript">
 	/*체크박스 전체체크와 부분체크*/
 	$(function() {
@@ -23,7 +47,7 @@
 		});
 
 		let f_search = $("#f_search");
-		$(".paginate_button a").click(function(e) {
+		$(".page-item a").click(function(e) {
 			e.preventDefault();
 			f_search.find("input[name='pageNum']").val($(this).attr("href"));
 			f_search.attr("action", "/admin/answerList");
@@ -126,10 +150,10 @@
 						<div class="card-body">
 							<div class="text-right">
 								<input type="button" id="deleteFormBtn" value="선택삭제"
-									onclick="deleteValue();" />
+									onclick="deleteValue();" class='btn choiceDelete_btn'/>
 							</div>
 							<div id="qaList">
-								<table summary="게시판 리스트" class="table">
+								<table summary="게시판 리스트" class="table table-hover admin_table">
 									<thead>
 										<tr>
 											<th class="col-md-1 text-center">No</th>
@@ -169,10 +193,10 @@
 								</table>
 							</div>
 							<div class="text-center">
-								<ul class="pagination">
+								<ul class="pagination justify-content-center">
 									<!--  이전 바로가기 10개 존재 여부를 prev 필드의 값으로 확인. -->
 									<c:if test="${pageMaker.prev}">
-										<li class="paginate_button previous"><a
+										<li class="page-item previous"><a class="page-link" 
 											href="${pageMaker.startPage - 1}">Previous</a></li>
 									</c:if>
 
@@ -180,14 +204,14 @@
 									<c:forEach var="num" begin="${pageMaker.startPage}"
 										end="${pageMaker.endPage}">
 										<li
-											class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-											<a href="${num}">${num}</a>
+											class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+											<a class="page-link" href="${num}">${num}</a>
 										</li>
 									</c:forEach>
 
 									<!--  다음 바로가기 10개 존재 여부를 next 필드의 값으로 확인. -->
 									<c:if test="${pageMaker.next}">
-										<li class="paginate_button next"><a
+										<li class="page-item next"><a class="page-link" 
 											href="${pageMaker.endPage + 1 }">Next</a></li>
 									</c:if>
 								</ul>

@@ -3,6 +3,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 
+	<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
  		<style type="text/css">
 			.ride{
 			  text-align: center;
@@ -97,7 +99,7 @@
 				});
 				
 		         /* 삭제 버튼 클릭 시 처리 이벤트 */
-		         $(".rideDeleteBtn").click(function(){
+		         $(".delete_btn").click(function(){
 		        	 if(confirm("정말 삭제하시겠습니까?")){
 			        	let rideNo = $(this).parents("tr").attr("data-num");
 						$("#rideNo").val(rideNo);
@@ -158,29 +160,27 @@
 				<input type="hidden" name="rideNo" id="rideNo" /> <input
 					type="hidden" name="rideImage" id="rideImage" />
 			</form>
-			<div class="text-right">
-				<button type="button" id="rideInsertBtn">추가</button>
-			</div>
 			<%-- ========================검색 폼 태그================================== --%>
- 			<div id="boardSearch" class="text-right">
+ 			<div id="boardSearch" class="search_wrap">
 				<form id="f_search" name="f_search" class="form-inline">
 					<input type="hidden" name="pageNum" id="pageNum"
 						value="${pageMaker.cvo.pageNum}" /> <input type="hidden"
 						name="amount" id="amount" value="${pageMaker.cvo.amount}" />
-					<div class="form-group">
-						<label>검색조건</label> <select id="search" name="search" class="form-control">
+					<div class="search_input">
+						<select id="search" name="search" class="form-control">
 							<option value="all">전체조회</option>
 							<option value="rideTitle">기구이름</option>
 						</select> <input type="text" name=keyword id="keyword" value="검색어를 입력하세요"
 							class="form-control" />
-						<button type="button" id="searchData" class="btn btn-success">검색</button>
+						<button type="button" id="searchData" class="btn search_btn">검색</button>
+						<button type="button" id="rideInsertBtn" class="btn insert_btn">추가</button>
 	
 					</div>
 				</form>
 			</div>
 			<%-- ======================== 리스트 시작 ============================== --%>
 			<div id="boardList" class="table-heigh">
-				<table summary="게시판 리스트" class="table table-striped">
+				<table summary="게시판 리스트" class="table table-hover admin_table">
 					<thead>
 						<tr>
 							<th data-value="b_num" class="order text-center col-md-1">기구번호</th>
@@ -210,7 +210,7 @@
 										<td class="text-left">${ride.rideSubTitle}</td>
 										<td class="text-left">${ride.rideContent}</td>
 										<td class="text-center"><input type="button"
-											class="rideDeleteBtn" value="X" /></td>
+											class="btn delete_btn" value="X" /></td>
 									</tr>
 								</c:forEach>
 							</c:when>
@@ -227,7 +227,7 @@
 	
 			<%--=================== 페이징 출력 시작 ================ --%>
 			<div class="text-center">
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 					<!-- 이전 바로가기 10개 존재 여부를 prew 팔드의 값으로 확인 -->
 					<c:if test="${pageMaker.prev}">
 						<li class="page-item previous">

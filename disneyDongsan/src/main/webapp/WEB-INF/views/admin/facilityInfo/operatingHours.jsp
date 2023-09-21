@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+
 	<style>	
 		body{margin: 0px; padding: 0px;}
 		.container h1{text-align: center;}
 		#list{width:400px; margin-left:auto;margin-right:auto;}
 		#hoursTable{width: 400px;border:1px solid black;margin-left:auto;margin-right:auto;}
-		#update{position: absolute; margin-left:285px;}
+		#update{float: right;}
 		tr{border: 1px solid black;}
 		
 		th, td{border: 1px solid black;}

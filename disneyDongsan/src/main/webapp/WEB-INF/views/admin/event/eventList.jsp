@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
  
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+ 
 </head>
 <body>
 <%@ include file="/WEB-INF/views/admin-template/header.jsp"%>
@@ -17,29 +19,27 @@
 						<div class="card-body">
 							<div class="event_header">
             <%-- ================= 검색 기능 시작============================= --%>
-	   		<div id="eventSearch" class="text-right">
+	   		<div id="eventSearch" class="search_wrap">
 		   		<form id="searchForm" name="searchForm" class="form-inline">
 		   			<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum }">
 		   			<input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount }">
-		   			<div class="form-group">
+		   			<div class="search_input">
 			   			<select id="search" name="search" class="form-control" >
 			   				<option value="all">전체 목록 조회</option>
 			   				<option value="e_title">제목</option>
 			   				<option value="e_content">내용</option>
 			   			</select>
 			   			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력해 주세요" class="form-control"/>
-			   			<button type="button" id="searchBtn" class="btn btn-success">검색</button>
+			   			<button type="button" id="searchBtn" class="btn search_btn">검색</button>
+			   			<button type="button" id="insertBtn" class="btn insert_btn">추가</button>
+                		<input type="button" id="deleteFormBtn" class="btn delete_btn" value="삭제" onclick="deleteSelectedItems();"/>
 		   			</div>
 		   		</form>
 	   		</div>
-            
-            <div class="text-right">
-                <button type="button" id="insertBtn" class="btn blue rounded">추가</button>
-                <input type="button" id="deleteFormBtn" value="삭제" onclick="deleteSelectedItems();"/>
-            </div>
+
         </div>
         <div>
-            <table class="table table-striped">
+            <table class="table table-hover admin_table">
                 <thead>
                     <tr class="text-center">
                     	<th><input type="checkbox" id="allCheck" name="allCheck" class="text-left"/></th>
@@ -56,7 +56,7 @@
                         <c:when test="${not empty eventList }">
                             <c:forEach var="event" items="${eventList }" varStatus="status">
                                 <tr class="text-center" data-num="${event.e_no }">
-                                	<td><input class="text-left" name="RowCheck" type="checkbox" value="${event.e_no}"/></td>
+                                	<td><input class="text-center" name="RowCheck" type="checkbox" value="${event.e_no}"/></td>
                                     <td>${count-status.index}</td>
                                     <td class="goDetail text-left">${event.e_title }</td>
                                     <td class="day">${event.e_start }</td>
@@ -80,22 +80,22 @@
         
         <%--=======================페이징 출력 시작================= --%>
    		<div class="text-center">
-   			<ul class="pagination">
+   			<ul class="pagination justify-content-center">
    				<c:if test="${pageMaker.prev }">
-   					<li class="paginate_btn previous">
-   						<a href="${pageMaker.startPage - 1 }">Previous</a>
+   					<li class="page-item previous">
+   						<a class="page-link" href="${pageMaker.startPage - 1 }">Previous</a>
    					</li>
    				</c:if>
    				
    				<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-   					<li class="paginate_btn ${pageMaker.cvo.pageNum == num ? 'active' : '' }">
-   						<a href="${num }">${num }</a>
+   					<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active' : '' }">
+   						<a class="page-link" href="${num }">${num }</a>
    					</li>
    				</c:forEach>
    				
    				<c:if test="${pageMaker.next }">
-   					<li class="paginate_btn next">
-   						<a href="${pageMaker.endPage + 1 }">Next</a>
+   					<li class="page-item next">
+   						<a class="page-link" href="${pageMaker.endPage + 1 }">Next</a>
    					</li>
    				</c:if>
    			</ul>
@@ -106,6 +106,7 @@
 			</div>
 		</section>
 	</main>
+	
 	<%@ include file="/WEB-INF/views/admin-template/footer.jsp"%>
 
 	<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
@@ -190,7 +191,7 @@
 				}
 			};
 			// 페이지 버튼 클릭시
-			$(".paginate_btn a").click(function(e){
+			$(".page-item a").click(function(e){
 				e.preventDefault();
 				$("#searchForm").find("input[name='pageNum']").val($(this).attr("href"));
 				goPage();
