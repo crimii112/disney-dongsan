@@ -14,7 +14,6 @@
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="../resources/include/css/goods/client/basket.css">
-		<link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
 		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css" />
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
@@ -122,6 +121,10 @@
 					$(".delete_basket_id").val(basket_id);
 					$(".quantity_delete_form").submit();
 				});
+				//쇼핑 계속하기
+				$(".cart__bigorderbtn").on("click", function(){
+					location.href = "/goods/goodsList";
+				})
 				
 				//주문하기버튼
 				$(".order_btn").on("click", function(){
@@ -197,7 +200,17 @@
                             <li>오늘출발 상품은 판매자 설정 시점에 따라 오늘출발 여부가 변경될 수 있으니 주문 시 꼭 다시 확인해 주시기 바랍니다.</li>
                         </ul>
                     </div>
-                    <table class="cart__list">
+                    <table class="cart__list text-center">
+                    		<colgroup>
+						    	<col width="5%" />
+						        <col width="15%" />
+						        <col width="30%" />
+						        <col width="10%" />
+						        <col width="5%" />
+						        <col width="15%" />
+						        <col width="20%" />
+						    </colgroup>
+                    
                        
                             <thead>
                                 <tr>
@@ -205,7 +218,7 @@
 										<input type="checkbox" class="all_check_input input_size_20" checked="checked"><span class="all_chcek_span"></span>
 									</td>
                                     <td>상품 이미지</td>
-                                    <td colspan="2">상품명</td>
+                                    <td class="goods_name_table">상품명</td>
                                     <td>상품금액</td>
                                     <td>수량</td>
                                     <td>합계</td>
@@ -223,7 +236,7 @@
 	                                		<input type="hidden" class="individual_totalPrice_input" value="${basket.g_price * basket.g_count}">
 	                                		<input type="hidden" class="individual_g_id_input" value="${basket.g_id}">
 	                                	</td>
-	                                	<td></td>
+	                                	
 	                                    <td>
 	                                    	<div class="item-img">
 												<c:if test="${not empty basket.g_image}">
@@ -234,7 +247,7 @@
 												</c:if>
 											</div>
 	                                    </td>
-	                                    <td>${basket.g_name}</td>
+	                                    <td class="table_text_align_center">${basket.g_name}</td>
 	                                    <td><span class="discount_price_number"><fmt:formatNumber value="${basket.g_price}" pattern="#,### 원" /></span><br/>
 	                                    </td>
 	                                    <td class="td_width_4 table_text_align_center">
@@ -259,16 +272,14 @@
 
                             <tfoot>
                                 <tr>
+                                		<td></td><td></td><td></td>
                                 		<td>
-                                		</td>
+											배송비 : <span class="delivery_price"></span>원
+										</td>
+										<td>상품개수 : <span class="totalCount_span"></span>개</td>
 										<td>
 											총 가격 : <span class="totalPrice_span"></span> 원
 										</td>
-										<td>
-											배송비 : <span class="delivery_price"></span>원
-										</td>
-
-										<td>상품개수 : <span class="totalCount_span"></span>개</td>
 										<td>총 결제 할 금액<span class="finalTotalPrice_span"></span> 원</td>
 
                                 </tr>

@@ -71,7 +71,7 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<h1> 이벤트 수정 </h1>
+							<h3> 이벤트 수정 </h3>
 				<table summary="게시판 리스트" class="table table-hover admin_table">
 					<thead>
 						<tr>
@@ -109,7 +109,7 @@
 				<br/>
 				<br/>
 				<br/>
-				<h1> 배너 수정 </h1>
+				<h3> 배너 수정 </h3>
 				<form name="benerupdateForm" id="benerupdateForm">
 				<input type="hidden" name="main_bener_no" id="main_bener_no" /> 
 				<input type="hidden" name="main_event_bener_image" id="main_event_bener_image" />

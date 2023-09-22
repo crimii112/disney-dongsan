@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <link rel="stylesheet" href="../resources/include/css/goods/admin/deliveryDetail.css">
 <link rel="stylesheet" href="/resources/include/css/commonDetail.css"/>
+
+<style type="text/css">
+	.sty_btn{
+		width: 100px;
+	}
+</style>
 
 <script type="text/javascript">
 	$(function(){
