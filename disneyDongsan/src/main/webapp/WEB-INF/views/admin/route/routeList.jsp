@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
    <style type="text/css">
       td img{
          width: 150px;
@@ -12,7 +15,6 @@
          width:1300px;
          margin: auto;
       }
-      #deleteFormBtn{float: right; margin: 10px;}
   
    </style>
    <script type="text/javascript">
@@ -80,7 +82,7 @@
 
          });
          
-         $(".paginate_button a").click(function(e){
+         $(".page-item a").click(function(e){
             e.preventDefault();
             $("#f_search").find("input[name='pageNum']").val($(this).attr("href"));
             goPage();
@@ -241,13 +243,12 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-         					<div id="boardSearch" class="text-right">
+         					<div class="search_wrap" id="boardSearch" class="text-right">
                <form id="f_search" name="f_search" class="form-inline">
                   <%--페이징 처리를 위한 파라미터 --%>
                   <input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum}" />
                   <input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount}" />
-                  <div class="form-group">
-                     <label>검색조건</label> 
+                  <div class="search_input">
                      <select id="search" name="search" class="form-control">
                         <option value="all">전체조회</option>
                         <option value="routeTitle">제목</option>
@@ -255,15 +256,15 @@
                         <option value="memberId">작성자</option>
                      </select> 
                      <input type="text" name=keyword id="keyword" value="검색어를 입력하세요" class="form-control" />
-                     <button type="button" id="searchData" class="btn btn-success">검색</button>
+                     <button type="button" id="searchData" class="btn search_btn">검색</button>
+                     <input type="button" id="deleteFormBtn" class="btn delete_btn" value="삭제" onclick="deleteSelectedItems();"/>
       
                   </div>
                </form>
             </div>
             <%-- ======================== 리스트 시작 ============================== --%>
             <div id="boardList" class="table-heigh">
-            <input type="button" id="deleteFormBtn" value="선택삭제" onclick="deleteSelectedItems();"/>
-               <table summary="게시판 리스트" class="table table-striped">
+               <table summary="게시판 리스트" class="table table-hover admin_table">
                   <thead>
                      <tr>
                         <th data-value="b_num" class="order text-center col-md-1">글번호</th>
@@ -312,25 +313,25 @@
             
             <%--=================== 페이징 출력 시작 ================ --%>
             <div class="text-center">
-               <ul class="pagination">
+               <ul class="pagination justify-content-center">
                   <!-- 이전 바로가기 10개 존재 여부를 prew 팔드의 값으로 확인 -->
                   <c:if test="${pageMaker.prev}">
-                     <li class="paginate_button previous">
-                        <a href="${pageMaker.startPage -1}">Previous</a>
+                     <li class="page-item previous">
+                        <a class="page-link" href="${pageMaker.startPage -1}">Previous</a>
                      </li>
                   </c:if>
                   
                   <!-- 바로가기 번호 출력 -->
                   <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                     <li class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-                        <a href="${num}">${num}</a>
+                     <li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+                        <a class="page-link" href="${num}">${num}</a>
                      </li>
                   </c:forEach>
                   
                   <!-- 다음 바로가기 10개 존재 여부를 next 필드의 값으로 확인. -->
                   <c:if test="${pageMaker.next}">
-                     <li class="paginate_button next">
-                        <a href="${pageMaker.endPage +1}">Next</a>
+                     <li class="page-item next">
+                        <a class="page-link" href="${pageMaker.endPage +1}">Next</a>
                      </li>
                   </c:if>
                </ul>

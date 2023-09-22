@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
 <script>
 	$(function() {
 		/* 페이지 버튼 클릭 시 이벤트*/
-		$(".paginate_button a").click(function(e) {
+		$(".page-item a").click(function(e) {
 			e.preventDefault();
 			$("#m_search").find("input[name='pageNum']").val($(this).attr("href"));
 			goPage();
@@ -37,7 +40,7 @@
 								<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum}"> 
 								<input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount}">
 							</form>
-							<table class="table">
+							<table class="table table-hover admin_table">
 								<thead>
 									<tr>
 										<th scope="col" class="text-center">번호</th>
@@ -79,25 +82,25 @@
 
 							<%-- ===================== 페이징 출력 시작 ===================== --%>
 							<div class="text-center">
-								<ul class="pagination">
+								<ul class="pagination justify-content-center">
 									<c:if test="${pageMaker.prev}">
-										<li class="paginate_button previous">
-											<a href="${pageMaker.startPage - 1}">Previous</a>
+										<li class="page-item previous">
+											<a class="page-link" href="${pageMaker.startPage - 1}">Previous</a>
 										</li>
 									</c:if>
 
 									<!-- 바로가기 번호 출력 -->
 									<c:forEach var="num" begin="${pageMaker.startPage}"
 										end="${pageMaker.endPage}">
-										<li class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active' : ''}">
-											<a href="${num}">${num}</a>
+										<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active' : ''}">
+											<a class="page-link" href="${num}">${num}</a>
 										</li>
 									</c:forEach>
 
 									<!-- 다음 바로가기 10개 존재 여부를 next 필드의 값으로 확인 -->
 									<c:if test="${pageMaker.next}">
-										<li class="paginate_button next">
-											<a href="${pageMaker.endPage + 1}">Next</a>
+										<li class="page-item next">
+											<a class="page-link" href="${pageMaker.endPage + 1}">Next</a>
 										</li>
 									</c:if>
 								</ul>

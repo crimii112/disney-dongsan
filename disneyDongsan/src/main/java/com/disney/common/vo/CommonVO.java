@@ -21,6 +21,12 @@ public class CommonVO {
 	private String ticketSearch = "";
 	private String cancelSearch = "";
 	
+	// 이전글 다음글
+	   private int prevNum = 0;
+	   private int nextNum = 0;
+	   private String prevTitle = "";
+	   private String nextTitle = "";
+	   
 	public CommonVO() {
 		this(1, 10);
 	}

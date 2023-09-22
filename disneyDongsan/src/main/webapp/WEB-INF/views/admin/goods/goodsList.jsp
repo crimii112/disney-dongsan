@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 
-<link rel="stylesheet" href="../resources/include/css/goods/admin/goodsList.css">
+<link rel="stylesheet" href="../resources/include/css/commonList.css">
 
 <script type="text/javascript">
 	$(function(){
@@ -67,7 +67,7 @@
 			$("#detailForm").submit();
 		});
 		
-		$(".pageMaker_btn a").click(function(e){
+		$(".page-item a").click(function(e){
 			e.preventDefault();
 			$("#searchForm").find("input[name='pageNum']").val($(this).attr("href"));
 			goPage();
@@ -109,8 +109,32 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="card">
+					
+						<!-- 검색 영역 -->
+					    <div class="search_wrap">
+						    <form id="searchForm" class="searchForm" action="/admin/goodsList" method="get">
+							    <div class="search_input">
+									<select id="search" name="search" class="form-control">
+										<option value="all">전체 조회</option>
+										<option value="g_name">제목</option>
+										<option value="g_detail">상품설명</option>
+									</select>
+								    <input type="text" name="keyword" id="keyword" placeholder="검색어를 입력해 주세요" class="form-control" value='<c:out value="${pageMaker.cvo.keyword}"></c:out>'>
+								    <input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cvo.pageNum }"></c:out>'>
+								    <input type="hidden" name="amount" value='${pageMaker.cvo.amount}'>
+								    <input type="hidden" name="type" value="G">
+								    <button type="button" class='btn search_btn'>검 색</button>
+								    <button  type="button" class='btn insert_btn'>등 록</button>                				
+							    </div>
+						    </form>
+					    </div>
+					
+					
+					
+					
+					
 						<div class="card-body">
-							<table class="table table-hover goods_table">
+							<table class="table table-hover admin_table">
 		                    		<thead>
 		                    			<tr>
 											<td class="th_column_1">상품 번호</td>
@@ -152,47 +176,29 @@
 									</tbody>
 		                    	</table>
 						
-							<!-- 검색 영역 -->
-	                	<div class="search_wrap">
-	                		<form id="searchForm" class="searchForm" action="/admin/goodsList" method="get">
-	                			<div class="search_input">
-		                			<select id="search" name="search" class="form-control">
-										<option value="all">전체</option>
-										<option value="g_name">제목</option>
-										<option value="g_detail">상품설명</option>
-									</select>
-	                    			<input type="text" name="keyword" id="keyword" value='<c:out value="${pageMaker.cvo.keyword}"></c:out>'>
-	                    			<input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cvo.pageNum }"></c:out>'>
-	                    			<input type="hidden" name="amount" value='${pageMaker.cvo.amount}'>
-	                    			<input type="hidden" name="type" value="G">
-	                    			<button type="button" class='btn search_btn'>검 색</button>
-	                    			<button  type="button" class='btn insert_btn'>등 록</button>                				
-	                			</div>
-	                		</form>
-	                	</div>
 	                	
 	                	<!-- 페이지 이름 인터페이스 영역 -->
 	                	<div class="pageMaker_wrap">
-	                		<ul class="pageMaker">
+	                		<ul class="pagination justify-content-center">
 	                			
 	                			<!-- 이전 버튼 -->
 	                			<c:if test="${pageMaker.prev }">
-	                				<li class="pageMaker_btn prev">
-	                					<a href="${pageMaker.startPage -1}">이전</a>
+	                				<li class="page-item prev">
+	                					<a class="page-link" href="${pageMaker.startPage -1}">이전</a>
 	                				</li>
 	                			</c:if>
 	                			
 	                			<!-- 페이지 번호 -->
 	                			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-	                				<li class="pageMaker_btn ${pageMaker.cvo.pageNum == num ? 'active':''}">
-	                					<a href="${num}">${num}</a>
+	                				<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+	                					<a class="page-link" href="${num}">${num}</a>
 	                				</li>	
 	                			</c:forEach>
 	                		
 		                    	<!-- 다음 버튼 -->
 		                    	<c:if test="${pageMaker.next}">
-		                    		<li class="pageMaker_btn next">
-		                    			<a href="${pageMaker.endPage + 1 }">다음</a>
+		                    		<li class="page-item next">
+		                    			<a class="page-link" href="${pageMaker.endPage + 1 }">다음</a>
 		                    		</li>
 		                    	</c:if>
 		                    </ul>

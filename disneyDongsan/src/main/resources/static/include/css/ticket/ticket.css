@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+#toTicketimg {
+	width: 330px;
+	margin: 30px 0 10px 0;
+}
+
+.toTicket {
+	/*width: 400px;*/
+	/*height: 300px;
+	border: 1px solid lightgray;
+	text-align: center;
+	display: inline-block;*/
+	/*margin: 10px;*/
+}
+
+.toTicketdiv{
+	width: 400px;
+	height: 300px;
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	text-align: center;
+	display: inline-block;
+	margin: 60px 0;
+}
+
+table tr td{
+	/*text-align: center;*/
+	padding: 3px 0;
+}
+
+.td_right{
+	text-align: right;
+}
+
+#dongsanimg{
+	width: 553px;
+}
+
+.pricetable{
+	width: 553px;
+}
+
+#div_calendar{
+	background-color: lavender;
+	border-radius: 7px;
+}
+
+#calendar{
+	text-align: center;
+	border: 5px solid lavender;
+	border-collapse: collapse;
+	border-radius: 7px;
+}

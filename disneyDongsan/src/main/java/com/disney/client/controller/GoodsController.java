@@ -3,10 +3,12 @@ package com.disney.client.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,9 +17,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.disney.client.service.BasketService;
 import com.disney.client.service.GoodsService;
+import com.disney.client.service.MypageGoodsReviewService;
 import com.disney.client.service.OrderService;
 import com.disney.common.vo.PageDTO;
 import com.disney.vo.BasketVO;
+import com.disney.vo.GoodsReviewVO;
 import com.disney.vo.GoodsVO;
 import com.disney.vo.MemberVO;
 import com.disney.vo.OrderPayVO;
@@ -42,6 +46,9 @@ public class GoodsController {
 	
 //	@Setter(onMethod_ = @Autowired)
 //	private MemberService memberService;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MypageGoodsReviewService mypageGoodsService;
 	
 	
 	
@@ -69,6 +76,20 @@ public class GoodsController {
 		model.addAttribute("detail", detail);
 		
 		return "client/goods/goodsDetail";
+	}
+	
+	
+	// 굿즈 디테일 리뷰
+	@ResponseBody
+	@GetMapping(value="/all/{g_id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<GoodsReviewVO> goodsReviewList(@PathVariable("g_id") Integer g_id, GoodsReviewVO gvo){
+		log.info("list 호출 성공");
+		
+		List<GoodsReviewVO> entity = null;
+		gvo.setG_id(g_id);
+		entity = mypageGoodsService.goodsReviewList(gvo);
+		
+		return entity;
 	}
 	
 	

@@ -127,9 +127,33 @@
 				$(".order_btn").on("click", function(){
 					let form_contents ='';
 					let orderNumber = 0;
+					let state = false;	
 					$(".basket_info_td").each(function(index, element){
+						if($('input:checkbox[name=basket_checkbox]:checked').length > 0){
+							if($(element).find(".individual_basket_checkbox").is(":checked") === true){
+								
+								let g_id = $(element).find(".individual_g_id_input").val();
+								let g_count = $(element).find(".individual_g_count_input").val();
+								
+								let g_id_input = "<input name='orders[" + orderNumber + "].g_id' type='hidden' value='" + g_id + "'>";
+								form_contents += g_id_input;
+								
+								let g_count_input = "<input name='orders[" + orderNumber + "].g_count' type='hidden' value='" + g_count + "'>";
+								form_contents += g_count_input;
+								
+								orderNumber += 1;
+									
+								state = true;
+								
+							}
+						}else {
+							state = false;
+						}
 						
-						if($(element).find(".individual_basket_checkbox").is(":checked") === true){
+					
+						
+						
+						/* if($(element).find(".individual_basket_checkbox").is(":checked") === true){
 							
 							let g_id = $(element).find(".individual_g_id_input").val();
 							let g_count = $(element).find(".individual_g_count_input").val();
@@ -141,13 +165,22 @@
 							form_contents += g_count_input;
 							
 							orderNumber += 1;
-
-						}
+								
+							$(".order_form").html(form_contents);
+							$(".order_form").submit();
+						}else {
+							alert("주문할 상품이 없습니다.")
+						} */
 					});
 					
-					$(".order_form").html(form_contents);
-					$(".order_form").submit();
-
+					if(state == true){
+						$(".order_form").html(form_contents);
+						$(".order_form").submit();
+					} else {
+						alert("주문할 상품이 없습니다.");
+					}
+					
+					
 				});
 				
 			}); //최상위 종료
@@ -184,7 +217,7 @@
                             	<c:forEach items="${basketInfo}" var="basket">
 	                                <tr class="cart__list__detail">
 	                                	<td class="td_width_1 basket_info_td">
-	                                		<input type="checkbox" class="individual_basket_checkbox input_size_20" checked="checked">
+	                                		<input type="checkbox" class="individual_basket_checkbox input_size_20"  name="basket_checkbox" checked="checked">
 	                                		<input type="hidden" class="individual_g_price_input" value="${basket.g_price}">
 	                                		<input type="hidden" class="individual_g_count_input" value="${basket.g_count}">
 	                                		<input type="hidden" class="individual_totalPrice_input" value="${basket.g_price * basket.g_count}">
@@ -226,9 +259,8 @@
 
                             <tfoot>
                                 <tr>
-                                    <td colspan="3"><input type="checkbox"/> 
-                                    <button class="cart__list__optionbtn">선택상품 삭제</button>
-                                    </td>
+                                		<td>
+                                		</td>
 										<td>
 											총 가격 : <span class="totalPrice_span"></span> 원
 										</td>

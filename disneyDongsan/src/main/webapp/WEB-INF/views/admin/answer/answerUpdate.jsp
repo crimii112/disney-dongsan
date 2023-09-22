@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 		<script type="text/javascript">
 			$(function(){
 				
@@ -45,36 +46,35 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="contentTB text-center">
-		<form id="an_updateForm" name="an_updateForm">
-			<input type="hidden" name="qa_no" id="qa_no" value="${updateData.qa_no}">
-			<table class="table table-bordered">
-				<tr>
-					<td class="text-center">아이디</td>
-					<td class="text-left">${updateData.member_id}</td>
-				</tr>
-				<tr>
-					<td class="text-center">제목</td>
-					<td class="text-left">${updateData.title}</td>
-				</tr>
-				<tr>
-					<td class="text-center">내용</td>
-					<td class="text-left">${updateData.qa_content}</td>
-				</tr>
-				<tr class="text-tr-height">
-					<td>답변</td>
-					<td colspan="1" class="text-left"><textarea name="ask"
-						id="ask" class="form-control" rows="8">${updateData.ask}</textarea>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
-
-	<div class="contentBtn text-right">
-		<button type="button" id="answerUpdateBtn" class="btn btn-success">답변하기</button>
-		<button type="button" id="answerResetBtn" class="btn btn-success">다시쓰기</button>
-		<button type="button" id="answerListBtn" class="btn btn-success">목록</button>
-	</div>
+								<div class="contentBtn text-right">
+									<button type="button" id="answerUpdateBtn" class="btn sty_btn">답변</button>
+									<button type="button" id="answerResetBtn" class="btn sty_btn">취소</button>
+									<button type="button" id="answerListBtn" class="btn sty_btn">목록</button>
+								</div>
+								<form id="an_updateForm" name="an_updateForm">
+									<input type="hidden" name="qa_no" id="qa_no" value="${updateData.qa_no}">
+									<table class="table table-bordered">
+										<tr>
+											<td class="text-center">아이디</td>
+											<td class="text-left">${updateData.member_id}</td>
+										</tr>
+										<tr>
+											<td class="text-center">제목</td>
+											<td class="text-left">${updateData.title}</td>
+										</tr>
+										<tr>
+											<td class="text-center">내용</td>
+											<td class="text-left">${updateData.qa_content}</td>
+										</tr>
+										<tr class="text-tr-height">
+											<td>답변</td>
+											<td colspan="1" class="text-left"><textarea name="ask"
+												id="ask" class="form-control" rows="8" placeholder="답변 내용 입력">${updateData.ask}</textarea>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

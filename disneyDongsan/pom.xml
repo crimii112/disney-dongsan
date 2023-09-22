@@ -90,6 +90,40 @@
 			<artifactId>httpclient</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<!-- 위지윅 -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>pen</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+		
+		<!-- 추가? -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-loader-tools</artifactId>
+		</dependency>
+		
+		<!-- commons-lang3 -->
+	    <dependency>
+	        <groupId>org.apache.commons</groupId>
+	        <artifactId>commons-lang3</artifactId>
+	        
+	    </dependency>
+	
+	    <!-- commons-fileupload -->
+	    <dependency>
+	        <groupId>commons-fileupload</groupId>
+	        <artifactId>commons-fileupload</artifactId>
+	        <version>1.3.3</version>
+	    </dependency>
+	
+	    <!-- gson -->
+	    <dependency>
+	        <groupId>com.google.code.gson</groupId>
+	        <artifactId>gson</artifactId>
+	        
+	    </dependency>
 
 	<build>
 		<plugins>

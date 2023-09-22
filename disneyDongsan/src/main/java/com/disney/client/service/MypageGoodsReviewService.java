@@ -21,11 +21,4 @@ public interface MypageGoodsReviewService {
 	
 	public int userReviewDelete(GoodsReviewVO gvo) throws Exception;
 	
-	
-	
-	
-	
-	
-	
-
 }
