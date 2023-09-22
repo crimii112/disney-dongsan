@@ -71,36 +71,41 @@
 	                    		</div>
 								<form action="/admin/goodsDetail" id="goodsDetail">
 		                    		 <table class="table table-bordered">
+		                    		 <colgroup>
+					                   <col width="20%" />
+					                   <col width="80%" />
+					                </colgroup>
+		                    		 
 		                              <tr>
-		                                 <td>상품 이름</td>
+		                                 <td class="text-center">상품 이름</td>
 		                                 <td>${detail.g_name}</td>
 		                              </tr>
 		                              <tr>
-		                                 <td>상품 상세 정보</td>
+		                                 <td class="text-center">상품 상세 정보</td>
 		                                 <td>${detail.g_detail}</td>
 		                              </tr>
 		                              <tr>
-		                                 <td>상품 가격</td>
+		                                 <td class="text-center">상품 가격</td>
 		                                 <td>${detail.g_price}</td>
 		                              </tr>
 		                              <tr>
-		                                 <td>원산지</td>
+		                                 <td class="text-center">원산지</td>
 		                                 <td>${detail.g_origin}</td>
 		                              </tr>
 		                              <tr>
-		                                 <td>제조사</td>
+		                                 <td class="text-center">제조사</td>
 		                                 <td>${detail.g_company}</td>
 		                              </tr>
 		                              <tr>
-		                                 <td>배송업체</td>
+		                                 <td class="text-center">배송업체</td>
 		                                 <td>${detail.g_delivery}</td>
 		                              </tr>
 		                              <tr>
-		                                 <td>상품 이미지</td>
+		                                 <td class="text-center">상품 이미지</td>
 		                                 <td><img src="/dongsanStorage/goods/${detail.g_image}" /></td>
 		                              </tr>
 		                              <tr>
-		                                 <td>상품 상세 이미지</td>
+		                                 <td class="text-center">상품 상세 이미지</td>
 		                                 <td><img src="/dongsanStorage/goods/${detail.g_image_detail}" /></td>
 		                              </tr>
 		                           </table>          		
