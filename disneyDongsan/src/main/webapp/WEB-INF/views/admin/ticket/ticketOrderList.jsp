@@ -204,17 +204,14 @@
 										<input type="date" name="visitDateEnd" id="visitDateEnd" />
 											
 										<button type="button" id="searchData" class="btn search_btn">검색</button>
+										
+										🎫 : ${ticketListCnt}
+										<input type="button" id="cancelFormBtn" class="btn choiceDeleteBtn" value="선택한 티켓 예매 취소" />
 									</div>
 									
 								</form>
 
 								
-							</div>
-
-							<div class="text-left">
-								<%-- <label>게시물 수 :</label><input type="text" id="countTicket" name="countTicket" value="${ticketListCnt}" readonly="readonly" /> --%>
-								티켓 수 : ${ticketListCnt}
-								<input type="button" id="cancelFormBtn" class="btn choiceDeleteBtn" value="선택한 티켓 예매 취소" />
 							</div>
 
 							<div id="ticketOrderList" class="table-height">

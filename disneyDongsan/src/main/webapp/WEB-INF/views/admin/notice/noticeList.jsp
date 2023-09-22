@@ -296,9 +296,8 @@
 			   			<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cvo.pageNum }">
 			   			<input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount }">
 			   			<div class="search_input">
-			   				<div class="notice_quantity" >공지 갯수: ${total }</div>
 				   			<select id="search" name="search" class="form-control" >
-				   				<option value="all">전체 목록 조회</option>
+				   				<option value="all">전체 조회</option>
 				   				<option value="n_title">제목</option>
 				   				<option value="n_content">내용</option>
 				   			</select>

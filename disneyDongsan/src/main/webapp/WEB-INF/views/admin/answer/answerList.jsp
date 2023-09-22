@@ -9,7 +9,7 @@
 	.choiceDelete_btn{
 		 display: inline-block;
 	     height: 32px;
-	     width: 100px;
+	     width: 70px;
 	     font-weight: 600;
 	     font-size: 15px;
 	     line-height: 20px;
@@ -149,7 +149,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="text-right">
-								<input type="button" id="deleteFormBtn" value="선택삭제"
+								<input type="button" id="deleteFormBtn" value="삭제"
 									onclick="deleteValue();" class='btn choiceDelete_btn'/>
 							</div>
 							<div id="qaList">
