@@ -2,42 +2,22 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 	<style>	
-			.hours{
-				text-align: center;
-			}
-			.h_time img{
-			  width: 50px;
-			  height: 50px;
-			}
-			.container{
-			  margin-left:auto;margin-right:auto;
-			  width: 900px;
-			}
-					
-			
-			.container #title {
-				font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
-				padding: 50px;
-				
-			}
-			
+			.hours{text-align: center;}
+			.h_time img{ width: 80px; height: 80px;margin-bottom: 25px;}
+			#hoursTime{font-size: 60px;}
+			.container{ margin-left:auto;margin-right:auto; width: 900px;}
+			.container #title {font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;padding: 50px;}
 			
 			#t_body {
 				border-collapse: separate;
-				/* border-spacing: 0; */
 				font-size: 30px;
 				font-family: "맑은 고딕", 나눔고딕, 돋움, sans-serif;
 				width: 900px;
 				height: 500px;
 				border-spacing:5px; 
-
 			}
 			
-			#t_body thead tr:first-child {
-				background: #A4C3FF;
-				
-
-			}
+			#t_body thead tr:first-child {background: #A4C3FF;}
 			thead tr th{
 				text-align: center;	
 				border-radius: 10px;
@@ -54,29 +34,44 @@
 
 			}
 					
-			#t_body td:nth-child(7n+1) {
-				color: red;
-			}
-			
-			#t_body td:nth-child(7n) {
-				color: blue;
-			}
-			
-			td span{
-				text-align: center;	
-				color: black;
-			}
-			
-			
-
-			
-			.date_text span{
-				font-size: 30px;
-			}
-			.date_text span{
-				color: #6495ED;
-			}
-				
+			#t_body td:nth-child(7n+1) {color: red;}
+			#t_body td:nth-child(7n) {color: blue;}
+			td span{text-align: center;	color: black;}
+			.date_text span{font-size: 30px;}
+			.date_text span{color: #6495ED;}
+			.poo{width: 30px;margin-left: 10px;margin-right: 0;}
+			.btnS{display: inline-block;
+			   height: 40px;
+			   width: 70px;
+			   font-weight: 500;
+			   font-size: 20px;
+			   line-height: 20px;
+			   margin-bottom:10px;
+			   margin-left: 10px;
+			   color:white;
+			   background-color: #6495ED;  }	
+			.btnS:hover{
+					  border: 2px solid #c3daf7;
+					  background-color: white;
+					  color:black;
+					}
+			.ac{
+  display: inline-block;
+  transform-origin: center;
+  padding: 0 0.5rem;
+  animation: animate 3s infinite;
+}
+@keyframes animate{
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.10);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 	
 	</style>
 	</head>
@@ -88,7 +83,7 @@
  
 				<h1 class="selectDate" id="date_text">2023.08.23</h1>
 				<div class="h_time">
-					<h1>
+					<h1 class="ac">
 						<img src="/resources/images/facilityInfo/open.PNG" alt="/" />
 						<span id="hoursTime">10:00~20:00</span>
 						<img src="/resources/images/facilityInfo/close.PNG" alt="/" />
@@ -104,8 +99,8 @@
 		        <div class="date_text">
 		        	<span id="year"  >2020</span><span>-</span>
 		        	<span id="month"  onchange="changeMonth(); ">01</span>
-		        	<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
-		        	<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
+		        	<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" class="btn btnS" />
+		        	<input type="button" onclick="changeMonth(1);" id="fa2" value="" class="btn btnS" />
 		        </div>
 		      </div>
 		      <table id="t_body">
@@ -210,7 +205,7 @@
 		        h.push('<td style="background-color:#F7F5F5;"></td>');
 	        } else {
 	        	h.push('<td class="t_day" id="day' + data[i] + '" onclick="setDate(' + data[i] + ');" style="cursor:pointer;">' +
-	        		    data[i] + '<br />' +
+	        		    data[i] + '<span class="pooImg"></span>' +'<br />' +
 	        		    '<input type="hidden" class="dateValue" value="' + dayValue + '-' + ('0' + data[i]).slice(-2) + '">' +
 	        		    '<span class="time" id='+dayValue + '-' + ('0' + data[i]).slice(-2)+' style="font-size: 15px;"></span>' +
 	        		    '</td>'); 
@@ -235,7 +230,11 @@
 	    
 	    function setDate(day) {//선택할 날짜 가져가기
 	    	$(".t_day").css("backgroundColor", "#EBF5FF"); 
+	    	$(".poo").remove();
 	    	$("#day"+day).css("backgroundColor","#6495ED");
+	    	
+	    	$("#day" + day + " > span.pooImg").append('<img class="poo" src="/resources/images/facilityInfo/poo.PNG" alt="/" />');
+			
 			let text_month = current_month;
 			//let dateValue = $("#day" + day + " input[type=hidden]").val();
 	      	if(day<10) day = "0" + day;

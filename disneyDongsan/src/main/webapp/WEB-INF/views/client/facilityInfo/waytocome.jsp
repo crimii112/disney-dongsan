@@ -39,31 +39,17 @@
 		  font-size: 20px;
 		  font-weight: 600;
 		  color: #4B73E1;
-		} 
+		}
+		#title img{width: 150px; padding-left: 20px;}
 		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div class="div1">
-					<h1 id="title">오시는 길</h1>
+					<h1 id="title">오시는 길<img alt="이미지 파일" src="/resources/images/facilityInfo/mickey.PNG" /></h1>
 				<div class='dir'>
 					<img src="/resources/images/facilityInfo/map10.PNG" alt="이미지 파일" />
 				</div>
-<!-- 				<div class='dir_span'>
-					<h3>디즈니 동산(경기도 안산시 상록구 충장로 98)</h3>
-					<h4>지하철 이용시</h4>
-					<ul>
-						<li><span class="textColer1">수인분당선</span> 사리역 1번 출구</li>
-					</ul>
-					<h4>버스 이용시</h4>
-					<ul>
-						<li><span class="textColer1">지선</span>101번, 52번, 61번, 21번</li>
-						<li><span class="textColer1">광역</span>1007번, 1100번, 1700번</li>
-					</ul>
-				</div>
-				<div class='dir'>
-					<img src="/resources/images/facilityInfo/map10.PNG" alt="이미지 파일" />
-				</div> -->
 				<div class='dir_span'>
 					<h3>디즈니 동산(경기도 안산시 상록구 충장로 98)</h3>
 					<h4>
