@@ -71,9 +71,9 @@
 											  <input type="hidden" name="g_order_id" value="${orderView.g_order_id}" />
 											  <input type="hidden" name="g_order_state" class="g_order_state" value="" />
 											  
-											  <button type="button" class="delivery1_btn sty_btn">배송 중</button>
-											  <button type="button" class="delivery2_btn sty_btn">배송 완료</button>
-											  <button type="button" class="delivery3_btn sty_btn">배송 취소</button>
+											  <button type="button" class="delivery1_btn btn sty_btn">배송 중</button>
+											  <button type="button" class="delivery2_btn btn sty_btn">배송 완료</button>
+											  <button type="button" class="delivery3_btn btn sty_btn">배송 취소</button>
 											  
 											  
 											 </form>
