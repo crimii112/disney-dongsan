@@ -21,8 +21,8 @@
     gorder.g_order_date,
     gorder.g_order_state,
     gorder.member_id,
-    gorder.member_addr,
-    gorder.member_addr_detail,
+    gorder.member_addr1,
+    gorder.member_addr2,
     goods.g_name,
     goods.g_image,
     goods.g_delivery

@@ -20,5 +20,8 @@ public interface MypageGoodsReviewDao {
 	public int userReviewUpdate(GoodsReviewVO gvo) throws Exception;
 	
 	public int userReviewDelete(GoodsReviewVO gvo) throws Exception;
+	
+	public List<GoodsReviewVO> ReviewCompleteList(String username);
+	
 
 }

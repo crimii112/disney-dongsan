@@ -27,11 +27,11 @@ public class AdminMainController {
 	private AdminMainService adminMainService;
 	
 	@GetMapping("/mainList")
-	public String mainList(@ModelAttribute MainVO mvo, MainBenerVO mbo, Model model) {
+	public String mainList(Model model) {
 		
 		log.info("answerList 호출 성공");
-		List<MainVO> mainList = adminMainService.mainList(mvo);
-		List<MainBenerVO> benerList = adminMainService.benerList(mbo);
+		List<MainVO> mainList = adminMainService.mainList();
+		List<MainBenerVO> benerList = adminMainService.benerList();
 		model.addAttribute("mainList", mainList);
 		model.addAttribute("benerList", benerList);
 		

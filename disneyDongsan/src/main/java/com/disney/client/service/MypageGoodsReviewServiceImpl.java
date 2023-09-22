@@ -30,6 +30,14 @@ public class MypageGoodsReviewServiceImpl implements MypageGoodsReviewService {
 	}
 	
 	@Override
+	public List<GoodsReviewVO> ReviewCompleteList(String username){
+		List<GoodsReviewVO> ReviewCompleteList = null;
+		ReviewCompleteList = mypageGoodsReviewDao.ReviewCompleteList(username);
+		return ReviewCompleteList;
+		
+	}
+	
+	@Override
 	public int reviewInsert(GoodsReviewVO gvo) throws Exception  {
 		int result = 0;
 		if(gvo.getFile().getSize()>0) {

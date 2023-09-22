@@ -19,9 +19,9 @@ public class AdminMainServiceImpl implements AdminMainService{
 	private AdminMainDao mainDao;
 	
 	@Override
-	public List<MainVO> mainList(MainVO mvo){
+	public List<MainVO> mainList(){
 		List<MainVO> list = null;
-		list = mainDao.mainList(mvo);
+		list = mainDao.mainList();
 		return list;
 	}
 	
@@ -51,9 +51,9 @@ public class AdminMainServiceImpl implements AdminMainService{
 	
 	
 	@Override
-	public List<MainBenerVO> benerList(MainBenerVO mbo){
+	public List<MainBenerVO> benerList(){
 		List<MainBenerVO> list = null;
-		list = mainDao.benerList(mbo);
+		list = mainDao.benerList();
 		return list;
 	}
 	

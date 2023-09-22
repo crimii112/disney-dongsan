@@ -7,9 +7,9 @@ import com.disney.vo.MainVO;
 
 public interface AdminMainService {
 	
-	public List<MainVO> mainList(MainVO mvo);
+	public List<MainVO> mainList();
 	
-	public List<MainBenerVO> benerList(MainBenerVO mbo);
+	public List<MainBenerVO> benerList();
 	
 	public MainVO mainUpdateForm (MainVO mvo);
 	

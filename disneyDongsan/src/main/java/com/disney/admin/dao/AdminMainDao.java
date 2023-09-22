@@ -10,9 +10,9 @@ import com.disney.vo.MainVO;
 @Mapper
 public interface AdminMainDao {
 	
-	public List<MainVO> mainList(MainVO mvo);
+	public List<MainVO> mainList();
 	
-	public List<MainBenerVO> benerList(MainBenerVO mbo);
+	public List<MainBenerVO> benerList();
 	
 	public MainVO mainUpdateForm (MainVO mvo);
 	

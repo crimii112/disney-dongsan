@@ -20,7 +20,7 @@
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
 		 <%// URL 매개변수 "g_order_detail_id"의 값을 가져온다. //데이터를 가져오려면 상위에 존재하여야함
         	String gOrderDetailId = request.getParameter("g_order_detail_id");
-		 	String member_id = request.getParameter("g_member_id");
+		 	String member_id = request.getParameter("member_id");
 		 	String g_image = request.getParameter("g_image");
 		 	String g_name = request.getParameter("g_name");
     	 %>
