@@ -13,6 +13,7 @@
 		goods.g_id,
 		greview.content_check,
 		greview.re_image
+		
 		FROM
 		g_order_detail gdetail
 		full JOIN
@@ -24,7 +25,34 @@
 		full JOIN
 		g_review greview ON
 		gdetail.g_order_detail_id = greview.detail_num
-		WHERE member_id = #{username} AND g_order_state = '배송완료'
+		WHERE member_id = #{memberId} AND g_order_state = '배송완료' AND content_check IS NULL
+		ORDER BY g_order_date DESC
+	</select>
+	
+	<select id="ReviewCompleteList" resultType="goodsReview">
+		SELECT
+		gdetail.g_order_detail_id,
+		gorder.g_order_date,
+		gorder.g_order_state,
+		gorder.member_id,
+		goods.g_name,
+		goods.g_image,
+		goods.g_id,
+		greview.content_check,
+		greview.re_image
+		
+		FROM
+		g_order_detail gdetail
+		full JOIN
+		goods goods ON
+		gdetail.g_id = goods.g_id
+		full JOIN
+		g_order gorder ON 
+		gdetail.g_order_id = gorder.g_order_id
+		full JOIN
+		g_review greview ON
+		gdetail.g_order_detail_id = greview.detail_num
+		WHERE member_id = #{memberId} AND content_check = '작성완료'
 		ORDER BY g_order_date DESC
 	</select>
 	

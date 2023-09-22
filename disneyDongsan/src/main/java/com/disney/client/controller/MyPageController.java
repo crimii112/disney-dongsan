@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -47,14 +48,34 @@ public class MyPageController {
 	
 	
 	@GetMapping("/mypage")
-	public String mypage() {
-		return "client/mypage/myPage";
+	public String mypage(@SessionAttribute(name = "Member", required = false) MemberVO Member, RedirectAttributes ras) {
+		String url = "";
+		
+		if(Member != null) {
+			url = "client/mypage/myPage";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		
+		return url;
 	}
 	
 	/* 비밀번호 변경 화면*/
 	@GetMapping("/changPasswordForm")
-    public String changPasswordForm(Model model) {
-        return "client/mypage/updateinfo/userPwdChangeForm";
+    public String changPasswordForm(@SessionAttribute(name = "Member", required = false) MemberVO Member, RedirectAttributes ras) {
+		String url = "";
+		
+		if(Member != null) {
+			url = "client/mypage/updateinfo/userPwdChangeForm";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		
+		return url;
     }
 	
 	/* 비밀번호 변경 처리*/
@@ -85,8 +106,17 @@ public class MyPageController {
 	
 	/*개인정보 수정전 비밀번호 체크 화면*/
 	@GetMapping("/pwdChkForm")
-    public String pwdChkForm(Model model) {
-        return"client/mypage/updateinfo/pwdChkForm";
+    public String pwdChkForm(@SessionAttribute(name = "Member", required = false) MemberVO Member, RedirectAttributes ras) {
+		String url = "";
+		
+		if(Member != null) {
+			url = "client/mypage/updateinfo/pwdChkForm";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
     }
 	
 	/**************************비밀번호 체크 끝********************************/
@@ -119,14 +149,22 @@ public class MyPageController {
 	
 	
 	@GetMapping("/userTicketList")
-	public String myTiketList(Model model) {
+	public String myTiketList(@SessionAttribute(name = "Member", required = false) MemberVO Member, Model model, RedirectAttributes ras) {
 		
-		 String username = "user01";
 		log.info("myTiketList 메소드 호출 성공");
-		List<TicketVO> tketList = mypageTicketService.myTicketList(username);
-		model.addAttribute("tketList",tketList);
 		
-		return"client/mypage/ticket/userTicketList";
+		String url = "";
+		
+		if(Member != null) {
+			List<TicketVO> tketList = mypageTicketService.myTicketList(Member.getMemberId());
+			model.addAttribute("tketList",tketList);
+			url = "client/mypage/ticket/userTicketList";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
 	}
 	
 	@GetMapping("/userTicketDetail")
@@ -160,13 +198,22 @@ public class MyPageController {
 	
 	
 	@GetMapping("/userGoodsList")
-	public String userGoodsList(Model model) {
-		String username = "user01";
+	public String userGoodsList(@SessionAttribute(name = "Member", required = false) MemberVO Member, Model model, RedirectAttributes ras) {
 		log.info("userGoodsList메서드 호출 성공");
-		List<GoodsVO> goodsList = mypageGoodsService.myGoodsList(username);
-		log.info("goodsList = " + goodsList.toString());
-		model.addAttribute("goodsList",goodsList);
-		return"client/mypage/goods/userGoodsList";
+		
+		String url = "";
+		
+		if(Member != null) {
+			List<GoodsVO> goodsList = mypageGoodsService.myGoodsList(Member.getMemberId());
+			log.info("goodsList = " + goodsList.toString());
+			model.addAttribute("goodsList",goodsList);
+			url = "client/mypage/goods/userGoodsList";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
 	}
 	
 	@ResponseBody
@@ -207,19 +254,59 @@ public class MyPageController {
 	
 	
 	@GetMapping("/userReviewList")
-	public String userReviewList(Model model) {
-		String username = "user01";
+	public String userReviewList(@SessionAttribute(name = "Member", required = false) MemberVO Member, Model model, RedirectAttributes ras) {
 		log.info("userReviewList메서드 호출 성공");
-		List<GoodsReviewVO> goodsReviewList = mypageGoodsReviewService.myGoodsReviewList(username);
-		log.info("goodsReviewList = " + goodsReviewList.toString());
-		model.addAttribute("goodsReviewList",goodsReviewList);
-		return"client/mypage/review/userReviewList";
+		
+		String url = "";
+		
+		if(Member != null) {
+			List<GoodsReviewVO> goodsReviewList = mypageGoodsReviewService.myGoodsReviewList(Member.getMemberId());
+			log.info("goodsReviewList = " + goodsReviewList.toString());
+			model.addAttribute("goodsReviewList",goodsReviewList);
+			url = "client/mypage/review/userReviewList";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
+	}
+	
+	@GetMapping("/ReviewCompleteList")
+	public String ReviewCompleteList(@SessionAttribute(name = "Member", required = false) MemberVO Member, Model model, RedirectAttributes ras) {
+		log.info("userReviewList메서드 호출 성공");
+		
+		String url = "";
+		
+		if(Member != null) {
+			List<GoodsReviewVO> ReviewCompleteList = mypageGoodsReviewService.ReviewCompleteList(Member.getMemberId());
+			log.info("goodsReviewList = " + ReviewCompleteList.toString());
+			model.addAttribute("ReviewCompleteList",ReviewCompleteList);
+			url = "client/mypage/review/ReviewCompleteList";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
+		
 	}
 	
 	@PostMapping(value = "/userReviewForm")
-	public String userReviewForm() {
+	public String userReviewForm(@SessionAttribute(name = "Member", required = false) MemberVO Member, RedirectAttributes ras) {
 		log.info("userReviewForm() 메서드 호출 성공");
-		return"client/mypage/review/userReviewForm";
+		
+		
+		String url = "";
+		
+		if(Member != null) {
+			url = "client/mypage/review/userReviewForm";
+		} else {
+			ras.addFlashAttribute("errorMsg", "로그인을 해주세요.");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
 	}
 	
 	@ResponseBody
@@ -229,7 +316,7 @@ public class MyPageController {
 		String value = "";
 		int result = 0;
 		
-		log.info("gvo = " + gvo);
+		log.info("insert from gvo = " + gvo);
 		result = mypageGoodsReviewService.reviewInsert(gvo);
 		log.info("insert_result = " + result);
 		if( result == 1) {
@@ -261,9 +348,9 @@ public class MyPageController {
 		result= mypageGoodsReviewService.userReviewUpdate(gvo);
 		
 		if(result == 1) {
-			url ="/mypage/userReviewList";
+			url ="/mypage/ReviewCompleteList";
 		}else {
-			url ="/mypage/userReviewList";
+			url ="/mypage/ReviewCompleteList";
 		}
 		return "redirect:" + url;
 	}

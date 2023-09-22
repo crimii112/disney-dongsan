@@ -29,9 +29,30 @@ table tr td{
 	padding: 3px 0;
 }
 
-.td_right{
-	text-align: right;
+/* 초기에는 테이블 숨기기 */
+#cardTable {
+	display: none;
+	width: 200px;
+	text-align: center;
+	/*float: right;*/
+	margin: 0 auto;
+	padding: 0 auto;
 }
+
+/*.td_right{
+	text-align: center;
+	padding-right: 10%; 
+}*/
+.td_btn{
+	/*float: right;
+	margin-right: 20px;*/
+	margin: 0 auto;
+}
+
+/*#modalBtn{
+	float: right;
+	margin: 10px;
+}*/
 
 #dongsanimg{
 	width: 553px;
@@ -39,16 +60,79 @@ table tr td{
 
 .pricetable{
 	width: 553px;
+	text-align: center;
 }
 
 #div_calendar{
-	background-color: lavender;
+	/*background-color: lavender;*/
 	border-radius: 7px;
+	width: 400px;
 }
 
 #calendar{
 	text-align: center;
-	border: 5px solid lavender;
+	border: 3px solid lightgray;
 	border-collapse: collapse;
 	border-radius: 7px;
+}
+
+#div_calendar_year{
+	text-align: center;
+	margin-bottom: 7px;
+}
+
+#ticket_table{
+	width: 400px;
+	border: 3px solid lightgray;
+	border-collapse: collapse;
+	background-color: white;
+	text-align: center;
+}
+
+#ticket_table tr td{
+	padding: 1px 0;
+	margin: 0;
+}
+
+h1{
+	text-align: center;
+	margin: 30px 0;
+}
+h5{
+	text-align: center;
+	margin-top: 10px;
+}
+
+#ticket_sub{
+	text-align: center;
+	margin: 30px 0;
+}
+
+.div_left{
+	/*border: 1px solid lightgray;*/
+	padding: 0px 10px 10px 160px;
+}
+
+.div_right_inner{
+	width: 445px;
+	border: 1px solid lightgray;
+	padding: 10px 10px 10px 20px;
+	/*background-color: rgb(237, 247, 252);*/
+}
+
+.ticket_td{
+	width: 40%;
+	border-right: 1px solid lightgray;
+}
+
+input[type=text] {
+	border: 0;
+	text-align: right;
+}
+
+.modalBtn {
+	border: 2px solid gray;
+	text-align: center;
+	width: 445px;
+	height: 50px;
 }

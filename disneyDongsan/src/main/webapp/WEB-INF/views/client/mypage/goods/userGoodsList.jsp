@@ -61,11 +61,12 @@
 				if (list[i].checked) { // 선택이 되어있으면 배열에 값을 넣는다.
 					hasChecked = true; //체크된 값이 있으면 true 설정
 					//console.log(list[i].value);
-					let stateCk = $(list[i]).parents("tr").children().eq(2).text(); //배열의 있는 값의 부모요소를 찾아가 답변여부를 text로 가져온다.
+					let stateCk = $(list[i]).parents("tr").children().eq(3).text(); //배열의 있는 값의 부모요소를 찾아가 답변여부를 text로 가져온다.
 					console.log("stateCk:" + stateCk);
 					//답변 여부 체크
 					if (stateCk === "배송중") {  alert("배송중인 상품은 취소가 불가능합니다."); return;}
 					else if(stateCk === "배송취소"){alert("이미 취소된 상품이 포함되어있습니다."); return; }
+					else if(stateCk === "배송취소요청"){alert("취소 요청처리가된 상품이 포함되어있습니다."); return; }
 					else if(stateCk === "배송완료"){alert("배송이 이미 완료된 상품이 포함되어있습니다."); return;}
 					else {
 						goodsArr.push(list[i].value); //push함수를 이용해 valueArr에 값을 추가

@@ -88,11 +88,7 @@
 									<tr class="text-center" data-num="${mainList.main_event_no}">
 										<td>${mainList.main_event_no}번이미지</td>
 										<td class="goUpdate">${mainList.main_event_title}</td>
-										<td class="rideListImg">
-										<c:if test="${not empty mainList.main_event_image}">
-											<img src="/dongsanStorage/mainEvent/${mainList.main_event_image}" class="file"/>
-										</c:if>
-										</td>
+										<td class="rideListImg">${mainList.main_event_image}"</td>
 									</tr>
 									
 								</c:forEach>
@@ -110,6 +106,7 @@
 				<br/>
 				<br/>
 				<h3> 배너 수정 </h3>
+
 				<form name="benerupdateForm" id="benerupdateForm">
 				<input type="hidden" name="main_bener_no" id="main_bener_no" /> 
 				<input type="hidden" name="main_event_bener_image" id="main_event_bener_image" />
@@ -129,11 +126,7 @@
 								<c:forEach var="benerList" items="${benerList}" varStatus="status">
 									<tr class="text-center" data-num="${benerList.main_bener_no}">
 										<td>${benerList.main_bener_no}번이미지</td>
-										<td class="benerGo">
-											<c:if test="${not empty benerList.main_event_bener_image}">
-												<img src="/dongsanStorage/benerEvent/${benerList.main_event_bener_image}" class="benerFile"/>
-											</c:if>
-										</td>
+										<td class="benerGo">${benerList.main_event_bener_image}</td>
 									</tr>
 									
 								</c:forEach>

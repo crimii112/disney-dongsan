@@ -19,7 +19,7 @@
     			<c:forEach var="card" items="${cardInfo}" varStatus="status">
 				<div class="col-md-4 text-center" id="cardList">
 					<div id="carddetail">
-					<h3>${card.card_company}</h3>
+					<h4>${card.card_company}</h4>
 					<div id="img_back">
 						<c:if test="${not empty card.card_image}">
 							<img src="/resources/images/card/${card.card_image}" id="card_img" class="file" />

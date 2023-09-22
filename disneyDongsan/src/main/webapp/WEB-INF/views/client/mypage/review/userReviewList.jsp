@@ -20,17 +20,59 @@
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
 		<style>
-		.file{
-			width : 100px;
-		}
-		</style>
+ 
+  
+  .file {
+    width: 100px;
+  }
+  
+.custom-btn {
+  width: 150px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.btn-15 {
+   background: #000;
+  color: #fff;
+  z-index: 1;
+}
+.btn-15:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+   background: #e0e5ec;
+  transition: all 0.5s ease;
+}
+.btn-15:hover {
+  color: #000;
+}
+.btn-15:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-15:active {
+  top: 2px;
+}
+</style>
 		
 		<script type="text/javascript">
 			
 			$(function(){
 				/* 리뷰가 작성된 상품에 처리할 이벤트(후기 작성을 안한것 = 수정,삭제 안보이고 후기작성 버튼만 보임, 
 												후기 작성한것 = 수정,삭제 버튼만 보이고 후기 작성버튼 안보임)  */
-				$("tr").each(function () {
+				/*$("tr").each(function () {
 			        var content_check = $(this).find(".check_hidden").text();
 			        console.log("content_check=" + content_check);
 			        
@@ -43,7 +85,7 @@
 			            $(this).find(".reviewUpdate, .reviewDelete").css("display", "none");
 			            $(this).find(".check_hidden").css("display", "none");
 			        }
-			    });
+			    });*/
 				
 				
 				
@@ -52,8 +94,8 @@
 					let g_order_detail_id = $(this).parent("td").parent("tr").attr("data-num");
 					$("#g_order_detail_id").val(g_order_detail_id);
 					
-					let g_member_id = $(this).parent("td").parent("tr").children().eq(6).text();
-					$("#g_member_id").val(g_member_id);
+					let member_id = $(this).parent("td").parent("tr").children().eq(6).text();
+					$("#member_id").val(member_id);
 					
 					let g_name = $(this).parent("td").parent("tr").children().eq(2).text();
 					$("#g_name").val(g_name);
@@ -69,78 +111,25 @@
 					$("#resultForm").submit();
 				});
 				
+			    $("#completeReview").click(function(){
+			    	location.href="/mypage/ReviewCompleteList";
 				
-				$(".reviewUpdate").click(function(){
-					let detail_num = $(this).parent("td").parent("tr").attr("data-num");
-					$("#detail_num").val(detail_num);
-					
-					let g_order_detail_id = $(this).parent("td").parent("tr").attr("data-num");
-					$("#g_order_detail_id").val(g_order_detail_id);
-					
-					let g_member_id = $(this).parent("td").parent("tr").children().eq(6).text();
-					$("#g_member_id").val(g_member_id);
-					
-					let g_name = $(this).parent("td").parent("tr").children().eq(2).text();
-					$("#g_name").val(g_name);
-					
-					let imageSrc = $(this).closest("tr").find(".file").attr("src");
-					console.log("imageSrc=" + imageSrc);
-					$("#g_image").val(imageSrc);
-					
-					$("#resultForm").attr({
-						"method" : "post",
-						"action" : "/mypage/userReviewUpdateForm"
-					});
-					$("#resultForm").submit();
-				});
-				
-				$(".reviewDelete").click(function(){
-					
-					deleteChk = confirm("정말 삭제하시겠습니까?");
-					let formData = new FormData(); 
-					let detail_num = $(this).parent("td").parent("tr").attr("data-num");
-					$("#detail_num").val(detail_num);
-					let re_image = $(this).parent("td").parent("tr").children().eq(7).text();
-					$("#re_image").val(re_image);
-					
-					formData.append("detail_num",detail_num);
-					formData.append("re_image",re_image);
-					
-					if(deleteChk === true){
-						
-						$.ajax({
-							type: 'post',
-							processData: false,
-				            contentType: false,
-				            url: '/mypage/userReviewDelete',
-				            data: formData,
-				            success: function(resultData) {
-				                if (resultData == "성공") {
-				                    alert('후기가 삭제되었습니다.');
-				                    location.reload();
-				                } else {
-				                    alert('후기 삭제에 실패했습니다.');
-				                    return;
-				                }
-				            },
-				            error: function() {
-				                alert('서버와 통신 중 오류가 발생했습니다.');
-				            }
-						});
-					}else return;
-				});
 			});
+		});
 		
 		</script>
 	</head>
 	<body>
 		<div class="container">
 			
-		
+		<div class="wrap">
+			<button type ="button" class="custom-btn ">리뷰 작성</button>
+			<button  type ="button" class="custom-btn btn-15" id="completeReview">작성한 리뷰</button>
+		</div>
 			<form name="resultForm" id="resultForm">
 				<input type="hidden" name="detail_num" id="detail_num"/>
 				<input type="hidden" name="g_order_detail_id" id="g_order_detail_id"/>
-				<input type="hidden" name="g_member_id" id="g_member_id"/>
+				<input type="hidden" name="member_id" id="member_id"/>
 				<input type="hidden" name="g_name" id="g_name"/>
 				<input type="hidden" name="g_image" id="g_image"/>
 				<input type="hidden" name="re_image" id="re_image"/>
@@ -178,10 +167,8 @@
 										<td>
 											<button id="reviewInsert" class="reviewInsert">후기작성</button>
 											<span class="check_hidden">${ReviewList.content_check}</span><br/>
-											<button id="reviewUpdate" class="reviewUpdate">수정하기</button><br/>
-											<button id="reviewDelete" class="reviewDelete">삭제하기</button>
 										</td>
-										<td style= display:none>${ReviewList.g_member_id}</td>
+										<td style= display:none>${ReviewList.member_id}</td>
 										<td style= display:none>${ReviewList.re_image}</td>
 									</tr>
 								</c:forEach>
