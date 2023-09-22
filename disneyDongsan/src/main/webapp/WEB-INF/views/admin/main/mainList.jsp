@@ -71,6 +71,7 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
+						<br/>
 							<h1> 이벤트 수정 </h1>
 				<table summary="게시판 리스트" class="table table-hover admin_table">
 					<thead>
@@ -88,11 +89,7 @@
 									<tr class="text-center" data-num="${mainList.main_event_no}">
 										<td>${mainList.main_event_no}번이미지</td>
 										<td class="goUpdate">${mainList.main_event_title}</td>
-										<td class="rideListImg">
-										<c:if test="${not empty mainList.main_event_image}">
-											<img src="/dongsanStorage/mainEvent/${mainList.main_event_image}" class="file"/>
-										</c:if>
-										</td>
+										<td class="rideListImg">${mainList.main_event_image}"</td>
 									</tr>
 									
 								</c:forEach>
@@ -107,8 +104,7 @@
 				</table>
 				<br/>
 				<br/>
-				<br/>
-				<br/>
+				
 				<h1> 배너 수정 </h1>
 				<form name="benerupdateForm" id="benerupdateForm">
 				<input type="hidden" name="main_bener_no" id="main_bener_no" /> 
@@ -129,11 +125,7 @@
 								<c:forEach var="benerList" items="${benerList}" varStatus="status">
 									<tr class="text-center" data-num="${benerList.main_bener_no}">
 										<td>${benerList.main_bener_no}번이미지</td>
-										<td class="benerGo">
-											<c:if test="${not empty benerList.main_event_bener_image}">
-												<img src="/dongsanStorage/benerEvent/${benerList.main_event_bener_image}" class="benerFile"/>
-											</c:if>
-										</td>
+										<td class="benerGo">${benerList.main_event_bener_image}</td>
 									</tr>
 									
 								</c:forEach>

@@ -8,17 +8,17 @@
 	FROM(
 			SELECT rownum as rnum, qa_no, title, qa_content, qa_date, askyn, ask, ask_date, member_id
 			FROM QA
-			WHERE]]>
-	
-	<![CDATA[ rownum <= #{pageNum} * #{amount}
+			WHERE rownum <= #{pageNum} * #{amount}
+			 ORDER BY CASE WHEN askyn LIKE 'n%' THEN 0 ELSE 1 END ASC
                 ) qaList
             WHERE rnum > (#{pageNum}-1)* #{amount}
         ]]>
-	<!--  ORDER BY qa_no DESC-->
+	
 	</select>
 	
 	<select id="answerListCnt" parameterType="question" resultType="int">
 		SELECT count(*) FROM QA
+		
 	</select>
 	
 	

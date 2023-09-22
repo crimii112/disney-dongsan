@@ -16,6 +16,7 @@
 <link rel="stylesheet"  href="/resources/include/css/mypage.css" />
 </head>
 <body>
+
 	<div class="main_div">
 		<!-- header -->
 		<div class="login_div">

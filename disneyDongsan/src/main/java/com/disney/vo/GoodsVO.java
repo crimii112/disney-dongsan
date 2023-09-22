@@ -28,5 +28,11 @@ public class GoodsVO extends CommonVO {
 	private MultipartFile file_detail;
 	private String g_image_detail ="";
 	
+	private String g_order_id;
+	private int g_count;
+	private String g_order_date;
+	private String g_order_state;
+	private String member_addr;
+	private int total_price;
 	private String[] goodsArr;
 }
