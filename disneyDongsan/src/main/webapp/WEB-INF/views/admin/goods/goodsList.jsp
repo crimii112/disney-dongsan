@@ -115,7 +115,7 @@
 						    <form id="searchForm" class="searchForm" action="/admin/goodsList" method="get">
 							    <div class="search_input">
 									<select id="search" name="search" class="form-control">
-										<option value="all">전체</option>
+										<option value="all">전체 조회</option>
 										<option value="g_name">제목</option>
 										<option value="g_detail">상품설명</option>
 									</select>

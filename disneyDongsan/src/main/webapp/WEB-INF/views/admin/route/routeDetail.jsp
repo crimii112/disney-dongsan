@@ -116,7 +116,7 @@
 	<main id="main" class="main">
 	
 		<div class="pagetitle">
-			<h1>어트랙션</h1> 
+			<h1>추천 코스 게시물 상세</h1> 
 		</div>
 		<section class="section dashboard">
 			<div class="row">

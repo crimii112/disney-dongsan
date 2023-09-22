@@ -25,7 +25,7 @@
 		   			<input type="hidden" name="amount" id="amount" value="${pageMaker.cvo.amount }">
 		   			<div class="search_input">
 			   			<select id="search" name="search" class="form-control" >
-			   				<option value="all">전체 목록 조회</option>
+			   				<option value="all">전체 조회</option>
 			   				<option value="e_title">제목</option>
 			   				<option value="e_content">내용</option>
 			   			</select>
