@@ -17,7 +17,7 @@
 			
 		      <li class="nav-item"><a class="nav-link collapsed"
 		         href="pages-login.html"> <i class="bi bi-box-arrow-in-right"></i>
-		            <span>Logout</span>
+		            <span style="padding-right: 40px;">Logout</span>
 		      </a></li>
 		</ul>
 	</nav>
