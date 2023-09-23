@@ -33,7 +33,7 @@ public class AdminNoticeController {
 	
 	@Setter(onMethod_ = @Autowired)
 	private NoticeService noticeService;
-	
+	 
 
 	@GetMapping("/noticeList")
 	public String noticeList(@ModelAttribute NoticeVO nvo, Model model) {

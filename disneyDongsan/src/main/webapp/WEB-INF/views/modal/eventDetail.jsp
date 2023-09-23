@@ -12,7 +12,7 @@
 		.icon{
 			margin: 30px;
 		}
-		
+		 
 		.event_title{
 			margint: 20px;
 		}
