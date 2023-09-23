@@ -23,6 +23,8 @@
       <script type="text/javascript" src="/resources/include/js/common.js"></script>
       <script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
       
+      <link rel="stylesheet" href="/resources/include/css/commonDetail.css"/>
+      
       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <style type="text/css">
       	.n_content{
@@ -37,6 +39,23 @@
       	.event_btn{
       		margin-top: 20px;
       	}
+      	
+      	h1{margin-top: 70px; margin-bottom: 10px;}
+      	
+      	.content{margin-top: 30px; margin-bottom: 10px; padding: 20px;}
+      	.notice-header > img {width: 350px; height: 60px; padding: 0; margin: 0;}
+      	
+      	.prevNext{padding: 30px;}
+      	.prevNext a {text-decoration: none; color:gray; margin-left: 30px;}
+      	.prevNext p {margin-left: 40px;}
+      	
+      	.notice-title{font-size: 30px; padding: 0; font-weight: bold; margin: 0;}
+      	.notice-content{margin-top: 30px;}
+
+      	
+      	.text-left{text-align: left;}
+      	.text-right{text-align: right;}
+      	.text-center{text-align: center;}
       	
       </style>
       
@@ -54,56 +73,67 @@
    <body>
    		<div class="container">
    			<form name="f_data" id="f_data">
-        	<input type="hidden" name="n_num" value="${detail.n_num}" />
-        </form>
-   		
-           <div class="text-center head"><h1><strong>공지 사항</strong></h1></div>
+	        	<input type="hidden" name="n_num" value="${detail.n_num}" />
+	        </form>
+	   		
+<!-- 	           <div class="text-center head"><h1><strong>공지 사항</strong></h1></div> -->
+	           
+	           
+	           <div class="content">
+	           		<div class="notice-header">
+	           			<img src="/dongsanStorage/notice/notice_header.jpg"/>
+	           			<div class="notice-title">${detail.n_title }</div>
+	           			<div class="notice-date">${detail.n_date }</div>
+	           			<hr/>
+	           		</div>
+	           		<div class="notice-body">
+	           			<div class="notice-content">${detail.n_content }</div>
+	           		</div>
+	           </div>
+	           
+	           
+	           
+<!-- 		       <div class="contentTB text-center"> -->
+<!-- 		         <table class="table table-bordered"> -->
+		         	
+<!-- 		            <tbody> -->
+<!-- 		               <tr> -->
+<%-- 		                  <td class="col-md-8 text-left">${detail.n_title}</td> --%>
+<!-- 		               </tr> -->
+<!-- 		               <tr> -->
+<%-- 		                  <td class="col-md-3 text-left">${detail.n_date}</td> --%>
+<!-- 		               </tr> -->
+<!-- 		               <tr class="table-tr-height"> -->
+<%-- 		                  <td class="col-md-8 text-left">${detail.n_content}</td> --%>
+<!-- 		               </tr> -->
+<!-- 		            </tbody> -->
+<!-- 		         </table> -->
+<!-- 		      </div> -->
+		  <br/><br/>
+		  <div class="prevNext">
+		       <hr />
+		        <c:choose>
+			        <c:when test="${prevNext.prevNum ne 0}">
+			            <p>이전글 <a href="/notice/noticeDetail?n_num=${prevNext.prevNum}">${prevNext.prevTitle}</a></p>
+			        </c:when>
+			        <c:otherwise>
+			            <p>이전글이 없습니다.</p>
+			        </c:otherwise>
+			    </c:choose>
+			    <hr />
+			    <c:choose>
+			        <c:when test="${prevNext.nextNum ne 0}">
+			            <p>다음글 <a href="/notice/noticeDetail?n_num=${prevNext.nextNum}">${prevNext.nextTitle}</a></p>
+			        </c:when>
+			        <c:otherwise>
+			            <p>다음글이 없습니다.</p>
+			        </c:otherwise>
+			    </c:choose>
+	            <hr />
+	        </div>
            
-            
-           <div class="clear"></div>
-           
-	       <div class="contentTB text-center">
-         <table class="table table-bordered">
-            <tbody>
-               <tr>
-                  <td class="col-md-1">글제목</td>
-                  <td colspan="3" class="col-md-8 text-left">${detail.n_title}</td>
-               </tr>
-               <tr>
-                  <td class="col-md-1">작성일</td>
-                  <td class="col-md-3 text-left">${detail.n_date}</td>
-               </tr>
-               <tr class="table-tr-height">
-                  <td class="col-md-1">글내용</td>
-                  <td colspan="3" class="col-md-8 text-left">${detail.n_content}</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-	       <br/><br/>
-	       <hr />
-	        <c:choose>
-		        <c:when test="${prevNext.prevNum ne 0}">
-		            <p>이전글 <a href="/notice/noticeDetail?n_num=${prevNext.prevNum}">${prevNext.prevTitle}</a></p>
-		        </c:when>
-		        <c:otherwise>
-		            <p>이전글이 없습니다.</p>
-		        </c:otherwise>
-		    </c:choose>
-		    <hr />
-		    <c:choose>
-		        <c:when test="${prevNext.nextNum ne 0}">
-		            <p>다음글 <a href="/notice/noticeDetail?n_num=${prevNext.nextNum}">${prevNext.nextTitle}</a></p>
-		        </c:when>
-		        <c:otherwise>
-		            <p>다음글이 없습니다.</p>
-		        </c:otherwise>
-		    </c:choose>
-            <hr />
-           
-           
-           <div class='list text-center'>
-                <button type="button" id="listBtn">목록</button>
+           <div class='text-center'>
+                <button type="button" id="listBtn" class="btn sty_btn">목록</button>
            </div>
         </div>
    </body>

@@ -1,57 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-      
-      <title>noticeView</title>
-      
-      <link rel="shortcut icon" href="/resources/image/icon.png" />
-      <link rel="apple-touch-icon" href="/resources/image/icon.png" />
-      
-      <!--[if lt IE 9]>
-      <script src="../js/html5shiv.js"></script>
-      <![endif]-->
-      
-      <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css"/>
-      <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css"/>
-      
-      <script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
-      <script type="text/javascript" src="/resources/include/js/common.js"></script>
-      <script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
-      
-      <!-- contenteditable -->
-      <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-	  <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-	  
-	  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	  
-      
-      <!-- <style type="text/css">
-      	li{
-		    list-style: none;
-		}
-		
-		.notice_quantity{
-		    position:absolute;
-		    right: 70px;
-		   
-		}
-		
-		.notice_search{
-		    float: none;
-		    margin: 0 auto;
-		}
-		
-		* {
-		    text-align: center;
-		}
-
-      	
-      </style> -->
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ include file="/WEB-INF/views/common/common.jspf"%>
       
       
       
@@ -87,11 +37,11 @@
 				}
 			};
 			// 페이지 버튼 클릭시
-			$(".paginate_btn a").click(function(e){
+			$(".page-item a").click(function(e){
 				e.preventDefault();
 				$("#searchForm").find("input[name='pageNum']").val($(this).attr("href"));
 				goPage();
-			})
+			});
 			
 			//enter 제어
 			$("#keyword").bind("keydown", function(e){
@@ -175,7 +125,7 @@
        	
        	<!-- 데이터 출력 -->
        	<div>
-	   		<table class="table table-striped">
+	   		<table class="table table-hover">
 				<thead>
 					<tr >
 						<th class="text-center">번호</th>
@@ -208,27 +158,32 @@
  		<!-- 데이터 출력 종료 -->
  		
  		<%--=======================페이징 출력 시작================= --%>
-   		<div class="text-center">
-   			<ul class="pagination">
-   				<c:if test="${pageMaker.prev }">
-   					<li class="paginate_btn previous">
-   						<a href="${pageMaker.startPage - 1 }">Previous</a>
-   					</li>
-   				</c:if>
-   				
-   				<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-   					<li class="paginate_btn ${pageMaker.cvo.pageNum == num ? 'active' : '' }">
-   						<a href="${num }">${num }</a>
-   					</li>
-   				</c:forEach>
-   				
-   				<c:if test="${pageMaker.next }">
-   					<li class="paginate_btn next">
-   						<a href="${pageMaker.endPage + 1 }">Next</a>
-   					</li>
-   				</c:if>
-   			</ul>
-   		</div>
+ 		
+ 		<div class="pageMaker_wrap">
+       		<ul class="pagination justify-content-center">
+       			
+       			<!-- 이전 버튼 -->
+       			<c:if test="${pageMaker.prev }">
+       				<li class="page-item prev">
+       					<a class="page-link" href="${pageMaker.startPage -1}">이전</a>
+       				</li>
+       			</c:if>
+       			
+       			<!-- 페이지 번호 -->
+       			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
+       				<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+       					<a class="page-link" href="${num}">${num}</a>
+       				</li>	
+       			</c:forEach>
+       		
+            	<!-- 다음 버튼 -->
+            	<c:if test="${pageMaker.next}">
+            		<li class="page-item next">
+            			<a class="page-link" href="${pageMaker.endPage + 1 }">다음</a>
+            		</li>
+            	</c:if>
+            </ul>
+       	</div>
  		<!-- 페이징 종료 -->
  		
  		
