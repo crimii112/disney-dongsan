@@ -33,7 +33,7 @@ public class AdminNoticeController {
 	
 	@Setter(onMethod_ = @Autowired)
 	private NoticeService noticeService;
-	
+	 
 
 	@GetMapping("/noticeList")
 	public String noticeList(@ModelAttribute NoticeVO nvo, Model model) {
@@ -125,12 +125,12 @@ public class AdminNoticeController {
 
 	    try {
 	        // 파일 업로드 및 임시 파일명
-	        String tempFileName = FileUploadUtil.fileUpload(upload, "temp");
+	        String tempFileName = FileUploadUtil.fileUpload(upload, "notice");
 
 	        // CKEditor에 반환할 JSON 응답 생성
 	        resultMap.put("uploaded", 1);
 	        resultMap.put("fileName", tempFileName);
-	        resultMap.put("url", "/dongsanStorage/temp/" + tempFileName);
+	        resultMap.put("url", "/dongsanStorage/notice/" + tempFileName);
 	    } catch (Exception e) {
 	        resultMap.put("uploaded", 0);
 	        resultMap.put("error", e.getMessage());
