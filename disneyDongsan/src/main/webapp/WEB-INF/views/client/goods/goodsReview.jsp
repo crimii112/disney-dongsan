@@ -5,12 +5,33 @@
 	
 	<style>
 		#item-template{display:none;}
+		.panel-success{
+			background-color: #f1f3f5;
+			border: 1px solid black;
+			height: 100px;
+		}
+		
+		.image{
+			float: left;
+			width: 100px;
+			height: 100px;
+			object-fit: cover;
+		}
+		.panel-heading img{
+			object-fit: cover;
+			width: 97px;
+			height: 97px;
+		}
+		
+		
 	</style>
 	<script type="text/javascript">
 		$(function(){
 			/* 기본 덧글 목록 불러오기 */
 			let g_id = ${detail.g_id};
 			listAll(g_id);
+			
+			
 		});
 		
 		function listAll(g_id){
@@ -41,30 +62,60 @@
 			let $element = $('#item-template').clone().removeAttr('id');
 			$element.attr("data-num", re_id);
 			$element.addClass("reply");
-			$element.find('.panel-heading > .panel-title > .name').html(" / " + r_member_id);
+			$element.find('.panel-heading > .panel-title > .name').html("  " + r_member_id);
 			$element.find('.panel-heading > .panel-title > .date').html(" / " + re_date);
-			$element.find('.panel-heading > .panel-title > .image').html(" / " + re_image);
+
+
+			let $imageElement = $element.find('.panel-heading > .panel-title > .image');
+		    $imageElement.html(""); // 기존 내용을 지우고 이미지를 추가합니다.
+		    let $image = $('<img>').attr('src', "/dongsanStorage/goods/" + re_image);
+		    $image.click(function() {
+		        window.open($(this).attr('src'), '_blank');
+		      });
+		    
+		    $imageElement.append($image);
+			
+			
+			
 			$element.find('.panel-body').html(re_content);
 			
 			$div.append($element);
 		}
+		
+		
+		
 	</script>
 	</head>
 	<body>
+	
+		<div id="myModal" class="modal">
+		  <span class="close">&times;</span>
+		  <img class="modal-content" id="modalImage">
+		</div>
 	
 		<%-- 리스트 영역 --%>
 		<div id="reviewList">
 			<div id="item-template" class="panel panel-success">
 				<div class="panel-heading">
-					<h3 class="panel-title">
+					<h5 class="panel-title">
+						<span class="image"></span>
 						<span class="name"></span>
 						<span class="date"></span>
-						<span class="image"></span>
-					</h3>
+						
+					</h5>
 				</div>
 				<div class="panel-body"></div>
 			</div>	
 		</div>
+		
+	
+		
+		
+		
+		
+		
+		
+		
 		
 	</body>
 </html>
