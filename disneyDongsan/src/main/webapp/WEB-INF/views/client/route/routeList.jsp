@@ -54,7 +54,7 @@
 			border: 2px solid #c3daf7;
 			background-color: white;
 		}
-
+		/* .textSub{background-color:#c3daf7; height: 100px; padding:20px;} */
 </style>
 	<script type="text/javascript">
 		$(function() {
@@ -170,8 +170,8 @@
 						<img alt="/" src="/resources/images/route/034307.PNG">
 					</div>
 					<hr />
-					<h5>디즈니 동산에서 신나고 행복했던 추억을 쌓았나요?<br />
-					 고객님들께서 경험한 가장 좋았던 코스와 장소를 추천해 주세요~!</h5>
+					<h5 class="textSub">디즈니 동산에서 신나고 행복했던 추억을 쌓았나요?<br />
+					 고객님께서 경험한 가장 좋았던 코스와 장소를 추천해 주세요~!</h5>
 				</div>
 				<%--post 방식으로 전송 시 반드시 form 태그 추가해 주어야 합니다. --%>
 				<form name="detailForm" id="detailForm">
