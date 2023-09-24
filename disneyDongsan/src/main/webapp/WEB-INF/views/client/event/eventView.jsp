@@ -287,7 +287,7 @@
                     $(this).addClass('selected');
 
                     $(this).siblings().removeClass('selected');
-
+ 
                     getEventsForDate(new Date(clickedDate));
 
                     var clickedDateObj = new Date(clickedDate);
