@@ -60,6 +60,13 @@
 	    		    $("#f_updateForm").submit();
 	    		});
       		
+    		var eventData = { e_time: "상시" };
+
+		    if (eventData.e_time === "상시") {
+		        $("#allDay").prop("checked", true);
+		        $("#e_time").prop("disabled", true); 
+		    }
+      		
       		
     		$("#allDay").change(function(){
     	        if ($(this).is(":checked")) {
@@ -75,7 +82,7 @@
       		
       	})
       
-   		
+   		 
       
       </script>
       

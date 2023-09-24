@@ -33,7 +33,7 @@ public class AdminEventController {
 	@Setter(onMethod_ = @Autowired)
 	private EventService eventService;
 	
-	
+	 
 	
 	@GetMapping("/eventList")
 	public String eventView(@ModelAttribute EventVO evo, Model model) {
