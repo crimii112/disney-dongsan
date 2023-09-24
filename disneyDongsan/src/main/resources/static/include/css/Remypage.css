@@ -1,0 +1,28 @@
+
+.col-3{
+	width: 30%;
+}
+.mypage_side{
+	flex: 1;
+	border-top: 2.5px solid #28288c;
+}
+
+.mypage_div{
+	border-top: 2.5px solid #28288c;
+	flex: auto;
+	width: 80%;
+    margin-right: 100px;
+    padding: 5%;
+}
+
+
+.mypage-body{
+	display: flex;
+	
+}
+
+.active{
+	background-color: #28288c !important;
+	color:white;
+}
+

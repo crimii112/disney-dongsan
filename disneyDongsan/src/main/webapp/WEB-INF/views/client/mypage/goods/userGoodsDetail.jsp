@@ -14,15 +14,16 @@
 		<link rel="apple-touch-icon" href="/resources/image/icon.png"/>
 		<!--[if lt IE 9]>
 		<script src="/resources/js/html5shiv.js"></script>
-		<![endif]-->
+		<![endif]-->  
 			<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypageDetailBody.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
 		<style>
 		.file{
-			width : 100px;
+			width : 200px;
 		}
 		</style>
 		<script type="text/javascript">
@@ -37,75 +38,76 @@
 		</script>
 	</head>
 	<body>
-		<div class="container">
-			
 		
+		<div class="container">
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="g_order_detail_id" id="g_order_detail_id"/>
 			</form>
 			
-			<div id="tketList" >
-				
-				<table summary="게시판 리스트" class = "table">
-					<thead>
-						
-						
-						<tr>
-							<th class="col-md-2 text-center">상품 이미지</th>
-							<th class="col-md-1 text-center">상품명</th>
-							<th class="col-md-1 text-center">수량</th>
-							<th class="col-md-1 text-center">가격</th>
-							<th class="col-md-1 text-center">주문날짜</th>
-							<th class="col-md-2 text-center">배송지</th>
-							<th class="col-md-2 text-center">주문상태</th>
-						</tr>
-					</thead>
-					<tbody id="list" class="table-striped">
+			 
+			<div id="GoodsDetail" >
 					<!-- 데이터 출력 -->
-						
+						<div class="card w-70 m-3">
+						<div class="top-color">
+							<div class="ms-4 me-4 p-3">
+								<span>주문 상품</span>
+							</div>
+						</div>
 						<c:choose>
 							<c:when test="${not empty detail}">
 								<c:forEach var="detail" items="${detail}" varStatus="status">
-									<tr class="text-center" data-num="${detail.g_order_id}">
-										<td>
-										<c:if test="${not empty detail.g_image}">
-											<img src="/dongsanStorage/goods/${detail.g_image}"class="file"/>
-										</c:if>
-										</td>
-										<td class="goDetail">${detail.g_name}</td>
-										<td>${detail.g_count}개</td>
-										<td>
-											<fmt:formatNumber type="number" value="${detail.g_price}" pattern="#,##0" />원
-										</td>
-										<td>${detail.g_order_date}</td>
-										<td>${detail.member_addr}</td>
-										<td>${detail.g_order_state}</td>
-									</tr>
-									
+								<div class="card-line">
+									<div class="card-body" data-num="${detail.g_order_id}">
+										<div class="img-div">
+											<c:if test="${not empty detail.g_image}">
+												<img src="/dongsanStorage/goods/${detail.g_image}"class="file"/>
+											</c:if>
+										</div>
+										<div class="title-div">
+											<a class="card-title" class="goDetail">
+												<span class="span-state">${detail.g_order_state}</span>
+												<span class="span-gname">${detail.g_name}</span>
+											</a>
+											<p class="title-price">
+												<fmt:formatNumber type="number" value="${detail.g_price}" pattern="#,##0" />원
+											</p>
+											<p class="card-count ">주문 수량 : ${detail.g_count}개</p>
+											<p class="card-date">구매일 : ${detail.g_order_date}</p>
+										</div>
+									</div>
+								</div>
 								</c:forEach>
 								 <c:set var="firstDetail" value="${detail[0]}" />
 							</c:when>
 							<c:otherwise>
-							<tr>
-								<td colspan="5" class="text-center">결제된 상품이 존재하지 않습니다.</td>
-							</tr>
+								<div>
+									<p class="text-center">결제된 상품이 존재하지 않습니다.</p>
+								</div>
 							</c:otherwise>
 						</c:choose>
-						
-					</tbody>
-				</table>
-				<div class="text-right">
-					<input type="button" value="목록" onclick="goodsList();"/>
+					</div>
 				</div>
-				<ul>
-					<li><label>총합 가격:&nbsp;</label>
-					<span class="item_price"></span></li>
-					<li><label>주문 날짜: &nbsp;</label>${firstDetail.g_order_date}</li>
-					<li><label>배송지:&nbsp;</label>${firstDetail.member_addr}</li>
-					<li><label>주문상태:&nbsp;</label>${firstDetail.g_order_state}</li>
-				</ul>
+				
+				<div class="card w-70 m-3">
+					<div class="ms-4 me-4 p-3">
+						<span class="top-color">Detail</span>
+						<span class="fs-10"> &nbsp;&nbsp;<span class="span-state fs-10">주문번호</span>${firstDetail.g_order_id}
+						</span>
+					</div>
+					<div class="card-line-bottom"></div>
+					<div class=" ms-4 me-4 p-3">
+						<h5>배송지 정보</h5>
+						<p><label>수령인&nbsp;</label>${firstDetail.member_addr}</p>
+						<p><label>연락처&nbsp;</label>${firstDetail.member_addr}</p>
+						<p><label>배송지&nbsp;</label>${firstDetail.member_addr}</p>
+					</div>
+					<div class="card-line p-3">
+						<p>총합 가격:&nbsp;</p>
+					</div>
+					
+				</div>
 			</div>
-		</div>
-	
+			<a onclick="goodsList();" type="button" class="button btnFloat btnLightBlue ms-5"></a> 
+			
 	</body>
 </html>

@@ -152,8 +152,8 @@ $(function(){
 				<input type="hidden" name="re_image" id="re_image"/>
 			</form>
     			
-			<div id="tketList">
-				<table summary="게시판 리스트" class = "table">
+			<div id="reviewList">
+				<table summary="게시판 리스트" class = "table table-hover">
 					<thead>
 						<tr>
 							<th class="col-md-1 text-center">No</th>

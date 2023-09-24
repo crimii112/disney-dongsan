@@ -16,6 +16,7 @@
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]--><link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypageListBody.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
@@ -135,8 +136,8 @@
 				<input type="hidden" name="re_image" id="re_image"/>
 			</form>
     			
-			<div id="tketList">
-				<table summary="게시판 리스트" class = "table">
+			<div id="reviewList">
+				<table summary="게시판 리스트" class = "table table-hover">
 					<thead>
 						<tr>
 							<th class="col-md-1 text-center">No</th>
@@ -175,7 +176,7 @@
 							</c:when>
 							<c:otherwise>
 							<tr>
-								<td colspan="5" class="text-center">구매확정이 완료된 상품이 없습니다.</td>
+								<td colspan="7" class="text-center">구매확정이 완료된 상품이 없습니다.</td>
 							</tr>
 							</c:otherwise>
 						</c:choose>

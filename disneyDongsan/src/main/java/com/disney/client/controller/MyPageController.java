@@ -47,6 +47,9 @@ public class MyPageController {
 	private MypageGoodsReviewService mypageGoodsReviewService;
 	
 	
+	
+
+	
 	@GetMapping("/mypage")
 	public String mypage(@SessionAttribute(name = "Member", required = false) MemberVO Member, RedirectAttributes ras) {
 		String url = "";
