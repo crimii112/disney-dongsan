@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.disney.client.service.CardService;
 import com.disney.client.service.TicketService;
 import com.disney.vo.CardVO;
+import com.disney.vo.MemberVO;
 import com.disney.vo.TicketVO;
 
 import lombok.Setter;
@@ -32,9 +35,19 @@ public class TicketController {
 	
 	//방문정보확인
 	@PostMapping("/visitInfoView")
-	public String visitInfoView(@ModelAttribute TicketVO tvo, Model model) {
+	public String visitInfoView(@ModelAttribute TicketVO tvo,@SessionAttribute(name="Member", required = false) MemberVO Member, Model model, RedirectAttributes ras) {
 		model.addAttribute("tvo", tvo);
-		return "client/ticket/visitInfoView";
+		
+		String url = "";
+		
+		if(Member != null) {
+			url = "client/ticket/visitInfoView";
+		} else {
+			ras.addFlashAttribute("errorMsg","로그인 페이지로 이동합니다");
+			url = "redirect:/member/loginForm";
+		}
+		
+		return url;
 	}
 	
 	//종일권
