@@ -78,7 +78,7 @@
 	   		
 <!-- 	           <div class="text-center head"><h1><strong>공지 사항</strong></h1></div> -->
 	           
-	           
+	            
 	           <div class="content">
 	           		<div class="notice-header">
 	           			<img src="/dongsanStorage/notice/notice_header.jpg"/>
