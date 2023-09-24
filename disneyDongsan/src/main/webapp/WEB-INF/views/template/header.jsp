@@ -65,7 +65,7 @@
 	               </ul></li>
 	            <li><span>이벤트</span>
 	               <ul class="dept01">
-	                  <li class="nop"><a href="#" class="nav-link px-2">이벤트</a></li>
+	                  <li class="nop"><a href="/event/eventView" class="nav-link px-2">이벤트</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	               </ul></li>
@@ -78,7 +78,7 @@
 	            <li><span>고객센터</span>
 	               <ul class="dept01">
 	                  <li class="nop"><a href="/mypage/userQAList" class="nav-link px-2">1:1문의</a></li>
-	                  <li class="nop"><a href="#" class="nav-link px-2">공지사항</a></li>
+	                  <li class="nop"><a href="/notice/noticeView" class="nav-link px-2">공지사항</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	               </ul></li>
 	            <li><span>&nbsp;</span>
