@@ -93,7 +93,6 @@ public class MyPageController {
 		
 		if (result == 1) {
 			log.info("성공");
-			ras.addFlashAttribute("errorMsg", "비밀번호가 변경되었습니다. 재로그인해주세요.");
 			url="/member/loginForm";
 		}else {
 			log.info("실패");

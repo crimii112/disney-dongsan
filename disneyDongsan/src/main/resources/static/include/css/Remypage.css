@@ -11,8 +11,7 @@
 	border-top: 2.5px solid #28288c;
 	flex: auto;
 	width: 80%;
-    margin-right: 100px;
-    padding: 5%;
+    padding: 3%;
 }
 
 
@@ -26,3 +25,6 @@
 	color:white;
 }
 
+footer{
+	padding: 0 30px;
+}

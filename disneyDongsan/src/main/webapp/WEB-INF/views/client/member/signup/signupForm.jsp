@@ -36,7 +36,7 @@
 		});
 		
 		/* 비밀번호 입력란 keyup 이벤트 */
-		$("#memberPasswd").keyup(function(){
+		$("#memberPasswd").keydown(function(){
 			pwdCheckStatus = false;
 			$("#pwdCheckSpan").text('');
 		});
