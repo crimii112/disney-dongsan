@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ page trimDirectiveWhitespaces="true"%>
-
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
-
-<title>방문정보확인</title>
 
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
@@ -14,6 +10,9 @@
 	href="/resources/include/dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="/resources/include/dist/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" type="text/css"
+	href="/resources/include/css/ticket/visitInfo.css" />
 
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -164,27 +163,128 @@
 		</form>
 		<h1>방문 정보 확인</h1>
 		
-		<div>
-			<h3>방문자 정보</h3>
-			<table class="table table-bordered" style=width:500px;>
+		<div class="container">
+		<div class="row">
+		<div class="div_table">
+			<table class="user_info_table">
 				<tr>
-					<td>이름</td>
+					<td class="user_td user_name">이름</td>
+					<td class="user_td_r user_name"><input type="text" value="${Member.memberName}" readonly/></td>
+				</tr>
+				<tr>
+					<td class="user_td">휴대폰 번호</td>
+					<td class="user_td_r"><input type="text" value="${Member.memberPhone}" readonly/></td>
+				</tr>
+				<tr>
+					<td class="user_td">이메일 주소</td>
+					<td class="user_td_r"><input type="text" value="${Member.memberEmail}" readonly/></td>
+				</tr>
+			</table>
+			
+			
+		
+			<table class="user_info_table">
+				<tr>
+					<td id="visit_date_text" class="visit_td">방문 예정일</td>
+					<td id="visit_date">${tvo.visit_date}</td>
+				</tr>
+				<tr>
+					<td class="visit_td">티켓</td>
+					<td class="visit_td_r">${tvo.t_category}</td>
+				</tr>
+				
+				<c:choose>
+			        <c:when test="${tvo.t_afternoon != 0}">
+			            <tr>
+			                <td class="visit_td">🤹오후권</td>
+			                <td class="visit_td_r">${tvo.t_afternoon}명</td>
+			            </tr>
+			        </c:when>
+			    </c:choose>
+			    <c:choose>
+			        <c:when test="${tvo.t_multi != 0}">
+			            <tr>
+			                <td class="visit_td">🤹2/3/4인권</td>
+			                <td class="visit_td_r">${tvo.t_multi}인</td>
+			            </tr>
+			        </c:when>
+			    </c:choose>
+			    <c:choose>
+			        <c:when test="${tvo.t_adult != 0}">
+			            <tr>
+			                <td class="visit_td">🤹대인</td>
+			                <td class="visit_td_r">${tvo.t_adult}명</td>
+			            </tr>
+			        </c:when>
+			    </c:choose>
+			    <c:choose>
+			        <c:when test="${tvo.t_student != 0}">
+			            <tr>
+			                <td class="visit_td">🧚청소년</td>
+			                <td class="visit_td_r">${tvo.t_student}명</td>
+			            </tr>
+			        </c:when>
+			    </c:choose>
+			    <c:choose>
+			        <c:when test="${tvo.t_child != 0}">
+			            <tr>
+			                <td class="visit_td">🥷소인/경로</td>
+			                <td class="visit_td_r">${tvo.t_child}명</td>
+			            </tr>
+			        </c:when>
+			    </c:choose>
+				
+				<c:if test="${not empty tvo.card_company}">
+				    <tr>
+				        <td class="visit_td">제휴카드</td>
+				        <td class="visit_td_r">${tvo.card_company}</td>
+				    </tr>
+				</c:if>
+				
+				<c:choose>
+			        <c:when test="${tvo.allday_price != 0}">
+			            <tr>
+			                <td class="visit_td">티켓 금액</td>
+			                <td class="visit_td_r">${tvo.allday_price}원</td>
+			            </tr>
+			        </c:when>
+			    </c:choose>
+
+				<tr>
+					<td id="total_price_text" class="visit_td">결제 금액</td>
+					<td id="total_price" class="visit_td_r">${tvo.total_price}원</td>
+				</tr>
+			</table>
+			<input type="button" value="총 ${tvo.total_price}원 결제하기" class="order_btn">
+		</div>
+		</div>
+		</div>
+		<!-- </div> -->
+		
+		<%-- <div class="container">
+		<div class="row">
+		<div class="div_left col-md-6">
+			<h3 class="user_sub">방문자 정보</h3>
+			<table class="user_info_table ">
+				<tr>
+					<td class="user_td">이름</td>
 					<td><input type="text" value="${Member.memberName}" readonly/></td>
 				</tr>
 				<tr>
-					<td>휴대폰 번호</td>
+					<td class="user_td">휴대폰 번호</td>
 					<td><input type="text" value="${Member.memberPhone}" readonly/></td>
 				</tr>
 				<tr>
-					<td>이메일 주소</td>
+					<td class="user_td">이메일 주소</td>
 					<td><input type="text" value="${Member.memberEmail}" readonly/></td>
 				</tr>
 			</table>
 		</div>
 		
-		<div>
-			<h3>방문 정보</h3>
-			<table class="table table-bordered" style=width:500px;>
+
+		<div class="div_right col-md-6">
+			<h3 class="visit_sub">방문 정보</h3>
+			<table class="visit_info_table ">
 				<tr>
 					<td>티켓</td>
 					<td>${tvo.t_category}</td>
@@ -258,5 +358,7 @@
 			</table>
 			<input type="button" value="결제하기" class="order_btn btn btn-success" />
 		</div>
+		</div>
+		</div> --%>
 	</body>
 </html>

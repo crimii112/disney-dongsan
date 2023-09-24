@@ -127,7 +127,7 @@
 					</div>
 				</div>
 				
-				<div class="div_right col-md-3">
+				<div class="div_right col-md-5">
 				<div class="div_right_inner">
 					<h5>예약옵션을 선택해주세요.</h5>
 					<hr>
@@ -136,13 +136,13 @@
 						<div id="div_calendar_year">
 							<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
 							<input type="text" id="year" value="2020"
-								style="width: 60px; display: initial;" class="form-control"
-								readonly="readonly" />년
-							<input type="text" id="month" value="changeMonth(0);" style="width: 50px; display: initial;" class="form-control"
-								readonly="readonly">월
+								style="width: 50px; display: initial;" class="form-control"
+								readonly="readonly" />
+							<input type="text" id="month" value="changeMonth(0);" style="width: 35px; display: initial;" class="form-control"
+								readonly="readonly">
 							<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
 						</div>
-						<table class="table table-bordered" id="calendar">
+						<table id="calendar">
 							<thead>
 								<tr>
 									<th>일</th>
@@ -185,8 +185,7 @@
 						</table>
 				</div>
 				<jsp:include page="../../modal/modal.jsp" />
-				<!-- <button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button> -->
-				<input type="button" id="modalBtn" class="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" value="예약하기(모달)" />
+				<input type="button" id="modalBtn" class="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" value="예약하기" />
 				</div>
 			</div>
 		</div>
@@ -209,8 +208,6 @@
 			
 			$("#fa1").val((Number(m) - 1) + "월");
 			$("#fa2").val((Number(m) + 1) + "월");
-			//$("#fa1").text((Number(m) - 1) + "월");
-			//$("#fa2").text((Number(m) + 1) + "월");
 	
 			function checkLeapYear(year) {//윤년 계산
 				if (year % 400 == 0) {
@@ -289,7 +286,10 @@
 				$("#tb_body").html(h.join(""));
 				for (let i = 1; i <= $(".t_day").text().length; i++) {
 					if (d == i && m == current_month && y == current_year) {
-						$("#day" + i).css("backgroundColor", "#E6FFFF");
+						$("#day" + i).css({
+							"backgroundColor": "rgb(211, 211, 237)", 
+							"border-radius": "25px"
+						});
 					}
 	
 				}
@@ -297,8 +297,15 @@
 			
 	
 			function setDate(day) {//선택할 날짜 가져가기
-				$(".t_day").css("backgroundColor", "white");
-				$("#day" + day).css("backgroundColor", "#E6FFFF");
+				/* $(".t_day").css("backgroundColor", "white"); */
+				$(".t_day").css({
+					"backgroundColor": "white", 
+					"border-radius": "30px"
+				});
+				$("#day" + day).css({
+					"backgroundColor": "rgb(211, 211, 237)", 
+					"border-radius": "25px"
+				});
 				let text_month = current_month;
 				if (day < 10) day = "0" + day;
 				if (current_month < 10) text_month = "0" + text_month;
@@ -306,49 +313,7 @@
 				$("#date_text").text(current_year + "-" + text_month + "-" + day);
 	
 				$("#input_date").html(current_year + "-" + text_month + "-" + day);
-				//$("#div_calendar").hide();
-	
 			}
-		    /* // 현재 날짜 정보 가져오기
-		    let currentDate = new Date();
-		    
-		    // 예약 가능한 날짜를 현재 날짜 이후로 설정
-		    let minDate = new Date(currentDate);
-		    
-		    // 날짜 입력 필드에 최소 날짜 설정
-		    $("#input_date").attr("min", formatDate(minDate));
-			// 오늘 이후의 날짜만 선택 가능하도록 날짜 비교 함수 정의
-		    function isAfterToday(date) {
-		        return date > minDate;
-		    }
-			// 현재 날짜 포맷 (YYYY-MM-DD)으로 반환하는 함수
-		    function formatDate(date) {
-		        let yyyy = date.getFullYear();
-		        let mm = String(date.getMonth() + 1).padStart(2, '0');
-		        let dd = String(date.getDate()).padStart(2, '0');
-		        return `${yyyy}-${mm}-${dd}`;
-		    }
-			function setDate(day) {//선택할 날짜 가져가기
-				$(".t_day").css("backgroundColor", "white");
-				let selectedDate = new Date(current_year, current_month - 1, day);
-				
-				//선택한 날짜가 오늘 이후의 날짜인지 확인
-				if (isAfterToday(selectedDate)) {
-					$("#day" + day).css("backgroundColor", "#E6FFFF");
-					let text_month = current_month;
-					if (day < 10)
-						day = "0" + day;
-					if (current_month < 10)
-						text_month = "0" + text_month;
-		
-					$("#date_text").text(current_year + "-" + text_month + "-" + day);
-		
-					$("#input_date").html(current_year + "-" + text_month + "-" + day);
-				} else {
-					// 오늘 이후의 날짜가 아닌 경우 선택 비활성화
-					$("#day" + day).css("backgroundColor", "gray");
-				}	
-			} */
 	
 			function changeMonth(diff) {
 				if (diff == undefined) {
@@ -368,40 +333,33 @@
 				loadCalendar();
 				if ((current_month) == Number(m)) {
 					$("#fa1").prop("type", "hidden");
-					//$("#fa1").css("visibility", "hidden");
 				} else {
-					//$("#fa1").css("visibility", "visible");
+					$("#fa1").prop("type", "button");
 				}
 				if ((current_month) == (Number(m) + 1)) {
 					$("#fa2").prop("type", "hidden");
-					//$("#fa2").css("visibility", "hidden");
 				} else {
 					$("#fa2").prop("type", "button");
-					//$("#fa2").css("visibility", "visible");
 				}
 			}
 	
 			function loadCalendar() {
-				$("#year").val(current_year);
-				$("#month").val(current_month);
+				$("#year").val(current_year+"년");
+				$("#month").val(current_month+"월");
 				changeYearMonth(current_year, current_month);
 	
 				let previous_month = current_month - 1
 				let next_month = current_month + 1
 				if (previous_month === 0) {
 					$("#fa1").val(12 + "월");
-					//$("#fa1").text(12 + "월");
 				} else {
 					$("#fa1").val(previous_month + "월");
-					//$("#fa1").text(previous_month + "월");
 				}
 	
 				if (next_month === 13) {
 					$("#fa2").val(1 + "월");
-					//$("#fa2").text(1 + "월");   
 				} else {
 					$("#fa2").val(next_month + "월");
-					//$("#fa2").text(next_month + "월");
 				}
 	
 			}
@@ -409,14 +367,10 @@
 			let current_year = (new Date()).getFullYear();
 			let current_month = (new Date()).getMonth() + 1;
 	
-			$("#year").val(current_year);
-			$("#month").val(current_month);
+			$("#year").val(current_year+"년");
+			$("#month").val(current_month+"월");
 	
 			changeYearMonth(current_year, current_month);
-			
-			
-	        
-	        
 		</script>
 		
 	</body>

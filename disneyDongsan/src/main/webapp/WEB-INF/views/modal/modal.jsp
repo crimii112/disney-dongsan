@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<link rel="stylesheet" type="text/css"
+	href="/resources/include/css/ticket/modal.css" />
+
 <script type="text/javascript">
 		$(function(){
 
@@ -60,8 +63,8 @@
 					</label>
 	      </div>
 	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			<input type="button" value="예약하기" id="ticketInsertBtn" class="btn btn-success" />
+	      	<button type="button" id="ticketCancelBtn" class="btn-secondary" data-bs-dismiss="modal">취소</button>
+			<input type="button" value="예약하기" id="ticketInsertBtn" class="btn-success" />
 	      </div>
 	    </div>
 	  </div>
