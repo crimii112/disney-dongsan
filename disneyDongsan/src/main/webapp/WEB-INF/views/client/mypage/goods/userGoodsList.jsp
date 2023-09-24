@@ -17,6 +17,7 @@
 		<![endif]-->
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypageListBody.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
@@ -41,7 +42,7 @@
 			});
 			
 			$(".goDetail").click(function(){
-				let g_order_id = $(this).parents("tr").attr("data-num");
+				let g_order_id = $(this).parent("div").attr("data-num");
 				$("#g_order_id").val(g_order_id); 
 				$("#detailForm").attr({
 				"method" : "post",
@@ -49,6 +50,15 @@
 				});
 				$("#detailForm").submit();
 			});
+			
+			
+			
+			if($(".state-color").text() === '배송완료'){
+				console.log($(".state-color").text());
+				$(".state-color").css("color","gray");
+			}else{
+				
+			}
 		});
 		
 		function updateValue(){
@@ -61,7 +71,7 @@
 				if (list[i].checked) { // 선택이 되어있으면 배열에 값을 넣는다.
 					hasChecked = true; //체크된 값이 있으면 true 설정
 					//console.log(list[i].value);
-					let stateCk = $(list[i]).parents("tr").children().eq(3).text(); //배열의 있는 값의 부모요소를 찾아가 답변여부를 text로 가져온다.
+					let stateCk = $(list[i]).parent().parent().children(".card-body").children().eq(0).text(); //배열의 있는 값의 부모요소를 찾아가 답변여부를 text로 가져온다.
 					console.log("stateCk:" + stateCk);
 					//답변 여부 체크
 					if (stateCk === "배송중") {  alert("배송중인 상품은 취소가 불가능합니다."); return;}
@@ -103,51 +113,46 @@
 		}
 		</script>
 	</head>
-	<body>
-		<div class="container">
-			
-		
-			<form name="detailForm" id="detailForm">
-				<input type="hidden" name="g_order_id" id="g_order_id"/>
-			</form>
-			<div class="text-right">
-				<input type="button" id="deleteFormBtn" value="배송취소" onclick="updateValue();"/>
-			</div>
-			<div id="tketList">
-				<table summary="게시판 리스트" class = "table">
-					<thead>
-						<tr>
-							<th class="col-md-1 text-center">No</th>
-							<th class="col-md-3 text-center">주문번호</th>
-							<th class="col-md-3 text-center">주문날짜</th>
-							<th class="col-md-3 text-center">주문상태</th>
-							<th class="col-md-1 text-center"><input type="checkbox" id="allCheck" name="allCheck"/></th>
-						</tr>
-					</thead>
-					<tbody id="list" class="table-striped">
-					<!-- 데이터 출력 -->
-						<c:choose>
-							<c:when test="${not empty goodsList}">
-								<c:forEach var="goodsList" items="${goodsList}" varStatus="status">
-									<tr class="text-center" data-num="${goodsList.g_order_id}">
-										<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
-										<td class="goDetail">${goodsList.g_order_id}</td>
-										<td>${goodsList.g_order_date}</td>
-										<td>${goodsList.g_order_state}</td>
-										<td><input name="RowCheck" type="checkbox" value="${goodsList.g_order_id}"/></td>
-									</tr>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-							<tr>
-								<td colspan="5" class="text-center">결제된 상품이 존재하지 않습니다.</td>
-							</tr>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-				</table>
-			</div>
+<body>
+	<div class="container">
+
+
+		<form name="detailForm" id="detailForm">
+			<input   class="m-25" type="hidden" name="g_order_id" id="g_order_id" />
+		</form>
+		<div class="allDiv">
+		<input class="all-button"type="checkbox" id="allCheck" name="allCheck"/>
 		</div>
-	
-	</body>
+		<div id="tketList">
+			<c:choose>
+				<c:when test="${not empty goodsList}">
+					<c:forEach var="goodsList" items="${goodsList}" varStatus="status">
+					<div class="card w-70 m-3">
+						<div class="card-body" data-num="${goodsList.g_order_id}">
+							<h5 class="card-title"><strong class="state-color" id="state-color">${goodsList.g_order_state}</strong></h5>
+							<p class="card-title">주문번호&nbsp;&nbsp;&nbsp;${goodsList.g_order_id}</p>
+							<p class="card-text">주문일시&nbsp;&nbsp;&nbsp;${goodsList.g_order_date}</p>
+							<label class="goDetail">상세내역></label>
+						</div>
+						<div class="RowCheck_div">
+							<input class="m-25" name="RowCheck" type="checkbox" value="${goodsList.g_order_id}" />
+						</div>
+					</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<div>
+						<p class="text-center">결제된 상품이 존재하지 않습니다.</p>
+					</div>
+				</c:otherwise>
+			</c:choose>
+
+			<input type="button" id="deleteFormBtn"
+				class="deleteFormBtn float-right" value="배송취소"
+				onclick="updateValue();" />
+
+		</div>
+	</div>
+
+</body>
 </html>

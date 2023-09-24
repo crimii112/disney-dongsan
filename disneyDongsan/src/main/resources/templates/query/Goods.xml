@@ -28,6 +28,8 @@
                 ) goodslist
             where rnum > (#{pageNum}-1)* #{amount}        
         ]]>
+        
+        order by g_id desc
 	</select>
 	
 	<!-- 전체 레코드 수 조회 -->

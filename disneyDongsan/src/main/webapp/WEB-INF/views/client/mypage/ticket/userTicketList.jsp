@@ -16,13 +16,14 @@
 		<![endif]-->
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypageListBody.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$(".goDetail").click(function(){
-					let PAYMENT_ID = $(this).parents("tr").attr("data-num");
+					let PAYMENT_ID = $(this).attr("data-num");
 					$("#PAYMENT_ID").val(PAYMENT_ID);
 					console.log("예매 번호:" + PAYMENT_ID);
 					
@@ -43,50 +44,44 @@
 				<input type="hidden" name="PAYMENT_ID" id="PAYMENT_ID"/>
 			</form>
 			
-			<div id="tketList">
-				<table summary="게시판 리스트" class = "table">
-					<thead>
-						<tr>
-							<th class="col-md-1 text-center">No</th>
-							<th class="col-md-1 text-center">주문번호</th>
-							<th class="col-md-5 text-center">구분</th>
-							<th class="col-md-1 text-center">금액</th>
-							<th class="col-md-1 text-center">방문예정일</th>
-							<th class="col-md-1 text-center">결제날짜</th>
-							<th class="col-md-1 text-center">결제상태</th>
-						</tr>
-					</thead>
-					<tbody id="list" class="table-striped">
+			<div id="tketList"class="tketList">
+
+				
 					<!-- 데이터 출력 -->
 						<c:choose>
 							<c:when test="${not empty tketList}">
 								<c:forEach var="tketList" items="${tketList}" varStatus="status">
-									<tr class="text-center" data-num="${tketList.PAYMENT_ID}">
-										<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
-										<td>${tketList.PAYMENT_ID}</td>
-										<td class="goDetail">${tketList.t_category}</td>
-										<td>${tketList.total_price}</td>
-										<td>${tketList.visit_date}</td>
-										<td>${tketList.pay_date}</td>
-										<c:choose>
-											<c:when test="${tketList.t_state eq 'Y'}">
-												<td>결제완료</td>
-											</c:when>
-											<c:when test="${tketList.t_state eq 'N'}">
-												<td>취소완료</td>
-											</c:when>
-										</c:choose>
-									</tr>
+									<div class="card ticketCard w-70 m-3 ">
+										<div class="card-body goDetail" style="padding-top: 50px;" data-num="${tketList.PAYMENT_ID}">
+								
+											<p class="card-title">구분&nbsp;&nbsp;&nbsp;${tketList.t_category}</p>
+											<p class="card-text">가격&nbsp;&nbsp;&nbsp;${tketList.total_price}</p>
+											<p class="card-text">방문일시&nbsp;&nbsp;&nbsp;${tketList.visit_date}</p>
+											<p class="card-text">주문일시&nbsp;&nbsp;&nbsp;${tketList.pay_date}</p>
+											
+											
+										</div>
+										<div class="ticketSide">
+											<h5 class="card-title"><strong class="payment-color" id="payment-color">${tketList.PAYMENT_ID}</strong></h5>
+											<c:choose>
+												<c:when test="${tketList.t_state eq 'Y'}">
+													<p class="card-text">결제완료</p>
+												</c:when>
+												<c:when test="${tketList.t_state eq 'N'}">
+													<p class="card-text">취소완료</p>
+												</c:when>
+											</c:choose>
+										</div>
+									</div>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-							<tr>
-								<td colspan="5" class="text-center">등록된 게시물이 존재하지 않습니다.</td>
-							</tr>
+							<div>
+								<p class="text-center">등록된 게시물이 존재하지 않습니다.</p>
+							</div>
 							</c:otherwise>
 						</c:choose>
-					</tbody>
-				</table>
+				
 			</div>
 		</div>
 	

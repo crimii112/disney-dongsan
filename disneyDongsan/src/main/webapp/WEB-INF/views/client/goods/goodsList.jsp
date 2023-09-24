@@ -63,7 +63,7 @@
 					$("#detailForm").submit();
 				});
 				
-				$(".pageMaker_btn a").click(function(e){
+				$(".page-item a").click(function(e){
 					e.preventDefault();
 					$("#searchForm").find("input[name='pageNum']").val($(this).attr("href"));
 					goPage();
@@ -93,7 +93,7 @@
 						<input type="hidden" id="g_id" name="g_id" />
 					</form>
 		            <div id="article">
-		            	<h1>굿즈 판매 상품</h1>
+		            	<h3>굿즈 판매 상품</h3>
 		            </div>
 		            	<div class="search_wrap">
 	                		<form id="searchForm" class="searchForm" action="/goods/goodsList" method="get">
@@ -131,7 +131,7 @@
 												</div>
 												<div class="item-contents">
 													<div class="item-name">${goods.g_name}</div>
-													<div class="item-price">${goods.g_price}</div>
+													<div class="item-price">${goods.g_price} 원</div>
 												</div>
 											</div>
 																
@@ -142,26 +142,26 @@
 						</div>
 					</div>
 					<div class="pageMaker_wrap">
-	                		<ul class="pageMaker">
+	                		<ul class="pagination justify-content-center">
 	                			
 	                			<!-- 이전 버튼 -->
 	                			<c:if test="${pageMaker.prev }">
-	                				<li class="pageMaker_btn prev">
-	                					<a href="${pageMaker.startPage -1}">이전</a>
+	                				<li class="page-item prev">
+	                					<a class="page-link" href="${pageMaker.startPage -1}">이전</a>
 	                				</li>
 	                			</c:if>
 	                			
 	                			<!-- 페이지 번호 -->
 	                			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="num">
-	                				<li class="pageMaker_btn ${pageMaker.cvo.pageNum == num ? 'active':''}">
-	                					<a href="${num}">${num}</a>
+	                				<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+	                					<a class="page-link" href="${num}">${num}</a>
 	                				</li>	
 	                			</c:forEach>
 	                		
 		                    	<!-- 다음 버튼 -->
 		                    	<c:if test="${pageMaker.next}">
-		                    		<li class="pageMaker_btn next">
-		                    			<a href="${pageMaker.endPage + 1 }">다음</a>
+		                    		<li class="page-item next">
+		                    			<a class="page-link" href="${pageMaker.endPage + 1 }">다음</a>
 		                    		</li>
 		                    	</c:if>
 		                    </ul>

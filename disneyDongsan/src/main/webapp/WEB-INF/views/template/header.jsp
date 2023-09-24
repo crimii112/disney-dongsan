@@ -9,6 +9,7 @@
 
 <script src="/resources/include/jquery/jquery-3.7.1.min.js"></script>
 <script src="/resources/include/jquery/jquery.test.js"></script>
+
 </head>
 <body>
 	<header>
@@ -19,9 +20,18 @@
 	            <a href="/"><img src="/resources/img/disneyLogo5.png" height="80px"></a>
 	         </div>
 	         <div class="col">
-	            <a class="nav-icon-user" href="#"><img src="/resources/img/user.png" height="20px"></a> 
-	               <a class="nav-icon" href="#"><img src="/resources/img/basket.png" height="20px"></a> 
-	               <a class="nav-icon-logout" href="#"><img src="/resources/img/logout.png" height="20px"></a>
+	           <c:if test="${empty Member}">
+                  <a class="nav-icon-user" href="/member/loginForm"><img src="/resources/img/user.png" height="20px"></a> 
+               </c:if>
+               <c:if test="${not empty Member}">
+                  <a class="nav-icon-user" href="/mypage/mypage"><img src="/resources/img/user.png" height="20px"></a> 
+               </c:if>
+               
+               <a class="nav-icon" href="/goods/basketList"><img src="/resources/img/basket.png" height="20px"></a>
+               
+               <c:if test="${not empty Member}">
+                  <a class="nav-icon-logout" href="/member/logout"><img src="/resources/img/logout.png" height="20px"></a>
+               </c:if>
 	         </div>
 	      </div>
 	      
@@ -37,8 +47,8 @@
 	               </ul></li>
 	            <li><span>티켓예매</span>
 	               <ul class="dept01">
-	                  <li class="nop"><a href="/ticket/allDayTicketView" class="nav-link px-2">예매하기</a></li>
-	                  <li class="nop"><a href="#" class="nav-link px-2">제휴카드</a></li>
+	                  <li class="nop"><a href="/ticket/reserveTicket" class="nav-link px-2">예매하기</a></li>
+	                  <li class="nop"><a href="/ticket/cardInfo" class="nav-link px-2">제휴카드</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	               </ul></li>
 	            <li><span>굿즈몰</span>
