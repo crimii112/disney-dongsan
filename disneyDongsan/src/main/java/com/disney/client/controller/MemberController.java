@@ -182,7 +182,7 @@ public class MemberController {
 	/* 회원 탈퇴 폼 화면*/
 	@GetMapping("/withdrawalForm")
 	public String withdrawalForm() {
-		return "client/member/withdrawal/withdrawalForm";
+		return "client/mypage/withdrawal/withdrawalForm";
 	}
 	
 	/* 회원 탈퇴 처리 */
@@ -195,7 +195,7 @@ public class MemberController {
 		
 		if(result == 1) {
 			sessionStatus.setComplete();
-			url = "client/member/withdrawal/withdrawalSuccess";
+			url = "client/mypage/withdrawal/withdrawalSuccess";
 		} else {
 			ras.addFlashAttribute("errorMsg", "회원 탈퇴 오류 발생. 잠시 후에 다시 시도해주세요.");
 			url = "redirect:/member/withdrawalForm";
@@ -204,7 +204,7 @@ public class MemberController {
 		return url;
 	}
 	
-	@GetMapping("/member/updateMemberInfoForm")
+	@GetMapping("/updateMemberInfoForm")
 	public String updateInfoForm(@SessionAttribute(name = "Member", required = false) MemberVO Member) {
 		String url = "";
 		

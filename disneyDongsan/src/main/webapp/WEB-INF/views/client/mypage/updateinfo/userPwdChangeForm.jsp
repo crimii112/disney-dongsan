@@ -26,56 +26,9 @@
 			errorMsg = '';
 		};
 		
-		$("#pwdUpdate").prop("disabled", true);
 		
-		$("#chk_password").keyup(function() {
-			let new_password = $("#new_password").val();
-			let chk_password = $("#chk_password").val();
-
-			console.log("member_id = " + $("#memberId").val());
-			if (!chkData("#memberPasswd", "현재 비밀번호를"))
-				return;
-			else if (!chkData("#new_password", "변경할 비밀번호를"))
-				return;
-			else if (!chkData("#chk_password", "확인할 비밀번호를"))
-				return;
-			else if (new_password !== chk_password) {
-					$('#chkmsg').text("작성시 입력한 비밀번호를 입력해 주세요.").css("color","#000099");
-					$("#pwdUpdate").prop("disabled", true);
-					return;
-			} else{ 
-						console.log("new_password=" + new_password);
-						console.log("chk_password=" + chk_password);
-						$('#chkmsg').text("비밀번호가 일치합니다.").css("color","#000099");
-						$("#pwdUpdate").prop("disabled", false);
-			}	
-		});
-								
-			$("#pwdUpdate").click(function() {
-				$.ajax({
-						url : "/mypage/pwdChk",
-						type : "post",
-						data : $("#f_updateForm").serialize(),
-						dataType : "text",
-						error : function() {
-							alert('시스템 오류 입니다. 관리자에 문의하세요');
-							},
-						success : function(resultData) {
-								  if (resultData == "실패") {
-										alert("현재 비밀번호가 정확하지 않습니다.");	
-							} else if(resultData == "성공") {
-										alert("비밀번호가 변경되었습니다.");	
-										$("#f_updateForm").attr({
-												"method" : "post",
-												"action" : "/mypage/userPwChange"
-										});
-										$("#f_updateForm").submit();
-										}	
-									}
-								});
-							});
 			
-			});
+	});
 </script>
 </head>
 	<body>
