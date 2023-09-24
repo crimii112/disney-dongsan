@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
-<link rel="stylesheet" type="text/css" href="/resources/include/css/login.css">
+<link rel="stylesheet" type="text/css" href="/resources/include/css/signup.css">
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	// 중복확인 여부 확인
@@ -25,6 +25,7 @@
 		/* 아이디 keydown 이벤트 */
 		$("#memberId").keydown(function(){
 			idCheckStatus = 0;	// 아이디 input에 값 들어가면 0으로(중복확인 안한 상태)
+			$("#idChkMsg").text('');
 		});
 		
 		/* 아이디 중복확인 버튼 클릭 시 이벤트 */
@@ -44,12 +45,23 @@
 		$("#memberPwdCheck").keyup(function(){
 			let memberPwd = $("#memberPasswd").val();
 			if(memberPwd == $("#memberPwdCheck").val()){
-				pwdCheckStatus = true;
-				$("#pwdCheckSpan").text("비밀번호 일치").css("color", "green");
+				if(memberPwd != ''){
+					pwdCheckStatus = true;
+					$("#pwdCheckSpan").text("비밀번호 일치").css("color", "green");
+				}
 			} else {
-				pwdCheckStatus = false;
-				$("#pwdCheckSpan").text("비밀번호 불일치").css("color", "red");
+				if(memberPwd != ''){
+					pwdCheckStatus = false;
+					$("#pwdCheckSpan").text("비밀번호 불일치").css("color", "red");
+				}
 			}
+		});
+		
+		$("#memberPhone").keydown(function(){
+			$("#phoneChkSpan").html('');
+		});
+		$("#memberEmail").keydown(function(){
+			$("#emailChkSpan").html('');
 		});
 		
 		/* 회원가입 버튼 클릭 시 이벤트 */
@@ -61,9 +73,7 @@
 			else if (!chkData("#memberName","이름을"))			return;
 			else if (!chkData("#memberBirth","생년월일을"))		return;
 			else if (!chkData("#memberPhone","전화번호를"))		return;
-			else if (!phoneValidation("#memberPhone"))		return;
 			else if (!chkData("#memberEmail","이메일을"))		return;
-			else if (!emailValidation("#memberEmail"))		return;
 			else if (!chkData("#memberAddr1","주소를")){findAddr();	return;}
 			else if (!chkData("#memberAddr3","상세 주소를"))	return;
 			else if(idCheckStatus == 0) {alert("아이디 중복확인을 해주세요."); return;}
@@ -83,12 +93,14 @@
 		/* 이메일 인증번호 보내기 버튼 클릭 시 이벤트*/		
 		$("#emailtestBtn").click(function(){
 			if(!chkData("#memberEmail", "이메일을")) return;
+			else if (!emailValidation("#memberEmail", "#emailChkSpan")) return;
+
  	        const memberEmail = $("#memberEmail").val(); // 사용자가 입력한 이메일을 가져옴
  	        $.post("/mail/process", { memberEmail: memberEmail }, function(response){
  	        	//서버로부터 받은 응답을 처리
  	        	randomString = response;
  	        	console.log(response);
- 	        	alert("인증번호가 발송되었습니다.");  
+ 	        	$("#emailChkSpan").html("인증번호가 발송되었습니다.").css("color","green");  
  	        	emailCheckStatus = false;
  	        	
  	        	/* 이메일 인증번호 확인 버튼 클릭 시 이벤트 */
@@ -97,10 +109,10 @@
  	    	         
  	    	    	//인증번호 일치하는지 확인
  	    	    	if($("#emailtest").val()==randomString){
- 	    	        	$('#emailConfirm').html('인증되었습니다').css('color', 'red'); 
+ 	    	        	$('#emailConfirm').html('인증되었습니다.').css('color', 'green'); 
  	    	    		emailCheckStatus = true;
  	    	    	} else {
- 	    	        	$('#emailConfirm').html('인증번호가 일치하지 않습니다').css('color', 'red'); 
+ 	    	        	$('#emailConfirm').html('인증번호가 일치하지 않습니다. 다시 확인해주세요.').css('color', 'red'); 
  	    	    	}
  	    	    	console.log("randomString:"+randomString);
  	    	    	console.log("사용자 입력값:"+$("#emailtest").val());
@@ -115,6 +127,10 @@
 		
 		/* 전화번호 인증번호 보내기 버튼 클릭 시 이벤트 */
 		$("#sendMsgBtn").click(function(){
+			if(!phoneValidation("#memberPhone", "#phoneChkSpan")) return;
+
+			$("#phoneVeriChkSpan").html("");
+			
 			let phone = $("#memberPhone").val();
 			$("#to").val(phone);
 			
@@ -130,14 +146,15 @@
 						console.log(data.statusName);
 						if(data.statusName == "success"){
 							/* 인증번호 확인 버튼 클릭 시 이벤트 */
-							alert("인증번호를 발송했습니다.");
+							$("#phoneChkSpan").html("인증번호를 발송했습니다.").css("color","green");
 							$("#phoneCheckBtn").unbind("click").bind("click", function(){
 								let veriNum = $("#veriNum").val();
 								if(data.createSmsKey == veriNum){
 									phoneCheckStatus = true;
-									alert("전화번호 인증 성공");
+									$("#phoneVeriChkSpan").html("인증되었습니다.").css("color","green");
 								} else {
-									alert("인증번호를 틀렸습니다. 인증번호 보내기 버튼을 다시 눌러주세요.");
+									$("#phoneVeriChkSpan").html("인증번호가 일치하지 않습니다. 다시 확인해주세요.").css("color","red");
+									$("#veriNum").select();
 								}
 							});
 						}
@@ -231,65 +248,87 @@
 </script>
 </head>
 <body>
-	<div id="signupContainer">
+	<div class="signupContainer">
 		<form id="sendSmsForm">
 			<input type="hidden" id="to" name="to" value="">
 		</form>
-		<h3 class="text-center">Create Your Account</h3>
+		<h3 class="text-center">회원가입</h3>
+		<h5 class="text-center">디즈니 동산에 오신 것을 환영합니다!</h5>
+		<hr>
 		<div>
 			<form id="signupForm">
-				<div class="row form-group">
-					<label class="label">아이디</label>
-					<div>
-						<input type="text" class="form-control" id="memberId" name="memberId" placeholder="5~12자로 입력해주세요" />
-						<button type="button" class="form-control button" id="idCheckBtn">중복확인</button>
-						<span id="idChkMsg"></span>
-					</div> 
-				</div>
-				<div class="row form-group">
-					<label class="label">비밀번호</label> 
-					<input type="password" class="form-control" id="memberPasswd" name="memberPasswd" placeholder="영문/숫자/특수문자(!@#$%^&*)를 포함하여 8~16자로 입력해주세요"/>
-				</div>
-				<div class="row form-group">
-					<label class="label">비밀번호 확인</label> 
-					<input type="password" class="form-control" id="memberPwdCheck" name="memberPwdCheck" />
-					<span id="pwdCheckSpan"></span>
-				</div>
-				<div class="row form-group">
-					<label class="label">이름</label> 
-					<input type="text" class="form-control" id="memberName" name="memberName" />
-				</div>
-				<div class="row form-group">
-					<label class="label">생년월일</label> 
-					<input type="date" class="form-control" id="memberBirth" name="memberBirth" />
-				</div>
-				<div class="row form-group">
-					<label class="label">전화번호</label> 
-					<input type="text" class="form-control" id="memberPhone" name="memberPhone" placeholder="'-'는 제외하고 입력해주세요"/>
-					<button type="button" class="form-control button" id="sendMsgBtn">인증번호 보내기</button>
-					<input type="text" class="form-control" id="veriNum" placeholder="인증번호 입력">
-					<button type="button" class="form-control button" id="phoneCheckBtn">전화번호 인증</button>
-					
-				</div>
-				<div class="row form-group">
-					<label class="label">이메일</label> 
-					<input type="text" class="form-control" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해주세요." />
-					<button type="button" id="emailtestBtn" class="form-control button">인증번호 전송</button>
-					<input type="text" class="form-control" id="emailtest" name="emailtest" placeholder="인증번호 입력"/>
-					<span id="emailConfirm"></span>
-                    <button type="button" id="emailtestBtn2" class="form-control button">이메일 인증</button>
-				</div>
-				<div class="row form-group">
-					<label class="label">주소</label> 
-					<input class="selectAddress" value="F" type="hidden">
-					<input type="text" readonly="readonly" id="memberAddr1" name="memberAddr1" placeholder="우편번호"/>
-					<button type="button" id="findAddrBtn">주소 찾기</button>
-					<input type="text" readonly="readonly" id="memberAddr2" name="memberAddr2" placeholder="주소" />
-                    <input type="text" readonly="readonly" id="memberAddr3" name="memberAddr3" placeholder="상세주소" />
-				</div>
-				<div class="row form-group">
-					<input type="button" class="form-control button" id="signupBtn" value="회원가입" />
-				</div>
+				<table class="table table-borderless">
+					<tr>
+						<td class="w-25 align-middle"><label class="label">아이디</label></td>
+						<td>
+							<input type="text" id="memberId" name="memberId" placeholder="5~12자로 입력해주세요" />
+							<button type="button" class="button" id="idCheckBtn">중복확인</button>
+							<br><span id="idChkMsg"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">비밀번호</label></td>
+						<td>
+							<input type="password" id="memberPasswd" name="memberPasswd" placeholder="영문/숫자/특수문자(!@#$%^&*)를 포함한 8~16자"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">비밀번호 확인</label></td>
+						<td>
+							<input type="password" id="memberPwdCheck" name="memberPwdCheck" />
+							<span id="pwdCheckSpan"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">이름</label></td>
+						<td>
+							<input type="text" id="memberName" name="memberName" />
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">생년월일</label></td>
+						<td>
+							<input type="date" id="memberBirth" name="memberBirth" />
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">전화번호</label></td>
+						<td>
+							<input type="text" id="memberPhone" name="memberPhone" placeholder="'-'는 제외하고 입력해주세요"/>
+							<button type="button" class="button" id="sendMsgBtn">인증번호 전송</button><br>
+							<span id="phoneChkSpan"></span>
+							<input type="text" id="veriNum" placeholder="인증번호 입력">
+							<button type="button" class="button" id="phoneCheckBtn">확인</button>
+							<br><span id="phoneVeriChkSpan"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">이메일</label></td>
+						<td>
+							<input type="text" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해주세요." />
+							<button type="button" id="emailtestBtn" class="button">인증번호 전송</button><br>
+							<span id="emailChkSpan"></span>
+							<input type="text" id="emailtest" name="emailtest" placeholder="인증번호 입력"/>
+		                    <button type="button" id="emailtestBtn2" class="button">확인</button>
+							<br><span id="emailConfirm"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="w-20 align-middle"><label class="label">주소</label></td>
+						<td>
+							<input class="selectAddress" value="F" type="hidden">
+							<input type="text" readonly="readonly" id="memberAddr1" name="memberAddr1" placeholder="우편번호"/>
+							<button type="button" id="findAddrBtn">주소 찾기</button><br>
+							<input type="text" readonly="readonly" id="memberAddr2" name="memberAddr2" placeholder="주소" />
+		                    <input type="text" readonly="readonly" id="memberAddr3" name="memberAddr3" placeholder="상세주소" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="text-center">
+							<input type="button" class="button" id="signupBtn" value="회원가입" />
+						</td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</div>

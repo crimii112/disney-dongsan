@@ -12,11 +12,18 @@
 </script>
 </head>
 <body>
-	<div id="container">
-		<h2 class="text-center">회원가입 완료</h2>
-		<h3 class="text-center">디즈니 동산에 오신 것을 환영합니다</h3>
+	<div class="loginContainer text-center">
+		<h3 class="text-center">회원가입 완료</h3>
+		<hr>
+		<h5 class="text-center">디즈니 동산에 오신 것을 환영합니다!</h5>
 		<br>
-		<button type="button" id="loginFormBtn" class="form-control button">로그인</button>
+		<div>
+			<img id="signupImg" src="/resources/include/img/signupsuccess.png">
+		</div>
+		<div class="btn-group" id="signupBtnDiv">
+			<input type="button" id="loginFormBtn" class="button" value="로그인"/>
+		</div>
+		
 	</div>
 </body>
 </html>

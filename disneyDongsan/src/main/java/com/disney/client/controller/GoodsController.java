@@ -44,9 +44,6 @@ public class GoodsController {
 	@Setter(onMethod_ = @Autowired)
 	private OrderService orderService;
 	
-//	@Setter(onMethod_ = @Autowired)
-//	private MemberService memberService;
-	
 	@Setter(onMethod_ = @Autowired)
 	private MypageGoodsReviewService mypageGoodsService;
 	
