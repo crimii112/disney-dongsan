@@ -100,9 +100,7 @@
 		
 		 
         
-        
-        //================================
-        
+
         
         image {width: 100px; height: 100px;}
         
@@ -179,7 +177,6 @@
         $(function(){
             /* 달력 함수 */
             var currentDate = new Date(); // 현재 날짜
-            currentDate.setHours(0, 0, 0, 0); // 시간을 자정으로 설정
 
             var options = {
                 showDay: true,
@@ -210,12 +207,13 @@
                     html += currentDate.toISOString().substring(8, 10);
 
                     html += "</td>";
-                    currentDate.setDate(currentDate.getDate() + 1); 
+                    currentDate.setDate(currentDate.getDate() + 1); // 다음 날짜로 이동
                 }
 
                 html += "</tr></tbody></table>";
                 return html;
             }
+
 
             function setButtonsState() {
                 var today = new Date();
@@ -226,7 +224,7 @@
 
             var html = updateCalendar(currentDate);
             
-            $(".calendar-yearmonth").html(currentDate.getFullYear() + "년 " + (currentDate.getMonth() + 1) + "월 " +(currentDate.getDate()-1) + "일");
+            $(".calendar-yearmonth").html(currentDate.getFullYear() + "년 " + (currentDate.getMonth() + 1) + "월 " +(currentDate.getDate()) + "일");
             $("#calendar").html(html);
             setButtonsState();
 
@@ -286,30 +284,21 @@
             $('#calendar').on('click', 'td', function() {
                 var clickedDate = $(this).data('date');
                 if (clickedDate) {
-                    // 클릭한 날짜에 배경색 추가
                     $(this).addClass('selected');
 
-                    // 다른 날짜의 배경색 제거
                     $(this).siblings().removeClass('selected');
-
-                    // 선택한 날짜의 정보를 표시
+ 
                     getEventsForDate(new Date(clickedDate));
 
-                    // 클릭한 날짜에서 연, 월, 일 정보를 추출
                     var clickedDateObj = new Date(clickedDate);
                     var year = clickedDateObj.getFullYear();
-                    var month = (clickedDateObj.getMonth() + 1); // 월은 0부터 시작하므로 +1
+                    var month = (clickedDateObj.getMonth() + 1); 
                     var day = clickedDateObj.getDate();
 
-                    // 월과 일이 한 자리 수인 경우 앞에 0을 추가
-                    if (month < 10) {
-                        month = '0' + month;
-                    }
                     if (day < 10) {
                         day = '0' + day;
                     }
 
-                    // yearmonth 엘리먼트에 연, 월, 일 정보 설정
                     $('.calendar-yearmonth').text(year + '년 ' + month + '월 ' + day +'일');
                 }
             });
