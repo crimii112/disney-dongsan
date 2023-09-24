@@ -23,5 +23,6 @@ public interface MypageGoodsReviewDao {
 	
 	public List<GoodsReviewVO> ReviewCompleteList(String username);
 
+	public List<GoodsReviewVO> goodsReviewList(GoodsReviewVO gvo);
 
 }
