@@ -3,28 +3,13 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+<link rel="stylesheet" type="text/css"
+	href="/resources/include/css/ticket/ticket.css" />
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 	crossorigin="anonymous"></script>
-	
-<style type="text/css">
-	div.left {
-		float: left;
-		margin-right: 10px;
-	}
-	
-	div.right {
-		/* float: left; */
-	}
-	
-	/* .table {
-		width: 100px;
-	} */
-	/* 초기에는 테이블 숨기기 */
-    #cardTable {
-        display: none;
-    }
-</style>
 
 <script type="text/javascript">
 	$(function(){
@@ -95,7 +80,7 @@
 			}
 			alldayPrice = adult + student + child;
 			$("#alldayPrice").text(alldayPrice);
-			console.log()
+			console.log(totalPrice);
 			totalPrice = alldayPrice * (100-discountRate)/100;	//할인율 계산
 			$("#totalPrice").text(totalPrice);
 			$("#total_price").val($("#totalPrice").text());
@@ -118,6 +103,7 @@
 			}
 			alldayPrice = adult + student + child;
 			$("#alldayPrice").text(alldayPrice);
+			console.log(totalPrice);
 			totalPrice = alldayPrice * (100-discountRate)/100;	//할인율 계산
 			$("#totalPrice").text(totalPrice);
 			$("#total_price").val($("#totalPrice").text());
@@ -166,35 +152,6 @@
             	}
             })
         });
-        
-	    $(function(){
-
-			//동의 모두선택 / 해제
-			const agreeChkAll = document.querySelector('input[name=agree_all]');
-			    agreeChkAll.addEventListener('change', (e) => {
-			    let agreeChk = document.querySelectorAll('input[name=agree]');
-			    for(let i = 0; i < agreeChk.length; i++){
-			      agreeChk[i].checked = e.target.checked;
-			    }
-			});	
-		
-			// 약관 모두선택
-			$("input[name=agree]").click(function(){
-			    let total = $("input[name=agree]").length;
-			    let checked = $("input[name=agree]:checked").length;
-			         
-			    if(total != checked)
-			        $("#agree_all").prop("checked", false);
-			    else 
-			        $("#agree_all").prop("checked", true);
-			});
-			
-			// 취소 클릭 시 입력값 초기화
-			$(document).on("click", ".modal_close", function(){
-				$(".check").prop("checked", false);
-			})
-			
-		});
 	});
 	
 </script>
@@ -205,10 +162,12 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<input type="image" src="/resources/images/day.jpg" alt="놀이공원종일권"
-					style="width: 553px;" />
-				<h3>하루종일 놀 수 있는 종일권!</h3>
+			<div class="div_left col-md-7">
+				<input type="image" id="dongsanimg" src="/resources/images/day.jpg"
+					alt="놀이공원종일권" />
+				<div id="ticket_sub">
+					<h4>하루종일 놀 수 있는 종일권!</h4>
+				</div>
 				<table class="pricetable table table-bordered">
 					<tr>
 						<th>상품명</th>
@@ -230,62 +189,63 @@
 			</div>
 
 
-			<div class="col-md-6">
+			<div class="div_right col-md-3">
+			<div class="div_right_inner">
+			
 				<h5>예약옵션을 선택해주세요.</h5>
 				<hr>
 
 				<!-- ------------------------------------ -->
-			<div id="div_calendar" style="width: 500px;">
-				<div>
-					<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
-					<input type="text" id="year" value="2020"
-						style="width: 80px; display: initial;" class="form-control"
-						readonly="readonly" /> 
-					<input type="text" id="month" value="changeMonth(0);" style="width: 50px; display: initial;" class="form-control"
-						readonly="readonly">월
-					<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
+				<div id="div_calendar">
+					<div id="div_calendar_year">
+						<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
+						<input type="text" id="year" value="2020"
+							style="width: 60px; display: initial;" class="form-control"
+							readonly="readonly" />년
+						<input type="text" id="month"
+							value="changeMonth(0);" style="width: 50px; display: initial;"
+							class="form-control" readonly="readonly">월 
+						<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
+					</div>
+					<table class="table table-bordered" id="calendar">
+						<thead>
+							<tr>
+								<th>일</th>
+								<th>월</th>
+								<th>화</th>
+								<th>수</th>
+								<th>목</th>
+								<th>금</th>
+								<th>토</th>
+							</tr>
+						</thead>
+						<tbody id="tb_body"></tbody>
+					</table>
 				</div>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>일</th>
-							<th>월</th>
-							<th>화</th>
-							<th>수</th>
-							<th>목</th>
-							<th>금</th>
-							<th>토</th>
-						</tr>
-					</thead>
-					<tbody id="tb_body"></tbody>
-				</table>
-			</div>
 				<!-- ------------------------------------ -->
 				<!-- 예약옵션 테이블 -->
-				<div class="contentContainer container">
-				<form name="alldayTicket_data" id="alldayTicket_data" method="post">
-					<input type="hidden" name="visit_date" id="visit_date" value="" />
-					<input type="hidden" name="t_adult" id="t_adult" value="" />
-					<input type="hidden" name="t_student" id="t_student" value="" />
-					<input type="hidden" name="t_child" id="t_child" value="" />
-					<input type="hidden" name="card_company" id="card_company" value="" />
-					<input type="hidden" name="allday_price" id="allday_price" value="" />
-					<input type="hidden" name="total_price" id="total_price" value="" />
-					<input type="hidden" name="t_category" id="t_category" value="" />
-				</form>
-				
-				<table>
-					<tr>
-						<th>예약옵션</th>
-					</tr>
-					<tr>
-						<td>방문예정일</td>
-						<td id="input_date"></td>
-					</tr>
-					<tr>
-						<td>상품선택</td>
+					<form name="alldayTicket_data" id="alldayTicket_data" method="post">
+						<input type="hidden" name="visit_date" id="visit_date" value="" />
+						<input type="hidden" name="t_adult" id="t_adult" value="" /> <input
+							type="hidden" name="t_student" id="t_student" value="" /> <input
+							type="hidden" name="t_child" id="t_child" value="" /> <input
+							type="hidden" name="card_company" id="card_company" value="" />
+						<input type="hidden" name="allday_price" id="allday_price"
+							value="" /> <input type="hidden" name="total_price"
+							id="total_price" value="" /> <input type="hidden"
+							name="t_category" id="t_category" value="" />
+					</form>
+
+					<table id="ticket_table">
+						<tr>
+							<td class="ticket_td">방문예정일</td>
+							<td id="input_date" class="td_right"></td>
+						</tr>
+						
+						<tr>
+						<td class="ticket_td">상품선택</td>
 						<td>
-						<table>
+						<table class="td_btn">
 					        <tr>
 					            <td>대인</td>
 					            <td>
@@ -313,133 +273,65 @@
 					    </table>
 						</td>
 					</tr>
-					<tr>
-						<td>제휴카드 선택</td>
-						<td>
-			                <input type="checkbox" id="showCardTable" />
-			            </td>
-			        </tr>
-			        <tr>
-			        	<td></td>
-						<td>
-						    <div id="cardTable">
-						        <table class="cardTable table table-bordered">
-						            <tr>
-						                <td>삼성카드</td>
-						                <td>하나카드</td>
-						                <td>국민카드</td>
-						            </tr>
-						            <tr>
-						                <td>BC카드</td>
-						                <td>현대카드</td>
-						                <td>농협카드</td>
-						            </tr>
-						            <tr>
-						                <td>신한카드</td>
-						                <td>우리카드</td>
-						                <td>씨티카드</td>
-						            </tr>
-						        </table>
-						    </div>
-						</td>
 						
-					</tr>
-					<tr>
-						<td>할인전가격</td>
-						<td><span id="alldayPrice">0</span>원</td>
-					</tr>
-					<tr>
-						<td>총가격</td>
-						<td><span id="totalPrice">0</span>원</td>
-					</tr>
-					<tr>
-						<%-- <jsp:include page="../../modal/modal.jsp" /> --%>
-						<!-- <td><a href="#" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td> -->
-						<td><button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button></td>
-					</tr>
-				</table>
-				</div>
+						<tr>
+							<td class="ticket_td">제휴카드 선택</td>
+							<td class="td_right">
+								<input type="checkbox" id="showCardTable" />
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="td_right">
+								<div id="cardTable">
+									<table class="cardTable table table-bordered">
+										<tr>
+											<td>삼성카드</td>
+											<td>하나카드</td>
+											<td>국민카드</td>
+										</tr>
+										<tr>
+											<td>BC카드</td>
+											<td>현대카드</td>
+											<td>농협카드</td>
+										</tr>
+										<tr>
+											<td>신한카드</td>
+											<td>우리카드</td>
+											<td>씨티카드</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+
+						</tr>
+						<tr>
+							<td class="ticket_td">할인전가격</td>
+							<td class="td_right"><span id="alldayPrice">0</span>원</td>
+						</tr>
+						<tr>
+							<td class="ticket_td">총가격</td>
+							<td class="td_right"><span id="totalPrice">0</span>원</td>
+						</tr>
+<%-- 						<tr>
+							<td></td>
+							<jsp:include page="../../modal/modal.jsp" />
+							<!-- <td><a href="#" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td> -->
+							<td class="td_btn">
+								<button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button>
+							</td>
+						</tr> --%>
+					</table>
+			</div>
+			<jsp:include page="../../modal/modal.jsp" />
+			<!-- <button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button> -->
+			<input type="button" id="modalBtn" class="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" value="예약하기(모달)" />
 			</div>
 		</div>
 	</div>
-	
-	<!-- ---------------모달------------------ -->
-	<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-			<h4 class="modal-title">약관동의</h4>
-			<h6>아래 사항을 꼭 읽어보신 후 동의해 주세요!</h6>
-	      </div>
-	      <div class="modal-body">
-	        <label for="agree_all"> <input type="checkbox"
-						name="agree_all" id="agree_all" class="check"> <span>모두
-							동의합니다</span>
-					</label>
-					<hr />
-					<label for="agree"> <input type="checkbox" name="agree"
-						value="1" id="check_1" class="check"> <span>이용약관 동의<strong>(필수)</strong></span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="2" id="check_2" class="check"> <span>개인정보
-							수집, 이용 동의<strong>(필수)</strong>
-					</span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="3" id="check_3" class="check"> <span>개인정보
-							이용 동의<strong>(필수)</strong>
-					</span>
-					</label>
-	      </div>
-	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-			<input type="button" value="예약하기" id="ticketInsertBtn" class="btn btn-success" />
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
-	<!-- <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-xl modal-dialog-centered">
-			<div class="modal-content">
-	
-				Modal Header
-				<div class="modal-header">
-					<h4 class="modal-title">약관동의</h4>
-					<h7>아래 사항을 꼭 읽어보신 후 동의해 주세요!</h7>
-				</div>
-	
-				Modal body
-				<div class="modal-body">
-					<label for="agree_all"> <input type="checkbox"
-						name="agree_all" id="agree_all" class="check"> <span>모두
-							동의합니다</span>
-					</label>
-					<hr />
-					<label for="agree"> <input type="checkbox" name="agree"
-						value="1" id="check_1" class="check"> <span>이용약관 동의<strong>(필수)</strong></span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="2" id="check_2" class="check"> <span>개인정보
-							수집, 이용 동의<strong>(필수)</strong>
-					</span>
-					</label><br /> <label for="agree"> <input type="checkbox"
-						name="agree" value="3" id="check_3" class="check"> <span>개인정보
-							이용 동의<strong>(필수)</strong>
-					</span>
-					</label>
-				</div>
-	
-				Modal footer
-				<div class="modal-footer">
-					<button type="button" class="modal_close btn btn-secondary"
-						data-dismiss="modal">취소</button>
-					<input type="button" value="예약하기" id="ticketInsertBtn"
-						class="btn btn-success" />
-				</div>
-	
-			</div>
-		</div>
-	</div> -->
-	<!-- ---------------모달------------------ -->
-		
+
+
+
 
 	<script>
 	let date = new Date();
@@ -526,7 +418,7 @@
                 if (disablePastDates(selectedDate)) {
                     h.push('<td class="t_day" id="day' + data[i] + '" onclick="setDate(' + data[i] + ');" style="cursor:pointer;">' + data[i] + '</td>');
                 } else {
-                    h.push('<td class="t_day" id="day' + data[i] + '" style="cursor:not-allowed;">' + data[i] + '</td>');
+                    h.push('<td class="t_day" id="day' + data[i] + '" style="cursor:not-allowed; color:lightgray;">' + data[i] + '</td>');
                 }
 			}
 

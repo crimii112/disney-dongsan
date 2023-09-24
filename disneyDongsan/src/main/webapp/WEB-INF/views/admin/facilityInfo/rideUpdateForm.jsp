@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
-		<style type="text/css">
-			.rideTitlePadding{padding:20px;}
-		</style>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 		<script type="text/javascript">
 			$(function(){
 				
@@ -57,46 +55,48 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<div class="contentTB text-center">
+							<div class="contentTB">
+								<div class="contentBtn text-right">
+									<button type="button" id="rideUpdateBtn" class="btn sty_btn">수정</button>
+									<button type="button" id="rideCancelBtn" class="btn sty_btn">취소</button>
+									<button type="button" id="rideListBtn" class="btn sty_btn">목록</button>
+								</div>	
 								<form id="f_updateForm" name="f_updateForm">
 									<input type="hidden" id="rideNo" name="rideNo" value="${updateData.rideNo}" />
 									<input type="hidden" id="rideImage" name="rideImage" value="${updateData.rideImage}" />
-									<h2 class="rideTitlePadding">${updateData.rideTitle}</h2>
 									<table class="table table-bordered">
+										<colgroup>
+											<col width="20%" />
+											<col width="80%" />
+										</colgroup>
 										<tbody>
 											<tr>
-												<td>기구이름</td>
-												<td colspan="3" class="text-left">${updateData.rideTitle}</td>
+												<td class="text-center">기구이름</td>
+												<td colspan="3" class="text-left" >${updateData.rideTitle}</td>
 											</tr>
 											<tr>
-												<td>서브제목</td>
+												<td class="text-center">서브제목</td>
 												<td colspan="3" class="text-left">
 													<input type="text" name="rideSubTitle" id="rideSubTitle" value="${updateData.rideSubTitle}" class="form-control" maxlength="66" />
 												</td>
 											</tr>
 											<tr class="table-tr-height">
-												<td>내용</td>
+												<td class="text-center">내용</td>
 												<td colspan="3" class="text-left">
 													<textarea name="rideContent" id="rideContent" class="form-control" rows="8" maxlength="333">${updateData.rideContent}</textarea>
 												</td>
 											</tr>
 											<tr>
-												<td>이미지 파일 첨부</td>
+												<td class="text-center">이미지 파일 첨부</td>
 												<td class="text-left">
-													<input type="file" name="file" id="file" />
+													<input type="file" name="file" id="file" /><br />
 													<span id="fileNeme">${updateData.rideImage}</span>
 												</td>
 											</tr>
 											
 										</tbody>
 									</table>
-								</form>		
-							</div>
-							
-							<div class="contectBtn text-right">
-								<button type="button" id="rideUpdateBtn" class="btn btn-success">수정</button>
-								<button type="button" id="rideCancelBtn" class="btn btn-success">취소</button>
-								<button type="button" id="rideListBtn" class="btn btn-success">목록</button>
+								</form>	
 							</div>
 						</div>
 					</div>

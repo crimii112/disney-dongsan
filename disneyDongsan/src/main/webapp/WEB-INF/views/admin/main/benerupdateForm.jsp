@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 		<script type="text/javascript">
 			$(function(){
 				let errorMsg = "${errorMsg}";
@@ -51,34 +52,37 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<div class="contentTB text-center">
-				<form id="bener_updateForm" name="bener_updateForm">
-					<input type="hidden" id="main_bener_no" name="main_bener_no" value="${benerData.main_bener_no}" />
-					<input type="hidden" id="main_event_bener_image" name="main_event_bener_image" value="${benerData.main_event_bener_image}" />
-					
-					<table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td class="col-md-3">No</td>
-								<td class="text-left col-md-3">${benerData.main_bener_no}</td>
-							</tr>
-							<tr>
-								<td>이벤트 이미지</td>
-								<td class="text-left">
-									<input type="file" name="file" id="file" />
-								</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</form>		
-			</div>
-			
-			<div class="contectBtn text-right">
-				<button type="button" id="benerEventUpdateBtn" class="btn btn-success">수정</button>
-				<button type="button" id="benerCancelBtn" class="btn btn-success">수정전으로</button>
-				<button type="button" id="mainEventListBtn" class="btn btn-success">목록</button>
-			</div>
+							<div class="contentTB text-center">									
+								<div class="contentBtn text-right">
+									<button type="button" id="benerEventUpdateBtn" class="btn sty_btn">수정</button>
+									<button type="button" id="benerCancelBtn" class="btn sty_btn">취소</button>
+									<button type="button" id="mainEventListBtn" class="btn sty_btn">목록</button>
+								</div>
+								<form id="bener_updateForm" name="bener_updateForm">
+									<input type="hidden" id="main_bener_no" name="main_bener_no" value="${benerData.main_bener_no}" />
+									<input type="hidden" id="main_event_bener_image" name="main_event_bener_image" value="${benerData.main_event_bener_image}" />
+									
+									<table class="table table-bordered">
+										<colgroup>
+											<col width="20%" />
+											<col width="80%" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="col-md-3">No</td>
+												<td class="text-left col-md-3">${benerData.main_bener_no}</td>
+											</tr>
+											<tr>
+												<td>이벤트 이미지</td>
+												<td class="text-left">
+													<input type="file" name="file" id="file" />
+												</td>
+											</tr>
+											
+										</tbody>
+									</table>
+								</form>		
+							</div>
 						</div>
 					</div>
 				</div>

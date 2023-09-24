@@ -1,19 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+<link rel="stylesheet" href="../resources/include/css/commonList.css">
 	<style>	
 		body{margin: 0px; padding: 0px;}
 		.container h1{text-align: center;}
-		#list{width:400px; margin-left:auto;margin-right:auto;}
+		#list{width:400px; margin-left:auto;margin-right:auto; padding-bottom:10px; }
 		#hoursTable{width: 400px;border:1px solid black;margin-left:auto;margin-right:auto;}
 		
 		tr{border: 1px solid black;}
 		td input{ border:none; text-align: center;}
-		
 
-		#listBtn{position: absolute; margin-left:210px;}
-		#updateBtn{position: absolute; margin-left:255px;}	
+		#listBtn{float: right;}
+		#updateBtn{float: right;}	
 		#month{left:500px;}	
+		#f_hours{width:420px; height: 500px; overflow: scroll; margin-left:auto;margin-right:auto;}
+		
+		#updateBtn, #listBtn{
+			display: inline-block;
+			height: 32px;
+			width: 70px;
+			font-weight: 600;
+			font-size: 15px;
+			line-height: 20px;
+			margin-left: 10px;
+			background-color: #c3daf7;
+		}
+		
+		#updateBtn:hover, #lastMonthBtn:hover, #nextMonthBtn:hover, #listBtn:hover {
+			border: 2px solid #c3daf7;
+			background-color: white;
+		}
+		#lastMonthBtn, #nextMonthBtn{
+		display: inline-block;
+			height: 32px;
+			width: 60px;
+			font-weight: 600;
+			font-size: 15px;
+			line-height: 20px;
+			background-color: #c3daf7;
+		}
+		.textMonth{font-weight: 600;}
+		.textTh{background-color: #c3daf7;}
 
 	</style>
 	<script>
@@ -151,13 +179,13 @@
 			        // 서버에서 받은 JSON 데이터를 JavaScript 배열로 파싱
 			        let hoursList = data;
 			        
-			        for (let i = 0; i < hoursList.length; i++) {
+ 			        for (let i = 0; i < hoursList.length; i++) {
 		                // 데이터를 표에 출력하는 부분을 수정
 		                let newRow = "<tr class='text-center hours"+[i]+"'>"+
 		                "<td><input type='text' class='hoursDate'"+[i]+" value='"+ hoursList[i].hoursDate +"' readonly/></td>"+
 		                "<td><input type='text' class='hoursTime'"+[i]+" value='"+ hoursList[i].hoursTime +"' /></td></tr>";
 		                $("#hoursTable tbody").append(newRow);
-		            }   
+		            }    
 			    },
 			    error: function() {
 			        // 오류 처리
@@ -183,18 +211,18 @@
 					<div class="card">
 						<div class="card-body">
 	  						<div id="list">
-				            	<input type="hidden" id="lastMonthBtn" name="lastMonthBtn" value="" />
-				            	<span id="month"></span>
-				            	<input type="button" id="nextMonthBtn" name="nextMonthBtn" value="" />
-				            	<input type="button" id="listBtn" name="listBtn" value="목록" />
-				            	<input type="button" id="updateBtn" name="updateBtn" value="수정 확인" />
+				            	<input type="hidden" id="lastMonthBtn" name="lastMonthBtn" value="" class="btn" />
+				            	<span id="month" class="text-center textMonth"></span>
+				            	<input type="button" id="nextMonthBtn" name="nextMonthBtn" value="" class="btn" />
+				            	<input type="button" id="updateBtn" name="updateBtn" value="수정" class="btn" />
+				            	<input type="button" id="listBtn" name="listBtn" value="목록" class="btn" />
 			            	</div>
 			            	<form id='f_hours'>
 				               <table summary="운영시간 관리" id="hoursTable">
 				                  <thead>
 				                     <tr>
-				                        <th class="text-center">운영날짜</th>
-				                        <th class="text-center">운영시간</th>
+				                        <th class="text-center textTh">운영날짜</th>
+				                        <th class="text-center textTh">운영시간</th>
 				                     </tr>
 				                  </thead>
 				                  <tbody id="hourslist">

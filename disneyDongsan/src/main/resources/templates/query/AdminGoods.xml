@@ -29,7 +29,7 @@
             where rnum > (#{pageNum}-1)* #{amount}        
         ]]>
         
-        order by g_id asc
+        order by g_id desc
 	</select>
 	
 	<!-- 전체 레코드 수 조회 -->
@@ -118,6 +118,8 @@
 	         inner join goods g
 	         	 on d.g_id = g.g_id
 	     where o.g_order_id = #{g_order_id}
+	     
+	     order by g_id desc
 	</select>
    
    <!-- 배송 상태 -->

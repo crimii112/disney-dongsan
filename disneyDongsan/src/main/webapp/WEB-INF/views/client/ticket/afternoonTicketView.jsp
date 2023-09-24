@@ -1,24 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ page trimDirectiveWhitespaces="true"%>
-
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
 
-<title>오후권 예매하기</title>
+<link rel="stylesheet" type="text/css" href="/resources/include/css/ticket/ticket.css" />
 
-<link rel="shortcut icon" href="/resources/images/icon.png" />
-<link rel="apple-touch-icon" href="/resources/images/icon.png" />
-
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/dist/css/bootstrap-theme.min.css">
-
-<script type="text/javascript"
-	src="/resources/include/js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript"
-	src="/resources/include/dist/js/bootstrap.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
@@ -93,6 +79,35 @@
 			$("#total_price").val($("#totalPrice").text());
 		});
 		
+		$(function(){
+
+			//동의 모두선택 / 해제
+			const agreeChkAll = document.querySelector('input[name=agree_all]');
+			    agreeChkAll.addEventListener('change', (e) => {
+			    let agreeChk = document.querySelectorAll('input[name=agree]');
+			    for(let i = 0; i < agreeChk.length; i++){
+			      agreeChk[i].checked = e.target.checked;
+			    }
+			});	
+		
+			// 약관 모두선택
+			$("input[name=agree]").click(function(){
+			    let total = $("input[name=agree]").length;
+			    let checked = $("input[name=agree]:checked").length;
+			         
+			    if(total != checked)
+			        $("#agree_all").prop("checked", false);
+			    else 
+			        $("#agree_all").prop("checked", true);
+			});
+			
+			// 취소 클릭 시 입력값 초기화
+			$(document).on("click", ".modal_close", function(){
+				$(".check").prop("checked", false);
+			})
+			
+		});
+		
 	});
 
 </script>
@@ -103,29 +118,31 @@
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					<input type="image" src="/resources/images/after.jpg" alt="놀이공원종일권"
-					style="width: 553px;" />
-					<h2>오후권(3시입장)</h2>
-					<h5>오후 3시부터 입장~ 마감시간까지 자유롭게!</h5>
-					<h5>37,000원</h5>
+				<div class="div_left col-md-7">
+					<input type="image" id="dongsanimg" src="/resources/images/after.jpg" alt="놀이공원오후권" />
+					<div id="ticket_sub">
+						<h2>오후권(3시입장)</h2>
+						<h5>오후 3시부터 입장~ 마감시간까지 자유롭게!</h5>
+						<h5>37,000원</h5>
+					</div>
 				</div>
 				
-				<div class="col-md-6">
+				<div class="div_right col-md-3">
+				<div class="div_right_inner">
 					<h5>예약옵션을 선택해주세요.</h5>
 					<hr>
 					<!-- ------------------------------------ -->
-					<div id="div_calendar" style="width: 500px;">
-						<div>
+					<div id="div_calendar">
+						<div id="div_calendar_year">
 							<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
 							<input type="text" id="year" value="2020"
-								style="width: 80px; display: initial;" class="form-control"
-								readonly="readonly" /> 
+								style="width: 60px; display: initial;" class="form-control"
+								readonly="readonly" />년
 							<input type="text" id="month" value="changeMonth(0);" style="width: 50px; display: initial;" class="form-control"
 								readonly="readonly">월
 							<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
 						</div>
-						<table class="table table-bordered">
+						<table class="table table-bordered" id="calendar">
 							<thead>
 								<tr>
 									<th>일</th>
@@ -141,7 +158,6 @@
 						</table>
 					</div>
 						<!-- ------------------------------------ -->
-						<div class="contentContainer container">
 						<form name="afterticket_data" id="afterticket_data" method="post">
 							<input type="hidden" name="visit_date" id="visit_date" value="" />
 							<input type="hidden" name="t_afternoon" id="t_afternoon" value="" />
@@ -149,16 +165,13 @@
 							<input type="hidden" name="t_category" id="t_category" value="" />
 						</form>
 						
-						<table>
+						<table id="ticket_table">
 							<tr>
-								<th>예약옵션</th>
-							</tr>
-							<tr>
-								<td>방문예정일</td>
+								<td class="ticket_td">방문예정일</td>
 								<td id="input_date"></td>
 							</tr>
 							<tr>
-								<td>상품선택</td>
+								<td class="ticket_td">상품선택</td>
 								<td>오후권
 									<button id="minus-afternoon" class="minusBtn">-</button>
 					                <span id="number-afternoon">0</span>
@@ -166,15 +179,14 @@
 					            </td>
 							</tr>
 							<tr>
-								<td>총가격</td>
+								<td class="ticket_td">총가격</td>
 								<td><span id="totalPrice">0</span>원</td>
 							</tr>
-							<tr>
-								<jsp:include page="../../modal/modal.jsp" />
-								<td><a href="#" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td>
-							</tr>
 						</table>
-						</div>
+				</div>
+				<jsp:include page="../../modal/modal.jsp" />
+				<!-- <button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button> -->
+				<input type="button" id="modalBtn" class="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" value="예약하기(모달)" />
 				</div>
 			</div>
 		</div>
@@ -266,7 +278,7 @@
 		                if (disablePastDates(selectedDate)) {
 		                    h.push('<td class="t_day" id="day' + data[i] + '" onclick="setDate(' + data[i] + ');" style="cursor:pointer;">' + data[i] + '</td>');
 		                } else {
-		                    h.push('<td class="t_day" id="day' + data[i] + '" style="cursor:not-allowed;">' + data[i] + '</td>');
+		                    h.push('<td class="t_day" id="day' + data[i] + '" style="cursor:not-allowed; color:lightgray;">' + data[i] + '</td>');
 		                }
 					}
 	

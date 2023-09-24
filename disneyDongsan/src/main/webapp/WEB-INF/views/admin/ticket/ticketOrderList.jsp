@@ -2,6 +2,29 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
 
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
+<style type="text/css">
+
+	.choiceDeleteBtn{
+		display: inline-block;
+     height: 32px;
+     width: 170px;
+     font-weight: 600;
+     font-size: 15px;
+     line-height: 20px;
+     margin-left: 10px;
+     background-color: #c3daf7;
+     float: right;
+	}
+	
+	.choiceDeleteBtn:hover{
+     border: 2px solid #c3daf7;
+     background-color: white;
+   }
+
+</style>
+
 <script type="text/javascript">
 	$(function() {
 
@@ -70,7 +93,7 @@
 			cancel();
 		});
 
-		$(".paginate_button a").click(
+		$(".page-item a").click(
 				function(e) {
 					e.preventDefault();
 					$("#f_search").find("input[name='pageNum']").val(
@@ -161,44 +184,38 @@
 										value="${pageMaker.cvo.pageNum}"> <input type="hidden"
 										name="amount" id="amount" value="${pageMaker.cvo.amount}">
 									<div class="form-group">
-										<label>티켓 구분</label> <select id="search" name="search"
-											class="form-control">
+										<label>티켓 구분</label> <select id="search" name="search" >
 											<option value="all">전체 티켓 조회</option>
 											<option value="alldayTicket">종일권</option>
 											<option value="afternoonTicket">오후권</option>
 											<option value="packageTicket">2/3/4인권</option>
 										</select> <input type="hidden" name="keyword" id="keyword" />
-									</div>
+									
 
-									<div class="form-group">
-										<label>티켓 상태</label> <select id="cancelSearch"
-											name="cancelSearch" class="form-control">
+										<label>티켓 상태</label> <select id="cancelSearch" name="cancelSearch">
 											<option value="all">전체 티켓 조회</option>
 											<option value="cancelTicket">취소티켓조회</option>
 											<option value="notcancelTicket">정상티켓조회</option>
 										</select>
-									</div>
+									
 
-									<div class="form-group">
-										<label>날짜 선택</label> <input type="date" name="visitDate"
-											id="visitDate" />~ <input type="date" name="visitDateEnd"
-											id="visitDateEnd" />
+										<label>날짜 선택</label> 
+										<input type="date" name="visitDate" id="visitDate" />~ 
+										<input type="date" name="visitDateEnd" id="visitDateEnd" />
+											
+										<button type="button" id="searchData" class="btn search_btn">검색</button>
+										
+										🎫 : ${ticketListCnt}
+										<input type="button" id="cancelFormBtn" class="btn choiceDeleteBtn" value="선택한 티켓 예매 취소" />
 									</div>
-
-									<button type="button" id="searchData" class="btn btn-success">검색</button>
+									
 								</form>
 
-								<input type="button" id="cancelFormBtn" class="btn btn-success"
-									value="선택한 티켓 예매 취소" />
-							</div>
-
-							<div class="text-left">
-								<%-- <label>게시물 수 :</label><input type="text" id="countTicket" name="countTicket" value="${ticketListCnt}" readonly="readonly" /> --%>
-								티켓 수 : ${ticketListCnt}
+								
 							</div>
 
 							<div id="ticketOrderList" class="table-height">
-								<table summary="결제 리스트" class="table table-striped">
+								<table summary="결제 리스트" class="table table-hover admin_table">
 									<thead>
 										<tr>
 											<th class="order text-center col-md-1">번호</th>
@@ -227,7 +244,8 @@
 												<c:forEach var="ticket" items="${ticketOrderList}"
 													varStatus="status">
 													<tr class="text-center" data-num="${ticket.PAYMENT_ID}">
-														<td>${status.count}</td>
+														<%-- <td>${status.count}</td> --%>
+														<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
 														<td>${ticket.PAYMENT_ID}</td>
 														<td>${ticket.visit_date}</td>
 														<td class="ticketCategory text-center">${ticket.t_category}</td>
@@ -264,8 +282,7 @@
 											</c:when>
 											<c:otherwise>
 												<tr>
-													<td colspan="6" class="tac text-center">등록된 게시물이 존재하지
-														않습니다.</td>
+													<td colspan="6" class="tac text-center">등록된 게시물이 존재하지 않습니다.</td>
 												</tr>
 											</c:otherwise>
 										</c:choose>
@@ -274,25 +291,24 @@
 							</div>
 							<%-- =============== 페이징 출력 시작 ============== --%>
 							<div class="text-center">
-								<ul class="pagination">
+								<ul class="pagination justify-content-center">
 									<!-- 이전 바로가기 10개 존재 여부를 prev 필드의 값으로 확인 -->
 									<c:if test="${pageMaker.prev}">
-										<li class="paginate_button previous"><a
+										<li class="page-item previous"><a class="page-link" 
 											href="${pageMaker.startPage - 1}">Previous</a></li>
 									</c:if>
 
 									<!-- 바로가기 번호 출력 -->
 									<c:forEach var="num" begin="${pageMaker.startPage}"
 										end="${pageMaker.endPage}">
-										<li
-											class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-											<a href="${num}">${num}</a>
+										<li class="page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+											<a class="page-link" href="${num}">${num}</a>
 										</li>
 									</c:forEach>
 
 									<!-- 다음 바로가기 10개 존재 여부를 next 필드의 값으로 확인 -->
 									<c:if test="${pageMaker.next}">
-										<li class="paginate_button next"><a
+										<li class="page-item next"><a class="page-link" 
 											href="${pageMaker.endPage + 1}">Next</a></li>
 									</c:if>
 								</ul>

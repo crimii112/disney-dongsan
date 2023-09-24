@@ -95,5 +95,33 @@
 	  	WHERE detail_num = #{detail_num}
 	  
 	  </delete>
+	  
+	  <!-- 댓글 전체 조회(해당 게시물번호에 대해) -->
+		<select id="goodsReviewList" parameterType="goodsReview" resultType="goodsReview">
+			<!-- select re_id, re_content, re_date, re_image, content_check, r_member_id, detail_num
+						
+			from g_review
+			where g_id = #{g_id} -->
+			SELECT
+			goods.g_name,
+			greview.re_id,
+		  	greview.re_content,
+		  	greview.re_image,
+		  	greview.detail_num,
+		  	greview.r_member_id,
+            greview.re_date,
+		  	goods.g_id
+			FROM
+			g_order_detail gdetail
+			full JOIN
+			goods goods ON
+			gdetail.g_id = goods.g_id
+			full JOIN
+			g_review greview ON
+			gdetail.g_order_detail_id = greview.detail_num
+			WHERE goods.g_id = #{g_id}
+			order by re_id desc
+		</select>
+	  
 
 </mapper>

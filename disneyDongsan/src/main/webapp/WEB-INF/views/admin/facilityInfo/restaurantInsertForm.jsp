@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+<link rel="stylesheet" href="/resources/include/css/commonInsert.css"/>
 		<script type="text/javascript">
 		$(function(){
 			//저장 버튼 클릭 시 처리 이벤트
@@ -53,41 +54,44 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">	
-							<form class="form-horizontal" id="f_writeForm" name="f_writeForm">
-					<table class="table table-bordered">
-						<colgroup>
-							<col width="20%" />
-							<col width="80%" />
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>레스토랑 이름</td>
-								<td class="text-left"><input type="text"
-									class="form-control" id="restTitle" name="restTitle"
-									placeholder="레스토랑 이름 입력" maxlength="33" /></td>
-							</tr>
-							<tr>
-								<td>서브 제목</td>
-								<td class="text-left"><input type="text"
-									class="form-control" id="restSubTitle" name="restSubTitle"
-									placeholder="서브 제목 입력" maxlength="66" /></td>
-							</tr>
-							<tr>
-								<td>글내용</td>
-								<td class="text-left"><textarea name="restContent" id="restContent" class="form-control" rows="8" maxlength="333"></textarea></td>
-							</tr>
-							<tr>
-								<td>파일 업로드</td>
-								<td class="text-left"><input type="file" name="file" id="file" /></td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="text-right">
-						<button type="button" id="InsertBtn" class="btn btn-success">등록</button>
-						<button type="button" id="CancelBtn" class="btn btn-success">취소</button>
-						<button type="button" id="ListBtn" class="btn btn-success">목록</button>
-					</div>
-				</form>
+							<div class="contentTB">
+								<div class="contentBtn text-right">
+									<button type="button" id="InsertBtn" class="btn sty_btn">등록</button>
+									<button type="button" id="CancelBtn" class="btn sty_btn">취소</button>
+									<button type="button" id="ListBtn" class="btn sty_btn">목록</button>
+								</div>
+								<form class="form-horizontal" id="f_writeForm" name="f_writeForm">
+									<table class="table table-bordered">
+										<colgroup>
+											<col width="20%" />
+											<col width="80%" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="text-center">레스토랑 이름</td>
+												<td class="text-left"><input type="text"
+													class="form-control" id="restTitle" name="restTitle"
+													placeholder="레스토랑 이름 입력" maxlength="15" /></td>
+											</tr>
+											<tr>
+												<td class="text-center">서브 제목</td>
+												<td class="text-left"><input type="text"
+													class="form-control" id="restSubTitle" name="restSubTitle"
+													placeholder="서브 제목 입력" maxlength="66" /></td>
+											</tr>
+											<tr>
+												<td class="text-center">글내용</td>
+												<td class="text-left"><textarea name="restContent" id="restContent" class="form-control" rows="8" maxlength="333" placeholder="글 내용 입력"></textarea></td>
+											</tr>
+											<tr>
+												<td class="text-center">파일 업로드</td>
+												<td class="text-left"><input type="file" name="file" id="file" /></td>
+											</tr>
+										</tbody>
+									</table>
+
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

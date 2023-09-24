@@ -1,90 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ page trimDirectiveWhitespaces="true"%>
-
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
 
-<title>패키지 예매하기</title>
-
-<link rel="shortcut icon" href="/resources/images/icon.png" />
-<link rel="apple-touch-icon" href="/resources/images/icon.png" />
-
 <link rel="stylesheet" type="text/css"
-	href="/resources/include/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/resources/include/dist/css/bootstrap-theme.min.css">
+	href="/resources/include/css/ticket/ticket.css" />
 
-<script type="text/javascript"
-	src="/resources/include/js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript"
-	src="/resources/include/dist/js/bootstrap.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
 	crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-	$(function(){
-		
-		$("#modalBtn").click(function(){
-			if($("#totalPrice").text() == 0){
+	$(function() {
+
+		$("#modalBtn").click(function() {
+			if ($("#totalPrice").text() == 0) {
 				alert("인원을 선택해주세요");
 				location.href = "/ticket/packageTicketView";
 			}
 		});
-		
+
 		/* 예약하기 버튼 클릭 시 처리 이벤트 */
-		$("#ticketInsertBtn").click(function(){
-			
-			$("#visit_date").val($("#input_date").text());
-			$("#t_multi").val(package_num);
-			$("#t_category").val("2/3/4인권");
-			$("#total_price").val($("#totalPrice").text());
-			console.log($("#input_date").text());
-			console.log(package_num);
-			console.log(totalPrice);
-			
-			// 필요한 약관 동의 여부 확인
-	        if ($("#check_1").is(":checked") &&
-	            $("#check_2").is(":checked") &&
-	            $("#check_3").is(":checked")) {
-	        	
-	            // 모든 약관에 동의한 경우 visitInfoView 페이지로 이동
-	        	$("#packageTicket_data").attr({
-					"method":"post",
-					"action":"/ticket/visitInfoView"
+		$("#ticketInsertBtn").click(
+				function() {
+
+					$("#visit_date").val($("#input_date").text());
+					$("#t_multi").val(package_num);
+					$("#t_category").val("2/3/4인권");
+					$("#total_price").val($("#totalPrice").text());
+					console.log($("#input_date").text());
+					console.log(package_num);
+					console.log(totalPrice);
+
+					// 필요한 약관 동의 여부 확인
+					if ($("#check_1").is(":checked")
+							&& $("#check_2").is(":checked")
+							&& $("#check_3").is(":checked")) {
+
+						// 모든 약관에 동의한 경우 visitInfoView 페이지로 이동
+						$("#packageTicket_data").attr({
+							"method" : "post",
+							"action" : "/ticket/visitInfoView"
+						});
+
+						$("#packageTicket_data").submit();
+					} else {
+						alert("모든 약관에 동의해주세요.");
+						return;
+					}
+
 				});
-	            
-				$("#packageTicket_data").submit();
-	        } else {
-	            alert("모든 약관에 동의해주세요.");
-	            return;
-	        }
-			
-		});
-		
 
 		/* totalPrice 계산하기 위한 변수 */
 		let totalPrice = 0;
 		let package_num = 0;
-		
+
 		/* 인원 선택 시 이벤트 */
-		$(".packageSelect").click(function(){
-			package_num = $("select[name=packageTicket] option:selected").val();
-			
-			if(package_num == 2){
-				totalPrice = 70;
-			} else if (package_num == 3){
-				totalPrice = 102;
-			} else if (package_num == 4){
-				totalPrice = 136;
-			} else if (package_num == 1){
-				totalPrice = 0;
-			}
-			$("#totalPrice").text(totalPrice);
-		})
-		
+		$(".packageSelect")
+				.click(
+						function() {
+							package_num = $(
+									"select[name=packageTicket] option:selected")
+									.val();
+
+							if (package_num == 2) {
+								totalPrice = 70;
+							} else if (package_num == 3) {
+								totalPrice = 102;
+							} else if (package_num == 4) {
+								totalPrice = 136;
+							} else if (package_num == 1) {
+								totalPrice = 0;
+							}
+							$("#totalPrice").text(totalPrice);
+						})
+
 	});
 </script>
 
@@ -92,103 +83,106 @@
 <body>
 	<h1>패키지 예매하기</h1>
 	<div class="container">
-	<div class="row">
-	<div class="col-md-6">
-		<input type="image" src="/resources/images/234.jpg" alt="놀이공원" style="width: 553px;" />
-		<br /><br />
-		<table class="table table-bordered">
-			<tr>
-				<th>상품명</th>
-				<th>구성</th>
-				<th>가격</th>
-			</tr>
-			<tr>
-				<td>2인권</td>
-				<td>종일권 2매</td>
-				<td>70,000원</td>
-			</tr>
-			<tr>
-				<td>3인권</td>
-				<td>종일권 3매</td>
-				<td>102,000원</td>
-			</tr>
-			<tr>
-				<td>4인권</td>
-				<td>종일권 4매</td>
-				<td>136,000원</td>
-			</tr>
-		</table>
-	</div>
-
-	<div class="col-md-6">
-		<h5>예약옵션을 선택해주세요.</h5>
-		<hr />
-		<!-- ------------------------------------ -->
-			<div id="div_calendar" style="width: 500px;">
-				<div>
-					<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
-					<input type="text" id="year" value="2020"
-						style="width: 80px; display: initial;" class="form-control"
-						readonly="readonly" /> 
-					<input type="text" id="month" value="changeMonth(0);" style="width: 50px; display: initial;" class="form-control"
-						readonly="readonly">월
-					<input type="button" onclick="changeMonth(1);" id="fa2" value="" />
+		<div class="row">
+			<div class="div_left col-md-7">
+				<input type="image" id="dongsanimg" src="/resources/images/234.jpg" alt="놀이공원"/>
+				<div id="ticket_sub">
+					<h4>함께 즐기는 특별한 우대 혜택!</h4>
 				</div>
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>일</th>
-							<th>월</th>
-							<th>화</th>
-							<th>수</th>
-							<th>목</th>
-							<th>금</th>
-							<th>토</th>
-						</tr>
-					</thead>
-					<tbody id="tb_body"></tbody>
+				<table class="pricetable table table-bordered">
+					<tr>
+						<th>상품명</th>
+						<th>구성</th>
+						<th>가격</th>
+					</tr>
+					<tr>
+						<td>2인권</td>
+						<td>종일권 2매</td>
+						<td>70,000원</td>
+					</tr>
+					<tr>
+						<td>3인권</td>
+						<td>종일권 3매</td>
+						<td>102,000원</td>
+					</tr>
+					<tr>
+						<td>4인권</td>
+						<td>종일권 4매</td>
+						<td>136,000원</td>
+					</tr>
 				</table>
 			</div>
 
-		<!-- ------------------------------------ -->
-		<!-- 예약옵션 테이블 -->
-		<div class="contentContainer container">
-		<form name="packageTicket_data" id="packageTicket_data" method="post">
-			<input type="hidden" name="visit_date" id="visit_date" value="" />
-			<input type="hidden" name="t_multi" id="t_multi" value="" />
-			<input type="hidden" name="total_price" id="total_price" value="" />
-			<input type="hidden" name="t_category" id="t_category" value="" />
-		</form>
-		<table>
-			<tr>
-				<th>예약옵션</th>
-			</tr>
-			<tr>
-				<td>방문예정일</td>
-				<td id="input_date"></td>
-			</tr>
-			<tr>
-				<td>상품선택</td>
-				<td><select name="packageTicket" class="packageSelect">
-						<option value="1">인원 선택</option>
-						<option value="2">2인</option>
-						<option value="3">3인</option>
-						<option value="4">4인</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td>총가격</td>
-				<td><span id="totalPrice">0</span>원</td>
-			</tr>
-			<tr>
-				<jsp:include page="../../modal/modal.jsp" />
-				<td><a href="#myModal" data-toggle="modal" data-target="#myModal" id="modalBtn" class="btn btn-success">예약하기(모달)</a></td>
-			</tr>
-		</table>
+			<div class="div_right col-md-3">
+			<div class="div_right_inner">
+			
+				<h5>예약옵션을 선택해주세요.</h5>
+				<hr />
+				<!-- ------------------------------------ -->
+				<div id="div_calendar">
+					<div id="div_calendar_year">
+						<input type="hidden" onclick="changeMonth(-1);" id="fa1" value="" />
+						<input type="text" id="year" value="2020"
+							style="width: 60px; display: initial;" class="form-control"
+							readonly="readonly" />년
+						<input type="text" id="month"
+							value="changeMonth(0);" style="width: 50px; display: initial;"
+							class="form-control" readonly="readonly">월 <input
+							type="button" onclick="changeMonth(1);" id="fa2" value="" />
+					</div>
+					<table class="table table-bordered" id="calendar">
+						<thead>
+							<tr>
+								<th>일</th>
+								<th>월</th>
+								<th>화</th>
+								<th>수</th>
+								<th>목</th>
+								<th>금</th>
+								<th>토</th>
+							</tr>
+						</thead>
+						<tbody id="tb_body"></tbody>
+					</table>
+				</div>
+
+				<!-- ------------------------------------ -->
+				<!-- 예약옵션 테이블 -->
+				<!-- <div class="contentContainer container"> -->
+					<form name="packageTicket_data" id="packageTicket_data" method="post">
+						<input type="hidden" name="visit_date" id="visit_date" value="" />
+						<input type="hidden" name="t_multi" id="t_multi" value="" /> <input
+							type="hidden" name="total_price" id="total_price" value="" /> <input
+							type="hidden" name="t_category" id="t_category" value="" />
+					</form>
+					<table id="ticket_table">
+						<tr>
+							<td class="ticket_td">방문예정일</td>
+							<td id="input_date"></td>
+						</tr>
+						<tr>
+							<td class="ticket_td">상품선택</td>
+							<td><select name="packageTicket" class="packageSelect">
+									<option value="1">인원 선택</option>
+									<option value="2">2인</option>
+									<option value="3">3인</option>
+									<option value="4">4인</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="ticket_td">총가격</td>
+							<td><span id="totalPrice">0</span>원</td>
+						</tr>
+					</table>
+				</div>
+					<jsp:include page="../../modal/modal.jsp" />
+					<!-- <button type="button" id="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success">예약하기(모달)</button> -->
+					<input type="button" id="modalBtn" class="modalBtn" data-bs-toggle="modal" data-bs-target="#myModal" value="예약하기(모달)" />
+					
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
-	</div>
+	<!-- </div> -->
 	<script>
 		let date = new Date();
 		let y = date.getFullYear();
@@ -196,15 +190,15 @@
 		let d = ('0' + date.getDate()).slice(-2);
 		let today = document.getElementById("input_date");
 		today.innerHTML = y + '-' + m + '-' + d;
-		
-		// 날짜 선택을 제한할 최소 날짜 설정 (오늘 이후)++
-	    let minDate = new Date(y, m - 1, d);
 
-	    // 이전 날짜 비활성화 함수++
-	    function disablePastDates(date) {
-	        return date >= minDate;
-	    }
-		
+		// 날짜 선택을 제한할 최소 날짜 설정 (오늘 이후)++
+		let minDate = new Date(y, m - 1, d);
+
+		// 이전 날짜 비활성화 함수++
+		function disablePastDates(date) {
+			return date >= minDate;
+		}
+
 		$("#fa1").val((Number(m) - 1) + "월");
 		$("#fa2").val((Number(m) + 1) + "월");
 
@@ -269,13 +263,19 @@
 					h.push('<td></td>');
 				} else {
 					let day = Number(data[i]);
-	                let selectedDate = new Date(current_year, current_month - 1, day);
+					let selectedDate = new Date(current_year,
+							current_month - 1, day);
 
-	                if (disablePastDates(selectedDate)) {
-	                    h.push('<td class="t_day" id="day' + data[i] + '" onclick="setDate(' + data[i] + ');" style="cursor:pointer;">' + data[i] + '</td>');
-	                } else {
-	                    h.push('<td class="t_day" id="day' + data[i] + '" style="cursor:not-allowed;">' + data[i] + '</td>');
-	                }
+					if (disablePastDates(selectedDate)) {
+						h.push('<td class="t_day" id="day' + data[i]
+								+ '" onclick="setDate(' + data[i]
+								+ ');" style="cursor:pointer;">' + data[i]
+								+ '</td>');
+					} else {
+						h
+								.push('<td class="t_day" id="day' + data[i] + '" style="cursor:not-allowed; color:lightgray;">'
+										+ data[i] + '</td>');
+					}
 				}
 
 			}
@@ -294,8 +294,10 @@
 			$(".t_day").css("backgroundColor", "white");
 			$("#day" + day).css("backgroundColor", "#E6FFFF");
 			let text_month = current_month;
-			if (day < 10) day = "0" + day;
-			if (current_month < 10) text_month = "0" + text_month;
+			if (day < 10)
+				day = "0" + day;
+			if (current_month < 10)
+				text_month = "0" + text_month;
 
 			$("#date_text").text(current_year + "-" + text_month + "-" + day);
 
@@ -368,7 +370,6 @@
 		$("#month").val(current_month);
 
 		changeYearMonth(current_year, current_month);
-
 	</script>
 
 

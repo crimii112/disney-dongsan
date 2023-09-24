@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/admin-template/admin-common.jspf"%>
+
+<link rel="stylesheet" href="/resources/include/css/commonList.css">
+
 		<style type="text/css">
 		.file{
 			  width: 100px;
@@ -68,9 +71,8 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-						<br/>
-							<h1> 이벤트 수정 </h1>
-				<table summary="게시판 리스트" class="table table-striped">
+							<h3> 이벤트 수정 </h3>
+				<table summary="게시판 리스트" class="table table-hover admin_table">
 					<thead>
 						<tr>
 							<th data-value="b_num" class="order text-center col-md-1">No</th>
@@ -101,13 +103,15 @@
 				</table>
 				<br/>
 				<br/>
-				
-				<h1> 배너 수정 </h1>
+				<br/>
+				<br/>
+				<h3> 배너 수정 </h3>
+
 				<form name="benerupdateForm" id="benerupdateForm">
 				<input type="hidden" name="main_bener_no" id="main_bener_no" /> 
 				<input type="hidden" name="main_event_bener_image" id="main_event_bener_image" />
 				</form>
-				<table summary="게시판 리스트" class="table table-striped">
+				<table summary="게시판 리스트" class="table table-hover admin_table">
 					<thead>
 						<tr>
 							<th data-value="b_num" class="order text-center col-md-1">No</th>

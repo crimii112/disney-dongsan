@@ -158,16 +158,7 @@
 			
 			<div class="content_bottom">
 				<div class="container">
-							<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-								<tr>
-									<td style="border-bottom:none;" valign="middle">사용자 이름</td>
-									<td><input type="text" style="height:100px;" class="form-control" placeholder="악플은 혼내줍니다." name = "commentText"></td>
-									<td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
-								</tr>
-								<tr>
-									<td colspan="3"><input type="file" name="fileName"></td>
-								</tr>
-							</table>
+					<jsp:include page="goodsReview.jsp"/>
 				</div>
 			</div>
 			
