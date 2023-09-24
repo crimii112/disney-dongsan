@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
@@ -24,20 +25,83 @@
     <script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
 
     <style type="text/css">
+    	h2 {margin: 50px;}
+    
+    
         .thumbnail > img { width: 320px; height: 200px; }
         .image > img { width: 100px; height: 100px; }
-/*         .detailModal { display: none; } */
-/*         .thumbnail > img { */
-/*             width: 320px; */
-/*             height: 200px; */
-/*         } */
-/*         /* 모달 창 크기 조정 */ 
-/*         .modal-dialog { */
-/*             max-width: 700px; /
-/*         } */
+
+
+
         /* 달력 css */
+        .day{font-size: 35px; text-align:center;}
         .saturday {color: gray;}
         .sunday {color: red; }
+        
+        .calendar{text-align:center;}
+        #calendar {margin:50px auto;}
+        #calendar td{
+        	text-align:center;
+        	padding: 10px 20px;
+        	border-radius: 50%;
+    		overflow: hidden;
+    	}
+    	
+    	.month {margin: 70px;}
+        
+        .week_calendar {
+		    margin: 0 auto; 
+		}
+		
+		.calendar, .calendar-header {
+		    text-align: center !important; 
+		}
+   
+/*         #prevWeekButton, #nextWeekButton { */
+/* 	        margin: 0 auto; */
+/* 	        display: block; /* 중앙 정렬을 위해 블록 요소로 변경 */ */
+/* 	    } */
+	    
+
+		.calendar {
+		    display: flex;
+		    flex-direction: row;  
+		    justify-content: space-between;  
+		    align-items: center;  
+		}
+		
+		#prevWeekButton,
+		#nextWeekButton {
+			margin: 0 20px;
+			padding: 0;
+		    background: none; 
+		    border: none; 
+		    cursor: pointer; 
+		}
+		
+		#prevWeekButton img,
+		#nextWeekButton img {
+		    width: 30px;
+		    height: 30px;
+		    margin: 0;
+		}
+				
+		#calendar-container {
+		    display: flex;
+		    flex-direction: row; 
+		    justify-content: center;
+		    align-items: center; 
+		}  
+		
+		#calendar{margin: 0; margin-bottm: 50px;}
+		
+		#eventTableContainer{margin: 0 50px; padding: 50px;}
+		
+		
+		 
+        
+        
+        //================================
         
         
         image {width: 100px; height: 100px;}
@@ -67,46 +131,48 @@
  	        text-align: left; 
 	    } 
 	
-	    .carousel-inner > .item > img {
+	    .carousel-inner > .carousel-item > img {
 		    width: 100%; 
 		    height: 400px; 
 		}
 	
 	    /* 모달 창 크기 조정 */
  	    .modal-dialog { 
- 		    max-width: 100%; 
+ 		    max-width: 800px; 
 	    	margin: 10px auto; 
 		} 
 		
-		.carousel {
-		    max-height: 400px; 
-		    margin: 0 auto; 
+		.modal-header {
+	        background-color: #6A5ACD;
+	        color: white;
+	    }
+		
+		
+
+		.text-center{text-align:center;}
+		
+		/* 선택된 날짜에 배경색을 적용 */
+		.selected {
+		    background-color: #6A5ACD; /
+		    color: #FFFFFF; 
 		}
-		.event_timeInfo {
-		    display: flex;
-		    justify-content: space-between;
-		    padding: 10px;
-		    margin-top: 20px;
+
+		.calendar-yearmonth{
+			font-size: 30px;
+		}		
+		
+		
+		/* 목록 css */
+		.event-title {
+			font-size: 30px;
+			font-weight: 525;
+			
 		}
 		
-		.event_time {
-		    flex-basis: 48%;
-		    text-align: center;
-		    border: 2px solid #000;
-		    box-sizing: border-box; /* 내부 패딩과 경계를 높이에 포함시킵니다. */
-		}
-		.event_period {
-		    margin-top: 0;
-		    flex-basis: 48%;
-		    text-align: center;
-		    border: 2px solid #000;
-		    box-sizing: border-box; /* 내부 패딩과 경계를 높이에 포함시킵니다. */
-		    height: 200px; /* 원하는 높이로 설정하세요. */
-		}
 		
-/* 		.event_title h3 { */
-/* 		    margin: 0; /* h3 요소의 상하 마진을 제거합니다. */ */
-/* 		} */
+
+		
+		
     </style>
 
     <script type="text/javascript">
@@ -127,7 +193,7 @@
 
             function updateCalendar(date) {
                 var currentDate = new Date(date);
-                var html = "<table><tbody><tr>";
+                var html = "<table class='week_calendar'><tbody><tr>";
 
                 for (var i = 0; i < 7; i++) {
                     var cellDate = currentDate.getDate();
@@ -139,9 +205,9 @@
                         cellClass = "saturday";
                     }
 
-                    html += "<td data-date=\"" + currentDate.toISOString().substring(0, 10) + "\" class=\"" + cellClass + "\">";
+                    html += "<td data-date=\"" + currentDate.toISOString().substring(0, 10) + "\" class=\"day " + cellClass + "\">";
 
-                    html += currentDate.toISOString().substring(8, 10) + "&nbsp;&nbsp;";
+                    html += currentDate.toISOString().substring(8, 10);
 
                     html += "</td>";
                     currentDate.setDate(currentDate.getDate() + 1); 
@@ -159,7 +225,8 @@
             }
 
             var html = updateCalendar(currentDate);
-            $(".calendar-yearmonth").html(currentDate.getFullYear() + "년 " + (currentDate.getMonth() + 1) + "월");
+            
+            $(".calendar-yearmonth").html(currentDate.getFullYear() + "년 " + (currentDate.getMonth() + 1) + "월 " +(currentDate.getDate()-1) + "일");
             $("#calendar").html(html);
             setButtonsState();
 
@@ -208,7 +275,9 @@
 			    } else {
 			        for (var i = 0; i < events.length; i++) {
 			            var event = events[i];
-			            eventTable.append('<tr><td rowspan="2" class="col-md-3 event-thum"><img src="/uploadStorage/event/' + event.e_thum + '" style="width:200px; height:100px;"></td><td class="event-title" data-event-id="' + event.e_no + '">' + event.e_title + '</td></tr><tr><td class="event-time">' + event.e_time + '</td></tr>');
+			            eventTable.append('<tr><td class="col-md-3 event-thum"><img src="/dongsanStorage/event/' + event.e_thum +
+			            		'" style="width:380px; height:240px;"></td><td class="event-content" data-event-id="' + event.e_no + '">'
+			            		+ '<br/></br><br/><div class="event-time"><i class="bi bi-clock-fill"></i> ' +event.e_time + '</div>' +'<div class="event-title">' + event.e_title + '</div>' + '</td></tr>');
 			        }
 			    }
 			}
@@ -217,57 +286,78 @@
             $('#calendar').on('click', 'td', function() {
                 var clickedDate = $(this).data('date');
                 if (clickedDate) {
+                    // 클릭한 날짜에 배경색 추가
+                    $(this).addClass('selected');
+
+                    // 다른 날짜의 배경색 제거
+                    $(this).siblings().removeClass('selected');
+
+                    // 선택한 날짜의 정보를 표시
                     getEventsForDate(new Date(clickedDate));
+
+                    // 클릭한 날짜에서 연, 월, 일 정보를 추출
+                    var clickedDateObj = new Date(clickedDate);
+                    var year = clickedDateObj.getFullYear();
+                    var month = (clickedDateObj.getMonth() + 1); // 월은 0부터 시작하므로 +1
+                    var day = clickedDateObj.getDate();
+
+                    // 월과 일이 한 자리 수인 경우 앞에 0을 추가
+                    if (month < 10) {
+                        month = '0' + month;
+                    }
+                    if (day < 10) {
+                        day = '0' + day;
+                    }
+
+                    // yearmonth 엘리먼트에 연, 월, 일 정보 설정
+                    $('.calendar-yearmonth').text(year + '년 ' + month + '월 ' + day +'일');
                 }
             });
+
+
 		
             
             
           // 동적으로 생성된 요소 이벤트
           // 모달
-            $('#eventTable').on('click', '.event-title, .event-thum', function() {
-            	var eventId = $(this).closest('tr').find('.event-title').data('event-id');
-            	$.ajax({
-                    url: '/event/eventDetail?e_no=' + eventId, 
-                    method: 'GET',
-                    success: function(data) {
-                    	var modal = $('#detailModal');
-                        modal.find('.modal-title').text('이벤트 상세 정보');
-                        modal.find('.modal-body').html(data); 
-                        
-                        var modalFooter = modal.find('.modal-footer');
-                        modalFooter.empty(); 
-                        modalFooter.append('<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>');
-                        
-                        modal.modal('show'); 
-                    },
-                    error: function() {
-                        console.error('이벤트 상세 정보를 가져오는 중에 오류가 발생했습니다.');
-                    }
-                });
-            });
           
-            $('#eventTable').on('click', '.event-time', function() {
-                var eventId = $(this).closest('tr').prev().find('.event-title').data('event-id'); 
-                $.ajax({
-                    url: '/event/eventDetail?e_no=' + eventId, 
-                    method: 'GET',
-                    success: function(data) {
-                    	var modal = $('#detailModal');
-                        modal.find('.modal-title').text('이벤트 상세 정보'); 
-                        modal.find('.modal-body').html(data); 
-                        
-                        var modalFooter = modal.find('.modal-footer');
-                        modalFooter.empty(); 
-                        modalFooter.append('<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>');
-                        
-                        modal.modal('show'); 
-                    },
-                    error: function() {
-                        console.error('이벤트 상세 정보를 가져오는 중에 오류가 발생했습니다.');
-                    }
-                });
-            });
+          // 모달 열기
+		    function openModal() {
+		        var modalElement = document.getElementById('detailModal');
+		        var modal = new bootstrap.Modal(modalElement);
+		        modal.show();
+		    }
+		
+		    // 모달 닫기
+		    function closeModal() {
+		        var modalElement = document.getElementById('detailModal');
+		        var modal = new bootstrap.Modal(modalElement);
+		        modal.hide();
+		    }
+		    
+		    
+		    //
+           $('#eventTable').on('click', '.event-content, .event-thum', function() {
+			    var eventId = $(this).closest('tr').find('.event-content').data('event-id'); // 수정된 부분
+			    $.ajax({
+			        url: '/event/eventDetail?e_no=' + eventId,
+			        method: 'GET',
+			        success: function (data) {
+			            var modal = $('#detailModal');
+			            modal.find('.modal-body').html(data);
+			            console.log(data);
+			            var modalFooter = modal.find('.modal-footer');
+			            modalFooter.empty();
+			            modalFooter.append('<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>');
+			            openModal(); // 모달 열기
+			        },
+			        error: function () {
+			            console.error('이벤트 상세 정보를 가져오는 중에 오류가 발생했습니다.');
+			        }
+			    });
+			});
+
+
             
          
            
@@ -277,7 +367,7 @@
 		            $(this).text("상시");
 		        }
 		    });
-            
+
          
         }); // $ 종료
        
@@ -288,15 +378,20 @@
 <body>
 	<div id="container">
 	<div class="Row">
-	    <div class="text-center"><h2>이벤트</h2></div>
+<!-- 	    <div class="text-center"><h2>이벤트</h2></div> -->
 	    
 	    <div class="calendar month">
-	        <div class="calendar-header">
-	            <span class="calendar-yearmonth"></span>
-	        </div>
-	        <button id="prevWeekButton" disabled>저번 주</button>
-	        <div id="calendar"></div>
-	        <button id="nextWeekButton">다음 주</button>
+	    	<h6>원하는 날짜를 선택해 주세요</h6>
+	    	<hr/>
+		    <div id="calendar-container">
+		        <button id="prevWeekButton" disabled><img src="/dongsanStorage/button/prevBtn.png" class="btnImg" style="width:30px; height: 30px;" /></button>
+		        <div id="calendar"></div>
+		        <button id="nextWeekButton"><img src="/dongsanStorage/button/nextBtn.png" class="btnImg" style="width:30px; height: 30px;" /></button>
+		    </div>
+		    <hr/>
+		</div>
+		<div class="calendar-header">
+	        <strong><span class="calendar-yearmonth"></span></strong>
 	    </div>
 	    <!-- 이벤트 목록 출력 테이블 -->
 	    <div id="eventTableContainer">
@@ -307,25 +402,22 @@
 	        </table>
 	    </div>
 	    
-		<div>
-			<div id="detailModal" class="modal fade" role="dialog">
-			    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
-			        <!-- 모달 -->
-			        <div class="modal-content">
-			            <div class="modal-header">
-			                <button type="button" class="close" data-dismiss="modal">&times;</button>
-			                <h4 class="modal-title">이벤트 상세 정보</h4>
-			            </div>
-			            <div class="modal-body">
-			                <jsp:include page="../../modal/eventDetail.jsp"></jsp:include>
-			            </div>
-			            <div class="modal-footer">
-			                <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-        </div>
+	    <div id="detailModal" class="modal" tabindex="-1">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">이벤트 상세</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <jsp:include page="../../modal/eventDetail.jsp"></jsp:include>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	</div>	
 	</div>
 </body>

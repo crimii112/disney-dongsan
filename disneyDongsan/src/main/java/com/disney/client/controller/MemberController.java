@@ -209,7 +209,7 @@ public class MemberController {
 		String url = "";
 		
 		if(Member != null) {
-			url = "client/member/updateInfo/updateInfoForm";
+			url = "client/mypage/updateinfo/updateInfoForm";
 		} else {
 			url = "redirect:/member/loginForm";
 		}

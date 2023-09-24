@@ -21,7 +21,7 @@ public class TilesConfig {
 	TilesConfigurer tilesConfigurer() {
 		final TilesConfigurer configurer = new TilesConfigurer();
 
-		configurer.setDefinitions(new String[] { "/WEB-INF/tiles/client/client-setting.xml" });
+		configurer.setDefinitions(new String[] { "/WEB-INF/tiles/client/client-setting.xml","/WEB-INF/tiles/mypage/mypage-setting.xml" });
 		configurer.setCheckRefresh(true);
 		return configurer;
 	}

@@ -41,15 +41,7 @@ public class AdminAnswerController {
 		return "admin/answer/answerList";
 	}
 	
-	@GetMapping("/starbucks")
-	public String starbucks() {
-		return "client/mypage/index2";
-	}
-	
-	@GetMapping("/test")
-	public String test() {
-		return "client/mypage/test2";
-	}
+
 	
 	
 	

@@ -15,6 +15,7 @@
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypageTicketBody.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
@@ -54,39 +55,36 @@
 		</form>
 		<button type="button" id="tkDeleteBtn">취소</button>
 		<button type="button" id="tkListBtn">목록</button>
-		<div class="contentTB text-center">
-			<table class="table table-bordered">
-				<tbody>
-					<tr>
-						<td class="col-md-1">주문번호</td>
-						<td class="col-md-3 text-left">${detail.PAYMENT_ID}</td>
-					</tr>
-					<tr>
-						<td class="col-md-1">구분</td>
-						<td colspan="3" class="col-md-8 text-left">${detail.t_category}</td>
-					</tr>
-					<tr>
-						<td class="table-tr-height">금액</td>
-						<td colspan="1" class="col-md-8 text-left">${detail.total_price}</td>
-					</tr>
-					<tr id="answer">
-						<td class="table-tr-height">방문 예정일</td>
-						<td colspan="1" class="col-md-8 text-left">${detail.visit_date}</td>
-					</tr>
-					<tr id="t_state">
-						<td class="table-tr-height">티켓 상태</td>
-						<c:choose>
-							<c:when test="${detail.t_state eq 'Y'}">
-								<td>결제완료</td>
-							</c:when>
-							<c:when test="${detail.t_state eq 'N'}">
-								<td>취소완료</td>
-							</c:when>
-						</c:choose>
-					</tr>
+		<div class="card ticketCard w-70 m-3">
+			<div class="card-body ">
+				<div class="payment_div">
+						<p class="fs-3" >&nbsp;&nbsp;주문번호<br/>${detail.PAYMENT_ID}</p>
+						
+						<p class="fs-3"></p>
+					</div>
+				<div>
+					<p class="category"> ${detail.t_category}</p>
+						<div class="ticket-object">
+							<p class="me-3 ms-3">금액 ${detail.total_price}원</p>
+							<p>|</p>
+							<p class="ms-3">방문 예정일 ${detail.visit_date}</p>
+						</div>
+						<div class="ticket-state">
+							<p class="ms-3">티켓 상태
+							<c:choose>
+								<c:when test="${detail.t_state eq 'Y'}">
+									<td>결제완료</td>
+								</c:when>
+								<c:when test="${detail.t_state eq 'N'}">
+									<td>취소완료</td>
+								</c:when>
+							</c:choose>
+							</p>
+						</div>
+					
 
-				</tbody>
-			</table>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
