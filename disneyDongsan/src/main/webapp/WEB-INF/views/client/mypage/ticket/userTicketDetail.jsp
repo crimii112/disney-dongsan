@@ -79,7 +79,7 @@
 									<td>취소완료</td>
 								</c:when>
 							</c:choose>
-							</p>
+							</p>  
 						</div>
 					
 
