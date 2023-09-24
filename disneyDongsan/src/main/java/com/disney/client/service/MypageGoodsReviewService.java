@@ -21,4 +21,5 @@ public interface MypageGoodsReviewService {
 	
 	public int userReviewDelete(GoodsReviewVO gvo) throws Exception;
 	
+	public List<GoodsReviewVO> goodsReviewList(GoodsReviewVO gvo);
 }

@@ -16,7 +16,7 @@ public class GoodsReviewVO {
 	private String g_order_date; // 주문날짜
 	private String g_order_state; // 주문 상태
 
-  private String g_id; //주문 아이디
+  private int g_id; //주문 아이디
 	private String member_id; // 회원 아이디(g_order쪽)
 
 	private String r_member_id; // 회원 아이디(g_review 쪽)

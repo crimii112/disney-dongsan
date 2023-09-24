@@ -3,30 +3,17 @@
 #toTicketimg {
 	width: 330px;
 	margin: 30px 0 10px 0;
-}
-
-.toTicket {
-	/*width: 400px;*/
-	/*height: 300px;
-	border: 1px solid lightgray;
-	text-align: center;
-	display: inline-block;*/
-	/*margin: 10px;*/
+	border-radius: 15px;
 }
 
 .toTicketdiv{
 	width: 400px;
 	height: 300px;
-	border: 1px solid lightgray;
+	border: 3px solid #3c3c8c;
 	border-radius: 15px;
 	text-align: center;
 	display: inline-block;
 	margin: 60px 0;
-}
-
-table tr td{
-	/*text-align: center;*/
-	padding: 3px 0;
 }
 
 /* 초기에는 테이블 숨기기 */
@@ -39,20 +26,16 @@ table tr td{
 	padding: 0 auto;
 }
 
-/*.td_right{
-	text-align: center;
-	padding-right: 10%; 
-}*/
+.td_right{
+	border-left: 1px solid #3c3c8c;
+}
+
 .td_btn{
 	/*float: right;
 	margin-right: 20px;*/
 	margin: 0 auto;
 }
 
-/*#modalBtn{
-	float: right;
-	margin: 10px;
-}*/
 
 #dongsanimg{
 	width: 553px;
@@ -61,37 +44,69 @@ table tr td{
 .pricetable{
 	width: 553px;
 	text-align: center;
+	border: 1px solid #3c3c8c;
+	padding: 30px 0;
+}
+
+.pricetable tr th{
+	padding: 7px 0;
+	background-color: #3c3c8c;
+	color: white;
+}
+
+.pricetable tr td{
+	padding: 10px 0;
+	border-top: 1px solid #3c3c8c;
 }
 
 #div_calendar{
 	/*background-color: lavender;*/
-	border-radius: 7px;
+	border-radius: 30px;
 	width: 400px;
+	border: 0;
 }
 
 #calendar{
 	text-align: center;
-	border: 3px solid lightgray;
+	width: 400px;
+	height: 250px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	border: white;
 	border-collapse: collapse;
-	border-radius: 7px;
+	border-radius: 30px;
+	border-style: hidden;
+	box-shadow: 5px 50px 30px 5px rgb(229, 229, 229);
+}
+
+#tb_body{
+	border: 0;
 }
 
 #div_calendar_year{
 	text-align: center;
-	margin-bottom: 7px;
+	background-color: #3c3c8c;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	padding: 10px 0;
+}
+
+#calendar th{
+	padding-top: 15px;
 }
 
 #ticket_table{
 	width: 400px;
-	border: 3px solid lightgray;
+	border: 3px solid #3c3c8c;
 	border-collapse: collapse;
 	background-color: white;
 	text-align: center;
 }
 
 #ticket_table tr td{
-	padding: 1px 0;
+	padding: 4px 0;
 	margin: 0;
+	border-top: 0;
 }
 
 h1{
@@ -106,33 +121,71 @@ h5{
 #ticket_sub{
 	text-align: center;
 	margin: 30px 0;
+	width: 553px;
 }
 
 .div_left{
 	/*border: 1px solid lightgray;*/
-	padding: 0px 10px 10px 160px;
+	padding: 0px 10px 10px 150px;
 }
 
 .div_right_inner{
 	width: 445px;
-	border: 1px solid lightgray;
+	border: 3px solid #3c3c8c;
 	padding: 10px 10px 10px 20px;
 	/*background-color: rgb(237, 247, 252);*/
 }
 
 .ticket_td{
 	width: 40%;
-	border-right: 1px solid lightgray;
+	border-right: 1px solid #3c3c8c;
+	
 }
 
 input[type=text] {
 	border: 0;
 	text-align: right;
+	padding: 0;
+	margin: 0;
+	background-color: #3c3c8c;
+	color: white;
 }
 
+
 .modalBtn {
-	border: 2px solid gray;
+	border: 2px solid #3c3c8c;
+	background-color: #3c3c8c;
+	color: white;
 	text-align: center;
 	width: 445px;
 	height: 50px;
+	font-weight: 900;
+	font-size: 18px;
+}
+
+.minusBtn, .plusBtn{
+	border: 0;
+	color: white;
+	background-color: #3c3c8c;
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	text-align: center;
+	padding: 0 auto;
+}
+
+#fa1, #fa2{
+	border: 0;
+	color: #3c3c8c;
+	background-color: white;
+	border-radius: 25%;
+	text-align: center;
+	padding: 2px 5px;
+}
+
+.packageSelect{
+	text-align: center;
+	border: 1px solid #3c3c8c;
+	border-radius: 15px;
+	padding: 0 5px;
 }
