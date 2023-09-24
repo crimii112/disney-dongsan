@@ -45,8 +45,6 @@ public class MemberController {
 		MemberVO memberVO = null;
 		memberVO = memberService.login(mvo);
 		
-		
-		
 		if(memberVO != null) {
 			if(memberVO.getMemberState().equals("NE")) {
 				ras.addFlashAttribute("errorMsg", "탈퇴한 회원 정보로 로그인할 수 없습니다.");
@@ -56,7 +54,7 @@ public class MemberController {
 				url = "";
 			}
 		} else {
-			ras.addFlashAttribute("errorMsg", "로그인 실패");
+			ras.addFlashAttribute("errorMsg", "아이디 또는 비밀번호를 잘못 입력했습니다.");
 			url = "member/loginForm";
 		}
 		
@@ -68,8 +66,6 @@ public class MemberController {
 	public String logout(SessionStatus sessionStatus, RedirectAttributes ras) {
 		
 		sessionStatus.setComplete();
-		
-		ras.addFlashAttribute("infoMsg", "logout 성공");
 		
 		return "redirect:/";
 	}

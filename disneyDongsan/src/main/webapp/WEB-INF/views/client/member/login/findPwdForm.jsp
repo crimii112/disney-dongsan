@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
-<link rel="stylesheet" type="text/css" href="/resources/include/css/login.css">
+<link rel="stylesheet" href="/resources/include/css/login.css">
 <script>
 	$(function(){
 		let errorMsg = "${errorMsg}";
@@ -67,20 +68,22 @@
 </script>
 </head>
 <body>
-	<div id="container">
-		<h3 class="text-center findPwd-title">FIND PASSWORD</h3>
-		<h5 class="text-center">입력된 이메일로 임시 비밀번호가 전송됩니다.</h5>
+	<div class="loginContainer">
+		<h3 class="text-center">비밀번호 찾기</h3>
+		<h5 class="text-center">입력된 이메일로 <strong>임시 비밀번호</strong>가 전송됩니다.</h5>
 		<hr>
 		<form id="findPwdForm">
-			<input type="hidden" id="memberPasswd" name="memberPasswd" />
-			<div class="form-group">
-				<input type="text" id="memberId" name="memberId" placeholder="ID" class="form-control" />
-			</div>
-			<div class="form-group">
-				<input type="text" id="memberEmail" name="memberEmail" placeholder="EMAIL" class="form-control" />
-			</div>
-			<div class="form-group">
-				<input type="button" class="form-control button" id="findPwdBtn" value="임시비밀번호 전송" />
+			<div class="loginDiv">
+				<input type="hidden" id="memberPasswd" name="memberPasswd" />
+				<div class="form-group">
+					<input type="text" id="memberId" name="memberId" placeholder="아이디" />
+				</div>
+				<div class="form-group">
+					<input type="text" id="memberEmail" name="memberEmail" placeholder="이메일" />
+				</div>
+				<div class="form-group">
+					<input type="button" class="button" id="findPwdBtn" value="임시비밀번호 전송" />
+				</div>
 			</div>
 		</form>
 		

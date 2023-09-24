@@ -17,7 +17,7 @@
 	
 	<!-- 아이디 찾기 처리 -->
 	<select id="findId" parameterType="member" resultType="member">
-		SELECT member_id memberId, member_regdate memberRegdate
+		SELECT REGEXP_REPLACE(member_id, '.', '*', 5) as memberId, member_regdate memberRegdate
 		FROM member
 		WHERE member_name = #{memberName} AND member_phone = #{memberPhone}
 	</select>
