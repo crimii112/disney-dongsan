@@ -103,9 +103,7 @@
 						<p><label>우편번호&nbsp;&nbsp;</label>${firstDetail.member_addr1}</p>
 						<p><label>주소&nbsp;&nbsp;</label>${firstDetail.member_addr2}&nbsp;&nbsp;${firstDetail.member_addr3}</p>
 					</div>
-					<div class="card-line p-3">
-						<p>총합 가격:&nbsp;</p>
-					</div>
+					
 					
 				</div>
 			</div>
