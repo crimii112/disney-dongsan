@@ -305,7 +305,7 @@
 	<div class="divBody">
 
 		<!-- 헤더 -->
-		<div class="header">
+		<div id="header">
 			<tiles:insertAttribute name="mypage_header" />
 		</div>
 
