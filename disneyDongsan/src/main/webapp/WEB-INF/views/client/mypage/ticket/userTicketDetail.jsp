@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -98,7 +99,10 @@
 							<img class="miki" src="/resources/img/mickeymouse.png"/>
 							<p class="me-1 ms-1">방문 예정일 <strong>${detail.visit_date}&nbsp;&nbsp;</strong></p>
 							<p>|</p>
-							<p class="ms-1">&nbsp;&nbsp;금액 <strong>${detail.total_price}원</strong></p>
+							<p class="ms-1">&nbsp;&nbsp;금액 
+								<strong><fmt:formatNumber type="number" value="${detail.total_price}" pattern="#,##0" />원</strong>
+							</p>
+							
 						</div>
 						
 						<div class="ticket-object">

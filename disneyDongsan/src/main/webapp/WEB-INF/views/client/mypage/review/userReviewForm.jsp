@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -117,7 +118,9 @@
 				<div class="goods_name"><strong>굿즈 상품</strong></div>
 				<div class="goods_div">
 					<div class="goods_img_div"><img class="goods_img"src="<%=g_image%>"/></div>
-					<div class="goods_price"><span><%=g_name%></span><br/><p class="price"><%=g_price%>원</p></div>
+					<div class="goods_price"><span><%=g_name%></span><br/><p class="price">
+					<fmt:formatNumber type="number" value="<%=g_price%>" pattern="#,##0" />원
+					</p></div>
 				</div>
 				
 				<div class="review_div">

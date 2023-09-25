@@ -148,6 +148,8 @@ a.button {
 .ticketCard{
 	background-image: url("/resources/img/ticket_img.jpg");
 	background-size: contain;
+	width: 82%!important;
+	background-repeat:no-repeat;
 }
 
 .payment_div{
@@ -215,5 +217,6 @@ a.button {
 	border-radius: 10px;
 	width: 120.5px;
 	font-weight: bold;
-	color: #3C3C8C;
+	background-color: #3C3C8C;
+	color: white;
 }

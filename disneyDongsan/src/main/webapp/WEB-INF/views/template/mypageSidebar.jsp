@@ -23,13 +23,13 @@
 							<svg class="bi pe-none me-2" width="16" height="16"></svg>나의 정보 수정</a></li>
 									
 						<li><a href="/mypage/userTicketList" class="nav-link link-body-emphasis"> 
-							<svg class="bi pe-none me-2" width="16" height="16"></svg>예매내역</a></li>
+							<svg class="bi pe-none me-2" width="16" height="16"></svg>티켓 예매내역</a></li>
 									
 						<li><a href="/mypage/userGoodsList" class="nav-link link-body-emphasis"> 
-							<svg class="bi pe-none me-2" width="16" height="16"></svg>주문내역</a></li>
+							<svg class="bi pe-none me-2" width="16" height="16"></svg>굿즈 주문내역</a></li>
 									
 						<li><a href="/mypage/userReviewList" class="nav-link link-body-emphasis"> 
-							<svg class="bi pe-none me-2" width="16" height="16"></svg>리뷰</a></li>
+							<svg class="bi pe-none me-2" width="16" height="16"></svg>굿즈 리뷰</a></li>
 									
 						<li><a href="/mypage/userQAList" class="nav-link link-body-emphasis"> 
 							<svg class="bi pe-none me-2" width="16" height="16"></svg>1:1문의 내역</a></li>

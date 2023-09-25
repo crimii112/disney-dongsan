@@ -115,7 +115,7 @@
 	</head>
 <body>
 	<div class="container">
-		<h3 class="fw-bold">주문내역</h3>
+		<h3 class="fw-bold">굿즈 주문내역</h3>
       	<hr>
 		
 		<form name="detailForm" id="detailForm">

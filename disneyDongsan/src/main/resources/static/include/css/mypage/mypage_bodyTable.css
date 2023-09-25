@@ -108,6 +108,7 @@
 .goods_img{
 	width: 100px!important;
 	border: 1px solid gainsboro;
+	height: 100px;
 }
 
 .form-control{

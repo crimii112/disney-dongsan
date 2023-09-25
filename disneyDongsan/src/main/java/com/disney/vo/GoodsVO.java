@@ -32,7 +32,11 @@ public class GoodsVO extends CommonVO {
 	private int g_count;
 	private String g_order_date;
 	private String g_order_state;
-	private String member_addr;
+	private String member_addr1;
+	private String member_addr2;
+	private String member_addr3;
+	private String member_name;
 	private int total_price;
 	private String[] goodsArr;
+	
 }

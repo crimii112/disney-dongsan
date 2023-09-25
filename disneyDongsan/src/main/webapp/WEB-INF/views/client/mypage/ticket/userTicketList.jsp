@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,7 +39,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<h3 class="fw-bold">예매내역</h3>
+			<h3 class="fw-bold">티켓 예매내역</h3>
       		<hr>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="PAYMENT_ID" id="PAYMENT_ID"/>
@@ -55,7 +56,9 @@
 										<div class="card-body goDetail" style="padding-top: 50px;" data-num="${tketList.PAYMENT_ID}">
 								
 											<p class="card-title">구분&nbsp;&nbsp;&nbsp;${tketList.t_category}</p>
-											<p class="card-text">가격&nbsp;&nbsp;&nbsp;${tketList.total_price}</p>
+											<p class="card-text">가격&nbsp;&nbsp;&nbsp;
+												<fmt:formatNumber type="number" value="${tketList.total_price}" pattern="#,##0" />원
+											</p>
 											<p class="card-text">방문일시&nbsp;&nbsp;&nbsp;${tketList.visit_date}</p>
 											<p class="card-text">주문일시&nbsp;&nbsp;&nbsp;${tketList.pay_date}</p>
 											
