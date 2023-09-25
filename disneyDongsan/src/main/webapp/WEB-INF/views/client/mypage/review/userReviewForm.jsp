@@ -12,6 +12,7 @@
 		<link rel="apple-touch-icon" href="/resources/image/icon.png"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypage_bodyTable.css"/>
 		<!--[if lt IE 9]>
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]-->
@@ -23,6 +24,7 @@
 		 	String member_id = request.getParameter("member_id");
 		 	String g_image = request.getParameter("g_image");
 		 	String g_name = request.getParameter("g_name");
+		 	String g_price = request.getParameter("g_price");
     	 %>
     	 <script type="text/javascript">
 		$(function(){
@@ -31,8 +33,10 @@
 		    let member_id = '<%= member_id %>';
 		    let g_image = '<%= g_image %>';
 		    let g_name = '<%= g_name %>';
-		    console.log("gOrderDetailId: " + gOrderDetailId);
+		    let g_price = '<%= g_price %>';
 		    
+		    console.log("gOrderDetailId: " + gOrderDetailId);
+		    console.log("g_price: " + g_price);
 		    $("#reviewInsertBtn").click(function(){
 		    	let re_Content = $("#re_content").val();
 		    	//자바스크립트 단에서 폼 데이터를 다루기 위해 FormData 객체 생성(html form 사용안함)
@@ -43,12 +47,14 @@
 		        formData.append("detail_num", gOrderDetailId);
 		        formData.append("re_content", re_Content);
 		        formData.append("r_member_id", member_id);
-		        
 		        // 콘솔로 확인
 		        console.log("g_order_detail_id: " + formData.g_order_detail_id);
 		        console.log("re_content: " + formData.re_content);
 		        console.log("r_member_id: " + formData.r_member_id);
 		        console.log("file: " + formData.file);
+		       
+		        
+		        if(!chkData("#re_content","후기내용을")) return;
 		        if($("#file").val()!=""){//업로드할 이미지 파일이 존재한다면
 					//확장자가 png, jpg, gif 외 파일을 업로드 할 수 없습니다.유효성 체크
 					if(!chkFile($("#file"))) {
@@ -79,41 +85,60 @@
 		        }
 		        
 		    });
+		    
+		    $("#reviewListBtn").click(function(){
+				location.href="/mypage/userReviewList";
+			});
+		    
+		    $("#reviewResetBtn").click(function(){
+		         $("#review").each(function(){
+		            this.reset();
+		         });
+		      });
+		    
 		});
 		</script>
 		
 	</head>
 	<body>
-		
-    	<ul>
-    		<li>작성하신 후기는 디즈니동산 이용자에게 공개됩니다. 댓글은 디즈니동산에서 확인하지 않습니다.</li>
-    	</ul>
-		<div class="contentTB text-center">
-    	<p>g_order_detail_id 값: <%= gOrderDetailId %></p>
-			<table class="table table-bordered">
-				<tr class="text-tr-height">
-					<td colspan="2" ><img src="<%=g_image%>"/><br/><%=g_name%></td>
-				</tr>
-				<tr class="text-tr-height">
-					<td>내용</td>
-					<td colspan="2" class="text-left">
-						<textarea name="re_content" id="re_content" class="form-control" rows="8"></textarea>
-					</td>
-				</tr>
-				<tr class="text-tr-height">
-					<td>사진 첨부하기</td>
-					<td colspan="2" class="text-left">
-						<input type="file" class="form-control" id="file" name="file" />
-					</td>
-				</tr>
-			</table>
+		 <h3 class="fw-bold">리뷰 등록</h3>
+	     <hr>
+    	<div class="top">
+			<div class="exction"><strong>유의사항</strong></div>
+			<ul>
+	    		<li>작성하신 후기는 디즈니동산 이용자에게 공개됩니다. 댓글은 디즈니동산에서 확인하지 않습니다.</li>
+	    	</ul>
+    	</div>
+    <div>
+		<div class="card">
+    	<!--  <p>g_order_detail_id 값: <%= gOrderDetailId %></p>-->
+    	<form id="review">
+			<div class="card-body">
+				<div class="goods_name"><strong>굿즈 상품</strong></div>
+				<div class="goods_div">
+					<div class="goods_img_div"><img class="goods_img"src="<%=g_image%>"/></div>
+					<div class="goods_price"><span><%=g_name%></span><br/><p class="price"><%=g_price%>원</p></div>
+				</div>
+				
+				<div class="review_div">
+					<span class="review_name">내용</span>
+				</div>
+					<textarea class="form-control"name="re_content" id="re_content"  rows="8"></textarea>
+				<div class="img_file">
+					<strong class="img">사진</strong>
+					<span  class="text-left">
+						<input type="file" class="form-file" id="file" name="file" />
+					</span>
+				</div>
+			</div>
+		</form>
 	</div>
 
-	<div class="contentBtn text-right">
-		<button type="button" id="reviewInsertBtn" class="btn btn-success">등록하기</button>
-		<button type="button" id="reviewResetBtn" class="btn btn-success">다시쓰기</button>
-		<button type="button" id="reviewListBtn" class="btn btn-success">후기목록</button>
+		<div class="contentBtn">
+			<button type="button" id="reviewInsertBtn" class="Btn" >등록하기</button>
+			<button type="button" id="reviewResetBtn" class="Btn">다시쓰기</button>
+			<button type="button" id="reviewListBtn" class="Btn">후기목록</button>
+		</div>
 	</div>
-	
 	</body>
 </html>

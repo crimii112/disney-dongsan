@@ -9,8 +9,11 @@
 	 
 }
 .allDiv{
-	width: 100%;
-   
+	width: 100%;   
+}
+
+.checkline{
+	border-bottom: 1px solid rgb(131, 150, 207);
 }
 .all-button{
 	margin-left: 90%;
@@ -76,4 +79,10 @@
 
 .table:hover{
 	background-color: #3C3C8C;
+}
+
+
+.deleteline{
+	border-top: 1px solid rgb(131, 150, 207);
+	color: #3C3C8C;
 }

@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypage_qa_list.css"/>
 		
 		<script type="text/javascript">
 		/*글쓰기 버튼 클릭시 처리 이벤트 */
@@ -46,20 +47,23 @@
 	<body>
 		<div class="container">
 			
-		
+			<h3 class="fw-bold">QA</h3>
+      		<hr>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="qa_no" id="qa_no"/>
 			</form>
-			
+			<div class="contentBtn">
+				<input type="button" id="insertFormBtn" class="qa_btn"value="등록하기"/>
+			</div>
 			<div id="qaList">
-				<table summary="게시판 리스트" class = "table">
+				<table summary="게시판 리스트" class = "table table align-middle">
 					<thead>
 						<tr>
 							<th class="col-md-1 text-center" >문의 번호</th>
-							<th class="col-md-1 text-center">회원 아이디</th>
-							<th class="col-md-5 text-center">제목</th>
-							<th class="col-md-1 text-center">작성일</th>
-							<th class="col-md-1 text-center">답변일시</th>
+							<th class="col-md-2 text-center">회원 아이디</th>
+							<th class="col-md-3 text-center">제목</th>
+							<th class="col-md-2 text-center">작성일</th>
+							<th class="col-md-2 text-center">답변일시</th>
 							<th class="col-md-1 text-center">답변 유무</th>
 						</tr>
 					</thead>
@@ -69,27 +73,25 @@
 							<c:when test="${not empty qaList}">
 								<c:forEach var="qaList" items="${qaList}" varStatus="status">
 									<tr class="text-center" data-num="${qaList.qa_no}">
-										<td>${qaList.qa_no}</td>
-										<td>${qaList.member_id}</td>
+										<td><strong><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></strong></td>
+										<td><strong>${qaList.member_id}</strong></td>
 										<td class="goDetail">${qaList.title}</td>
-										<td>${qaList.qa_date}</td>
-										<td>${qaList.ask_date}</td>
-										<td>${qaList.askyn}</td>
+										<td><strong>${qaList.qa_date}</strong></td>
+										<td ><strong class="ask_color">${qaList.ask_date}</strong></td>
+										<td><strong>${qaList.askyn}</strong></td>
 									</tr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
 							<tr>
-								<td colspan="5" class="text-center">등록된 게시물이 존재하지 않습니다.</td>
+								<td colspan="7" class="text-center"><strong>문의하실 내용을 등록해주세요.</strong></td>
 							</tr>
 							</c:otherwise>
 						</c:choose>
 					</tbody>
 				</table>
 			</div>
-			<div class="contentBtn text-right">
-				<input type="button" id="insertFormBtn" value="등록하기"/>
-			</div>
+			
 		</div>
 	</body>
 </html>

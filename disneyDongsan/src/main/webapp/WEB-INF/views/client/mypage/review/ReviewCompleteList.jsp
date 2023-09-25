@@ -16,53 +16,13 @@
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]--><link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypage_bodyTable.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/reviewBtn.css"/>
 		<style>
-				.file {
-		    width: 100px;
-		  }
-		  
-		.custom-btn {
-		  width: 150px;
-		  height: 40px;
-		  padding: 10px 25px;
-		  border: 2px solid #000;
-		  font-family: 'Lato', sans-serif;
-		  font-weight: 500;
-		  background: transparent;
-		  cursor: pointer;
-		  transition: all 0.3s ease;
-		  position: relative;
-		  display: inline-block;
-		}
-		.btn-15 {
-		   background: #000;
-		  color: #fff;
-		  z-index: 1;
-		}
-		.btn-15:after {
-		  position: absolute;
-		  content: "";
-		  width: 0;
-		  height: 100%;
-		  top: 0;
-		  right: 0;
-		  z-index: -1;
-		   background: #e0e5ec;
-		  transition: all 0.5s ease;
-		}
-		.btn-15:hover {
-		  color: #000;
-		}
-		.btn-15:hover:after {
-		  left: 0;
-		  width: 100%;
-		}
-		.btn-15:active {
-		  top: 2px;
-		}
+		
 </style>
 
 <script type="text/javascript">
@@ -138,7 +98,8 @@ $(function(){
 	</head>
 	<body>
 		<div class="container">
-			
+		<h3 class="fw-bold">작성한 리뷰</h3>
+      	<hr>
 		<div class="wrap">
 			<button type="button" class="custom-btn btn-15" id="reviewList">리뷰 작성</button>
 			<button type="button" class="custom-btn">작성한 리뷰</button>
@@ -152,8 +113,8 @@ $(function(){
 				<input type="hidden" name="re_image" id="re_image"/>
 			</form>
     			
-			<div id="reviewList">
-				<table summary="게시판 리스트" class = "table table-hover">
+			<div id="reviewCompleteList table-responsive">
+				<table summary="게시판 리스트" class = "table table align-middle">
 					<thead>
 						<tr>
 							<th class="col-md-1 text-center">No</th>
@@ -172,15 +133,15 @@ $(function(){
 								<c:forEach var="ReviewCompleteList" items="${ReviewCompleteList}" varStatus="status">
 								
 									<tr class="text-center" data-num="${ReviewCompleteList.g_order_detail_id}">
-										<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
+										<td><strong><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></strong></td>
 										<td>
 											<c:if test="${not empty ReviewCompleteList.g_image}">
 												<img src="/dongsanStorage/goods/${ReviewCompleteList.g_image}"class="file"/>
 											</c:if> 
 										</td>
-										<td>${ReviewCompleteList.g_name}</td>
-										<td>${ReviewCompleteList.g_order_date}</td>
-										<td>${ReviewCompleteList.g_order_state}</td>
+										<td><strong>${ReviewCompleteList.g_name}</strong></td>
+										<td><strong>${ReviewCompleteList.g_order_date}</strong></td>
+										<td><strong>${ReviewCompleteList.g_order_state}</strong></td>
 										<td>
 											<button id="reviewUpdate" class="reviewUpdate">수정하기</button><br/>
 											<button id="reviewDelete" class="reviewDelete">삭제하기</button>
@@ -192,7 +153,7 @@ $(function(){
 							</c:when>
 							<c:otherwise>
 							<tr>
-								<td colspan="5" class="text-center">구매확정이 완료된 상품이 없습니다.</td>
+								<td colspan="7" class="text-center"><strong>리뷰를 작성한 상품이 없어요...</strong></td>
 							</tr>
 							</c:otherwise>
 						</c:choose>

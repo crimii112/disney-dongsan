@@ -115,14 +115,17 @@
 	</head>
 <body>
 	<div class="container">
-
-
+		<h3 class="fw-bold">주문내역</h3>
+      	<hr>
+		
 		<form name="detailForm" id="detailForm">
 			<input   class="m-25" type="hidden" name="g_order_id" id="g_order_id" />
 		</form>
-		<div class="allDiv">
-		<input class="all-button"type="checkbox" id="allCheck" name="allCheck"/>
-		</div>
+		
+			<div class="allDiv">
+				<input class="all-button"type="checkbox" id="allCheck" name="allCheck"/>
+			</div>
+		
 		<div id="tketList">
 			<c:choose>
 				<c:when test="${not empty goodsList}">
@@ -146,11 +149,11 @@
 					</div>
 				</c:otherwise>
 			</c:choose>
-
-			<input type="button" id="deleteFormBtn"
-				class="deleteFormBtn float-right" value="배송취소"
-				onclick="updateValue();" />
-
+			<div class="deleteline">
+				<input type="button" id="deleteFormBtn"
+					class="deleteFormBtn float-right" value="배송취소"
+					onclick="updateValue();" />
+			</div>
 		</div>
 	</div>
 

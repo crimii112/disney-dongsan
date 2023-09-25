@@ -9,7 +9,7 @@
 	 color: black;
 }
 .card-body:hover{
-	background-image: url("/resources/img/ticket.jpg");
+	background-image: url("/resources/img/ticket_img.jpg");
 	background-size: contain;
 	box-shadow: none;
 	
@@ -20,7 +20,11 @@
 	width: 100%;
 	height: 310px;
 }
-
+.miki{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
 
 .card-line{
 	border-top: 1px solid rgb(131, 150, 207);
@@ -142,27 +146,74 @@ a.button {
 
 
 .ticketCard{
-	background-image: url("/resources/img/ticket.jpg");
+	background-image: url("/resources/img/ticket_img.jpg");
 	background-size: contain;
 }
 
 .payment_div{
-	display: block;
-	justify-content: flex-end;
-	margin: 20px 60px 0 600px;
-	
-	
+	text-align: center;
+	display: inline-block;
+	color: #3C3C8C;
 }
 
 .category{
-	padding-left: 28%;
+	padding-left: 30%;
 	font-size: 40px;
 	color: #3C3C8C;
+	padding-top:3%;
 }
 
 .ticket-object{
 	display: flex;
+	color:#3C3C8C;
 }
-.ticket-state{
-	display:felx;
+
+.ticket-div{
+	width: 68%;
+	display: inline-block;
+	margin: 0 0 0 7%;
+}
+
+.tp-div{
+	margin-top: 50px;
+}
+.allBtn{
+	margin-left: 2%;
+}
+
+.tkdeleteBtn{
+	border-radius: 10px;
+	width: 120px;
+	color: #3C3C8C;
+	content:"취소";
+	font-weight: bold;
+}
+
+.tkdeleteBtn:after{
+	border-radius: 10px;
+	width: 120px;
+	color: #3C3C8C;
+	content:"취소";
+	font-weight: bold;
+}
+
+.tkdeleteBtn:hover:after{
+	border-radius: 10px;
+	width: 120px;
+	content:"취소할까요?";
+	font-weight: bold;
+}
+
+.tkListBtn{
+	border-radius: 10px;
+	width: 120px;
+	font-weight: bold;
+	color: #3C3C8C;
+}
+
+.tkListBtn:hover{
+	border-radius: 10px;
+	width: 120.5px;
+	font-weight: bold;
+	color: #3C3C8C;
 }

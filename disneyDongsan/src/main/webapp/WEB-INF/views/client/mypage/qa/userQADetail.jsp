@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypage_qa_list.css"/>
 		<script type="text/javascript">
 		$(function(){
 			let ask = $("#ask").val();
@@ -51,36 +52,64 @@
 	</head>
 	<body>
 	<div class="contentContainer container">
+	<h3 class="fw-bold">상세 문의</h3>
+	<hr>
 	<form name="f_data" id="f_data" method="post">
 	<input type="hidden" name="qa_no" value="${detail.qa_no}">
 	</form>
 	<form>
 		<input type="hidden" name="ask" id="ask" value="${detail.ask}">
 	</form>
-		<button type="button" id="qaDeleteBtn">삭제</button>
-		<button type="button" id="qaListBtn">목록</button>
+		<button type="button" id="qaDeleteBtn" class="qaDeleteBtn">삭제</button>
+		<button type="button" id="qaListBtn" class="qaListBtn">목록</button>
 		<div class="contentTB text-center">
-			<table class="table table-bordered">
-				<tbody>
-					<tr>
-						<td class="col-md-1">아이디</td>
-						<td class="col-md-3 text-left">${detail.member_id}</td>
+			<table class=" detail_table table table-bordered align-middle">
+				<tbody class="detail_body">
+					<tr class="">
+						<td class="col-2 qaTitle">&nbsp;&nbsp;제목</td>
+						<td class="text">
+						<c:choose>
+								<c:when test="${detail.askyn eq 'n'}">
+									<p class="askck">미답변</p>
+								</c:when>
+						</c:choose>
+						<c:choose>
+								<c:when test="${detail.askyn eq 'Y'}">
+									<p class="askck">답변완료</p>
+								</c:when>
+						</c:choose><br/><strong>${detail.title}</strong></td>
 					</tr>
 					<tr>
-						<td class="col-md-1">제목</td>
-						<td colspan="3" class="col-md-8 text-left">${detail.title}</td>
+						<td class="col-md-1 qaTitle"" style="text-align:left;">&nbsp;&nbsp;작성아이디</td>
+						<td class="text"><strong>${detail.member_id}</strong></td>
 					</tr>
-					<tr>
-						<td class="table-tr-height">내용</td>
-						<td colspan="1" class="col-md-8 text-left">${detail.qa_content}</td>
-					</tr>
-					<tr id="answer">
-						<td class="table-tr-height">답변 내용</td>
-						<td colspan="1" class="col-md-8 text-left">${detail.ask}</td>
-					</tr>
-
 				</tbody>
 			</table>
+		
+				<div>
+					<p class="text"><span>작성일&nbsp;</span><span class="qa_date">${detail.qa_date}</span></p>
+				</div>
+				
+				<div class="ask_title"><strong>문의내용</strong></div>
+				<div class="content_div">
+					<p class="text">${detail.qa_content}</p>
+				</div>
+				<div class="answer_title"><strong>답변</strong></div>
+					<c:choose>
+						<c:when test="${detail.ask eq ''}">
+						<div class="answer_div">
+							<p class="ask"><strong>아직 답변이 도착하지 않았어요..</strong></p>
+						</div>
+						</c:when>
+					</c:choose>
+				
+				<div id="answer" class="answer_div">
+					<c:choose>
+							<c:when test="${detail.ask ne ''}">
+								<p class="asky">${detail.ask}</p>
+							</c:when>
+					</c:choose>
+				</div>
 		</div>
 	</div>
 </body>

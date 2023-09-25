@@ -13,6 +13,7 @@
 		<link rel="apple-touch-icon" href="/resources/image/icon.png"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypage_bodyTable.css"/>
 		<!--[if lt IE 9]>
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]-->
@@ -29,74 +30,91 @@
 					if(!chkFile($("#file"))) {
 						return;//이미지 파일만 업로드 가능.
 					}
-					updateChk = confirm("수정하시겠습니까?")
-					if(updateChk == true){
-						alert("수정이 완료되었습니다.");
-						$("#updateForm").attr({
-							"method" : "post",
-							"enctype":"multipart/form-data",
-							"action" : "/mypage/userReviewUpdate"
-						});
-						$("#updateForm").submit();
-					}else{
-						return;
-					}
+				}
+				updateChk = confirm("수정하시겠습니까?")
+				if(updateChk == true){
+					alert("수정이 완료되었습니다.");
+					$("#updateForm").attr({
+						"method" : "post",
+						"enctype":"multipart/form-data",
+						"action" : "/mypage/userReviewUpdate"
+					});
+					$("#updateForm").submit();
+				}else{
+					return;
 				}
 					
 			});
+			
+			 $("#reviewListBtn").click(function(){
+					location.href="/mypage/userReviewList";
+				});
+			    
+			    $("#reviewResetBtn").click(function(){
+			         $("#updateForm").each(function(){
+			            this.reset();
+			         });
+			      });
 		});
 	</script>
 	</head>
 	<body>
-		<ul>
-    		<li>작성하신 후기는 디즈니동산 이용자에게 공개됩니다. 댓글은 디즈니동산에서 확인하지 않습니다.</li>
-    	</ul>
-		<div class="contentTB text-center">
-    	<p>g_order_detail_id 값: ${UpdateResultData.detail_num}</p>
-			<table class="table table-bordered">
-				<tr class="text-tr-height">
-					<td>상품 정보</td>
-					<td colspan="4" ><img src="${UpdateResultData.g_image}"/><br/>${UpdateResultData.g_name}</td>
-				</tr>
-				<tr class="text-tr-height">
-					<td>현재 사진</td>
-					<td colspan="4" class="text-left">
+		 <h3 class="fw-bold">리뷰 수정</h3>
+	     <hr>
+		<div class="top">
+			<div class="exction"><strong>유의사항</strong></div>
+			<ul>
+	    		<li>작성하신 후기는 디즈니동산 이용자에게 공개됩니다. 댓글은 디즈니동산에서 확인하지 않습니다.</li>
+	    	</ul>
+    	</div>
+		<div class="card">
+			<div class="card-body">
+				<div class="top_menu">
+					<div class="goods_name"><strong>굿즈 상품</strong></div>
+					<div class="goods_img_div">
+						<img class="goods_img" src="/dongsanStorage/goods/${UpdateResultData.g_image}"/>&nbsp;&nbsp;
+						<span>${UpdateResultData.g_name}</span>
+					</div>	
+				</div>
+				<div class="middle_menu">
+					<div class="re_img_title">
+						<span>현재 사진</span>
+					</div>
+					<div class="re_image_div">
 						<c:if test="${not empty UpdateResultData.re_image}">
-							<img src="/dongsanStorage/goods/${UpdateResultData.re_image}"/>
+							<img  class="re_image" src="/dongsanStorage/goods/${UpdateResultData.re_image}"/>
 						</c:if>
 						<c:if test="${empty UpdateResultData.re_image}">
-							<img src="/dongsanStorage/goods/no_img.png"/>
+							<img  class="re_image" src="/dongsanStorage/goods/no_img.png"/>
 						</c:if>
-					<td>
-				</tr>
-			</table>
+					</div>
+				</div>
+			
 				<form name="updateForm" id="updateForm">
 					<input type="hidden" name="detail_num" id="detail_num" value="${UpdateResultData.detail_num}"/>
-					<input type="hidden" name="re_image" id="re_image" value="${UpdateResultData.re_image}"/>
-					<table class="table table-bordered">
-						<tr class="text-tr-height">
-							<td>내용</td>
-							<td colspan="3" class="text-left">
-								<textarea name="re_content" id="re_content" class="form-control" rows="8">${UpdateResultData.re_content}</textarea>
-							</td>
-						</tr>
-						<tr class="text-tr-height">
-							<td>사진 첨부하기</td>
-							<td colspan="3" class="text-left">
-								<input type="file" class="form-control" id="file" name="file" />
-							</td>
-						</tr>
-					</table>
+					<input type="hidden" name="re_image" id="re_image"   value="${UpdateResultData.re_image}"/>
+					<div class="table table-bordered">
+						<div class="review_div">
+							<span>내용</span>
+							<textarea name="re_content" id="re_content" class="form-control" rows="8">${UpdateResultData.re_content}</textarea>
+						</div>
+					
+						<div class="img_file">
+							<strong class="img">사진</strong>
+							<span  class="text-left">
+								<input type="file" class="form-file" id="file" name="file" />
+							</span>
+						</div>
+					</div>
 				</form>	
-			
-		
-	</div>
+				</div>
+			</div>
 
 
 	<div class="contentBtn text-right">
-		<button type="button" id="reviewUpdatetBtn" class="btn btn-success">수정하기</button>
-		<button type="button" id="reviewResetBtn" class="btn btn-success">다시쓰기</button>
-		<button type="button" id="reviewListBtn" class="btn btn-success">후기목록</button>
+		<button type="button" id="reviewUpdatetBtn" class="Btn">수정하기</button>
+		<button type="button" id="reviewResetBtn" class="Btn">다시쓰기</button>
+		<button type="button" id="reviewListBtn" class="Btn">후기목록</button>
 	</div>
 	</body>
 </html>

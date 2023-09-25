@@ -31,7 +31,7 @@
 					$("#tkDeleteBtn").click(function(){
 						tiketCancel = confirm("티켓을 취소하시겠습니까?");
 						if(tiketCancel === true){
-							if(tState === '취소완료'){
+							if(tState === 'N'){
 								alert("이미 취소가 완료된 티켓입니다.");
 							}else{
 								alert("취소가 완료되었습니다.");
@@ -50,39 +50,75 @@
 	<body>
 	<body>
 	<div class="contentContainer container">
+		 <h3 class="fw-bold">티켓 상세내역</h3>
+	     <hr>
 		<form name="tk_data" id="tk_data" method="post">
 			<input type="hidden" name="PAYMENT_ID" value="${detail.PAYMENT_ID}">
 		</form>
-		<button type="button" id="tkDeleteBtn">취소</button>
-		<button type="button" id="tkListBtn">목록</button>
+		<div class="allBtn">
+			<button class="tkdeleteBtn" type="button" id="tkDeleteBtn"></button>
+			<button class="tkListBtn" type="button" id="tkListBtn">목록</button>
+		</div>
 		<div class="card ticketCard w-70 m-3">
 			<div class="card-body ">
-				<div class="payment_div">
-						<p class="fs-3" >&nbsp;&nbsp;주문번호<br/>${detail.PAYMENT_ID}</p>
-						
-						<p class="fs-3"></p>
-					</div>
-				<div>
-					<p class="category"> ${detail.t_category}</p>
+				<div class="tp-div">
+				<div class="ticket-div">
+					<p class="category"> <strong>${detail.t_category}</strong></p>
 						<div class="ticket-object">
-							<p class="me-3 ms-3">금액 ${detail.total_price}원</p>
-							<p>|</p>
-							<p class="ms-3">방문 예정일 ${detail.visit_date}</p>
+							<img class="miki" src="/resources/img/mickeymouse.png"/>
+							<p class="me-1 ms-1">방문자&nbsp;<strong>${detail.member_name}&nbsp;</strong></p>
+							<c:choose>
+								<c:when test="${detail.t_adult ne 0}">
+									<p>|&nbsp;&nbsp;인원&nbsp;&nbsp;<strong>성인 ${detail.t_adult}인</strong></p>
+								</c:when>
+							</c:choose>
+							<c:choose>
+								<c:when test="${detail.t_student ne 0}">
+									<p>|&nbsp;&nbsp;인원&nbsp;&nbsp;<strong>학생 ${detail.t_student}인</strong></p>
+								</c:when>
+							</c:choose>
+							<c:choose>
+								<c:when test="${detail.t_child ne 0}">
+									<p>|&nbsp;&nbsp;인원&nbsp;&nbsp;<strong>어린이 ${detail.t_child}인</strong></p>
+								</c:when>
+							</c:choose>
+							<c:choose>
+								<c:when test="${detail.t_multi ne 0}">
+									<p>|&nbsp;&nbsp;인원&nbsp;&nbsp;<strong>다인권 ${detail.t_multi}인</strong></p>
+								</c:when>
+							</c:choose>
+							<c:choose>
+								<c:when test="${detail.t_afternoon ne 0}">
+									<p>|&nbsp;&nbsp;인원&nbsp;&nbsp;<strong>오후권 ${detail.t_afternoon}인</strong></p>
+								</c:when>
+							</c:choose>
 						</div>
-						<div class="ticket-state">
-							<p class="ms-3">티켓 상태
+						<div class="ticket-object">
+							<img class="miki" src="/resources/img/mickeymouse.png"/>
+							<p class="me-1 ms-1">방문 예정일 <strong>${detail.visit_date}&nbsp;&nbsp;</strong></p>
+							<p>|</p>
+							<p class="ms-1">&nbsp;&nbsp;금액 <strong>${detail.total_price}원</strong></p>
+						</div>
+						
+						<div class="ticket-object">
+							<img class="miki" src="/resources/img/mickeymouse.png"/>
+							<p class="me-1 ms-1">티켓 상태&nbsp;&nbsp;
 							<c:choose>
 								<c:when test="${detail.t_state eq 'Y'}">
-									<td>결제완료</td>
+									<strong>결제완료</strong>
 								</c:when>
 								<c:when test="${detail.t_state eq 'N'}">
-									<td>취소완료</td>
+									<strong>취소완료</strong>
 								</c:when>
 							</c:choose>
 							</p>
 						</div>
 					
 
+				</div>
+				<div class="payment_div">
+					<p class="fs-3">주문번호<br/><strong>${detail.PAYMENT_ID}</strong></p><br/><br/>
+				</div>
 				</div>
 			</div>
 		</div>

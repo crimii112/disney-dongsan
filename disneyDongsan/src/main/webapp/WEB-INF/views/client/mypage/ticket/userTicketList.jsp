@@ -38,8 +38,8 @@
 	</head>
 	<body>
 		<div class="container">
-			
-		
+			<h3 class="fw-bold">예매내역</h3>
+      		<hr>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="PAYMENT_ID" id="PAYMENT_ID"/>
 			</form>

@@ -16,58 +16,12 @@
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]--><link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/resources/dist/css/bootstrap-theme.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypageListBody.css"/>
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/mypage_bodyTable.css"/>
 		<script type="text/javascript" src="/resources/include/js/jquery-3.7.0.min.js"></script>
 		<script type="text/javascript" src="/resources/include/js/common.js"></script>
 		<script type="text/javascript" src="/resources/include/dist/js/bootstrap.min.js"></script>
-		<style>
- 
-  
-  .file {
-    width: 100px;
-  }
-  
-.custom-btn {
-  width: 150px;
-  height: 40px;
-  padding: 10px 25px;
-  border: 2px solid #000;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-}
-.btn-15 {
-   background: #000;
-  color: #fff;
-  z-index: 1;
-}
-.btn-15:after {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 100%;
-  top: 0;
-  right: 0;
-  z-index: -1;
-   background: #e0e5ec;
-  transition: all 0.5s ease;
-}
-.btn-15:hover {
-  color: #000;
-}
-.btn-15:hover:after {
-  left: 0;
-  width: 100%;
-}
-.btn-15:active {
-  top: 2px;
-}
-</style>
-		
+		<link rel="stylesheet" type="text/css" href="/resources/include/css/mypage/reviewBtn.css"/>
+
 		<script type="text/javascript">
 			
 			$(function(){
@@ -105,6 +59,9 @@
 					console.log("imageSrc=" + imageSrc);
 					$("#g_image").val(imageSrc);
 					
+					let g_price = $(this).parent("td").parent("tr").children().eq(8).text();
+					$("#g_price").val(g_price);
+					
 					$("#resultForm").attr({
 						"method" : "post",
 						"action" : "/mypage/userReviewForm"
@@ -122,7 +79,8 @@
 	</head>
 	<body>
 		<div class="container">
-			
+		<h3 class="fw-bold">리뷰</h3>
+      	<hr>
 		<div class="wrap">
 			<button type ="button" class="custom-btn ">리뷰 작성</button>
 			<button  type ="button" class="custom-btn btn-15" id="completeReview">작성한 리뷰</button>
@@ -134,10 +92,12 @@
 				<input type="hidden" name="g_name" id="g_name"/>
 				<input type="hidden" name="g_image" id="g_image"/>
 				<input type="hidden" name="re_image" id="re_image"/>
+				<input type="hidden" name="g_price" id="g_price"/>
+				
 			</form>
     			
-			<div id="reviewList">
-				<table summary="게시판 리스트" class = "table table-hover">
+			<div id="reviewList table-responsive">
+				<table summary="게시판 리스트" class = "table table align-middle">
 					<thead>
 						<tr>
 							<th class="col-md-1 text-center">No</th>
@@ -156,27 +116,28 @@
 								<c:forEach var="ReviewList" items="${goodsReviewList}" varStatus="status">
 								
 									<tr class="text-center" data-num="${ReviewList.g_order_detail_id}">
-										<td><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
+										<td><strong><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></strong></td>
 										<td>
 											<c:if test="${not empty ReviewList.g_image}">
 												<img src="/dongsanStorage/goods/${ReviewList.g_image}"class="file"/>
 											</c:if> 
 										</td>
-										<td>${ReviewList.g_name}</td>
-										<td>${ReviewList.g_order_date}</td>
-										<td>${ReviewList.g_order_state}</td>
+										<td><strong>${ReviewList.g_name}</strong></td>
+										<td><strong>${ReviewList.g_order_date}</strong></td>
+										<td><strong>${ReviewList.g_order_state}</strong></td>
 										<td>
 											<button id="reviewInsert" class="reviewInsert">후기작성</button>
 											<span class="check_hidden">${ReviewList.content_check}</span><br/>
 										</td>
 										<td style= display:none>${ReviewList.member_id}</td>
 										<td style= display:none>${ReviewList.re_image}</td>
+										<td style= display:none>${ReviewList.g_price}</td>
 									</tr>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
 							<tr>
-								<td colspan="7" class="text-center">구매확정이 완료된 상품이 없습니다.</td>
+								<td colspan="7" class="text-center"><strong>구매가 완료된 상품이 없어요...</strong></td>
 							</tr>
 							</c:otherwise>
 						</c:choose>

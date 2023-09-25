@@ -30,7 +30,7 @@
 	</insert>
 	
 	<select id="qaDetail" parameterType="question" resultType="question">
-	SELECT qa_no, title, qa_content, member_id, ask
+	SELECT qa_no, title, qa_content, member_id, ask, askyn, qa_date
 	FROM QA
 	WHERE qa_no = #{qa_no}
 	</select>

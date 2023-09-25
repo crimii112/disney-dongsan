@@ -40,6 +40,8 @@
 	<body>
 		
 		<div class="container">
+		<h3 class="fw-bold">주문 상세</h3>
+	    <hr>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="g_order_detail_id" id="g_order_detail_id"/>
 			</form>

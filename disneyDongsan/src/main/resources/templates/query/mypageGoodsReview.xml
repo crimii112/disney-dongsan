@@ -11,6 +11,7 @@
 		goods.g_name,
 		goods.g_image,
 		goods.g_id,
+		goods.g_price,
 		greview.content_check,
 		greview.re_image
 		
@@ -38,6 +39,7 @@
 		goods.g_name,
 		goods.g_image,
 		goods.g_id,
+		goods.g_price,
 		greview.content_check,
 		greview.re_image
 		

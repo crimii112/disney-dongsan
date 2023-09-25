@@ -9,7 +9,7 @@
 	content="width-device-width, initial-scale=1.0 maximum-scale=1.0, minimum-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>Insert title here</title>
+<title><tiles:getAsString name="title"/></title>
 <link rel="shortcut icon" href="/resources/image/icon.png" />
 <link rel="apple-touch-icon" href="/resources/image/icon.png" />
 <!--[if lt IE 9]>

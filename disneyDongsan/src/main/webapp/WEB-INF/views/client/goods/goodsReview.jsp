@@ -23,6 +23,12 @@
 			height: 97px;
 		}
 		
+		.reviewList{
+			background-color: #f1f3f5;
+			border: 1px solid black;
+			height: 100px;
+			text-align:center;
+		}
 		
 	</style>
 	<script type="text/javascript">
@@ -35,26 +41,37 @@
 		});
 		
 		function listAll(g_id){
-			$(".reply").detach();
-			let url = "/goods/all/"+g_id;
-			
-			$.getJSON(url, function(data){
-				$(data).each(function(index){
-					
-					let re_id = this.re_id;
-					let r_member_id = this.r_member_id;
-					let re_content = this.re_content;
-					let re_date = this.re_date;
-					let re_image = this.re_image;
-					re_content = re_content.replace(/(\r\n|\r|\n)/g, "<br />");
-					
-					template(re_id, r_member_id, re_content, re_date, re_image);
-				});
-			}).fail(function(jqXHR, textStatus, errorThrown){
-				console.error("덧글 목록 불러오기 실패: " + textStatus, errorThrown);
-				alert("댓글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
-			});
-		}
+	         $(".reply").detach();
+	         let url = "/goods/all/"+g_id;
+	         
+	         $.getJSON(url, function(data){
+	            let hasReviews = false;
+	            
+	            $(data).each(function(index){
+	                  
+	               let re_id = this.re_id;
+	               let r_member_id = this.r_member_id;
+	               let re_content = this.re_content;
+	               let re_date = this.re_date;
+	               let re_image = this.re_image;
+	               re_content = re_content.replace(/(\r\n|\r|\n)/g, "<br />");
+	                  
+	               template(re_id, r_member_id, re_content, re_date, re_image);
+	               
+	               if(re_id){
+	                  hasReviews = true;
+	               }
+	            });
+	            
+	            if(!hasReviews){
+	               $("#reviewList").html("<h3> 등록된 리뷰가 없습니다 </h3>");
+	            }
+	            
+	         }).fail(function(jqXHR, textStatus, errorThrown){
+	            console.error("덧글 목록 불러오기 실패: " + textStatus, errorThrown);
+	            alert("댓글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
+	         });
+	      }
 		
 		function template(re_id, r_member_id, re_content, re_date, re_image){
 			let $div = $('#reviewList');
@@ -94,7 +111,7 @@
 		</div>
 	
 		<%-- 리스트 영역 --%>
-		<div id="reviewList">
+		<div id="reviewList" class="reviewList">
 			<div id="item-template" class="panel panel-success">
 				<div class="panel-heading">
 					<h5 class="panel-title">

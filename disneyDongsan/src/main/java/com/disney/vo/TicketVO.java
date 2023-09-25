@@ -22,6 +22,6 @@ public class TicketVO extends CommonVO {
 	private String 	pay_date;
 	private String 	t_member_id;
 	private String t_state;
-	
+	private String member_name;
 	private String[] ticketArr;
 }
