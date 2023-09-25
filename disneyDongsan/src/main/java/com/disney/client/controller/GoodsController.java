@@ -54,11 +54,13 @@ public class GoodsController {
 	public String GoodsList(@ModelAttribute GoodsVO gvo, Model model) {
 		log.info("goodsList 호출 성공");
 		
+		gvo.setAmount(8);
+		
 		List<GoodsVO> goodsList = goodsService.goodsList(gvo);
 		model.addAttribute("goodsList", goodsList);
 		
 		int total = goodsService.goodsListCnt(gvo);
-		
+
 		model.addAttribute("pageMaker", new PageDTO(gvo, total));
 		
 		return "client/goods/goodsList";
