@@ -56,3 +56,15 @@ input[type="button"]{
 span{
 	font-size: 13px;
 }
+
+td img{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+#signupInfoSpan{
+	float: right;
+	font-size: 13px;
+	color: red;
+}

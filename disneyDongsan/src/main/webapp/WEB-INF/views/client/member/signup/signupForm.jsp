@@ -36,7 +36,7 @@
 		});
 		
 		/* 비밀번호 입력란 keyup 이벤트 */
-		$("#memberPasswd").keyup(function(){
+		$("#memberPasswd").keydown(function(){
 			pwdCheckStatus = false;
 			$("#pwdCheckSpan").text('');
 		});
@@ -256,10 +256,13 @@
 		<h5 class="text-center">디즈니 동산에 오신 것을 환영합니다!</h5>
 		<hr>
 		<div>
+			<span id="signupInfoSpan">* 모든 항목은 필수 항목입니다.</span>
+		</div>
+		<div>
 			<form id="signupForm">
 				<table class="table table-borderless">
 					<tr>
-						<td class="w-25 align-middle"><label class="label">아이디</label></td>
+						<td class="w-25 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">아이디</label></td>
 						<td>
 							<input type="text" id="memberId" name="memberId" placeholder="5~12자로 입력해주세요" />
 							<button type="button" class="button" id="idCheckBtn">중복확인</button>
@@ -267,32 +270,32 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">비밀번호</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">비밀번호</label></td>
 						<td>
 							<input type="password" id="memberPasswd" name="memberPasswd" placeholder="영문/숫자/특수문자(!@#$%^&*)를 포함한 8~16자"/>
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">비밀번호 확인</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">비밀번호 확인</label></td>
 						<td>
 							<input type="password" id="memberPwdCheck" name="memberPwdCheck" />
 							<span id="pwdCheckSpan"></span>
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">이름</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">이름</label></td>
 						<td>
 							<input type="text" id="memberName" name="memberName" />
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">생년월일</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">생년월일</label></td>
 						<td>
 							<input type="date" id="memberBirth" name="memberBirth" />
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">전화번호</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">전화번호</label></td>
 						<td>
 							<input type="text" id="memberPhone" name="memberPhone" placeholder="'-'는 제외하고 입력해주세요"/>
 							<button type="button" class="button" id="sendMsgBtn">인증번호 전송</button><br>
@@ -303,7 +306,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">이메일</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">이메일</label></td>
 						<td>
 							<input type="text" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해주세요." />
 							<button type="button" id="emailtestBtn" class="button">인증번호 전송</button><br>
@@ -314,7 +317,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="w-20 align-middle"><label class="label">주소</label></td>
+						<td class="w-20 align-middle"><img src="/resources/img/mickeymouse.png"><label class="label">주소</label></td>
 						<td>
 							<input class="selectAddress" value="F" type="hidden">
 							<input type="text" readonly="readonly" id="memberAddr1" name="memberAddr1" placeholder="우편번호"/>
