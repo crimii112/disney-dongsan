@@ -217,7 +217,6 @@
 
             function setButtonsState() {
                 var today = new Date();
-                today.setHours(0, 0, 0, 0);
 
                 $("#prevWeekButton").prop("disabled", currentDate <= today);
             }
@@ -373,9 +372,9 @@
 	    	<h6>원하는 날짜를 선택해 주세요</h6>
 	    	<hr/>
 		    <div id="calendar-container">
-		        <button id="prevWeekButton" disabled><img src="/dongsanStorage/button/prevBtn.png" class="btnImg" style="width:30px; height: 30px;" /></button>
+		        <button id="prevWeekButton" disabled><img src="/resources/images/prevBtn.png" class="btnImg" style="width:30px; height: 30px;" /></button>
 		        <div id="calendar"></div>
-		        <button id="nextWeekButton"><img src="/dongsanStorage/button/nextBtn.png" class="btnImg" style="width:30px; height: 30px;" /></button>
+		        <button id="nextWeekButton"><img src="/resources/images/nextBtn.png" class="btnImg" style="width:30px; height: 30px;" /></button>
 		    </div>
 		    <hr/>
 		</div>

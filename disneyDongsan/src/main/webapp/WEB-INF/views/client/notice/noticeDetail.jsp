@@ -42,7 +42,7 @@
       	
       	h1{margin-top: 70px; margin-bottom: 10px;}
       	
-      	.content{margin-top: 30px; margin-bottom: 10px; padding: 20px;}
+      	.content{margin-top: 30px; margin-bottom: 10px; padding: 35px;}
       	.notice-header > img {width: 350px; height: 60px; padding: 0; margin: 0;}
       	
       	.prevNext{padding: 30px;}
