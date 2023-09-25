@@ -147,12 +147,24 @@ body {
   }
   
   .order_btn.right {
-    background-color: skyblue;
-    color: white;
-    border: none;
-    text-align: center;
-    margin: auto;
+    display: inline-block;
+    					width: 200px;
+					    text-align: center;
+					    height: 50px;
+    					line-height: 50px;
+    					background-color: #3C3C8C;
+    					border: 2px solid #3C3C8C;
+    					color: #fff;
+    					margin-right: 2px;
+    					text-decoration-line: none;  
+    					border-radius: 12px;
   }
+  
+  .order_btn.right:hover{
+							color: #3C3C8C;
+					     border: 2px solid #3C3C8C;
+					     background-color: white;
+					   }
 
   .container {
     width:600px;

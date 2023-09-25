@@ -41,6 +41,8 @@ public class AdminGoodsController {
 	public String goodsList(@ModelAttribute GoodsVO gvo, Model model) {
 		log.info("goodsList 호출 성공");
 		
+		gvo.setAmount(8);
+		
 		List<GoodsVO> goodsList = goodsService.goodsList(gvo);
 		model.addAttribute("goodsList", goodsList);
 		
