@@ -20,28 +20,17 @@
 			  width: 400px;
 			  height: 310px;
 			  margin: auto;
-			  border: 1px solid #748e97;
+			  /* border: 1px solid #748e97; */
 			  font-size: 25px;
 			  font-weight: 800;
 			}
 			
-			.ride_img_size{
-			  padding: 20px;
-			  /* border: 1px solid black; */
-			}
+			.ride_img_size{padding: 20px;}
 			
-			.ride_img_size:hover .screen_top{
-			  bottom:52%;
-			}
-			.ride_img_size:hover .screen_bottom{
-			  top:52%;
-			}
+			.ride_img_size:hover .screen_top{bottom:52%;}
+			.ride_img_size:hover .screen_bottom{top:52%;}
 			
-			.screen{
-			  position: relative;
-			  overflow: hidden;
-			
-			}
+			.screen{position: relative;overflow: hidden;}
 			td .screen::after{
 			  content: '';
 			  display: block;
@@ -55,9 +44,7 @@
 			  opacity: 0;
 			  transition: all .35s;
 			}
-			tr .ride_img_size:hover .screen::after{
-			  opacity: 1;
-			}
+			tr .ride_img_size:hover .screen::after{opacity: 1;}
 			.screen_top{
 			  position: absolute;
 			  bottom: 150%;
@@ -84,10 +71,41 @@
 			  text-align: center;
 			  color: black;
 			  width: 400px;
-/* 			  height: 30px; */
 			  margin: auto;
 			}
 			.goUpdate{padding:13px;}
+			#keyword{
+				font-size: 16px;
+				width: 200px;
+				height: auto;
+				outline: 2px solid #c3daf7;
+				border: none;
+				margin-left:5px; 
+			}
+			#search{
+				height: auto;
+				display: inline-block;
+				width: 150px;
+				outline: 1px solid #c3daf7;
+				margin-left:5px; 
+			}
+			#boardSearch {text-align: right;}
+			.form-group{display: flex; align-items: center; float: right;}
+			#searchData{
+				display: inline-block;
+			     height: 39px;
+			     width: 70px;
+			     font-weight: 600;
+			     font-size: 15px;
+			     line-height: 20px;
+			     margin-left: 10px;
+			     background-color: #c3daf7;}
+		     #searchData:hover{
+		     border: 2px solid #c3daf7;
+		     background-color: white;
+		    }
+
+
 		</style>
 		<script type="text/javascript">
 			$(function(){
@@ -161,7 +179,7 @@
 		</script>
 	<body>
 		<div class="ride">
-			<h1>어트렉션</h1>
+			<h1 style="margin-top:50px;">어트렉션</h1>
 			<%-- ========================검색 폼 태그================================== --%>
  			<div id="boardSearch" class="text-right">
 				<form id="f_search" name="f_search" class="form-inline">
@@ -169,12 +187,12 @@
 						value="${pageMaker.cvo.pageNum}" /> <input type="hidden"
 						name="amount" id="amount" value="${pageMaker.cvo.amount}" />
 					<div class="form-group">
-						<label>검색조건</label> <select id="search" name="search" class="form-control">
+						<select id="search" name="search" class="form-control">
 							<option value="all">전체조회</option>
 							<option value="rideTitle">기구이름</option>
 						</select> <input type="text" name=keyword id="keyword" value="검색어를 입력하세요"
 							class="form-control" />
-						<button type="button" id="searchData" class="btn btn-success">검색</button>
+						<button type="button" id="searchData" class="btn">검색</button>
 	
 					</div>
 				</form>
@@ -211,11 +229,11 @@
 			<%--=================== 리스트 종료 ================ --%>
 	
 			<%--=================== 페이징 출력 시작 ================ --%>
-			<div class="text-center">
-				<ul class="pagination">
+			<div class="text-center text-center" >
+				<ul class="pagination justify-content-center">
 
 					<c:if test="${pageMaker.prev}">
-						<li class="paginate_button previous"><a
+						<li class="paginate_button previous page-item"><a class="page-link" 
 							href="${pageMaker.startPage -1}">Previous</a></li>
 					</c:if>
 	
@@ -223,13 +241,13 @@
 					<c:forEach var="num" begin="${pageMaker.startPage}"
 						end="${pageMaker.endPage}">
 						<li
-							class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-							<a href="${num}">${num}</a>
+							class="paginate_button page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+							<a class="page-link"  href="${num}">${num}</a>
 						</li>
 					</c:forEach>
 	
 					<c:if test="${pageMaker.next}">
-						<li class="paginate_button next"><a
+						<li class="paginate_button next page-item"><a class="page-link" 
 							href="${pageMaker.endPage +1}">Next</a></li>
 					</c:if>
 				</ul>
