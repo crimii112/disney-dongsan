@@ -81,7 +81,7 @@
 	            
 	           <div class="content">
 	           		<div class="notice-header">
-	           			<img src="/dongsanStorage/notice/notice_header.jpg"/>
+	           			<img src="/resources/images/notice_header.jpg"/>
 	           			<div class="notice-title">${detail.n_title }</div>
 	           			<div class="notice-date">${detail.n_date }</div>
 	           			<hr/>
