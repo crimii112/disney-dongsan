@@ -30,7 +30,7 @@
 #img_back {
 	width: 240px;
 	/*background-color: white;*/
-	background: radial-gradient(white, white, #EBF5FF);
+	background: radial-gradient(white, white, rgb(231, 231, 245));
 	margin: 10px;
 	border-radius: 7px;
 }
@@ -50,7 +50,7 @@ h3 {
 	padding: 0 10px 20px 10px;
 	/*border: 5px solid lightgray;*/
 	border-radius: 15px;
-	background-color: #EBF5FF;
+	background-color: rgb(231, 231, 245);
 	padding: 10px;
 }
 

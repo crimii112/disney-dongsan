@@ -56,10 +56,10 @@ function pwdValidation(item){
 	}
 }
 
-function emailValidation(item){
+function emailValidation(item, span){
 	let reg = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/;
 	if(!reg.test($(item).val())){
-		alert("정확한 이메일 주소를 입력해주세요");
+		$(span).html("정확한 이메일 주소를 입력해주세요").css({"color":"red", "font-size":"13px"});
 		$(item).select();
 		return false;
 	} else {
@@ -67,10 +67,11 @@ function emailValidation(item){
 	}
 }
 
-function phoneValidation(item){
+function phoneValidation(item, span){
 	let reg = /^(?:(010\d{4})|(01[1|6|7|8|9]\d{3,4}))(\d{4})$/;
 	if(!reg.test($(item).val())){
-		alert("정확한 전화번호를 입력해주세요");
+		//alert("정확한 전화번호를 입력해주세요");
+		$(span).html("정확한 전화번호를 입력해주세요").css({"color":"red", "font-size":"13px"});
 		$(item).select();
 		return false;
 	} else {

@@ -2,18 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 	<style type="text/css">
-		.contentContainer{margin-bottom: 60px;}
-		.good img{
-
-			width: 50px;
+		.contentContainer{margin-bottom: 60px; margin-top:150px;}
+		.good img{width: 50px;}
+		.good{position: relative;text-align: right;}
+		td img{width: 400px;}
+		#updateFormBtn, #deleteBtn,#listBtn{
+			display: inline-block;
+			height: 39px;
+			width: 70px;
+			font-weight: 600;
+			font-size: 15px;
+			line-height: 20px;
+			margin-left: 10px;
+			background-color: #3c3c8c;
+			float: right;
+			margin-bottom:30px; 
+			color:white;
 		}
-		.good{
-			position: relative;
-			text-align: right;
+		#updateFormBtn:hover, #deleteBtn:hover, #listBtn:hover {
+			border: 2px solid #3c3c8c;
+			background-color: white;
+			color:black;
 		}
-		td img{
-			width: 400px;
-		}
+		.idImg{width:70px;margin-bottom: 15px;}
+		.routeTitle{margin: 50px 0px 50px 0px;}
+		.idText{margin-left: 10px;}
 	</style>
 
    
@@ -135,43 +148,32 @@
 	      <div id="boardPwdBut" class="row test-center">
 	         <div class="btnArea col-md-12 text-right">
 	         	<input type="hidden" name="routeNo" id="routeNo" value="${detail.routeNo}" />
-	            <input type="button" value="글수정" id="updateFormBtn" class="btn btn-success" />
-	            <input type="button" value="글삭제" id="deleteBtn" class="btn btn-success" />
+	         	<input type="button" value="목록" id="listBtn" class="btn" />
+	            <input type="button" value="글수정" id="updateFormBtn" class="btn" />
+	            <input type="button" value="글삭제" id="deleteBtn" class="btn" />
 	            <%--<input type="button" value="글쓰기" id="insertFormBtn" class="btn btn-success" />--%>
-	            <input type="button" value="목록" id="listBtn" class="btn btn-success" />
+	            
 	         </div>
 	      </div>
 	      <%-- =============== 삭제 및 수정 버튼 추가 종료 =============== --%>
 	      
 	      <%-- =============== 상세 정보 보여주기 시작 =============== --%>
-	      <div class="contentTB text-center">
-	         <table class="table table-bordered">
-	            <tbody>
-	               <tr>
-	                  <td class="col-md-2">작성자</td>
-	                  <td class="col-md-2 text-left" id="id">${detail.memberId}</td>
-	                  <td class="col-md-2">작성일</td>
-	                  <td class="col-md-2 text-left">${detail.routeDate}</td>
-	                  <td>(조회수: ${detail.routeHits})</td>
-	               </tr>
-	               <tr>
-	                  <td class="col-md-2">글제목</td>
-	                  <td colspan="4" class="col-md-8 text-left">${detail.routeTitle}</td>
-	               </tr>
-	               <tr class="table-tr-height">
-	                  <td class="col-md-2">글내용</td>
-	                  <td colspan="4" class="col-md-8 text-center">${detail.routeContent}</td>
-	               </tr>
-	               <c:if test="${not empty detail.routeImage}">
-		               <tr>
-		                  <td class="col-md-2">이미지</td>
-		                  <td colspan="4" class="col-md-8 text-left">
-		                  	<img alt="이미지 파일" src="/dongsanStorage/route/${detail.routeImage}" />
-		                  </td>
-		               </tr>
-	               </c:if>
-	            </tbody>
-	         </table>
+	      <div class="contentTB">
+	         <ul>
+	         	<li>
+	         		<img class="idImg" alt="/" src="/resources/images/route/s.PNG">
+		            <span class="fs-5 idText">${detail.memberId}</span>
+		            <span style="color:#787878;"> /${detail.routeDate}/</span>
+		            <span style="color:#787878; float: right; margin-right: 25px;">(조회수: ${detail.routeHits})</span>
+	         	</li>
+	         	<li class="text-center routeTitle fs-2">${detail.routeTitle}</li>
+	         	<li class="text-center">${detail.routeContent}</li>
+	         	<li class="text-center">
+	         		<c:if test="${not empty detail.routeImage}">
+	         			<img alt="이미지 파일" src="/dongsanStorage/route/${detail.routeImage}" />
+	         		</c:if>
+	         	</li>
+	         </ul>
 	      </div>
 	    <div class="good">
       		<img onclick='divBtn()' alt="/" src="/resources/images/route/good.PNG" /><span id="goodBtn"  style="font-size: 20px">${detail.routeGood}</span>

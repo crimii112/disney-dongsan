@@ -37,21 +37,21 @@
 					<div id="to_alldayTicketView" class="col-md-4 text-center toTicket">
 						<div class="toTicketdiv">
 						<input type="image" src="/resources/images/day.jpg" id="toTicketimg" alt="놀이공원종일권" />
-						<h3>종일권 예매하기</h3>
+						<h4>종일권 예매하기</h4>
 						</div>
 					</div>
 					
 					<div id="to_afternoonTicketView" class="col-md-4 text-center toTicket">
 						<div class="toTicketdiv">
 						<input type="image" src="/resources/images/after.jpg" id="toTicketimg" alt="놀이공원오후권" />
-						<h3>오후권 예매하기</h3>
+						<h4>오후권 예매하기</h4>
 						</div>
 					</div>
 					
 					<div id="to_packageTicketView" class="col-md-4 text-center toTicket">
 						<div class="toTicketdiv">
 						<input type="image" src="/resources/images/234.jpg" id="toTicketimg" alt="놀이공원패키지" />
-						<h3>2/3/4인권 예매하기</h3>
+						<h4>2/3/4인권 예매하기</h4>
 						</div>
 					</div>
 				

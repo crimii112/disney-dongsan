@@ -18,6 +18,11 @@
 			alert(infoMsg);
 			infoMsg = '';
 		};
+
+		
+		$("#goAttr").click(function(){
+			location.href="/facilityInfo/rideList";
+		});
 	});
 </script>
 <script src="/resources/include/dist/js/bootstrap.bundle.min.js"></script>
@@ -112,7 +117,7 @@
 			<br />
 			<div class="carosel"></div>
 			<div>
-				<button type="button" id="atractionBtn"class="goAttr btn w-20">더 많은 어트랙션 보기</button>
+				<button type="button" id="goAttr" class="goAttr btn w-20">더 많은 어트랙션 보기</button>
 			</div>
 		</div>
 

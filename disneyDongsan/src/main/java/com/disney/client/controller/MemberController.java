@@ -45,8 +45,6 @@ public class MemberController {
 		MemberVO memberVO = null;
 		memberVO = memberService.login(mvo);
 		
-		
-		
 		if(memberVO != null) {
 			if(memberVO.getMemberState().equals("NE")) {
 				ras.addFlashAttribute("errorMsg", "탈퇴한 회원 정보로 로그인할 수 없습니다.");
@@ -56,7 +54,7 @@ public class MemberController {
 				url = "";
 			}
 		} else {
-			ras.addFlashAttribute("errorMsg", "로그인 실패");
+			ras.addFlashAttribute("errorMsg", "아이디 또는 비밀번호를 잘못 입력했습니다.");
 			url = "member/loginForm";
 		}
 		
@@ -68,8 +66,6 @@ public class MemberController {
 	public String logout(SessionStatus sessionStatus, RedirectAttributes ras) {
 		
 		sessionStatus.setComplete();
-		
-		ras.addFlashAttribute("infoMsg", "logout 성공");
 		
 		return "redirect:/";
 	}
@@ -186,7 +182,7 @@ public class MemberController {
 	/* 회원 탈퇴 폼 화면*/
 	@GetMapping("/withdrawalForm")
 	public String withdrawalForm() {
-		return "client/member/withdrawal/withdrawalForm";
+		return "client/mypage/withdrawal/withdrawalForm";
 	}
 	
 	/* 회원 탈퇴 처리 */
@@ -199,7 +195,7 @@ public class MemberController {
 		
 		if(result == 1) {
 			sessionStatus.setComplete();
-			url = "client/member/withdrawal/withdrawalSuccess";
+			url = "client/mypage/withdrawal/withdrawalSuccess";
 		} else {
 			ras.addFlashAttribute("errorMsg", "회원 탈퇴 오류 발생. 잠시 후에 다시 시도해주세요.");
 			url = "redirect:/member/withdrawalForm";
@@ -208,7 +204,7 @@ public class MemberController {
 		return url;
 	}
 	
-	@GetMapping("/member/updateMemberInfoForm")
+	@GetMapping("/updateMemberInfoForm")
 	public String updateInfoForm(@SessionAttribute(name = "Member", required = false) MemberVO Member) {
 		String url = "";
 		

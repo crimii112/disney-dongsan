@@ -9,6 +9,7 @@
 
 <script src="/resources/include/jquery/jquery-3.7.1.min.js"></script>
 <script src="/resources/include/jquery/jquery.test.js"></script>
+
 </head>
 <body>
 	<header>
@@ -16,7 +17,7 @@
 	      <div class="row">
 	         <div class="col"></div>
 	         <div class="col-8 text-center">
-	            <a href="/"><img src="/resources/img/disneyLogo2.png" height="80px"></a>
+	            <a href="/"><img src="/resources/img/disneyLogo5.png" height="80px"></a>
 	         </div>
 	         <div class="col">
 	           <c:if test="${empty Member}">
@@ -46,8 +47,8 @@
 	               </ul></li>
 	            <li><span>티켓예매</span>
 	               <ul class="dept01">
-	                  <li class="nop"><a href="/ticket/allDayTicketView" class="nav-link px-2">예매하기</a></li>
-	                  <li class="nop"><a href="#" class="nav-link px-2">제휴카드</a></li>
+	                  <li class="nop"><a href="/ticket/reserveTicket" class="nav-link px-2">예매하기</a></li>
+	                  <li class="nop"><a href="/ticket/cardInfo" class="nav-link px-2">제휴카드</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	               </ul></li>
 	            <li><span>굿즈몰</span>
@@ -64,7 +65,7 @@
 	               </ul></li>
 	            <li><span>이벤트</span>
 	               <ul class="dept01">
-	                  <li class="nop"><a href="#" class="nav-link px-2">이벤트</a></li>
+	                  <li class="nop"><a href="/event/eventView" class="nav-link px-2">이벤트</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	               </ul></li>
@@ -77,7 +78,7 @@
 	            <li><span>고객센터</span>
 	               <ul class="dept01">
 	                  <li class="nop"><a href="/mypage/userQAList" class="nav-link px-2">1:1문의</a></li>
-	                  <li class="nop"><a href="#" class="nav-link px-2">공지사항</a></li>
+	                  <li class="nop"><a href="/notice/noticeView" class="nav-link px-2">공지사항</a></li>
 	                  <li class="nop"><a href="#" class="nav-link px-2">&nbsp;</a></li>
 	               </ul></li>
 	            <li><span>&nbsp;</span>

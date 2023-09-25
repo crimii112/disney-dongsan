@@ -185,15 +185,15 @@ public class RouteController {
     @ResponseBody
     public Map<String, Object> ckeditorUpload(@RequestParam("upload") MultipartFile upload) {
         Map<String, Object> resultMap = new HashMap<>();
-        log.info("ckeditorUpload 호출 성공");
+
         try {
-            // 파일 업로드 및 실제 파일명
-            String uploadedFileName = FileUploadUtil.fileUpload(upload, "route");
+            // 파일 업로드 및 임시 파일명
+            String tempFileName = FileUploadUtil.fileUpload(upload, "route");
 
             // CKEditor에 반환할 JSON 응답 생성
             resultMap.put("uploaded", 1);
-            resultMap.put("fileName", uploadedFileName);
-            resultMap.put("url", "/uploadStorage/route/" + uploadedFileName);
+            resultMap.put("fileName", tempFileName);
+            resultMap.put("url", "/dongsanStorage/route/" + tempFileName);
         } catch (Exception e) {
             resultMap.put("uploaded", 0);
             resultMap.put("error", e.getMessage());

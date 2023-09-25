@@ -227,7 +227,6 @@
 				<table class="table">
 					<tbody>
 						<tr>
-							<td class="col-md-1">작성자</td>
 							<td class="col-md-8 text-left" id="replyMemberId" name="replyMemberId">${Member.memberId}</td>
 							<!--<td class="col-md-2 text-left">
 								<input type="text" id="replyMemberId" name="replyMemberId" maxlength="10" class="form-control" />
@@ -241,9 +240,8 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="col-md-1">댓글내용</td>
 							<td colspan="4" class="col-md-11 text-left">
-								<textarea class="form-control" id="replyContent" name="replyContent" rows="3" maxlength="333"></textarea>
+								<textarea class="form-control" id="replyContent" name="replyContent" rows="3" maxlength="333" placeholder="댓글을 입력해주세요"></textarea>
 							</td>
 						</tr>
 					</tbody>

@@ -3,7 +3,32 @@
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
   		<!-- CKEditor 스크립트 URL 수정 -->
        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-
+			<style type="text/css">
+				.container{width: 1020px;}
+				#updateBtn, #cancelBtn,#listBtn{
+					display: inline-block;
+					height: 39px;
+					width: 70px;
+					font-weight: 600;
+					font-size: 15px;
+					line-height: 20px;
+					margin-left: 10px;
+					background-color: #3c3c8c;
+					float: right;
+					margin-bottom:30px; 
+					color:white;
+				}
+				#updateBtn:hover, #cancelBtn:hover, #listBtn:hover {
+					border: 2px solid #3c3c8c;
+					background-color: white;
+					color:black;
+				}
+				.idImg{width:200px;}
+				.boardTilte{margin: 70px 0px 0px 0px;}
+				.idText{margin-left: 10px;}
+				.table{width: 1000px;}
+				.routeDate{float: right; padding-right: 20px;}
+			</style>
 		<script type="text/javascript">
 			$(function(){
 				
@@ -56,31 +81,39 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="contentTB text-center">
+			<div class="contentTB">
+				<h1 class="boardTilte text-center">
+					<img class="idImg" alt="/" src="/resources/images/route/s.PNG">
+				</h1>
+				<div class="contectBtn text-right">
+					<button type="button" id="updateBtn" class="btn">수정</button>
+					<button type="button" id="cancelBtn" class="btn">취소</button>
+					<button type="button" id="listBtn" class="btn">목록</button><br/>
+				</div>
 				<form id="f_updateForm" name="f_updateForm">
 					<input type="hidden" id="routeNo" name="routeNo" value="${updateData.routeNo}" />
-					<input type="hidden" id="routeImage" name="routeImage" value="${updateData.routeImage}" />
-					
+					<input type="hidden" id="routeImage" name="routeImage" value="${updateData.routeImage}" />				
+					<br/><br/><p class="routeDate">( ${updateData.routeDate} )</p>
 					<table class="table table-bordered">
 						<tbody>
-							<tr>
+<%-- 							<tr>
 								<td class="col-md-3">글번호</td>
 								<td class="text-left col-md-3">${updateData.routeNo}</td>
-								<td class="col-md-3">작성일</td>
+								<!-- <td class="col-md-3">작성일</td> -->
 								<td class="text-left col-md-3">${updateData.routeDate}</td>
-							</tr>
-							<tr>
-								<td>작성자</td>
+							</tr> --%>
+ 							<tr>
+								<!-- <td>작성자</td> -->
 								<td colspan="3" class="text-left">${updateData.memberId}</td>
 							</tr>
 							<tr>
-								<td>글제목</td>
+								<!-- <td>글제목</td> -->
 								<td colspan="3" class="text-left">
 									<input type="text" name="routeTitle" id="routeTitle" value="${updateData.routeTitle}" class="form-control" maxlength="33"/>
 								</td>
 							</tr>
 							<tr class="table-tr-height">
-								<td>내용</td>
+								<!-- <td>내용</td> -->
 								<td colspan="3" class="text-left">
 									<textarea name="routeContent" id="routeContent" class="form-control" rows="8" maxlength="1000">${updateData.routeContent}</textarea>
 									<script>
@@ -101,21 +134,16 @@
 								</td>
 							</tr> -->
 							<tr>
-								<td>이미지 파일 첨부</td>
+								<!-- <td>이미지 파일 첨부</td> -->
 								<td class="text-left">
-									<input type="file" name="file" id="file" />
+									<label for="formFile" class="form-label"></label>
+									<input class="form-control" type="file" name="file" id="file" />
 									<span id="fileNeme">${updateData.routeImage}</span>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</form>		
-			</div>
-			
-			<div class="contectBtn text-right">
-				<button type="button" id="updateBtn" class="btn btn-success">수정</button>
-				<button type="button" id="cancelBtn" class="btn btn-success">취소</button>
-				<button type="button" id="listBtn" class="btn btn-success">목록</button>
 			</div>
 		</div>
 

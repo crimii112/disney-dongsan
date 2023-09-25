@@ -20,14 +20,12 @@
 			  width: 400px;
 			  height: 310px;
 			  margin: auto;
-			  /* border: 1px solid #748e97; */
 			  font-size: 25px;
 			  font-weight: 800;
 			}
 			
 			.restaurant_img_size{
 			  padding: 20px;
-			  /* border: 1px solid black; */
 			}
 			
 			.restaurant_img_size:hover .screen_top{
@@ -88,6 +86,47 @@
 			  margin: auto;
 			}
 			.goUpdate{padding:13px;}
+			#keyword{
+				font-size: 16px;
+				width: 200px;
+				height: 38px;
+				outline: 2px solid #3c3c8c;
+				border: none;
+				margin-left:10px; 
+			}
+			#search{
+				height: 38px;
+				display: inline-block;
+				width: 150px;
+				outline: 2px solid #3c3c8c;
+				margin-left:5px; 
+			}
+			#boardSearch {text-align: right;}
+			.form-group{display: flex; align-items: center; float: right;}
+			#searchData{
+				display: inline-block;
+			     height: 39px;
+			     width: 70px;
+			     font-weight: 600;
+			     font-size: 15px;
+			     line-height: 20px;
+			     margin-left: 10px;
+			     background-color: #3c3c8c;
+			     color:white;
+			     }
+		     #searchData:hover{
+			     border: 2px solid #3c3c8c;
+			     background-color: white;
+			     color:black;
+			    }
+		    .page-item.active .page-link {
+				 z-index: 4;
+				 color: white;
+				 font-weight:bold;
+				 background-color: #3c3c8c;
+				 border-color: #3c3c8c;
+				 
+				}
 		</style>
 		<script type="text/javascript">
 			$(function(){
@@ -153,7 +192,7 @@
 				}
 				$("#f_search").attr({
 					"method":"get",
-					"action":"/facilityInfo/rideList"
+					"action":"/facilityInfo/restaurantList"
 				});
 				$("#f_search").submit();
 			}
@@ -163,7 +202,7 @@
 	</head>
 	<body>
 		<div class="restaurant">
-			<h1>레스토랑</h1>
+			<h1 style="margin-top:50px;">레스토랑</h1>
 			<%-- ========================검색 폼 태그================================== --%>
  			<div id="boardSearch" class="text-right">
 				<form id="f_search" name="f_search" class="form-inline">
@@ -171,13 +210,13 @@
 						value="${pageMaker.cvo.pageNum}" /> <input type="hidden"
 						name="amount" id="amount" value="${pageMaker.cvo.amount}" />
 					<div class="form-group">
-						<label>검색조건</label> <select id="search" name="search" class="form-control">
+						<select id="search" name="search" class="form-control">
 							<option value="all">전체조회</option>
 							<option value="restTitle">레스토랑 이름</option>
-						</select> <input type="text" name=keyword id="keyword" value="검색어를 입력하세요"
+						</select> 
+						<input type="text" name=keyword id="keyword" value="검색어를 입력하세요"
 							class="form-control" />
-						<button type="button" id="searchData" class="btn btn-success">검색</button>
-	
+						<button type="button" id="searchData" class="btn">검색</button>
 					</div>
 				</form>
 			</div>
@@ -215,10 +254,10 @@
 	
 			<%--=================== 페이징 출력 시작 ================ --%>
 			<div class="text-center">
-				<ul class="pagination">
+				<ul class="pagination justify-content-center">
 
 					<c:if test="${pageMaker.prev}">
-						<li class="paginate_button previous"><a
+						<li class="paginate_button previous page-item"><a class="page-link"
 							href="${pageMaker.startPage -1}">Previous</a></li>
 					</c:if>
 	
@@ -226,13 +265,13 @@
 					<c:forEach var="num" begin="${pageMaker.startPage}"
 						end="${pageMaker.endPage}">
 						<li
-							class="paginate_button ${pageMaker.cvo.pageNum == num ? 'active':''}">
-							<a href="${num}">${num}</a>
+							class="paginate_button page-item ${pageMaker.cvo.pageNum == num ? 'active':''}">
+							<a class="page-link"  href="${num}">${num}</a>
 						</li>
 					</c:forEach>
 	
 					<c:if test="${pageMaker.next}">
-						<li class="paginate_button next"><a
+						<li class="paginate_button next page-item"><a class="page-link" 
 							href="${pageMaker.endPage +1}">Next</a></li>
 					</c:if>
 				</ul>
