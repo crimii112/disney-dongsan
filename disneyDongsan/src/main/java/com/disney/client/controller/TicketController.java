@@ -103,7 +103,7 @@ public class TicketController {
 	
 	@GetMapping("/ticketPaymentSuccess")
 	public String Success() {
-		return "client/ticket/Success";
+		return "client/mypage/ticket/userTicketList";
 	}
 	
 	/* 티켓 결제 처리 */
