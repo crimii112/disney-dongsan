@@ -73,20 +73,22 @@
     font-size: 15px;
     height: auto;
     line-height: 20px;
+    
 }
 
 #keyword{
 	font-size: 12px;
 	width: 200px;
-	height: auto;
+	height: 36px;
 	outline: 2px solid #c3daf7;
 	border: none;
+	margin-left: 10px;
 	
 }
 
 .search_btn{
 	 display: inline-block;
-     height: 32px;
+     height: 38px;
      width: 70px;
      font-weight: 600;
      font-size: 15px;
@@ -96,7 +98,7 @@
 }
 .insert_btn{
 	display: inline-block;
-     height: 32px;
+     height: 38px;
      width: 70px;
      font-weight: 600;
      font-size: 15px;
@@ -107,7 +109,7 @@
 
 .delete_btn{
 	display: inline-block;
-     height: 32px;
+     height: 38px;
      width: 70px;
      font-weight: 600;
      font-size: 15px;

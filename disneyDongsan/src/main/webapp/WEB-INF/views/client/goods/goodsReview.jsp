@@ -24,11 +24,14 @@
 		}
 		
 		.reviewList{
-			background-color: #f1f3f5;
-			border: 1px solid black;
-			height: 100px;
-			text-align:center;
-		}
+         background-color: #f1f3f5;
+         border: 1px solid black;
+         height: 100px;
+         display : flex;
+		  justify-content : center;
+		  align-items : center;
+         
+      }
 		
 	</style>
 	<script type="text/javascript">
