@@ -221,6 +221,7 @@
 		  for(let i=1 ; i<= $(".t_day").text().length; i++) {
 			if(d == i && m == current_month && y == current_year){
 				$("#day"+i).css("backgroundColor","#6495ED");
+				$("#day" + i + " > span.pooImg").append('<img class="poo" src="/resources/images/facilityInfo/poo.PNG" alt="/" />');
 				}
 			
 			}

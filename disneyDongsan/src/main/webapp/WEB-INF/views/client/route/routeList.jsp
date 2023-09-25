@@ -18,17 +18,17 @@
 		#keyword {
 			font-size: 16px;
 			width: 200px;
-			height: auto;
-			outline: 2px solid #c3daf7;
+			height: 38px;
+			outline: 2px solid #3c3c8c;
 			border: none;
-			margin-left: 5px;
+			margin-left: 10px;
 		}
 		
 		#search {
 			height: auto;
 			display: inline-block;
 			width: 150px;
-			outline: 1px solid #c3daf7;
+			outline: 2px solid #3c3c8c;
 			margin-left: 5px;
 		}		
 		.form-group {
@@ -46,14 +46,27 @@
 			font-size: 15px;
 			line-height: 20px;
 			margin-left: 10px;
-			background-color: #c3daf7;
+			background-color: #3c3c8c;
 			float: right;
+			color:white;
 		}
 		
 		#searchData:hover, #insertFormBtn:hover {
-			border: 2px solid #c3daf7;
+			border: 2px solid #3c3c8c;
 			background-color: white;
+			color:black;
 		}
+		.trColor th{background-color: #3c3c8c; color:white;}
+		.page-item.active .page-link {
+			 z-index: 4;
+			 color: white;
+			 font-weight:bold;
+			 background-color: #3c3c8c;
+			 border-color: #3c3c8c;
+			 
+			}
+		.titleImg{width: 100px; padding-bottom: 10px;}
+		
 		/* .textSub{background-color:#c3daf7; height: 100px; padding:20px;} */
 </style>
 	<script type="text/javascript">
@@ -162,7 +175,7 @@
 				<div id="b_header">
 					<div class="text-center">
 					<!-- <button id="btn1">div1로 이동</button> -->
-						<h1 class="title">추천 코스</h1>
+						<h1 class="title"><img class="titleImg" alt="/" src="/resources/images/route/gg.png">추천 코스</h1>
 						<h5>어트랙션 즐기기 추천코스 기상 상황 및 시즌에 따라 어트랙션 및 공연 관람이 변동될 수 있습니다.</h5>
 					</div>
 					<div id="movementImg">
@@ -201,7 +214,7 @@
 				<div id="boardList" class="table-heigh">
 					<table summary="게시판 리스트" class="table">
 						<thead>
-							<tr class="table-primary">
+							<tr class="trColor">
 								<th data-value="b_num" class="order text-center col-md-1">글번호</th>
 								<th class="col-md-4 text-center">글제목</th>
 								<th class="col-md-2 text-center">작성자</th>

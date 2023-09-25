@@ -74,21 +74,22 @@
 			  margin: auto;
 			}
 			.goUpdate{padding:13px;}
-			#keyword{
+			#keyword {
 				font-size: 16px;
 				width: 200px;
-				height: auto;
-				outline: 2px solid #c3daf7;
+				height: 38px;
+				outline: 2px solid #3c3c8c;
 				border: none;
-				margin-left:5px; 
+				margin-left: 10px;
 			}
-			#search{
+			
+			#search {
 				height: auto;
 				display: inline-block;
 				width: 150px;
-				outline: 1px solid #c3daf7;
-				margin-left:5px; 
-			}
+				outline: 2px solid #3c3c8c;
+				margin-left: 5px;
+			}	
 			#boardSearch {text-align: right;}
 			.form-group{display: flex; align-items: center; float: right;}
 			#searchData{
@@ -99,11 +100,21 @@
 			     font-size: 15px;
 			     line-height: 20px;
 			     margin-left: 10px;
-			     background-color: #c3daf7;}
+			     background-color: #3c3c8c;
+			     color:white;}
 		     #searchData:hover{
-		     border: 2px solid #c3daf7;
-		     background-color: white;
+			     border: 2px solid #3c3c8c;
+			     background-color: white;
+			     color:black;
 		    }
+		     .page-item.active .page-link {
+				 z-index: 4;
+				 color: white;
+				 font-weight:bold;
+				 background-color: #3c3c8c;
+				 border-color: #3c3c8c;
+				 
+				}
 
 
 		</style>
