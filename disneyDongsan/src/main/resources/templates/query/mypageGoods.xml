@@ -23,6 +23,8 @@
     gorder.member_id,
     gorder.member_addr1,
     gorder.member_addr2,
+    gorder.member_addr3,
+    gorder.member_name,
     goods.g_name,
     goods.g_image,
     goods.g_delivery

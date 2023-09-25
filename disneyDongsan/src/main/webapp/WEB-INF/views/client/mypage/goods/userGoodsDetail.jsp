@@ -40,7 +40,7 @@
 	<body>
 		
 		<div class="container">
-		<h3 class="fw-bold">주문 상세</h3>
+		<h3 class="fw-bold">굿즈 주문상세</h3>
 	    <hr>
 			<form name="detailForm" id="detailForm">
 				<input type="hidden" name="g_order_detail_id" id="g_order_detail_id"/>
@@ -99,9 +99,9 @@
 					<div class="card-line-bottom"></div>
 					<div class=" ms-4 me-4 p-3">
 						<h5>배송지 정보</h5>
-						<p><label>수령인&nbsp;</label>${firstDetail.member_addr}</p>
-						<p><label>연락처&nbsp;</label>${firstDetail.member_addr}</p>
-						<p><label>배송지&nbsp;</label>${firstDetail.member_addr}</p>
+						<p><label>수령인&nbsp;</label>${firstDetail.member_name}</p>
+						<p><label>우편번호&nbsp;&nbsp;</label>${firstDetail.member_addr1}</p>
+						<p><label>주소&nbsp;&nbsp;</label>${firstDetail.member_addr2}&nbsp;&nbsp;${firstDetail.member_addr3}</p>
 					</div>
 					<div class="card-line p-3">
 						<p>총합 가격:&nbsp;</p>

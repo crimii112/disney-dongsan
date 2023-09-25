@@ -71,7 +71,8 @@
 		greview.re_id,
 	  	greview.re_content,
 	  	greview.re_image,
-	  	greview.detail_num
+	  	greview.detail_num,
+	  	gdetail.g_price
 		FROM
 		g_order_detail gdetail
 		full JOIN

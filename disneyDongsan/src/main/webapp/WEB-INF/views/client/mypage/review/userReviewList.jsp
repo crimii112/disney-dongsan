@@ -79,7 +79,7 @@
 	</head>
 	<body>
 		<div class="container">
-		<h3 class="fw-bold">리뷰</h3>
+		<h3 class="fw-bold">굿즈 리뷰</h3>
       	<hr>
 		<div class="wrap">
 			<button type ="button" class="custom-btn ">리뷰 작성</button>

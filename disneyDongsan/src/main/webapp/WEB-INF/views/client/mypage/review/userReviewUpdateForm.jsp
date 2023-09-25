@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -71,10 +72,15 @@
 			<div class="card-body">
 				<div class="top_menu">
 					<div class="goods_name"><strong>굿즈 상품</strong></div>
-					<div class="goods_img_div">
-						<img class="goods_img" src="/dongsanStorage/goods/${UpdateResultData.g_image}"/>&nbsp;&nbsp;
-						<span>${UpdateResultData.g_name}</span>
-					</div>	
+					<div class="goods_div">
+						<div class="goods_img_div">
+							<img class="goods_img" src="/dongsanStorage/goods/${UpdateResultData.g_image}"/>
+						</div>	
+						<div class="goods_price">
+							<span>${UpdateResultData.g_name}</span><p class="price"><fmt:formatNumber type="number" value="${UpdateResultData.g_price}" pattern="#,##0" />원</p>
+						</div>
+					</div>
+					
 				</div>
 				<div class="middle_menu">
 					<div class="re_img_title">
