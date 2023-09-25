@@ -191,7 +191,7 @@
 				} else if(totalPrice == 0){
 					deliveryPrice = 0;
 				} else {
-					deliveryPrice = 0;	
+					deliveryPrice = 3000;	
 				}
 				
 				finalTotalPrice = totalPrice + deliveryPrice;

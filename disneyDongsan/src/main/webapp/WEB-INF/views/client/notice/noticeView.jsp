@@ -3,6 +3,65 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/common/common.jspf"%>
       
+      <style type="text/css">
+      	.form-group {
+			display: flex;
+			align-items: center;
+			float: right;
+			margin-bottom: 10px;
+			margin-top:30px;
+		}
+      
+      	#keyword {
+			font-size: 16px;
+			width: 200px;
+			height: 38px;
+			outline: 2px solid #3c3c8c;
+			border: none;
+			margin-left: 10px;
+		}
+		
+		#search {
+			height: auto;
+			display: inline-block;
+			width: 150px;
+			outline: 2px solid #3c3c8c;
+			margin-left: 5px;
+		}	
+      
+      	#searchData, #insertFormBtn {
+			display: inline-block;
+			height: 39px;
+			width: 70px;
+			font-weight: 600;
+			font-size: 15px;
+			line-height: 20px;
+			margin-left: 10px;
+			background-color: #3c3c8c;
+			float: right;
+			color:white;
+		}
+		
+		#searchData:hover, #insertFormBtn:hover {
+			border: 2px solid #3c3c8c;
+			background-color: white;
+			color:black;
+		}
+		
+		.trColor th{background-color: #3c3c8c; color:white;}
+		.page-item.active .page-link {
+			 z-index: 4;
+			 color: white;
+			 font-weight:bold;
+			 background-color: #3c3c8c;
+			 border-color: #3c3c8c;
+			 
+		}
+		
+		h3{margin-top: 50px;}
+		
+		
+      </style>
        
       
       <script type="text/javascript">
@@ -100,7 +159,7 @@
    	 		<input type="hidden" id="n_num" name="n_num" />
    	 	</form>
    	 	
-   	 	<div class="text-center"><h3>공지 사항</h3></div><br/>
+   	 	<div class="text-center"><h3><strong>공지 사항</strong></h3></div><br/>
         <div class="notice_header">
              <%-- ================= 검색 기능 시작============================= --%>
 		   		<div id="noticeSearch" class="text-right">
@@ -114,12 +173,12 @@
 				   				<option value="n_content">내용</option>
 				   			</select>
 				   			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력해 주세요" class="form-control"/>
-				   			<button type="button" id="searchBtn" class="btn btn-success">검색</button>
+				   			<button type="button" id="searchData" class="btn btn-success">검색</button>
 			   			</div>
 			   		</form>
 		   		</div>
              
-             <div class="notice_quantity" >공지 갯수: ${total }</div>
+             
              <br>
        	</div>
        	
