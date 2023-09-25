@@ -65,11 +65,11 @@
 									.val();
 
 							if (package_num == 2) {
-								totalPrice = 70;
+								totalPrice = 70000;
 							} else if (package_num == 3) {
-								totalPrice = 102;
+								totalPrice = 102000;
 							} else if (package_num == 4) {
-								totalPrice = 136;
+								totalPrice = 136000;
 							} else if (package_num == 1) {
 								totalPrice = 0;
 							}

@@ -60,7 +60,7 @@
 			if(num > 0) {num--;}
 			span.text(num);
 			
-			totalPrice = 37 * num ;
+			totalPrice = 37000 * num ;
 			
 			$("#totalPrice").text(totalPrice);
 			$("#total_price").val($("#totalPrice").text());
@@ -73,7 +73,7 @@
 			num++;
 			span.text(num);
 			
-			totalPrice = 37 * num ;
+			totalPrice = 37000 * num ;
 			
 			$("#totalPrice").text(totalPrice);
 			$("#total_price").val($("#totalPrice").text());
