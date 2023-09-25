@@ -14,13 +14,15 @@
 			font-size: 15px;
 			line-height: 20px;
 			margin-left: 10px;
-			background-color: #c3daf7;
+			background-color: #3c3c8c;
 			float: right;
 			margin-bottom:30px; 
+			color:white;
 		}
 		#updateFormBtn:hover, #deleteBtn:hover, #listBtn:hover {
-			border: 2px solid #c3daf7;
+			border: 2px solid #3c3c8c;
 			background-color: white;
+			color:black;
 		}
 		.idImg{width:70px;margin-bottom: 15px;}
 		.routeTitle{margin: 50px 0px 50px 0px;}
@@ -146,10 +148,11 @@
 	      <div id="boardPwdBut" class="row test-center">
 	         <div class="btnArea col-md-12 text-right">
 	         	<input type="hidden" name="routeNo" id="routeNo" value="${detail.routeNo}" />
+	         	<input type="button" value="목록" id="listBtn" class="btn" />
 	            <input type="button" value="글수정" id="updateFormBtn" class="btn" />
 	            <input type="button" value="글삭제" id="deleteBtn" class="btn" />
 	            <%--<input type="button" value="글쓰기" id="insertFormBtn" class="btn btn-success" />--%>
-	            <input type="button" value="목록" id="listBtn" class="btn" />
+	            
 	         </div>
 	      </div>
 	      <%-- =============== 삭제 및 수정 버튼 추가 종료 =============== --%>

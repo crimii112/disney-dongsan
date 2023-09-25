@@ -13,13 +13,15 @@
 					font-size: 15px;
 					line-height: 20px;
 					margin-left: 10px;
-					background-color: #c3daf7;
+					background-color: #3c3c8c;
 					float: right;
 					margin-bottom:30px; 
+					color:white;
 				}
 				#updateBtn:hover, #cancelBtn:hover, #listBtn:hover {
-					border: 2px solid #c3daf7;
+					border: 2px solid #3c3c8c;
 					background-color: white;
+					color:black;
 				}
 				.idImg{width:200px;}
 				.boardTilte{margin: 70px 0px 0px 0px;}

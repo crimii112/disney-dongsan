@@ -12,13 +12,16 @@
 			font-size: 15px;
 			line-height: 20px;
 			margin-left: 10px;
-			background-color: #c3daf7;
+			background-color: #3c3c8c;
 			float: right;
 			margin-bottom:30px; 
+			color:white;
+			
 		}
 		#insertBtn:hover, #cancelBtn:hover, #listBtn:hover {
-			border: 2px solid #c3daf7;
+			border: 2px solid #3c3c8c;
 			background-color: white;
+			color:black;
 		}
 		.idImg{width:100px;margin-bottom: 25px;}
 		.boardTilte{margin: 70px 0px 10px 0px;}
@@ -84,9 +87,10 @@
 					추천코스 글쓰기
 				</h1>
 				<div class="text-right">
+					<button type="button" id="listBtn" class="btn">목록</button>
 					<button type="button" id="insertBtn" class="btn">저장</button>
 					<button type="button" id="cancelBtn" class="btn">취소</button>
-					<button type="button" id="listBtn" class="btn">목록</button>
+					
 				</div>
 				<form class="form-horizontal" id="f_writeForm" name="f_writeForm">
 					<table class="table table-bordered ">
