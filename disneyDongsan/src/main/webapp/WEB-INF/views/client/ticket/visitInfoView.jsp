@@ -68,7 +68,7 @@
                         name: '${tvo.t_category}', /*상품명*/
                         amount: '${tvo.total_price}', /*상품 가격*/
                         buyer_email: '${Member.memberEmail}' /*구매자 이메일*/,
-                        buyer_name: '${Member.memberName}', /* '${memberInfo.member_name}', */
+                        buyer_name: '${Member.memberName}' /*구매자 이름*/,
                         buyer_tel: '${Member.memberPhone}' /*구매자 연락처*/,
                         bypass: {
                             acceptmethod: "noeasypay" // 간편결제 버튼을 통합결제창에서 제외(PC)

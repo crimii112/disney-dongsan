@@ -50,8 +50,6 @@
 	            alert("모든 약관에 동의해주세요.");
 	            return;
 	        }
-			
-			
 		});
 		
 		/* totalPrice 계산하기 위한 변수 */
@@ -71,11 +69,11 @@
 			
 			let category = $(this).parent().parent().children().eq(0).text();
 			if(category == "대인"){
-				adult = 70 * num;
+				adult = 70000 * num;
 			} else if(category == "청소년"){
-				student = 60 * num;
+				student = 60000 * num;
 			} else if(category == "소인/경로"){
-				child = 50 * num;
+				child = 50000 * num;
 			}
 			alldayPrice = adult + student + child;
 			$("#alldayPrice").text(alldayPrice);
@@ -94,11 +92,11 @@
 			
 			let category = $(this).parent().parent().children().eq(0).text();
 			if(category == "대인"){
-				adult = 70 * num;
+				adult = 70000 * num;
 			} else if(category == "청소년"){
-				student = 60 * num;
+				student = 60000 * num;
 			} else if(category == "소인/경로"){
-				child = 50 * num;
+				child = 50000 * num;
 			}
 			alldayPrice = adult + student + child;
 			$("#alldayPrice").text(alldayPrice);
