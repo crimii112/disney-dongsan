@@ -56,10 +56,10 @@ public class MailServiceImpl implements MailService{
 	            MimeMessage message = javaMailSender.createMimeMessage();
 	            MimeMessageHelper helper = new MimeMessageHelper(message);
 	            
-	            helper.setFrom("ycl99623@gmail.com","Disney동산"); //
-	            helper.setTo(email);  // 수신자 이메일 주소
-	            helper.setSubject("Disney동산 이메일 인증");  // 메일 제목
-	            helper.setText(content, true);  // 메일 내용 (랜덤 문자)
+	            helper.setFrom("ycl99623@gmail.com","Disney동산");
+	            helper.setTo(email);
+	            helper.setSubject("Disney동산 이메일 인증");
+	            helper.setText(content, true);
 	            
 	            javaMailSender.send(message);
 	            

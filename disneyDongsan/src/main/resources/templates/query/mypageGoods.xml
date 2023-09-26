@@ -7,6 +7,7 @@
 		g_order_id, member_id, g_order_date, g_order_state
 		FROM
 		g_order
+		WHERE member_id = #{memberId}
 		ORDER BY g_order_date DESC
 	</select>
 	

@@ -23,6 +23,15 @@ public class QuestionServiceImpl implements QuestionService {
 		return list;
 	}
 	
+	
+	
+	@Override
+	public List<QuestionVO> clientQaList(QuestionVO qvo){
+		List<QuestionVO> list = null;
+		list = questionDao.clientQaList(qvo);
+		return list;
+	}
+	
 	@Override
 	public QuestionVO qaWriteForm(QuestionVO qvo) {
 		QuestionVO write = null;

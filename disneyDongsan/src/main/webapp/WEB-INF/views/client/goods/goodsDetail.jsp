@@ -20,6 +20,7 @@
 		    	
 		    	const form = {
 			    		member_id : '${Member.memberId}',
+
 			    		g_id : '${detail.g_id}',
 			    		g_count : ''
 			    }

@@ -151,7 +151,7 @@
 			</c:choose>
 			<div class="deleteline">
 				<input type="button" id="deleteFormBtn"
-					class="deleteFormBtn float-right" value="배송취소"
+					class="deleteFormBtn float-right" value="주문취소"
 					onclick="updateValue();" />
 			</div>
 		</div>

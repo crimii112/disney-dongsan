@@ -7,6 +7,8 @@ import com.disney.vo.QuestionVO;
 public interface QuestionService {
 	public List<QuestionVO> qaList(QuestionVO qvo);
 	
+	public List<QuestionVO> clientQaList(QuestionVO qvo);
+	
 	public QuestionVO qaWriteForm(QuestionVO qvo);
 	
 	public int qaInsert(QuestionVO qvo);

@@ -13,7 +13,7 @@
        			SUBSTR(member_phone, 1, 3) || '-' || SUBSTR(member_phone, 4, 4) || '-' || SUBSTR(member_phone, 8) memberPhone, 
        			member_email memberEmail, member_addr1 memberAddr1, member_addr2 memberAddr2, member_addr3 memberAddr3, TO_CHAR(TO_DATE(member_regdate, 'YY/MM/DD'), 'YYYY/MM/DD') memberRegdate, member_state memberState
 			FROM (
-				SELECT /*+ INDEX_ASC(member member_pk)*/
+				SELECT /*+ INDEX_DESC(member member_pk)*/
           			rownum as rnum, member_no, member_id, member_passwd, member_name, member_phone, member_email, member_addr1, member_addr2, member_addr3, member_regdate, member_state
      			FROM member
      			WHERE ]]> 

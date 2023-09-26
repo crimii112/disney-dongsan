@@ -13,15 +13,7 @@
 		<if test="search=='packageTicket'">
 			<![CDATA[t_category = #{keyword}]]>
 		</if>
-		
-		<!-- <if test="ticketSearch=='cancelTicket'">
-			<![CDATA[t_state = 'N']]>
-		</if>
-		<if test="ticketSearch=='notcancelTicket'">
-			<![CDATA[t_state = 'Y']]>
-		</if> -->
 	</sql>
-	
 
 	<sql id="cancelSearch">
 		<if test="cancelSearch=='cancelTicket'">
@@ -31,6 +23,9 @@
 			<![CDATA[t_state = 'Y']]>
 		</if>
 	</sql>
+	
+	
+	
 	<!-- <sql id="dateSearch">
 		<![CDATA[visit_date = #{visitDate}]]>
 	</sql> -->
@@ -53,10 +48,15 @@
 		FROM PAYMENT
 		ORDER BY PAYMENT_ID
 	</select> -->
+	
+	<!-- 결제내역 조회 -->
 	<select id="ticketOrderList" parameterType="ticket" resultType="ticket">
 		<![CDATA[
-		SELECT rnum, PAYMENT_ID, TO_CHAR(visit_date, 'YYYY-MM-DD') visit_date, t_category, t_adult, t_student, t_child, t_multi, t_afternoon, card_company, allday_price, total_price,  TO_CHAR(pay_date, 'YYYY-MM-DD') pay_date, t_member_id, t_state
-		FROM (SELECT rownum as rnum, PAYMENT_ID, visit_date, t_category, t_adult, t_student, t_child, t_multi, t_afternoon, card_company, allday_price, total_price, pay_date, t_member_id, t_state
+		SELECT 	rnum, PAYMENT_ID, TO_CHAR(visit_date, 'YYYY-MM-DD') visit_date, t_category, t_adult, t_student, 
+				t_child, t_multi, t_afternoon, card_company, allday_price, total_price,  
+				TO_CHAR(pay_date, 'YYYY-MM-DD') pay_date, t_member_id, t_state
+		FROM (SELECT rownum as rnum, PAYMENT_ID, visit_date, t_category, t_adult, t_student, t_child, t_multi, 
+				t_afternoon, card_company, allday_price, total_price, pay_date, t_member_id, t_state
 			FROM PAYMENT
 			WHERE ]]>
 			<trim prefix="(" suffix=") AND " prefixOverrides="AND">
@@ -73,7 +73,6 @@
 	         ) boardlist
 	     where rnum > (#{pageNum} - 1) * #{amount}
       ]]>
-      
 	</select>
 
 	

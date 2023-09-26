@@ -13,6 +13,8 @@ public interface QuestionDao {
 	
 	public List<QuestionVO> qaList(QuestionVO qvo);
 	
+	public List<QuestionVO> clientQaList(QuestionVO qvo);
+	
 	public int answerListCnt(QuestionVO qvo);
 	
 	public QuestionVO qawriteForm(QuestionVO qvo);

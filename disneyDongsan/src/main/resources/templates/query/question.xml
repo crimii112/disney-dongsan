@@ -16,6 +16,13 @@
 	
 	</select>
 	
+	<select id="clientQaList" resultType="question" >
+	SELECT 
+	qa_no, title, qa_content, qa_date, askyn, ask, ask_date, member_id
+	FROM QA
+    WHERE member_id = #{member_id}
+	</select>
+	
 	<select id="answerListCnt" parameterType="question" resultType="int">
 		SELECT count(*) FROM QA
 		

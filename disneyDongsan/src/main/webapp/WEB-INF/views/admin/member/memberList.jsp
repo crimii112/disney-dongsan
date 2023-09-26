@@ -58,7 +58,7 @@
 										<c:when test="${not empty memberList}">
 											<c:forEach var="member" items="${memberList}" varStatus="status">
 												<tr class="text-center" data-num="${member.memberNo}">
-													<td scope="row" class="text-center">${member.memberNo}</td>
+													<td scope="row" class="text-center"><c:out value="${(pageMaker.cvo.pageNum - 1) * pageMaker.cvo.amount + status.index +1}"/></td>
 													<td class="text-center">${member.memberId}</td>
 													<td class="text-center">${member.memberName}</td>
 													<td class="text-center">${member.memberPhone}</td>

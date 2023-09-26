@@ -11,6 +11,11 @@
     /*box-shadow: 1px 1px 1px 1px #e1e1e1;*/
     text-align: center;
     z-index: 1000;
+}
+#header{
+    /*box-shadow: 1px 1px 1px 1px #e1e1e1;*/
+    text-align: center;
+    z-index: 1000;
     border-bottom: 3px solid #28288c;
 }
 
