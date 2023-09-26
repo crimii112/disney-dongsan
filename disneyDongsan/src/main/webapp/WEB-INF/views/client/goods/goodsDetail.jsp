@@ -19,7 +19,7 @@
 		    	});
 		    	
 		    	const form = {
-			    		member_id : 'user01',
+			    		member_id : '{member.member_id}',
 			    		g_id : '${detail.g_id}',
 			    		g_count : ''
 			    }

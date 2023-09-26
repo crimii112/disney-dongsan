@@ -54,8 +54,9 @@ public class SmsServiceImpl implements SmsService {
 		String accessKey = this.accessKey;
 		String secretKey = this.secretKey;
 
-		String message = new StringBuilder().append(method).append(space).append(url).append(newLine).append(timestamp)
-				.append(newLine).append(accessKey).toString();
+		String message = new StringBuilder().append(method).append(space).append(url)
+											.append(newLine).append(timestamp)
+											.append(newLine).append(accessKey).toString();
 
 		SecretKeySpec signingKey = new SecretKeySpec(secretKey.getBytes("UTF-8"), "HmacSHA256");
 		Mac mac = Mac.getInstance("HmacSHA256");
@@ -96,8 +97,8 @@ public class SmsServiceImpl implements SmsService {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
 		SmsResponseDto response = restTemplate.postForObject(
-				new URI("https://sens.apigw.ntruss.com/sms/v2/services/" + serviceId + "/messages"), httpBody,
-				SmsResponseDto.class);
+				new URI("https://sens.apigw.ntruss.com/sms/v2/services/" + serviceId + "/messages"), 
+				httpBody, SmsResponseDto.class);
 
 		response.setCreateSmsKey(createSmsKey);
 		return response;
