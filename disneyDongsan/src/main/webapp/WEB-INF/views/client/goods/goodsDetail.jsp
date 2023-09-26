@@ -19,7 +19,8 @@
 		    	});
 		    	
 		    	const form = {
-			    		member_id : '{member.member_id}',
+			    		member_id : '${Member.memberId}',
+
 			    		g_id : '${detail.g_id}',
 			    		g_count : ''
 			    }
@@ -150,7 +151,7 @@
 				<input type="hidden" name="orders[0].g_id" value="${detail.g_id}">
 				<input type="hidden" name="orders[0].g_count" value="">
 			</form>	 -->
-			<form action="/goods/goodsOrder" method="get" class="order_form">
+			<form action="/goods/goodsOrder/${member.member_id}" method="get" class="order_form">
 				<input type="hidden" name="orders[0].g_id" value="${detail.g_id}">
 				<input type="hidden" name="orders[0].g_count" value="">
 			</form>			

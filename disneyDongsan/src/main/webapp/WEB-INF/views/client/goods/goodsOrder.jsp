@@ -13,7 +13,7 @@
 		<!--[if It IE 9]>
 		<script src="/resources/js/html5shiv.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="../resources/include/css/goods/client/pay.css">
+		<link rel="stylesheet" href="/resources/include/css/goods/client/pay.css">
 		<link rel="stylesheet" type="text/css" href="/resources/css/header.css" />
 		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css" />
 				
@@ -191,7 +191,7 @@
 				} else if(totalPrice == 0){
 					deliveryPrice = 0;
 				} else {
-					deliveryPrice = 3000;	
+					deliveryPrice = 0;	
 				}
 				
 				finalTotalPrice = totalPrice + deliveryPrice;

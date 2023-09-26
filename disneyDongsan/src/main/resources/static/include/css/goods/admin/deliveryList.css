@@ -28,6 +28,10 @@ ul{
 	margin-bottom: 30px;
 	
 }
+
+.delivery_state{
+	color: red;
+}
 /*
 #container_box table { width:900px; }
 #container_box table th { font-size:20px; font-weight:bold;
