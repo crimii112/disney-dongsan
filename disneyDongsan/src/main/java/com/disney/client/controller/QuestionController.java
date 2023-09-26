@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.disney.client.service.QuestionService;
+import com.disney.vo.MemberVO;
 import com.disney.vo.QuestionVO;
 
 import lombok.Setter;
@@ -25,15 +27,17 @@ public class QuestionController {
 	private QuestionService questionService;
 	
 	@GetMapping("/userQAList")
-	public String qaList(QuestionVO qvo, Model model ) {
+	public String qaList(@SessionAttribute(name = "Member", required = false) MemberVO Member, QuestionVO qvo, Model model ) {
 		
 		log.info("qaList  호출 성공");
-		List<QuestionVO> qaList = questionService.qaList(qvo);
+		qvo.setMember_id(Member.getMemberId());
+		List<QuestionVO> qaList = questionService.clientQaList(qvo);
 		model.addAttribute("qaList", qaList);
 		
 		return "client/mypage/qa/userQAList";
 		
 	}
+	
 	
 	@GetMapping(value = "/userQAWriteForm")
 	public String qaWriteForm(QuestionVO qvo) {
